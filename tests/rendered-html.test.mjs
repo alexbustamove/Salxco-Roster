@@ -1,25 +1,57 @@
 import assert from "node:assert/strict";
-import test from "node:test";
+import { spawn } from "node:child_process";
+import { after, before, test } from "node:test";
 
-async function render(pathname = "/artists") {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
+const port = 4100 + (process.pid % 1000);
+const origin = `http://127.0.0.1:${port}`;
+let server;
+let serverOutput = "";
 
-  return worker.fetch(
-    new Request(`http://localhost${pathname}`, {
-      headers: { accept: "text/html" },
-    }),
+before(async () => {
+  server = spawn(
+    process.execPath,
+    ["node_modules/next/dist/bin/next", "start", "-H", "127.0.0.1", "-p", String(port)],
     {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
+      cwd: new URL("..", import.meta.url),
+      env: { ...process.env, NODE_ENV: "production" },
+      stdio: ["ignore", "pipe", "pipe"],
     },
   );
+
+  server.stdout.on("data", (chunk) => {
+    serverOutput += chunk;
+  });
+  server.stderr.on("data", (chunk) => {
+    serverOutput += chunk;
+  });
+
+  const deadline = Date.now() + 30_000;
+  while (Date.now() < deadline) {
+    if (server.exitCode !== null) {
+      throw new Error(`Next.js exited before becoming ready:\n${serverOutput}`);
+    }
+    try {
+      const response = await fetch(`${origin}/artists`);
+      if (response.ok) return;
+    } catch {
+      // The server is still starting.
+    }
+    await new Promise((resolve) => setTimeout(resolve, 150));
+  }
+
+  throw new Error(`Timed out waiting for Next.js:\n${serverOutput}`);
+});
+
+after(async () => {
+  if (!server || server.exitCode !== null) return;
+  server.kill("SIGTERM");
+  await new Promise((resolve) => server.once("exit", resolve));
+});
+
+async function render(pathname = "/artists") {
+  return fetch(`${origin}${pathname}`, {
+    headers: { accept: "text/html" },
+  });
 }
 
 test("server-renders the complete SALXCO roster", async () => {

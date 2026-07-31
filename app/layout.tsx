@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const siteOrigin =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "https://salxco-artist-roster.alexbm521.chatgpt.site");
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://salxco-artist-roster.alexbm521.chatgpt.site"),
+  metadataBase: new URL(siteOrigin),
   title: {
     default: "SALXCO — Artist Roster",
     template: "%s — SALXCO",
