@@ -82,6 +82,11 @@ test("server-renders the complete SALXCO roster", async () => {
   assert.match(html, /https:\/\/www\.instagram\.com\/brandon_arreaga\?igsh=NTc4MTIwNjQ2YQ==/);
   assert.match(html, /https:\/\/www\.instagram\.com\/krissm\.e\?igsh=NTc4MTIwNjQ2YQ==/);
   assert.match(html, /salxco-logo-white\.png/);
+  assert.match(html, /property="og:image" content="[^"]*\/og\.png\?v=2"/);
+  assert.match(html, /property="og:image:width" content="1200"/);
+  assert.match(html, /property="og:image:height" content="630"/);
+  assert.match(html, /rel="icon" href="\/favicon\.ico"/);
+  assert.match(html, /rel="apple-touch-icon" href="\/apple-touch-icon\.png"/);
   assert.match(
     html,
     /<span>Copyright © 2026 SALXCO \| XO MGMT\.<\/span><span>All rights reserved\.<\/span>/,
