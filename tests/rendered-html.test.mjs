@@ -60,7 +60,8 @@ test("server-renders the complete SALXCO roster", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>SALXCO — Artist Roster<\/title>/i);
+  assert.match(html, /<title>SALXCO Artist Roster<\/title>/i);
+  assert.match(html, /property="og:title" content="SALXCO Artist Roster"/);
   assert.match(html, /<span>The<\/span><span>Roster\.<\/span>/);
   assert.match(html, /Full service management for world-class talent\./);
   assert.match(
@@ -81,7 +82,10 @@ test("server-renders the complete SALXCO roster", async () => {
   assert.match(html, /https:\/\/www\.instagram\.com\/b2thar\?igsh=NTc4MTIwNjQ2YQ==/);
   assert.match(html, /https:\/\/www\.instagram\.com\/brandon_arreaga\?igsh=NTc4MTIwNjQ2YQ==/);
   assert.match(html, /https:\/\/www\.instagram\.com\/krissm\.e\?igsh=NTc4MTIwNjQ2YQ==/);
+  assert.match(html, /https:\/\/www\.instagram\.com\/unotopicmusica\?igsh=NTc4MTIwNjQ2YQ==/);
+  assert.match(html, /Unotopic<\/strong><span>Recording Artists<\/span>/);
   assert.match(html, /salxco-logo-white\.png/);
+  assert.match(html, /href="https:\/\/salxco\.com\/"[^>]*aria-label="Visit the SALXCO homepage"/);
   assert.match(html, /property="og:image" content="[^"]*\/og\.png\?v=2"/);
   assert.match(html, /property="og:image:width" content="1200"/);
   assert.match(html, /property="og:image:height" content="630"/);

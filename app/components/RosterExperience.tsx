@@ -160,8 +160,13 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
 
       <footer className="site-footer">
         <div className="footer-center">
-          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-          <a href="/artists" className="footer-brand" aria-label="SALXCO artist roster home">
+          <a
+            href="https://salxco.com/"
+            className="footer-brand"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit the SALXCO homepage"
+          >
             <img
               className="footer-brand-logo"
               src="/salxco-logo-white.png"

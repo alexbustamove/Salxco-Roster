@@ -11,9 +11,10 @@ const siteOrigin =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
+  applicationName: "SALXCO Artist Roster",
   title: {
-    default: "SALXCO — Artist Roster",
-    template: "%s — SALXCO",
+    default: "SALXCO Artist Roster",
+    template: "%s | SALXCO Artist Roster",
   },
   description: "Full service management for world-class talent.",
   icons: {
@@ -31,7 +32,8 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "SALXCO — Artist Roster",
+    title: "SALXCO Artist Roster",
+    siteName: "SALXCO Artist Roster",
     description: "Full service management for world-class talent.",
     type: "website",
     images: [
@@ -45,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SALXCO — Artist Roster",
+    title: "SALXCO Artist Roster",
     description: "Full service management for world-class talent.",
     images: ["/og.png?v=2"],
   },

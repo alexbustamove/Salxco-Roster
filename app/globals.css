@@ -924,8 +924,8 @@ a {
     grid-template-columns: 1fr;
     align-items: start;
     gap: 20px;
-    min-height: 264px;
-    padding: 54px 4px 32px;
+    min-height: 230px;
+    padding: 54px 4px 12px;
     text-align: left;
   }
 
@@ -942,7 +942,7 @@ a {
   .roster-controls {
     grid-template-columns: 1fr;
     gap: 7px;
-    margin: 14px -12px 0;
+    margin: 4px -12px 0;
     padding: 12px 12px 14px;
   }
 
