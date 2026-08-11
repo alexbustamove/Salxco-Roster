@@ -74,14 +74,13 @@ test("server-renders the complete SALXCO roster", async () => {
   );
   assert.match(html, /The Weeknd/);
   assert.match(html, />Nav</);
-  assert.match(html, /Kriss/);
+  assert.match(html, /22(?:<!-- -->)? artists/i);
+  assert.doesNotMatch(html, /Eryn Allen Kane|Breyan Isaac|Kriss/);
   assert.match(html, /Search artists/);
   assert.match(html, /Producers &amp; Songwriters/);
   assert.match(html, /https:\/\/www\.instagram\.com\/theweeknd\//);
   assert.match(html, /Open The Weeknd on Instagram/);
-  assert.match(html, /https:\/\/www\.instagram\.com\/b2thar\?igsh=NTc4MTIwNjQ2YQ==/);
   assert.match(html, /https:\/\/www\.instagram\.com\/brandon_arreaga\?igsh=NTc4MTIwNjQ2YQ==/);
-  assert.match(html, /https:\/\/www\.instagram\.com\/krissm\.e\?igsh=NTc4MTIwNjQ2YQ==/);
   assert.match(html, /https:\/\/www\.instagram\.com\/unotopicmusica\?igsh=NTc4MTIwNjQ2YQ==/);
   assert.match(html, /Unotopic<\/strong><span>Recording Artists<\/span>/);
   assert.match(html, /salxco-logo-white\.png/);
@@ -107,4 +106,11 @@ test("server-renders a direct artist profile URL", async () => {
   assert.match(html, /Law Roach/);
   assert.match(html, /Fashion &amp; Creative/);
   assert.match(html, /Representation inquiries available by request/);
+});
+
+test("hidden artists are excluded from direct profile URLs", async () => {
+  for (const slug of ["eryn-allen-kane", "breyan-isaac", "kriss"]) {
+    const response = await render(`/artists/${slug}`);
+    assert.equal(response.status, 404);
+  }
 });

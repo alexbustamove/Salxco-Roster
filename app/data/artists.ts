@@ -21,9 +21,10 @@ export type Artist = {
   cropOffsetY?: number;
   isDuo?: boolean;
   sortOrder: number;
+  hidden?: boolean;
 };
 
-export const artists: Artist[] = [
+const allArtists: Artist[] = [
   { id: "01", name: "The Weeknd", slug: "the-weeknd", category: "Recording Artists", image: "/artists/1_The_Weeknd.jpg", imageAlt: "The Weeknd", instagram: "https://www.instagram.com/theweeknd/", cropY: 64, sortOrder: 1 },
   { id: "02", name: "Playboi Carti", slug: "playboi-carti", category: "Recording Artists", image: "/artists/2_Playboi Carti.jpg", imageAlt: "Playboi Carti", instagram: "https://www.instagram.com/playboicarti/", cropY: 69, sortOrder: 2 },
   { id: "03", name: "Future", slug: "future", category: "Recording Artists", image: "/artists/3_Future.jpg", imageAlt: "Future", instagram: "https://www.instagram.com/future/", cropY: 50, sortOrder: 3 },
@@ -40,13 +41,15 @@ export const artists: Artist[] = [
   { id: "14", name: "Hanumankind", slug: "hanumankind", category: "Recording Artists", image: "/artists/14_Hanumankind.jpg", imageAlt: "Hanumankind", instagram: "https://www.instagram.com/hanumankind/", cropY: 48, cropScale: 1.12, sortOrder: 14 },
   { id: "15", name: "Belly", slug: "belly", category: "Recording Artists", image: "/artists/15_Belly.jpg", imageAlt: "Belly", instagram: "https://www.instagram.com/belly/", cropY: 55, cropScale: 1, sortOrder: 15 },
   { id: "16", name: "Law Roach", slug: "law-roach", category: "Fashion & Creative", image: "/artists/16_Law_Roach.jpg", imageAlt: "Law Roach", instagram: "https://www.instagram.com/luxurylaw/", cropY: 18, cropScale: 1.25, sortOrder: 16 },
-  { id: "17", name: "Eryn Allen Kane", slug: "eryn-allen-kane", category: "Recording Artists", image: "/artists/17_Eryn_Allen_Kane.jpg", imageAlt: "Eryn Allen Kane", instagram: "https://www.instagram.com/erynallenkane/", cropY: 93, sortOrder: 17 },
+  { id: "17", name: "Eryn Allen Kane", slug: "eryn-allen-kane", category: "Recording Artists", image: "/artists/17_Eryn_Allen_Kane.jpg", imageAlt: "Eryn Allen Kane", instagram: "https://www.instagram.com/erynallenkane/", cropY: 93, sortOrder: 17, hidden: true },
   { id: "18", name: "Unotopic", slug: "unotopic", category: "Recording Artists", image: "/artists/18_Unotopic.jpg", imageAlt: "Unotopic", instagram: "https://www.instagram.com/unotopicmusica?igsh=NTc4MTIwNjQ2YQ==", cropY: 67, sortOrder: 18 },
   { id: "19", name: "Stargate", slug: "stargate", category: "Producers & Songwriters", image: "/artists/19_Stargate.jpg", imageAlt: "Stargate", instagram: "https://www.instagram.com/stargate/", cropY: 82, isDuo: true, sortOrder: 19 },
   { id: "20", name: "DaHeala", slug: "daheala", category: "Producers & Songwriters", image: "/artists/20_DaHeala.jpg", imageAlt: "DaHeala", instagram: "https://www.instagram.com/daheala/", cropY: 88, sortOrder: 20 },
   { id: "21", name: "Prince 85", slug: "prince-85", category: "Producers & Songwriters", image: "/artists/21_Prince_85.jpg", imageAlt: "Prince 85", instagram: "https://www.instagram.com/prince85/", cropY: 25, cropScale: 1.54, cropOffsetY: 7, sortOrder: 21 },
   { id: "22", name: "Rex Kudo", slug: "rex-kudo", category: "Producers & Songwriters", image: "/artists/22_Rex_Kudo.jpg", imageAlt: "Rex Kudo", instagram: "https://www.instagram.com/rexkudo/", cropY: 81, sortOrder: 22 },
-  { id: "23", name: "Breyan Isaac", slug: "breyan-isaac", category: "Producers & Songwriters", image: "/artists/23_Breyan_Isaac.jpg", imageAlt: "Breyan Isaac", instagram: "https://www.instagram.com/b2thar?igsh=NTc4MTIwNjQ2YQ==", cropY: 61, sortOrder: 23 },
+  { id: "23", name: "Breyan Isaac", slug: "breyan-isaac", category: "Producers & Songwriters", image: "/artists/23_Breyan_Isaac.jpg", imageAlt: "Breyan Isaac", instagram: "https://www.instagram.com/b2thar?igsh=NTc4MTIwNjQ2YQ==", cropY: 61, sortOrder: 23, hidden: true },
   { id: "24", name: "Love, Brandon", slug: "love-brandon", category: "Producers & Songwriters", image: "/artists/24_Love_Brandon.jpg", imageAlt: "Love, Brandon", instagram: "https://www.instagram.com/brandon_arreaga?igsh=NTc4MTIwNjQ2YQ==", cropY: 58, sortOrder: 24 },
-  { id: "25", name: "Kriss", slug: "kriss", category: "Recording Artists", image: "/artists/25_Kriss.jpg", imageAlt: "Kriss", instagram: "https://www.instagram.com/krissm.e?igsh=NTc4MTIwNjQ2YQ==", cropY: 20, cropScale: 1.025, sortOrder: 25 },
+  { id: "25", name: "Kriss", slug: "kriss", category: "Recording Artists", image: "/artists/25_Kriss.jpg", imageAlt: "Kriss", instagram: "https://www.instagram.com/krissm.e?igsh=NTc4MTIwNjQ2YQ==", cropY: 20, cropScale: 1.025, sortOrder: 25, hidden: true },
 ];
+
+export const artists = allArtists.filter((artist) => !artist.hidden);
