@@ -121,7 +121,7 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
             <div className="artist-grid">
               {filteredArtists.map((artist, index) => (
                 <ArtistCard
-                  key={artist.id}
+                  key={artist.slug}
                   artist={artist}
                   priority={index < 5}
                 />

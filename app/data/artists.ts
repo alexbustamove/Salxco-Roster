@@ -52,4 +52,9 @@ const allArtists: Artist[] = [
   { id: "25", name: "Kriss", slug: "kriss", category: "Recording Artists", image: "/artists/25_Kriss.jpg", imageAlt: "Kriss", instagram: "https://www.instagram.com/krissm.e?igsh=NTc4MTIwNjQ2YQ==", cropY: 20, cropScale: 1.025, sortOrder: 25, hidden: true },
 ];
 
-export const artists = allArtists.filter((artist) => !artist.hidden);
+export const artists = allArtists
+  .filter((artist) => !artist.hidden)
+  .map((artist, index) => ({
+    ...artist,
+    id: String(index + 1).padStart(2, "0"),
+  }));

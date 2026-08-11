@@ -76,6 +76,12 @@ test("server-renders the complete SALXCO roster", async () => {
   assert.match(html, />Nav</);
   assert.match(html, /22(?:<!-- -->)? artists/i);
   assert.doesNotMatch(html, /Eryn Allen Kane|Breyan Isaac|Kriss/);
+  assert.deepEqual(
+    [...html.matchAll(/class="card-index" aria-hidden="true">(\d{2})<\/span>/g)].map(
+      ([, number]) => number,
+    ),
+    Array.from({ length: 22 }, (_, index) => String(index + 1).padStart(2, "0")),
+  );
   assert.match(html, /Search artists/);
   assert.match(html, /Producers &amp; Songwriters/);
   assert.match(html, /https:\/\/www\.instagram\.com\/theweeknd\//);
