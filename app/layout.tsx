@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   description: "Full service management for world-class talent.",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+      { url: "/favicon.ico?v=4", sizes: "any" },
+      { url: "/icon.png?v=4", type: "image/png", sizes: "512x512" },
     ],
-    shortcut: "/favicon.ico",
+    shortcut: "/favicon.ico?v=4",
     apple: [
       {
-        url: "/apple-touch-icon.png",
+        url: "/apple-touch-icon.png?v=4",
         type: "image/png",
         sizes: "180x180",
       },
