@@ -102,7 +102,7 @@ export function ArtistProfile({
       </div>
 
       <div className="profile-content">
-        <p className="eyebrow">{artist.category}</p>
+        <p className="eyebrow">{artist.sections.join(" · ")}</p>
         <h2 id="artist-profile-title">{artist.name}</h2>
         <div className="profile-rule" />
         <div className="profile-meta">

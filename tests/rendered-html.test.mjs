@@ -54,51 +54,44 @@ async function render(pathname = "/artists") {
   });
 }
 
-test("server-renders the complete SALXCO roster", async () => {
+test("server-renders the MGMT NATION roster sections", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>SALXCO Artist Roster<\/title>/i);
-  assert.match(html, /property="og:title" content="SALXCO Artist Roster"/);
-  assert.match(html, /<span>The<\/span><span>Roster\.<\/span>/);
+  assert.match(html, /<title>MGMT NATION Artist Roster<\/title>/i);
+  assert.match(html, /property="og:title" content="MGMT NATION Artist Roster"/);
+  assert.match(html, /<h1[^>]*>MGMT NATION Artist Roster<\/h1>/);
+  assert.match(html, /class="intro-logo"[^>]*src="\/mgmt-nation-logo\.png"/);
   assert.match(html, /Full service management for world-class talent\./);
-  assert.match(
-    html,
-    /<h1[^>]*><span>The<\/span><span>Roster\.<\/span><\/h1><\/div><p[^>]*>Full service management for world-class talent\.<\/p>/,
-  );
   assert.doesNotMatch(
     html,
     /Artists, creators, producers, and culture-shapers represented with intention\./,
   );
   assert.match(html, /The Weeknd/);
-  assert.match(html, />Nav</);
-  assert.match(html, /22(?:<!-- -->)? artists/i);
+  assert.match(html, />Nav</i);
+  assert.match(html, /<div class="roster-status"[^>]*><span>Artists<\/span><\/div>/);
   assert.doesNotMatch(html, /Eryn Allen Kane|Breyan Isaac|Kriss/);
-  assert.deepEqual(
-    [...html.matchAll(/class="card-index" aria-hidden="true">(\d{2})<\/span>/g)].map(
-      ([, number]) => number,
-    ),
-    Array.from({ length: 22 }, (_, index) => String(index + 1).padStart(2, "0")),
-  );
-  assert.match(html, /Search artists/);
-  assert.match(html, /Producers &amp; Songwriters/);
+  assert.doesNotMatch(html, /class="card-index"|Search artists/);
+  assert.doesNotMatch(html, /Open Love, Brandon on Instagram/);
+  assert.match(html, />Artists<\/button>/);
+  assert.match(html, />Producers &amp; Song Writers<\/button>/);
+  assert.match(html, />Lifestyle<\/button>/);
   assert.match(html, /https:\/\/www\.instagram\.com\/theweeknd\//);
   assert.match(html, /Open The Weeknd on Instagram/);
-  assert.match(html, /https:\/\/www\.instagram\.com\/brandon_arreaga\?igsh=NTc4MTIwNjQ2YQ==/);
   assert.match(html, /https:\/\/www\.instagram\.com\/unotopicmusica\?igsh=NTc4MTIwNjQ2YQ==/);
   assert.match(
     html,
-    /Unotopic<\/strong><\/span><span class="card-category">Recording Artists<\/span>/,
+    /Unotopic<\/strong><\/span><span class="card-category">Artists<\/span>/,
   );
   assert.match(html, /mgmt-nation-logo\.png/);
   assert.match(html, /class="back-to-top"[^>]*aria-label="Back to top"/);
-  assert.match(html, /property="og:image" content="[^"]*\/og\.png\?v=2"/);
+  assert.match(html, /property="og:image" content="[^"]*\/og-mgmt\.png\?v=3"/);
   assert.match(html, /property="og:image:width" content="1200"/);
   assert.match(html, /property="og:image:height" content="630"/);
-  assert.match(html, /rel="icon" href="\/favicon\.ico"/);
-  assert.match(html, /rel="apple-touch-icon" href="\/apple-touch-icon\.png"/);
+  assert.match(html, /rel="icon" href="\/favicon\.ico\?v=4"/);
+  assert.match(html, /rel="apple-touch-icon" href="\/apple-touch-icon\.png\?v=4"/);
   assert.match(
     html,
     /<span>Copyright © 2026 MGMT NATION\.<\/span><span>All rights reserved\.<\/span>/,
@@ -113,7 +106,7 @@ test("server-renders a direct artist profile URL", async () => {
 
   const html = await response.text();
   assert.match(html, /Law Roach/);
-  assert.match(html, /Fashion &amp; Creative/);
+  assert.match(html, /Lifestyle/);
   assert.match(html, /Representation inquiries available by request/);
 });
 

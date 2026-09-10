@@ -5,29 +5,24 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ArtistCard } from "./ArtistCard";
 import { ArtistProfile } from "./ArtistProfile";
-import { artists, categories, type ArtistCategory } from "../data/artists";
+import { artists, categories, sectionOrder, type ArtistCategory } from "../data/artists";
 
 type RosterExperienceProps = {
   initialSlug?: string;
 };
 
-const normalizeSearch = (value: string) =>
-  value.toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
 export function RosterExperience({ initialSlug }: RosterExperienceProps) {
-  const [query, setQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<ArtistCategory>("All Artists");
+  const [activeCategory, setActiveCategory] = useState<ArtistCategory>("Artists");
   const [selectedSlug, setSelectedSlug] = useState(
     initialSlug && artists.some((artist) => artist.slug === initialSlug) ? initialSlug : null,
   );
   const filteredArtists = useMemo(() => {
-    const normalized = normalizeSearch(query.trim());
-    return artists.filter((artist) => {
-      const matchesName = normalizeSearch(artist.name).includes(normalized);
-      const matchesCategory = activeCategory === "All Artists" || artist.category === activeCategory;
-      return matchesName && matchesCategory;
-    });
-  }, [activeCategory, query]);
+    const order = sectionOrder[activeCategory];
+    return artists
+      .filter((artist) => artist.sections.includes(activeCategory))
+      .sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug));
+  }, [activeCategory]);
+  const emptySlots = Math.max(0, sectionOrder.Artists.length - filteredArtists.length);
 
   const selectedArtist = artists.find((artist) => artist.slug === selectedSlug) ?? null;
   const selectedIndex = selectedArtist ? artists.findIndex((artist) => artist.slug === selectedArtist.slug) : -1;
@@ -69,34 +64,20 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
   return (
     <main className="site-shell">
       <section className="intro" aria-labelledby="roster-title">
-        <div>
-          <h1 id="roster-title">
-            <span>The</span>
-            <span>Roster.</span>
-          </h1>
-        </div>
+        <h1 id="roster-title" className="sr-only">MGMT NATION Artist Roster</h1>
+        <img
+          className="intro-logo"
+          src="/mgmt-nation-logo.png"
+          alt="MGMT NATION"
+          width={556}
+          height={129}
+        />
         <p className="intro-tagline">Full service management for world-class talent.</p>
       </section>
 
       <div className={`roster-layout${selectedArtist ? " has-profile" : ""}`}>
         <section className="roster-content" aria-label="Artist roster">
           <div className="roster-controls">
-            <label className="search-field">
-              <span className="search-symbol" aria-hidden="true">⌕</span>
-              <span className="sr-only">Search artists by name</span>
-              <input
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search artists"
-              />
-              {query && (
-                <button type="button" onClick={() => setQuery("")} aria-label="Clear artist search">
-                  ×
-                </button>
-              )}
-            </label>
-
             <div className="filter-list" aria-label="Filter artists by category">
               {categories.map((category) => (
                 <button
@@ -113,36 +94,26 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
           </div>
 
           <div className="roster-status" aria-live="polite">
-            <span>{String(filteredArtists.length).padStart(2, "0")} artists</span>
             <span>{activeCategory}</span>
           </div>
 
-          {filteredArtists.length ? (
-            <div className="artist-grid">
-              {filteredArtists.map((artist, index) => (
-                <ArtistCard
-                  key={artist.slug}
-                  artist={artist}
-                  priority={index < 5}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="empty-state">
-              <span aria-hidden="true">00</span>
-              <h2>No artists found.</h2>
-              <p>Try a different name or clear the current filter.</p>
-              <button
-                type="button"
-                onClick={() => {
-                  setQuery("");
-                  setActiveCategory("All Artists");
-                }}
-              >
-                View full roster
-              </button>
-            </div>
-          )}
+          <div className="artist-grid">
+            {filteredArtists.map((artist, index) => (
+              <ArtistCard
+                key={artist.slug}
+                artist={artist}
+                categoryLabel={activeCategory}
+                priority={index < 5}
+              />
+            ))}
+            {Array.from({ length: emptySlots }, (_, index) => (
+              <div
+                key={`empty-${activeCategory}-${index}`}
+                className="artist-card artist-card-placeholder"
+                aria-hidden="true"
+              />
+            ))}
+          </div>
         </section>
 
         {selectedArtist && (
