@@ -160,23 +160,17 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
 
       <footer className="site-footer">
         <div className="footer-center">
-          <a
-            href="https://salxco.com/"
-            className="footer-brand"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit the SALXCO homepage"
-          >
+          <div className="footer-brand" aria-label="MGMT NATION">
             <img
               className="footer-brand-logo"
-              src="/salxco-logo-white.png"
+              src="/mgmt-nation-logo.png"
               alt=""
-              width={1976}
-              height={2118}
+              width={556}
+              height={129}
             />
-          </a>
+          </div>
           <p className="footer-copyright">
-            <span>Copyright © 2026 SALXCO | XO MGMT.</span>
+            <span>Copyright © 2026 MGMT NATION.</span>
             <span>All rights reserved.</span>
           </p>
         </div>

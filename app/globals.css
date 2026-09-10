@@ -758,7 +758,7 @@ a {
 
 .footer-brand-logo {
   display: block;
-  width: clamp(64px, 6.5vw, 88px);
+  width: clamp(178px, 18vw, 250px);
   height: auto;
 }
 
@@ -968,12 +968,12 @@ a {
   }
 
   .artist-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 9px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 5px;
   }
 
   .artist-card-button {
-    border-radius: 17px;
+    border-radius: 10px;
   }
 
   .artist-card-button:hover {
@@ -985,28 +985,33 @@ a {
   }
 
   .card-index {
-    top: 10px;
-    right: 11px;
-    font-size: 7px;
+    top: 6px;
+    right: 6px;
+    font-size: 5px;
   }
 
   .card-glass {
-    right: 6px;
-    bottom: 6px;
-    left: 6px;
-    min-height: 56px;
-    padding: 10px;
-    border-radius: 12px;
+    right: 4px;
+    bottom: 4px;
+    left: 4px;
+    min-height: 32px;
+    padding: 6px;
+    border-radius: 7px;
   }
 
   .card-glass strong {
-    font-size: clamp(14px, 4.4vw, 18px);
+    display: -webkit-box;
+    font-size: clamp(7px, 2vw, 9px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-overflow: clip;
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
   .card-glass span {
-    margin-top: 5px;
-    font-size: 6px;
-    letter-spacing: 0.09em;
+    display: none;
   }
 
   .swipe-hint {
@@ -1033,19 +1038,21 @@ a {
     font-size: 7px;
   }
 
+  .footer-brand-logo {
+    width: clamp(168px, 48vw, 220px);
+  }
+
 }
 
 @media (max-width: 370px) {
-  .artist-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .artist-card-button {
-    aspect-ratio: 4 / 5;
-  }
-
   .card-glass strong {
-    font-size: 22px;
+    font-size: 7px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 699px) {
+  .artist-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 

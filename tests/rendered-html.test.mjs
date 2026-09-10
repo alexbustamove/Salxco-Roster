@@ -89,8 +89,7 @@ test("server-renders the complete SALXCO roster", async () => {
   assert.match(html, /https:\/\/www\.instagram\.com\/brandon_arreaga\?igsh=NTc4MTIwNjQ2YQ==/);
   assert.match(html, /https:\/\/www\.instagram\.com\/unotopicmusica\?igsh=NTc4MTIwNjQ2YQ==/);
   assert.match(html, /Unotopic<\/strong><span>Recording Artists<\/span>/);
-  assert.match(html, /salxco-logo-white\.png/);
-  assert.match(html, /href="https:\/\/salxco\.com\/"[^>]*aria-label="Visit the SALXCO homepage"/);
+  assert.match(html, /mgmt-nation-logo\.png/);
   assert.match(html, /property="og:image" content="[^"]*\/og\.png\?v=2"/);
   assert.match(html, /property="og:image:width" content="1200"/);
   assert.match(html, /property="og:image:height" content="630"/);
@@ -98,7 +97,7 @@ test("server-renders the complete SALXCO roster", async () => {
   assert.match(html, /rel="apple-touch-icon" href="\/apple-touch-icon\.png"/);
   assert.match(
     html,
-    /<span>Copyright © 2026 SALXCO \| XO MGMT\.<\/span><span>All rights reserved\.<\/span>/,
+    /<span>Copyright © 2026 MGMT NATION\.<\/span><span>All rights reserved\.<\/span>/,
   );
   assert.doesNotMatch(html, /Artist Management|Los Angeles|Est\. 2018/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
