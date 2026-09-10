@@ -64,7 +64,10 @@ test("server-renders the MGMT NATION roster sections", async () => {
   assert.match(html, /property="og:title" content="MGMT NATION Artist Roster"/);
   assert.match(html, /<h1[^>]*>MGMT NATION Artist Roster<\/h1>/);
   assert.match(html, /class="intro-logo"[^>]*src="\/mgmt-nation-logo\.png"/);
-  assert.match(html, /Full service management for world-class talent\./);
+  assert.match(
+    html,
+    /<p class="intro-tagline"><span>Full Service Management<\/span><span>For World-Class Talent\.<\/span><\/p>/,
+  );
   assert.doesNotMatch(
     html,
     /Artists, creators, producers, and culture-shapers represented with intention\./,

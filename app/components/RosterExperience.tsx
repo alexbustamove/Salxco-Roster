@@ -72,7 +72,10 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
           width={556}
           height={129}
         />
-        <p className="intro-tagline">Full service management for world-class talent.</p>
+        <p className="intro-tagline">
+          <span>Full Service Management</span>
+          <span>For World-Class Talent.</span>
+        </p>
       </section>
 
       <div className={`roster-layout${selectedArtist ? " has-profile" : ""}`}>
