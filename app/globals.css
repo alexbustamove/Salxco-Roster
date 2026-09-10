@@ -1017,12 +1017,12 @@ a {
     left: 4px;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    min-height: 32px;
-    padding: 4px 5px;
+    min-height: 26px;
+    padding: 3px 5px;
     align-content: center;
     justify-items: start;
-    gap: 1px;
-    border-radius: 7px;
+    gap: 0;
+    border-radius: 6px;
     text-align: left;
   }
 
@@ -1036,7 +1036,7 @@ a {
   .card-name strong {
     display: block;
     width: 100%;
-    font-size: 6.6px;
+    font-size: 7px;
     letter-spacing: -0.02em;
     line-height: 1;
     text-overflow: clip;
@@ -1090,14 +1090,10 @@ a {
 
 }
 
-@media (max-width: 370px) {
-  .card-name {
-    height: 13px;
-  }
-
+@media (max-width: 479px) {
   .card-name strong {
     display: -webkit-box;
-    font-size: 6.6px;
+    font-size: 7px;
     line-height: 0.95;
     overflow-wrap: anywhere;
     white-space: normal;
@@ -1109,6 +1105,10 @@ a {
 @media (min-width: 480px) and (max-width: 699px) {
   .artist-grid {
     grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .card-name strong {
+    font-size: 6.6px;
   }
 }
 
