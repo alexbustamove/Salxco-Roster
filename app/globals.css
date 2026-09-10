@@ -813,7 +813,7 @@ a {
   }
 
   .filter-list {
-    gap: 2px;
+    gap: 3px;
   }
 
   .filter-list button {
@@ -1017,11 +1017,11 @@ a {
     left: 4px;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    min-height: 26px;
+    min-height: 30px;
     padding: 3px 5px;
     align-content: center;
     justify-items: start;
-    gap: 0;
+    gap: 4px;
     border-radius: 6px;
     text-align: left;
   }
@@ -1134,11 +1134,11 @@ a {
     left: 4px;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    min-height: 30px;
+    min-height: 32px;
     padding: 4px 7px;
     align-content: center;
     justify-items: start;
-    gap: 0;
+    gap: 4px;
     border-radius: 7px;
     text-align: left;
   }
