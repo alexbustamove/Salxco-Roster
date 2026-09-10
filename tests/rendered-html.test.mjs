@@ -76,15 +76,13 @@ test("server-renders the MGMT NATION roster sections", async () => {
   assert.doesNotMatch(html, /class="card-index"|Search artists/);
   assert.doesNotMatch(html, /Open Love, Brandon on Instagram/);
   assert.match(html, />Artists<\/button>/);
-  assert.match(html, />Producers &amp; Song Writers<\/button>/);
+  assert.match(html, />Producers &amp; Songwriters<\/button>/);
   assert.match(html, />Lifestyle<\/button>/);
   assert.match(html, /https:\/\/www\.instagram\.com\/theweeknd\//);
   assert.match(html, /Open The Weeknd on Instagram/);
   assert.match(html, /https:\/\/www\.instagram\.com\/unotopicmusica\?igsh=NTc4MTIwNjQ2YQ==/);
-  assert.match(
-    html,
-    /Unotopic<\/strong><\/span><span class="card-category">Artists<\/span>/,
-  );
+  assert.match(html, /class="card-name"><strong>Unotopic<\/strong><\/span>/);
+  assert.doesNotMatch(html, /class="card-category"/);
   assert.match(html, /mgmt-nation-logo\.png/);
   assert.match(html, /class="back-to-top"[^>]*aria-label="Back to top"/);
   assert.match(html, /property="og:image" content="[^"]*\/og-mgmt\.png\?v=3"/);

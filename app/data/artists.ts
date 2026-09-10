@@ -1,6 +1,6 @@
 export const categories = [
   "Artists",
-  "Producers & Song Writers",
+  "Producers & Songwriters",
   "Lifestyle",
 ] as const;
 
@@ -41,12 +41,12 @@ const allArtists: Artist[] = [
   { id: "16", name: "Law Roach", slug: "law-roach", sections: ["Lifestyle"], image: "/artists/16_Law_Roach.jpg", imageAlt: "Law Roach", instagram: "https://www.instagram.com/luxurylaw/", cropY: 18, cropScale: 1.25, sortOrder: 16 },
   { id: "17", name: "Eryn Allen Kane", slug: "eryn-allen-kane", sections: ["Artists"], image: "/artists/17_Eryn_Allen_Kane.jpg", imageAlt: "Eryn Allen Kane", instagram: "https://www.instagram.com/erynallenkane/", cropY: 93, sortOrder: 17, hidden: true },
   { id: "18", name: "Unotopic", slug: "unotopic", sections: ["Artists"], image: "/artists/18_Unotopic.jpg", imageAlt: "Unotopic", instagram: "https://www.instagram.com/unotopicmusica?igsh=NTc4MTIwNjQ2YQ==", cropY: 67, sortOrder: 18 },
-  { id: "19", name: "Stargate", slug: "stargate", sections: ["Producers & Song Writers"], image: "/artists/19_Stargate.jpg", imageAlt: "Stargate", instagram: "https://www.instagram.com/stargate/", cropY: 82, isDuo: true, sortOrder: 19 },
-  { id: "20", name: "DaHeala", slug: "daheala", sections: ["Producers & Song Writers"], image: "/artists/20_DaHeala.jpg", imageAlt: "DaHeala", instagram: "https://www.instagram.com/daheala/", cropY: 88, sortOrder: 20 },
-  { id: "21", name: "Prince 85", slug: "prince-85", sections: ["Producers & Song Writers"], image: "/artists/21_Prince_85.jpg", imageAlt: "Prince 85", instagram: "https://www.instagram.com/prince85/", cropY: 25, cropScale: 1.54, cropOffsetY: 7, sortOrder: 21 },
-  { id: "22", name: "Rex Kudo", slug: "rex-kudo", sections: ["Producers & Song Writers"], image: "/artists/22_Rex_Kudo.jpg", imageAlt: "Rex Kudo", instagram: "https://www.instagram.com/rexkudo/", cropY: 81, sortOrder: 22 },
-  { id: "23", name: "Breyan Isaac", slug: "breyan-isaac", sections: ["Producers & Song Writers"], image: "/artists/23_Breyan_Isaac.jpg", imageAlt: "Breyan Isaac", instagram: "https://www.instagram.com/b2thar?igsh=NTc4MTIwNjQ2YQ==", cropY: 61, sortOrder: 23, hidden: true },
-  { id: "24", name: "Love, Brandon", slug: "love-brandon", sections: ["Producers & Song Writers"], image: "/artists/24_Love_Brandon.jpg", imageAlt: "Love, Brandon", instagram: "https://www.instagram.com/brandon_arreaga?igsh=NTc4MTIwNjQ2YQ==", cropY: 58, sortOrder: 24 },
+  { id: "19", name: "Stargate", slug: "stargate", sections: ["Producers & Songwriters"], image: "/artists/19_Stargate.jpg", imageAlt: "Stargate", instagram: "https://www.instagram.com/stargate/", cropY: 82, isDuo: true, sortOrder: 19 },
+  { id: "20", name: "DaHeala", slug: "daheala", sections: ["Producers & Songwriters"], image: "/artists/20_DaHeala.jpg", imageAlt: "DaHeala", instagram: "https://www.instagram.com/daheala/", cropY: 88, sortOrder: 20 },
+  { id: "21", name: "Prince 85", slug: "prince-85", sections: ["Producers & Songwriters"], image: "/artists/21_Prince_85.jpg", imageAlt: "Prince 85", instagram: "https://www.instagram.com/prince85/", cropY: 25, cropScale: 1.54, cropOffsetY: 7, sortOrder: 21 },
+  { id: "22", name: "Rex Kudo", slug: "rex-kudo", sections: ["Producers & Songwriters"], image: "/artists/22_Rex_Kudo.jpg", imageAlt: "Rex Kudo", instagram: "https://www.instagram.com/rexkudo/", cropY: 81, sortOrder: 22 },
+  { id: "23", name: "Breyan Isaac", slug: "breyan-isaac", sections: ["Producers & Songwriters"], image: "/artists/23_Breyan_Isaac.jpg", imageAlt: "Breyan Isaac", instagram: "https://www.instagram.com/b2thar?igsh=NTc4MTIwNjQ2YQ==", cropY: 61, sortOrder: 23, hidden: true },
+  { id: "24", name: "Love, Brandon", slug: "love-brandon", sections: ["Producers & Songwriters"], image: "/artists/24_Love_Brandon.jpg", imageAlt: "Love, Brandon", instagram: "https://www.instagram.com/brandon_arreaga?igsh=NTc4MTIwNjQ2YQ==", cropY: 58, sortOrder: 24 },
   { id: "25", name: "Kriss", slug: "kriss", sections: ["Artists"], image: "/artists/25_Kriss.jpg", imageAlt: "Kriss", instagram: "https://www.instagram.com/krissm.e?igsh=NTc4MTIwNjQ2YQ==", cropY: 20, cropScale: 1.025, sortOrder: 25, hidden: true },
 ];
 
@@ -69,7 +69,7 @@ export const sectionOrder: Record<ArtistCategory, string[]> = {
     "unotopic",
     "belly",
   ],
-  "Producers & Song Writers": [
+  "Producers & Songwriters": [
     "stargate",
     "rex-kudo",
     "daheala",

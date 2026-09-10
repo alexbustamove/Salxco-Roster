@@ -102,7 +102,6 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
               <ArtistCard
                 key={artist.slug}
                 artist={artist}
-                categoryLabel={activeCategory}
                 priority={index < 5}
               />
             ))}

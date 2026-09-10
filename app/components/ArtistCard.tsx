@@ -4,11 +4,10 @@ import { ArtistImage } from "./ArtistImage";
 
 type ArtistCardProps = {
   artist: Artist;
-  categoryLabel: string;
   priority?: boolean;
 };
 
-export function ArtistCard({ artist, categoryLabel, priority }: ArtistCardProps) {
+export function ArtistCard({ artist, priority }: ArtistCardProps) {
   const cropScale = artist.cropScale ?? (artist.isDuo ? 1 : 1.025);
 
   return (
@@ -30,7 +29,6 @@ export function ArtistCard({ artist, categoryLabel, priority }: ArtistCardProps)
         <span className="card-gradient" aria-hidden="true" />
         <span className="card-glass">
           <span className="card-name"><strong>{artist.name}</strong></span>
-          <span className="card-category">{categoryLabel}</span>
         </span>
       </a>
     </article>
