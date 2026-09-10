@@ -1015,11 +1015,12 @@ a {
     right: 4px;
     bottom: 4px;
     left: 4px;
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
     min-height: 32px;
     padding: 4px 5px;
-    align-items: flex-start;
-    justify-content: center;
+    align-content: center;
+    justify-items: start;
     gap: 1px;
     border-radius: 7px;
     text-align: left;
@@ -1035,19 +1036,11 @@ a {
   .card-name strong {
     display: block;
     width: 100%;
-    font-size: clamp(7.4px, 2.05vw, 9.25px);
+    font-size: 6.6px;
     letter-spacing: -0.02em;
     line-height: 1;
     text-overflow: clip;
     white-space: nowrap;
-  }
-
-  .card-name.is-medium strong {
-    font-size: clamp(6.6px, 1.8vw, 8px);
-  }
-
-  .card-name.is-long strong {
-    font-size: clamp(5.8px, 1.65vw, 7.4px);
   }
 
   .card-category {
@@ -1075,7 +1068,7 @@ a {
 
   .site-footer {
     min-height: 115px;
-    margin-top: 80px;
+    margin-top: 28px;
     padding: 18px 4px;
     font-size: 7px;
   }
@@ -1100,34 +1093,22 @@ a {
 @media (max-width: 370px) {
   .card-name {
     height: 13px;
-    flex: 0 0 13px;
   }
 
   .card-name strong {
     display: -webkit-box;
-    font-size: 6.5px;
+    font-size: 6.6px;
     line-height: 0.95;
+    overflow-wrap: anywhere;
     white-space: normal;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-  }
-
-  .card-name.is-medium strong {
-    font-size: 6.2px;
-  }
-
-  .card-name.is-long strong {
-    font-size: 5.7px;
   }
 }
 
 @media (min-width: 480px) and (max-width: 699px) {
   .artist-grid {
     grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-
-  .card-name.is-long strong {
-    font-size: 6.4px;
   }
 }
 
