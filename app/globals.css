@@ -517,7 +517,7 @@ a {
 }
 
 .card-category {
-  margin-top: 7px;
+  margin-top: 5px;
   overflow: hidden;
   color: rgba(255, 255, 255, 0.58);
   font-size: clamp(7px, 0.58vw, 9px);
