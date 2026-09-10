@@ -517,7 +517,7 @@ a {
 }
 
 .card-category {
-  margin-top: 5px;
+  margin-top: 3.5px;
   overflow: hidden;
   color: rgba(255, 255, 255, 0.58);
   font-size: clamp(7px, 0.58vw, 9px);
@@ -1021,7 +1021,7 @@ a {
     padding: 3px 5px;
     align-content: center;
     justify-items: start;
-    gap: 4px;
+    gap: 3px;
     border-radius: 6px;
     text-align: left;
   }
