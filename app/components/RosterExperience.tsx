@@ -160,11 +160,11 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
 
       <footer className="site-footer">
         <div className="footer-center">
-          <div className="footer-brand" aria-label="MGMT NATION">
+          <div className="footer-brand">
             <img
               className="footer-brand-logo"
               src="/mgmt-nation-logo.png"
-              alt=""
+              alt="MGMT NATION"
               width={556}
               height={129}
             />
@@ -174,7 +174,9 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
             <span>All rights reserved.</span>
           </p>
         </div>
-        <a href="#roster-title">Back to top ↑</a>
+        <a className="back-to-top" href="#roster-title" aria-label="Back to top">
+          <span aria-hidden="true">↑</span>
+        </a>
       </footer>
     </main>
   );

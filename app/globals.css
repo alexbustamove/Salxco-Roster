@@ -774,9 +774,25 @@ a {
   display: block;
 }
 
-.site-footer > a:last-child {
+.back-to-top {
+  display: grid;
   grid-column: 3;
+  width: 44px;
+  height: 44px;
   justify-self: end;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 50%;
+  font-size: 17px;
+  line-height: 1;
+  transition: color 220ms ease, border-color 220ms ease, transform 300ms var(--ease);
+}
+
+.back-to-top:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
 }
 
 @media (min-width: 700px) {
@@ -994,16 +1010,18 @@ a {
     right: 4px;
     bottom: 4px;
     left: 4px;
-    min-height: 32px;
-    padding: 6px;
+    min-height: 43px;
+    padding: 5px 6px;
     border-radius: 7px;
   }
 
   .card-glass strong {
     display: -webkit-box;
-    font-size: clamp(7px, 2vw, 9px);
+    width: 100%;
+    min-height: 16px;
+    font-size: clamp(7px, 1.75vw, 8.5px);
     letter-spacing: -0.02em;
-    line-height: 1;
+    line-height: 0.95;
     text-overflow: clip;
     white-space: normal;
     -webkit-box-orient: vertical;
@@ -1011,7 +1029,13 @@ a {
   }
 
   .card-glass span {
-    display: none;
+    display: block;
+    width: 100%;
+    margin-top: 3px;
+    font-size: clamp(3.6px, 0.95vw, 4.7px);
+    letter-spacing: 0.035em;
+    line-height: 1;
+    text-overflow: clip;
   }
 
   .swipe-hint {
@@ -1040,6 +1064,12 @@ a {
 
   .footer-brand-logo {
     width: clamp(168px, 48vw, 220px);
+  }
+
+  .back-to-top {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
   }
 
 }
