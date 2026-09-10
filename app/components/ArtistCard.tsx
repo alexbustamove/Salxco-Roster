@@ -29,8 +29,8 @@ export function ArtistCard({ artist, priority }: ArtistCardProps) {
         <span className="card-gradient" aria-hidden="true" />
         <span className="card-index" aria-hidden="true">{artist.id}</span>
         <span className="card-glass">
-          <strong>{artist.name}</strong>
-          <span>{artist.category}</span>
+          <span className="card-name"><strong>{artist.name}</strong></span>
+          <span className="card-category">{artist.category}</span>
         </span>
       </a>
     </article>

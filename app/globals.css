@@ -500,7 +500,12 @@ a {
   -webkit-backdrop-filter: blur(16px) saturate(120%);
 }
 
-.card-glass strong {
+.card-name {
+  display: block;
+  min-width: 0;
+}
+
+.card-name strong {
   overflow: hidden;
   font-family: "Neue Stance", sans-serif;
   font-size: clamp(15px, 1.55vw, 24px);
@@ -511,7 +516,7 @@ a {
   white-space: nowrap;
 }
 
-.card-glass span {
+.card-category {
   margin-top: 7px;
   overflow: hidden;
   color: rgba(255, 255, 255, 0.58);
@@ -816,11 +821,11 @@ a {
     font-size: 9px;
   }
 
-  .card-glass strong {
+  .card-name strong {
     font-size: clamp(19px, 2.8vw, 28px);
   }
 
-  .card-glass span {
+  .card-category {
     font-size: 9px;
   }
 }
@@ -838,7 +843,7 @@ a {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .roster-layout.has-profile .card-glass strong {
+  .roster-layout.has-profile .card-name strong {
     font-size: clamp(14px, 1.25vw, 20px);
   }
 
@@ -1010,15 +1015,25 @@ a {
     right: 4px;
     bottom: 4px;
     left: 4px;
-    min-height: 43px;
-    padding: 5px 6px;
+    display: grid;
+    grid-template-rows: 16px auto;
+    align-content: center;
+    row-gap: 2px;
+    min-height: 37px;
+    padding: 4px 6px;
     border-radius: 7px;
   }
 
-  .card-glass strong {
+  .card-name {
+    display: flex;
+    height: 16px;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .card-name strong {
     display: -webkit-box;
     width: 100%;
-    min-height: 16px;
     font-size: clamp(7px, 1.75vw, 8.5px);
     letter-spacing: -0.02em;
     line-height: 0.95;
@@ -1028,12 +1043,12 @@ a {
     -webkit-line-clamp: 2;
   }
 
-  .card-glass span {
+  .card-category {
     display: block;
     width: 100%;
-    margin-top: 3px;
-    font-size: clamp(3.6px, 0.95vw, 4.7px);
-    letter-spacing: 0.035em;
+    margin-top: 0;
+    font-size: clamp(3.4px, 0.8vw, 4.2px);
+    letter-spacing: 0.02em;
     line-height: 1;
     text-overflow: clip;
   }
@@ -1075,7 +1090,7 @@ a {
 }
 
 @media (max-width: 370px) {
-  .card-glass strong {
+  .card-name strong {
     font-size: 7px;
   }
 }

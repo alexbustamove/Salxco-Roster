@@ -165,8 +165,8 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
               className="footer-brand-logo"
               src="/mgmt-nation-logo.png"
               alt="MGMT NATION"
-              width={556}
-              height={129}
+              width={496}
+              height={67}
             />
           </div>
           <p className="footer-copyright">

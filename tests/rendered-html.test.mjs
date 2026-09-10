@@ -88,7 +88,10 @@ test("server-renders the complete SALXCO roster", async () => {
   assert.match(html, /Open The Weeknd on Instagram/);
   assert.match(html, /https:\/\/www\.instagram\.com\/brandon_arreaga\?igsh=NTc4MTIwNjQ2YQ==/);
   assert.match(html, /https:\/\/www\.instagram\.com\/unotopicmusica\?igsh=NTc4MTIwNjQ2YQ==/);
-  assert.match(html, /Unotopic<\/strong><span>Recording Artists<\/span>/);
+  assert.match(
+    html,
+    /Unotopic<\/strong><\/span><span class="card-category">Recording Artists<\/span>/,
+  );
   assert.match(html, /mgmt-nation-logo\.png/);
   assert.match(html, /class="back-to-top"[^>]*aria-label="Back to top"/);
   assert.match(html, /property="og:image" content="[^"]*\/og\.png\?v=2"/);
