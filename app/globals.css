@@ -1018,17 +1018,21 @@ a {
     display: grid;
     grid-template-rows: 16px auto;
     align-content: center;
-    row-gap: 2px;
-    min-height: 37px;
-    padding: 4px 6px;
+    justify-items: start;
+    row-gap: 1px;
+    min-height: 31px;
+    padding: 3px 6px;
     border-radius: 7px;
+    text-align: left;
   }
 
   .card-name {
     display: flex;
     height: 16px;
     align-items: flex-end;
+    justify-content: flex-start;
     overflow: hidden;
+    text-align: left;
   }
 
   .card-name strong {
@@ -1050,6 +1054,7 @@ a {
     font-size: clamp(3.4px, 0.8vw, 4.2px);
     letter-spacing: 0.02em;
     line-height: 1;
+    text-align: left;
     text-overflow: clip;
   }
 
