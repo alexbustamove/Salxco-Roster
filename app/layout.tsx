@@ -38,10 +38,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og.png?v=2",
+        url: "/og-mgmt.png?v=3",
         width: 1200,
         height: 630,
-        alt: "SALXCO",
+        alt: "MGMT NATION",
       },
     ],
   },
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SALXCO Artist Roster",
     description: "Full service management for world-class talent.",
-    images: ["/og.png?v=2"],
+    images: ["/og-mgmt.png?v=3"],
   },
 };
 
