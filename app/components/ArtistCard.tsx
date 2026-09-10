@@ -9,6 +9,11 @@ type ArtistCardProps = {
 
 export function ArtistCard({ artist, priority }: ArtistCardProps) {
   const cropScale = artist.cropScale ?? (artist.isDuo ? 1 : 1.025);
+  const compactNameClass = artist.name.length >= 14 || (!artist.name.includes(" ") && artist.name.length >= 11)
+    ? "card-name is-long"
+    : artist.name.length >= 12
+      ? "card-name is-medium"
+      : "card-name";
 
   return (
     <article className="artist-card">
@@ -29,7 +34,7 @@ export function ArtistCard({ artist, priority }: ArtistCardProps) {
         <span className="card-gradient" aria-hidden="true" />
         <span className="card-index" aria-hidden="true">{artist.id}</span>
         <span className="card-glass">
-          <span className="card-name"><strong>{artist.name}</strong></span>
+          <span className={compactNameClass}><strong>{artist.name}</strong></span>
           <span className="card-category">{artist.category}</span>
         </span>
       </a>

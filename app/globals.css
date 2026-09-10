@@ -1015,43 +1015,46 @@ a {
     right: 4px;
     bottom: 4px;
     left: 4px;
-    display: grid;
-    grid-template-rows: 16px auto;
-    align-content: center;
-    justify-items: start;
-    row-gap: 1px;
-    min-height: 31px;
-    padding: 3px 6px;
+    display: flex;
+    min-height: 32px;
+    padding: 4px 5px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1px;
     border-radius: 7px;
     text-align: left;
   }
 
   .card-name {
-    display: flex;
-    height: 16px;
-    align-items: flex-end;
-    justify-content: flex-start;
+    display: block;
+    width: 100%;
     overflow: hidden;
     text-align: left;
   }
 
   .card-name strong {
-    display: -webkit-box;
+    display: block;
     width: 100%;
-    font-size: clamp(7px, 1.75vw, 8.5px);
+    font-size: clamp(7.4px, 2.05vw, 9.25px);
     letter-spacing: -0.02em;
-    line-height: 0.95;
+    line-height: 1;
     text-overflow: clip;
-    white-space: normal;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    white-space: nowrap;
+  }
+
+  .card-name.is-medium strong {
+    font-size: clamp(6.6px, 1.8vw, 8px);
+  }
+
+  .card-name.is-long strong {
+    font-size: clamp(5.8px, 1.65vw, 7.4px);
   }
 
   .card-category {
     display: block;
     width: 100%;
     margin-top: 0;
-    font-size: clamp(3.4px, 0.8vw, 4.2px);
+    font-size: clamp(3.5px, 0.85vw, 4.3px);
     letter-spacing: 0.02em;
     line-height: 1;
     text-align: left;
@@ -1095,14 +1098,36 @@ a {
 }
 
 @media (max-width: 370px) {
+  .card-name {
+    height: 13px;
+    flex: 0 0 13px;
+  }
+
   .card-name strong {
-    font-size: 7px;
+    display: -webkit-box;
+    font-size: 6.5px;
+    line-height: 0.95;
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .card-name.is-medium strong {
+    font-size: 6.2px;
+  }
+
+  .card-name.is-long strong {
+    font-size: 5.7px;
   }
 }
 
 @media (min-width: 480px) and (max-width: 699px) {
   .artist-grid {
     grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .card-name.is-long strong {
+    font-size: 6.4px;
   }
 }
 
