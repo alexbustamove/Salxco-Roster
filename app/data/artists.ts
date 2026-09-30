@@ -1,7 +1,7 @@
 export const categories = [
   "Artists",
   "Producers & Songwriters",
-  "Entertainment & Culture",
+  "----",
   "Lifestyle",
   "Partnerships",
 ] as const;
@@ -40,7 +40,7 @@ const allArtists: Artist[] = [
   { id: "13", name: "M.I.A.", slug: "mia", sections: ["Artists"], image: "/artists/13_MIA.jpg", imageAlt: "M.I.A.", instagram: "https://www.instagram.com/miamatangi/", cropY: 50, sortOrder: 13 },
   { id: "14", name: "Hanumankind", slug: "hanumankind", sections: ["Artists"], image: "/artists/14_Hanumankind.jpg", imageAlt: "Hanumankind", instagram: "https://www.instagram.com/hanumankind/", cropY: 48, cropScale: 1.12, sortOrder: 14 },
   { id: "15", name: "Belly", slug: "belly", sections: ["Artists"], image: "/artists/15_Belly.jpg", imageAlt: "Belly", instagram: "https://www.instagram.com/belly/", cropY: 55, cropScale: 1, sortOrder: 15 },
-  { id: "16", name: "Law Roach", slug: "law-roach", sections: ["Entertainment & Culture"], image: "/artists/16_Law_Roach.jpg", imageAlt: "Law Roach", instagram: "https://www.instagram.com/luxurylaw/", cropY: 18, cropScale: 1.25, sortOrder: 16 },
+  { id: "16", name: "Law Roach", slug: "law-roach", sections: ["----"], image: "/artists/16_Law_Roach.jpg", imageAlt: "Law Roach", instagram: "https://www.instagram.com/luxurylaw/", cropY: 18, cropScale: 1.25, sortOrder: 16 },
   { id: "17", name: "Eryn Allen Kane", slug: "eryn-allen-kane", sections: ["Artists"], image: "/artists/17_Eryn_Allen_Kane.jpg", imageAlt: "Eryn Allen Kane", instagram: "https://www.instagram.com/erynallenkane/", cropY: 93, sortOrder: 17, hidden: true },
   { id: "18", name: "Unotopic", slug: "unotopic", sections: ["Artists"], image: "/artists/18_Unotopic.jpg", imageAlt: "Unotopic", instagram: "https://www.instagram.com/unotopicmusica?igsh=NTc4MTIwNjQ2YQ==", cropY: 67, sortOrder: 18 },
   { id: "19", name: "Stargate", slug: "stargate", sections: ["Producers & Songwriters"], image: "/artists/19_Stargate.jpg", imageAlt: "Stargate", instagram: "https://www.instagram.com/stargate/", cropY: 82, isDuo: true, sortOrder: 19 },
@@ -50,7 +50,7 @@ const allArtists: Artist[] = [
   { id: "23", name: "Breyan Isaac", slug: "breyan-isaac", sections: ["Producers & Songwriters"], image: "/artists/23_Breyan_Isaac.jpg", imageAlt: "Breyan Isaac", instagram: "https://www.instagram.com/b2thar?igsh=NTc4MTIwNjQ2YQ==", cropY: 61, sortOrder: 23, hidden: true },
   { id: "24", name: "Love, Brandon", slug: "love-brandon", sections: ["Producers & Songwriters"], image: "/artists/24_Love_Brandon.jpg", imageAlt: "Love, Brandon", instagram: "https://www.instagram.com/brandon_arreaga?igsh=NTc4MTIwNjQ2YQ==", cropY: 58, sortOrder: 24 },
   { id: "25", name: "Kriss", slug: "kriss", sections: ["Artists"], image: "/artists/25_Kriss.jpg", imageAlt: "Kriss", instagram: "https://www.instagram.com/krissm.e?igsh=NTc4MTIwNjQ2YQ==", cropY: 20, cropScale: 1.025, sortOrder: 25, hidden: true },
-  { id: "26", name: "Juventus", slug: "juventus", sections: ["Entertainment & Culture"], image: "/artists/26_Juventus.jpg", imageAlt: "Juventus footballer celebrating", instagram: "https://www.instagram.com/juventus/", cropY: 38, sortOrder: 26 },
+  { id: "26", name: "Juventus", slug: "juventus", sections: ["----"], image: "/artists/26_Juventus.jpg", imageAlt: "Juventus footballer celebrating", instagram: "https://www.instagram.com/juventus/", cropY: 38, sortOrder: 26 },
 ];
 
 export const sectionOrder: Record<ArtistCategory, string[]> = {
@@ -79,7 +79,7 @@ export const sectionOrder: Record<ArtistCategory, string[]> = {
     "prince-85",
     "love-brandon",
   ],
-  "Entertainment & Culture": ["law-roach", "juventus"],
+  "----": ["law-roach", "juventus"],
   Lifestyle: [],
   Partnerships: [],
 };
