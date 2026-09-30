@@ -302,10 +302,6 @@ a {
   border-color: var(--ink);
 }
 
-.filter-label-mobile {
-  display: none;
-}
-
 .roster-status {
   display: flex;
   justify-content: flex-start;
@@ -1029,18 +1025,12 @@ a {
 
   .filter-list button {
     min-width: 0;
-    min-height: 34px;
+    min-height: 46px;
     padding: 0 3px;
     border-color: rgba(255, 255, 255, 0.1);
-    font-size: 7.5px;
-  }
-
-  .filter-label-desktop {
-    display: none;
-  }
-
-  .filter-label-mobile {
-    display: inline;
+    font-size: 6.5px;
+    line-height: 1.2;
+    white-space: normal;
   }
 
   .roster-status {

@@ -13,14 +13,6 @@ type RosterExperienceProps = {
   initialSlug?: string;
 };
 
-const mobileCategoryLabels: Record<ArtistCategory, string> = {
-  Artists: "Artists",
-  "Producers & Songwriters": "Producers",
-  "Entertainment & Culture": "Culture",
-  Lifestyle: "Lifestyle",
-  Partnerships: "Partners",
-};
-
 export function RosterExperience({ initialSlug }: RosterExperienceProps) {
   const [activeCategory, setActiveCategory] = useState<ArtistCategory>("Artists");
   const [selectedSlug, setSelectedSlug] = useState(
@@ -101,10 +93,7 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
                   aria-label={category}
                   onClick={() => setActiveCategory(category)}
                 >
-                  <span className="filter-label-desktop">{category}</span>
-                  <span className="filter-label-mobile" aria-hidden="true">
-                    {mobileCategoryLabels[category]}
-                  </span>
+                  {category}
                 </button>
               ))}
             </div>
