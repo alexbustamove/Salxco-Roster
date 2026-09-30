@@ -80,7 +80,7 @@ test("server-renders the MGMT NATION roster sections", async () => {
   assert.doesNotMatch(html, /Open Love, Brandon on Instagram/);
   assert.match(html, /aria-label="Artists"/);
   assert.match(html, /aria-label="Producers &amp; Songwriters"/);
-  assert.match(html, /aria-label="----"/);
+  assert.match(html, /aria-label="------"/);
   assert.match(html, /aria-label="Lifestyle"/);
   assert.match(html, /aria-label="Partnerships"/);
   assert.match(html, /https:\/\/www\.instagram\.com\/theweeknd\//);
@@ -109,7 +109,7 @@ test("server-renders a direct artist profile URL", async () => {
 
   const html = await response.text();
   assert.match(html, /Law Roach/);
-  assert.match(html, /----/);
+  assert.match(html, /------/);
   assert.match(html, /Representation inquiries available by request/);
 });
 
@@ -119,7 +119,7 @@ test("server-renders Juventus in the placeholder section", async () => {
 
   const html = await response.text();
   assert.match(html, /Juventus/);
-  assert.match(html, /----/);
+  assert.match(html, /------/);
   assert.match(html, /\/artists\/26_Juventus\.jpg/);
 });
 
