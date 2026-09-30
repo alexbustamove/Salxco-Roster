@@ -80,7 +80,9 @@ test("server-renders the MGMT NATION roster sections", async () => {
   assert.doesNotMatch(html, /Open Love, Brandon on Instagram/);
   assert.match(html, />Artists<\/button>/);
   assert.match(html, />Producers &amp; Songwriters<\/button>/);
+  assert.match(html, />Entertainment &amp; Culture<\/button>/);
   assert.match(html, />Lifestyle<\/button>/);
+  assert.match(html, />Partnerships<\/button>/);
   assert.match(html, /https:\/\/www\.instagram\.com\/theweeknd\//);
   assert.match(html, /Open The Weeknd on Instagram/);
   assert.match(html, /https:\/\/www\.instagram\.com\/unotopicmusica\?igsh=NTc4MTIwNjQ2YQ==/);
@@ -107,8 +109,18 @@ test("server-renders a direct artist profile URL", async () => {
 
   const html = await response.text();
   assert.match(html, /Law Roach/);
-  assert.match(html, /Lifestyle/);
+  assert.match(html, /Entertainment &amp; Culture/);
   assert.match(html, /Representation inquiries available by request/);
+});
+
+test("server-renders Juventus in Entertainment & Culture", async () => {
+  const response = await render("/artists/juventus");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Juventus/);
+  assert.match(html, /Entertainment &amp; Culture/);
+  assert.match(html, /\/artists\/26_Juventus\.jpg/);
 });
 
 test("hidden artists are excluded from direct profile URLs", async () => {

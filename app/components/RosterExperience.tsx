@@ -5,6 +5,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ArtistCard } from "./ArtistCard";
 import { ArtistProfile } from "./ArtistProfile";
+import { LifestyleMediaGallery } from "./LifestyleMediaGallery";
+import { PartnershipGallery } from "./PartnershipGallery";
 import { artists, categories, sectionOrder, type ArtistCategory } from "../data/artists";
 
 type RosterExperienceProps = {
@@ -100,22 +102,28 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
             <span>{activeCategory}</span>
           </div>
 
-          <div className="artist-grid">
-            {filteredArtists.map((artist, index) => (
-              <ArtistCard
-                key={artist.slug}
-                artist={artist}
-                priority={index < 5}
-              />
-            ))}
-            {Array.from({ length: emptySlots }, (_, index) => (
-              <div
-                key={`empty-${activeCategory}-${index}`}
-                className="artist-card artist-card-placeholder"
-                aria-hidden="true"
-              />
-            ))}
-          </div>
+          {activeCategory === "Lifestyle" ? (
+            <LifestyleMediaGallery />
+          ) : activeCategory === "Partnerships" ? (
+            <PartnershipGallery />
+          ) : (
+            <div className="artist-grid">
+              {filteredArtists.map((artist, index) => (
+                <ArtistCard
+                  key={artist.slug}
+                  artist={artist}
+                  priority={index < 5}
+                />
+              ))}
+              {Array.from({ length: emptySlots }, (_, index) => (
+                <div
+                  key={`empty-${activeCategory}-${index}`}
+                  className="artist-card artist-card-placeholder"
+                  aria-hidden="true"
+                />
+              ))}
+            </div>
+          )}
         </section>
 
         {selectedArtist && (
