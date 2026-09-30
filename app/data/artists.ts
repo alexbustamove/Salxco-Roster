@@ -48,7 +48,7 @@ const allArtists: Artist[] = [
   { id: "21", name: "Prince 85", slug: "prince-85", sections: ["Producers & Songwriters"], image: "/artists/21_Prince_85.jpg", imageAlt: "Prince 85", instagram: "https://www.instagram.com/prince85/", cropY: 25, cropScale: 1.54, cropOffsetY: 7, sortOrder: 21 },
   { id: "22", name: "Rex Kudo", slug: "rex-kudo", sections: ["Producers & Songwriters"], image: "/artists/22_Rex_Kudo.jpg", imageAlt: "Rex Kudo", instagram: "https://www.instagram.com/rexkudo/", cropY: 81, sortOrder: 22 },
   { id: "23", name: "Breyan Isaac", slug: "breyan-isaac", sections: ["Producers & Songwriters"], image: "/artists/23_Breyan_Isaac.jpg", imageAlt: "Breyan Isaac", instagram: "https://www.instagram.com/b2thar?igsh=NTc4MTIwNjQ2YQ==", cropY: 61, sortOrder: 23, hidden: true },
-  { id: "24", name: "Love, Brandon", slug: "love-brandon", sections: ["Producers & Songwriters"], image: "/artists/24_Love_Brandon.jpg", imageAlt: "Love, Brandon", instagram: "https://www.instagram.com/brandon_arreaga?igsh=NTc4MTIwNjQ2YQ==", cropY: 58, sortOrder: 24 },
+  { id: "24", name: "love, brandon", slug: "love-brandon", sections: ["Artists"], image: "/artists/24_Love_Brandon.jpg", imageAlt: "love, brandon", instagram: "https://www.instagram.com/brandon_arreaga?igsh=NTc4MTIwNjQ2YQ==", cropY: 58, sortOrder: 24 },
   { id: "25", name: "Kriss", slug: "kriss", sections: ["Artists"], image: "/artists/25_Kriss.jpg", imageAlt: "Kriss", instagram: "https://www.instagram.com/krissm.e?igsh=NTc4MTIwNjQ2YQ==", cropY: 20, cropScale: 1.025, sortOrder: 25, hidden: true },
   { id: "26", name: "Juventus", slug: "juventus", sections: ["------"], image: "/artists/26_Juventus.jpg", imageAlt: "Juventus footballer celebrating", instagram: "https://www.instagram.com/juventus/", cropY: 38, sortOrder: 26 },
 ];
@@ -71,13 +71,13 @@ export const sectionOrder: Record<ArtistCategory, string[]> = {
     "hanumankind",
     "unotopic",
     "belly",
+    "love-brandon",
   ],
   "Producers & Songwriters": [
     "stargate",
     "rex-kudo",
     "daheala",
     "prince-85",
-    "love-brandon",
   ],
   "------": ["law-roach", "juventus"],
   Lifestyle: [],

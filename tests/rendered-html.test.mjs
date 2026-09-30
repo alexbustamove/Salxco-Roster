@@ -77,7 +77,8 @@ test("server-renders the MGMT NATION roster sections", async () => {
   assert.match(html, /<div class="roster-status"[^>]*><span>Artists<\/span><\/div>/);
   assert.doesNotMatch(html, /Eryn Allen Kane|Breyan Isaac|Kriss/);
   assert.doesNotMatch(html, /class="card-index"|Search artists/);
-  assert.doesNotMatch(html, /Open Love, Brandon on Instagram/);
+  assert.match(html, /Open love, brandon on Instagram/);
+  assert.match(html, /class="card-name"><strong>love, brandon<\/strong><\/span>/);
   assert.match(html, /aria-label="Artists"/);
   assert.match(html, /aria-label="Producers &amp; Songwriters"/);
   assert.match(html, /aria-label="------"/);
