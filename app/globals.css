@@ -302,6 +302,10 @@ a {
   border-color: var(--ink);
 }
 
+.filter-label-mobile {
+  display: none;
+}
+
 .roster-status {
   display: flex;
   justify-content: flex-start;
@@ -1014,20 +1018,29 @@ a {
   }
 
   .filter-list {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 4px;
     width: 100%;
     margin-right: 0;
-    padding-right: 4px;
+    padding: 4px 0;
     overflow: visible;
   }
 
   .filter-list button {
+    min-width: 0;
     min-height: 34px;
-    padding: 0 10px;
+    padding: 0 3px;
     border-color: rgba(255, 255, 255, 0.1);
-    font-size: 8px;
+    font-size: 7.5px;
+  }
+
+  .filter-label-desktop {
+    display: none;
+  }
+
+  .filter-label-mobile {
+    display: inline;
   }
 
   .roster-status {

@@ -78,11 +78,11 @@ test("server-renders the MGMT NATION roster sections", async () => {
   assert.doesNotMatch(html, /Eryn Allen Kane|Breyan Isaac|Kriss/);
   assert.doesNotMatch(html, /class="card-index"|Search artists/);
   assert.doesNotMatch(html, /Open Love, Brandon on Instagram/);
-  assert.match(html, />Artists<\/button>/);
-  assert.match(html, />Producers &amp; Songwriters<\/button>/);
-  assert.match(html, />Entertainment &amp; Culture<\/button>/);
-  assert.match(html, />Lifestyle<\/button>/);
-  assert.match(html, />Partnerships<\/button>/);
+  assert.match(html, /aria-label="Artists"/);
+  assert.match(html, /aria-label="Producers &amp; Songwriters"/);
+  assert.match(html, /aria-label="Entertainment &amp; Culture"/);
+  assert.match(html, /aria-label="Lifestyle"/);
+  assert.match(html, /aria-label="Partnerships"/);
   assert.match(html, /https:\/\/www\.instagram\.com\/theweeknd\//);
   assert.match(html, /Open The Weeknd on Instagram/);
   assert.match(html, /https:\/\/www\.instagram\.com\/unotopicmusica\?igsh=NTc4MTIwNjQ2YQ==/);
