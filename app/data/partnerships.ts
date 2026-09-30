@@ -14,14 +14,14 @@ export const partnershipItems: PartnershipItem[] = [
   },
   {
     "id": "1333",
-    "title": "XO_WWE",
-    "href": "https://www.instagram.com/xo/p/DXMtk9DkRvb/?hl=en",
+    "title": "WWE x XO",
+    "href": "https://www.complex.com/sports/a/complexstaff3/xo-wwe-wrestlemania-42-collection",
     "image": "https://salxco.com/wp-content/uploads/2026/07/XO_WWE-650x650.jpg"
   },
   {
     "id": "1263",
-    "title": "BJ_XO",
-    "href": "https://www.instagram.com/p/DQNLJp1ER_Q/",
+    "title": "Bluejays x XO",
+    "href": "https://www.billboard.com/culture/product-recommendations/the-weeknd-blue-jays-merch-collaboration-where-to-buy-1236098269/",
     "image": "https://salxco.com/wp-content/uploads/2025/10/BJ_XO-650x650.jpg"
   },
   {

@@ -26,12 +26,28 @@ function decodeHtml(value) {
   return decoded;
 }
 
-const items = [...html.matchAll(entryPattern)].map((match, index) => ({
-  id: match[1],
-  title: decodeHtml(match[3]).trim() || `Partnership ${index + 1}`,
-  href: decodeHtml(match[2]),
-  image: decodeHtml(match[4]),
-}));
+const entryOverrides = {
+  XO_WWE: {
+    title: "WWE x XO",
+    href: "https://www.complex.com/sports/a/complexstaff3/xo-wwe-wrestlemania-42-collection",
+  },
+  BJ_XO: {
+    title: "Bluejays x XO",
+    href: "https://www.billboard.com/culture/product-recommendations/the-weeknd-blue-jays-merch-collaboration-where-to-buy-1236098269/",
+  },
+};
+
+const items = [...html.matchAll(entryPattern)].map((match, index) => {
+  const sourceTitle = decodeHtml(match[3]).trim();
+  const override = entryOverrides[sourceTitle];
+
+  return {
+    id: match[1],
+    title: (override?.title ?? sourceTitle) || `Partnership ${index + 1}`,
+    href: override?.href ?? decodeHtml(match[2]),
+    image: decodeHtml(match[4]),
+  };
+});
 
 if (items.length === 0) {
   throw new Error("No partnership entries were found; the source page structure may have changed.");
