@@ -79,6 +79,7 @@ test("server-renders the MGMT NATION roster sections", async () => {
   assert.doesNotMatch(html, /class="card-index"|Search artists/);
   assert.match(html, /Open love, brandon on Instagram/);
   assert.match(html, /class="card-name"><strong>love, brandon<\/strong><\/span>/);
+  assert.ok(html.indexOf("love, brandon") < html.indexOf("Unotopic"));
   assert.match(html, /aria-label="Artists"/);
   assert.match(html, /aria-label="Producers &amp; Songwriters"/);
   assert.match(html, /aria-label="------"/);

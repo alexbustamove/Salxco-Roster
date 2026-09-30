@@ -69,9 +69,9 @@ export const sectionOrder: Record<ArtistCategory, string[]> = {
     "nav",
     "mathame",
     "hanumankind",
+    "love-brandon",
     "unotopic",
     "belly",
-    "love-brandon",
   ],
   "Producers & Songwriters": [
     "stargate",
