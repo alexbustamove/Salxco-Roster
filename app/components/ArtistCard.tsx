@@ -9,6 +9,7 @@ type ArtistCardProps = {
 
 export function ArtistCard({ artist, priority }: ArtistCardProps) {
   const cropScale = artist.cropScale ?? (artist.isDuo ? 1 : 1.025);
+  const displayName = artist.slug === "love-brandon" ? artist.name : artist.name.toUpperCase();
 
   return (
     <article className="artist-card">
@@ -28,7 +29,7 @@ export function ArtistCard({ artist, priority }: ArtistCardProps) {
         <ArtistImage src={artist.image} alt={artist.imageAlt} priority={priority} />
         <span className="card-gradient" aria-hidden="true" />
         <span className="card-glass">
-          <span className="card-name"><strong>{artist.name}</strong></span>
+          <span className="card-name"><strong>{displayName}</strong></span>
         </span>
       </a>
     </article>
