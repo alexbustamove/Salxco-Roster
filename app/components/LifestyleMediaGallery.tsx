@@ -4,7 +4,7 @@ import { lifestyleMediaItems } from "../data/lifestyleMedia";
 
 export function LifestyleMediaGallery() {
   return (
-    <div className="lifestyle-media-grid" aria-label="Lifestyle media covers">
+    <div className="lifestyle-media-grid lifestyle-magazine-grid" aria-label="Lifestyle media covers">
       {lifestyleMediaItems.map((item) => (
         <a
           className="lifestyle-media-card"
