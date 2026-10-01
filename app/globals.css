@@ -20,7 +20,7 @@
   --ink: #f5f4ef;
   --muted: rgba(245, 244, 239, 0.56);
   --line: rgba(255, 255, 255, 0.14);
-  --surface: #0a0a0a;
+  --surface: #000;
   --panel: #111210;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -39,9 +39,7 @@ body {
   margin: 0;
   min-width: 320px;
   overflow-x: hidden;
-  background:
-    radial-gradient(circle at 85% -10%, rgba(119, 128, 124, 0.16), transparent 30rem),
-    #090a09;
+  background: #000;
   color: var(--ink);
   font-family: "Geist", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -87,6 +85,7 @@ a {
   width: 100%;
   min-height: 100vh;
   padding: 0 clamp(16px, 2.8vw, 48px);
+  background: #000;
 }
 
 .site-header {
@@ -196,7 +195,7 @@ a {
   display: flex;
   justify-content: center;
   padding: 12px 0;
-  background: rgba(9, 10, 9, 0.78);
+  background: #000;
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(22px) saturate(135%);
   -webkit-backdrop-filter: blur(22px) saturate(135%);
@@ -279,7 +278,7 @@ a {
   cursor: pointer;
   font-family: "Geist", sans-serif;
   font-size: clamp(9px, 0.75vw, 11px);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
