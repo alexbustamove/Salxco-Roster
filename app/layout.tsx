@@ -59,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-preview-theme="gold-white-premium">
       <body>{children}</body>
     </html>
   );
