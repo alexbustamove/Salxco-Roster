@@ -22,6 +22,7 @@
   --line: rgba(255, 255, 255, 0.14);
   --surface: #000;
   --panel: #111210;
+  --gold: #b4934a;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -847,6 +848,313 @@ a {
   transform: translateY(-2px);
 }
 
+/* Local-only brand explorations, enabled with ?theme=gold-black or ?theme=gold-white. */
+:root[data-preview-theme="gold-black"] {
+  --ink: #f6f1e5;
+  --muted: rgba(180, 147, 74, 0.72);
+  --line: rgba(180, 147, 74, 0.48);
+  --surface: #050505;
+  --panel: #0b0a08;
+}
+
+:root[data-preview-theme="gold-black"] body,
+:root[data-preview-theme="gold-black"] .site-shell,
+:root[data-preview-theme="gold-black"] .roster-controls {
+  background: #050505;
+}
+
+:root[data-preview-theme^="gold-"] .intro-tagline,
+:root[data-preview-theme^="gold-"] .roster-status {
+  color: var(--gold);
+}
+
+.theme-logo {
+  position: relative;
+  display: block;
+  aspect-ratio: 780.31 / 592.99;
+}
+
+.intro-theme-logo {
+  height: clamp(120px, 15vw, 195px);
+  max-width: min(88vw, 620px);
+}
+
+.footer-theme-logo {
+  height: 40px;
+}
+
+.theme-logo img,
+.theme-logo > span {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.theme-logo-front {
+  background: #b4934a;
+  -webkit-mask: url("/mgmt-nation-logo-white.svg") center / contain no-repeat;
+  mask: url("/mgmt-nation-logo-white.svg") center / contain no-repeat;
+}
+
+:root[data-preview-theme^="gold-"] .filter-list button {
+  color: var(--muted);
+  border-color: rgba(180, 147, 74, 0.46);
+}
+
+:root[data-preview-theme^="gold-"] .filter-list button:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+:root[data-preview-theme^="gold-"] .filter-list button.is-active {
+  color: #090806;
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+:root[data-preview-theme^="gold-"] .artist-card-button,
+:root[data-preview-theme^="gold-"] .lifestyle-media-card {
+  border-color: rgba(180, 147, 74, 0.72);
+}
+
+:root[data-preview-theme^="gold-"] .artist-card-button::after {
+  background: linear-gradient(135deg, #d6bb7c, rgba(180, 147, 74, 0.3) 48%, #826727);
+}
+
+:root[data-preview-theme^="gold-"] .card-glass {
+  background: rgba(4, 4, 3, 0.9);
+  border-color: var(--gold);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+:root[data-preview-theme^="gold-"] .card-name strong {
+  color: #fff;
+}
+
+:root[data-preview-theme^="gold-"] .site-footer,
+:root[data-preview-theme^="gold-"] .roster-controls {
+  border-color: rgba(180, 147, 74, 0.48);
+}
+
+:root[data-preview-theme^="gold-"] .back-to-top {
+  color: var(--gold);
+  border-color: rgba(180, 147, 74, 0.62);
+}
+
+:root[data-preview-theme="gold-white"] {
+  --ink: #17130c;
+  --muted: rgba(23, 19, 12, 0.6);
+  --line: #b4934a;
+  --surface: #fff;
+  --panel: #f8f5ed;
+  color-scheme: light;
+}
+
+:root[data-preview-theme="gold-white"] body,
+:root[data-preview-theme="gold-white"] .site-shell,
+:root[data-preview-theme="gold-white"] .roster-controls {
+  background: #fff;
+}
+
+:root[data-preview-theme="gold-white"] .intro-tagline,
+:root[data-preview-theme="gold-white"] .roster-status,
+:root[data-preview-theme="gold-white"] .footer-copyright {
+  color: #8a6d2f;
+}
+
+:root[data-preview-theme="gold-white"] .filter-list button {
+  color: #5f4b24;
+  border-color: #b4934a;
+}
+
+:root[data-preview-theme="gold-white"] .filter-list button.is-active {
+  color: #111;
+  box-shadow: 0 5px 18px rgba(180, 147, 74, 0.24);
+}
+
+:root[data-preview-theme="gold-white"] .artist-card-button,
+:root[data-preview-theme="gold-white"] .lifestyle-media-card {
+  border-color: #b4934a;
+  box-shadow: 0 8px 24px rgba(126, 95, 31, 0.12);
+}
+
+:root[data-preview-theme="gold-white"] .card-glass {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: #b4934a;
+  box-shadow: inset 0 0 0 1px rgba(180, 147, 74, 0.18);
+}
+
+:root[data-preview-theme="gold-white"] .card-name strong {
+  color: #14110b;
+}
+
+:root[data-preview-theme="gold-white"] .artist-card-button:focus-visible,
+:root[data-preview-theme="gold-white"] .filter-list button:focus-visible,
+:root[data-preview-theme="gold-white"] .site-footer a:focus-visible {
+  outline-color: #9d742e;
+}
+
+:root[data-preview-theme="gold-white"] .back-to-top {
+  color: #8f6928;
+}
+
+:root[data-preview-theme="gold-white-gradient"] {
+  --ink: #17130c;
+  --muted: rgba(76, 57, 22, 0.72);
+  --line: #b4934a;
+  --surface: #fff;
+  --panel: #f8f5ed;
+  color-scheme: light;
+}
+
+:root[data-preview-theme="gold-white-gradient"] body,
+:root[data-preview-theme="gold-white-gradient"] .site-shell,
+:root[data-preview-theme="gold-white-gradient"] .roster-controls {
+  background: #fff;
+}
+
+:root[data-preview-theme="gold-white-gradient"] .theme-logo-front {
+  background: linear-gradient(115deg, #75571f 0%, #b4934a 28%, #f2d58a 52%, #b4934a 72%, #785a22 100%);
+}
+
+:root[data-preview-theme="gold-white-gradient"] .intro-tagline,
+:root[data-preview-theme="gold-white-gradient"] .roster-status,
+:root[data-preview-theme="gold-white-gradient"] .footer-copyright {
+  color: #7f6129;
+}
+
+:root[data-preview-theme="gold-white-gradient"] .roster-status span,
+:root[data-preview-theme="gold-white-gradient"] .intro-tagline {
+  background: linear-gradient(90deg, #72531d, #b4934a 42%, #d8b965 58%, #72531d);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+:root[data-preview-theme="gold-white-gradient"] .filter-list button {
+  color: #5c461d;
+  border-color: #b4934a;
+  box-shadow: inset 0 0 0 1px rgba(242, 213, 138, 0.25);
+}
+
+:root[data-preview-theme="gold-white-gradient"] .filter-list button.is-active {
+  color: #171006;
+  background: linear-gradient(115deg, #8b6928, #b4934a 35%, #f2d58a 58%, #b4934a 78%, #806023);
+  border-color: #8b6928;
+  box-shadow: 0 7px 22px rgba(140, 101, 30, 0.32);
+}
+
+:root[data-preview-theme="gold-white-gradient"] .artist-card-button,
+:root[data-preview-theme="gold-white-gradient"] .lifestyle-media-card {
+  border-color: #b4934a;
+  box-shadow: 0 9px 26px rgba(126, 90, 25, 0.18);
+}
+
+:root[data-preview-theme="gold-white-gradient"] .artist-card-button::after {
+  padding: 2px;
+  background: linear-gradient(135deg, #72531d, #b4934a 28%, #f5dda0 50%, #b4934a 70%, #72531d);
+}
+
+:root[data-preview-theme="gold-white-gradient"] .card-glass {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97)) padding-box,
+    linear-gradient(105deg, #76571f, #b4934a 30%, #f2d58a 52%, #a98235 75%, #6f501a) border-box;
+  border: 2px solid transparent;
+  box-shadow: 0 5px 14px rgba(118, 83, 24, 0.18);
+}
+
+:root[data-preview-theme="gold-white-gradient"] .card-name strong {
+  color: #16110a;
+}
+
+:root[data-preview-theme="gold-white-gradient"] .site-footer,
+:root[data-preview-theme="gold-white-gradient"] .roster-controls {
+  border-color: #b4934a;
+}
+
+:root[data-preview-theme="gold-white-gradient"] .back-to-top {
+  color: #72531d;
+  border-color: #b4934a;
+  background: linear-gradient(135deg, rgba(242, 213, 138, 0.28), rgba(180, 147, 74, 0.08));
+}
+
+:root[data-preview-theme="gold-white-premium"] {
+  --ink: #17130c;
+  --muted: rgba(23, 19, 12, 0.6);
+  --line: #b4934a;
+  --surface: #fff;
+  --panel: #f8f5ed;
+  color-scheme: light;
+}
+
+:root[data-preview-theme="gold-white-premium"] body,
+:root[data-preview-theme="gold-white-premium"] .site-shell,
+:root[data-preview-theme="gold-white-premium"] .roster-controls {
+  background: #fff;
+}
+
+:root[data-preview-theme="gold-white-premium"] .theme-logo-front {
+  background: linear-gradient(112deg, #6d511f 0%, #b4934a 24%, #ead39a 46%, #fff0bd 53%, #b4934a 72%, #74561f 100%);
+}
+
+:root[data-preview-theme="gold-white-premium"] .intro-tagline,
+:root[data-preview-theme="gold-white-premium"] .roster-status,
+:root[data-preview-theme="gold-white-premium"] .footer-copyright {
+  color: #7f6835;
+}
+
+:root[data-preview-theme="gold-white-premium"] .filter-list button {
+  color: #5d4b27;
+  border-color: #b4934a;
+}
+
+:root[data-preview-theme="gold-white-premium"] .filter-list button.is-active {
+  color: #16110a;
+  background: linear-gradient(118deg, #9c7934, #b4934a 34%, #e9cf8e 52%, #b4934a 72%, #896929);
+  border-color: #94722f;
+  box-shadow: 0 5px 16px rgba(111, 80, 22, 0.2);
+}
+
+:root[data-preview-theme="gold-white-premium"] .artist-card-button,
+:root[data-preview-theme="gold-white-premium"] .lifestyle-media-card {
+  border-color: rgba(180, 147, 74, 0.72);
+  box-shadow: 0 6px 16px rgba(91, 68, 24, 0.08);
+}
+
+:root[data-preview-theme="gold-white-premium"] .artist-card-button::after {
+  padding: 1px;
+  background: linear-gradient(135deg, #836426 0%, #b4934a 34%, #e8cf91 51%, #9c7832 76%, #72531e 100%);
+}
+
+:root[data-preview-theme="gold-white-premium"] .card-glass {
+  background: linear-gradient(112deg, #8d6a28 0%, #b4934a 28%, #e6ca83 50%, #b4934a 72%, #806023 100%);
+  border: 1px solid rgba(91, 65, 17, 0.62);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 244, 207, 0.58),
+    0 4px 12px rgba(92, 65, 17, 0.16);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+:root[data-preview-theme="gold-white-premium"] .card-name strong {
+  color: #110e08;
+  font-weight: 700;
+}
+
+:root[data-preview-theme="gold-white-premium"] .site-footer,
+:root[data-preview-theme="gold-white-premium"] .roster-controls {
+  border-color: #b4934a;
+}
+
+:root[data-preview-theme="gold-white-premium"] .back-to-top {
+  color: #745821;
+  border-color: #b4934a;
+}
+
 @media (min-width: 700px) {
   .card-glass {
     backdrop-filter: blur(20px) saturate(132%);
@@ -997,6 +1305,11 @@ a {
     max-width: 70vw;
   }
 
+  .intro-theme-logo {
+    height: 88px;
+    max-width: 70vw;
+  }
+
   .intro-tagline {
     max-width: 240px;
     margin: 10px 0 0;
@@ -1114,6 +1427,10 @@ a {
   }
 
   .footer-logo {
+    height: 29px;
+  }
+
+  .footer-theme-logo {
     height: 29px;
   }
 
