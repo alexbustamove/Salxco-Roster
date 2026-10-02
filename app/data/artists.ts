@@ -2,8 +2,6 @@ export const categories = [
   "Artists",
   "Producers & Songwriters",
   "------",
-  "Lifestyle",
-  "Partnerships",
 ] as const;
 
 export type ArtistCategory = (typeof categories)[number];
@@ -80,8 +78,6 @@ export const sectionOrder: Record<ArtistCategory, string[]> = {
     "prince-85",
   ],
   "------": ["law-roach", "juventus"],
-  Lifestyle: [],
-  Partnerships: [],
 };
 
 export const artists = allArtists

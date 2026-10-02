@@ -3,10 +3,9 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { ArtistCard } from "./ArtistCard";
 import { ArtistProfile } from "./ArtistProfile";
-import { LifestyleMediaGallery } from "./LifestyleMediaGallery";
-import { PartnershipGallery } from "./PartnershipGallery";
 import { artists, categories, sectionOrder, type ArtistCategory } from "../data/artists";
 
 type RosterExperienceProps = {
@@ -67,10 +66,10 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
     <main className="site-shell">
       <section className="intro" aria-labelledby="roster-title">
         <h1 id="roster-title" className="sr-only">MGMT NATION Artist Roster</h1>
-        <span className="theme-logo intro-theme-logo" role="img" aria-label="MGMT NATION">
+        <Link className="theme-logo intro-theme-logo" href="/" aria-label="Go to home page">
           <img className="theme-logo-underlay" src="/mgmt-nation-logo-gold.svg" alt="" aria-hidden="true" />
           <span className="theme-logo-front" aria-hidden="true" />
-        </span>
+        </Link>
         <p className="intro-tagline">
           <span>Full Service Management</span>
           <span>For World-Class Talent.</span>
@@ -100,28 +99,22 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
             <span>{activeCategory}</span>
           </div>
 
-          {activeCategory === "Lifestyle" ? (
-            <LifestyleMediaGallery />
-          ) : activeCategory === "Partnerships" ? (
-            <PartnershipGallery />
-          ) : (
-            <div className="artist-grid">
-              {filteredArtists.map((artist, index) => (
-                <ArtistCard
-                  key={artist.slug}
-                  artist={artist}
-                  priority={index < 5}
-                />
-              ))}
-              {Array.from({ length: emptySlots }, (_, index) => (
-                <div
-                  key={`empty-${activeCategory}-${index}`}
-                  className="artist-card artist-card-placeholder"
-                  aria-hidden="true"
-                />
-              ))}
-            </div>
-          )}
+          <div className="artist-grid">
+            {filteredArtists.map((artist, index) => (
+              <ArtistCard
+                key={artist.slug}
+                artist={artist}
+                priority={index < 5}
+              />
+            ))}
+            {Array.from({ length: emptySlots }, (_, index) => (
+              <div
+                key={`empty-${activeCategory}-${index}`}
+                className="artist-card artist-card-placeholder"
+                aria-hidden="true"
+              />
+            ))}
+          </div>
         </section>
 
         {selectedArtist && (
@@ -139,10 +132,10 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
 
       <footer className="site-footer">
         <div className="footer-center">
-          <span className="theme-logo footer-theme-logo" role="img" aria-label="MGMT NATION">
+          <Link className="theme-logo footer-theme-logo" href="/" aria-label="Go to home page">
             <img className="theme-logo-underlay" src="/mgmt-nation-logo-gold.svg" alt="" aria-hidden="true" />
             <span className="theme-logo-front" aria-hidden="true" />
-          </span>
+          </Link>
           <p className="footer-copyright">
             <span>Copyright © 2026 MGMT NATION.</span>
             <span>All rights reserved.</span>

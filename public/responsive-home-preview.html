@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SALXCO Responsive Preview</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #eeeae1;
+        color: #17130b;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 50% -10%, rgba(180, 147, 74, 0.22), transparent 34rem),
+          #eeeae1;
+      }
+
+      .preview-bar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 64px;
+        padding: 10px 16px;
+        border-bottom: 1px solid rgba(180, 147, 74, 0.5);
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(14px);
+      }
+
+      button {
+        appearance: none;
+        border: 1px solid #b4934a;
+        border-radius: 999px;
+        padding: 10px 15px;
+        background: #fff;
+        color: #675226;
+        font: 700 12px/1 Arial, Helvetica, sans-serif;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      button[aria-pressed="true"] {
+        color: #111;
+        background: linear-gradient(115deg, #8e6a21, #e8ca75 48%, #a17a2b);
+        box-shadow: 0 5px 18px rgba(128, 91, 18, 0.25);
+      }
+
+      .size-label {
+        min-width: 82px;
+        margin-left: 6px;
+        color: #88703c;
+        font-size: 11px;
+        text-align: center;
+      }
+
+      .stage {
+        display: grid;
+        place-items: start center;
+        min-height: calc(100vh - 64px);
+        padding: 24px;
+        overflow: auto;
+      }
+
+      .device-shell {
+        position: relative;
+        flex: 0 0 auto;
+        border: 1px solid #b4934a;
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: 0 20px 55px rgba(72, 52, 13, 0.2);
+        overflow: hidden;
+      }
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: 0;
+        background: white;
+        transform-origin: top left;
+      }
+
+      @media (max-width: 620px) {
+        .preview-bar { flex-wrap: wrap; }
+        .stage { padding: 14px 8px; }
+        .size-label { width: 100%; margin: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="preview-bar" aria-label="Preview size">
+      <button type="button" data-view="desktop" aria-pressed="true">Desktop</button>
+      <button type="button" data-view="tablet" aria-pressed="false">Tablet</button>
+      <button type="button" data-view="mobile" aria-pressed="false">Mobile</button>
+      <span class="size-label" aria-live="polite">1440 × 900</span>
+    </nav>
+
+    <main class="stage">
+      <div class="device-shell">
+        <iframe title="SALXCO site preview" src="/?preview=showcase-home-v1"></iframe>
+      </div>
+    </main>
+
+    <script>
+      const views = {
+        desktop: { width: 1440, height: 900 },
+        tablet: { width: 834, height: 1112 },
+        mobile: { width: 390, height: 844 },
+      };
+
+      const stage = document.querySelector('.stage');
+      const shell = document.querySelector('.device-shell');
+      const frame = document.querySelector('iframe');
+      const label = document.querySelector('.size-label');
+      const buttons = [...document.querySelectorAll('button[data-view]')];
+      let currentView = 'desktop';
+
+      function render() {
+        const view = views[currentView];
+        const availableWidth = Math.max(280, stage.clientWidth - 48);
+        const scale = Math.min(1, availableWidth / view.width);
+
+        shell.style.width = `${Math.round(view.width * scale)}px`;
+        shell.style.height = `${Math.round(view.height * scale)}px`;
+        frame.style.width = `${view.width}px`;
+        frame.style.height = `${view.height}px`;
+        frame.style.transform = `scale(${scale})`;
+        label.textContent = `${view.width} × ${view.height}`;
+
+        buttons.forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.view === currentView));
+        });
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          currentView = button.dataset.view;
+          render();
+        });
+      });
+
+      window.addEventListener('resize', render);
+      render();
+    </script>
+  </body>
+</html>
