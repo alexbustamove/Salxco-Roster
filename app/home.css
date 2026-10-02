@@ -126,7 +126,8 @@
 }
 
 .showcase-feed-post-partnership img {
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
 }
 
 .instagram-feed-loader {

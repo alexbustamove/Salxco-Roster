@@ -11,10 +11,10 @@ const siteOrigin =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
-  applicationName: "MGMT NATION Artist Roster",
+  applicationName: "MGMT NATION",
   title: {
-    default: "MGMT NATION Artist Roster",
-    template: "%s | MGMT NATION Artist Roster",
+    default: "MGMT NATION",
+    template: "%s | MGMT NATION",
   },
   description: "Full service management for world-class talent.",
   icons: {
@@ -32,13 +32,13 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "MGMT NATION Artist Roster",
-    siteName: "MGMT NATION Artist Roster",
+    title: "MGMT NATION",
+    siteName: "MGMT NATION",
     description: "Full service management for world-class talent.",
     type: "website",
     images: [
       {
-        url: "/og-mgmt-gold.jpg?v=1",
+        url: "/og-mgmt-gold.jpg?v=2",
         width: 1200,
         height: 630,
         alt: "MGMT NATION",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MGMT NATION Artist Roster",
+    title: "MGMT NATION",
     description: "Full service management for world-class talent.",
-    images: ["/og-mgmt-gold.jpg?v=1"],
+    images: ["/og-mgmt-gold.jpg?v=2"],
   },
 };
 
