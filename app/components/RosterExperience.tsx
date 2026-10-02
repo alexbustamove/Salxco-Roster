@@ -67,13 +67,10 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
     <main className="site-shell">
       <section className="intro" aria-labelledby="roster-title">
         <h1 id="roster-title" className="sr-only">MGMT NATION Artist Roster</h1>
-        <img
-          className="intro-logo"
-          src="/mgmt-nation-logo-white.svg"
-          alt="MGMT NATION"
-          width={780}
-          height={593}
-        />
+        <span className="theme-logo intro-theme-logo" role="img" aria-label="MGMT NATION">
+          <img className="theme-logo-underlay" src="/mgmt-nation-logo-gold.svg" alt="" aria-hidden="true" />
+          <span className="theme-logo-front" aria-hidden="true" />
+        </span>
         <p className="intro-tagline">
           <span>Full Service Management</span>
           <span>For World-Class Talent.</span>
@@ -142,13 +139,10 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
 
       <footer className="site-footer">
         <div className="footer-center">
-          <img
-            className="footer-logo"
-            src="/mgmt-nation-logo-white.svg"
-            alt="MGMT NATION"
-            width={780}
-            height={593}
-          />
+          <span className="theme-logo footer-theme-logo" role="img" aria-label="MGMT NATION">
+            <img className="theme-logo-underlay" src="/mgmt-nation-logo-gold.svg" alt="" aria-hidden="true" />
+            <span className="theme-logo-front" aria-hidden="true" />
+          </span>
           <p className="footer-copyright">
             <span>Copyright © 2026 MGMT NATION.</span>
             <span>All rights reserved.</span>
