@@ -64,6 +64,7 @@ test("server-renders the MGMT NATION roster sections", async () => {
   assert.match(html, /property="og:title" content="MGMT NATION"/);
   assert.match(html, /<h1[^>]*>MGMT NATION Artist Roster<\/h1>/);
   assert.match(html, /class="theme-logo animated-theme-logo intro-theme-logo"/);
+  assert.match(html, /autoPlay="" loop="" muted="" playsInline="" preload="auto"/);
   assert.match(html, /src="\/mgmt-nation-flag-animation-alpha\.mov"/);
   assert.match(html, /src="\/mgmt-nation-flag-animation\.webm"/);
   assert.match(html, /property="og:image" content="https:\/\/roster\.salxco\.com\/og-mgmt-black\.jpg\?v=3"/);
