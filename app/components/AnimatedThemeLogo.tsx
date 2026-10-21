@@ -56,6 +56,10 @@ export function AnimatedThemeLogo({ className = "" }: AnimatedThemeLogoProps) {
         aria-hidden="true"
       >
         <source
+          src="/mgmt-nation-flag-animation-alpha.mov"
+          type='video/quicktime; codecs="hvc1"'
+        />
+        <source
           src="/mgmt-nation-flag-animation.webm"
           type='video/webm; codecs="vp9"'
         />
