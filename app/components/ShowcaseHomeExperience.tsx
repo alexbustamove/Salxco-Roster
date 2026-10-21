@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { lifestyleMediaItems } from "../data/lifestyleMedia";
 import { partnershipItems } from "../data/partnerships";
+import { AnimatedThemeLogo } from "./AnimatedThemeLogo";
 
 const instagramUrl = "https://www.instagram.com/salxco";
 const initialItemCount = 24;
@@ -78,10 +79,7 @@ export function ShowcaseHomeExperience() {
 
         <section className="intro instagram-home-intro" aria-labelledby="showcase-home-title">
           <h1 id="showcase-home-title" className="sr-only">MGMT NATION and SALXCO</h1>
-          <Link className="theme-logo intro-theme-logo" href="/" aria-label="Go to home page">
-            <img className="theme-logo-underlay" src="/mgmt-nation-logo-gold.svg" alt="" aria-hidden="true" />
-            <span className="theme-logo-front" aria-hidden="true" />
-          </Link>
+          <AnimatedThemeLogo className="intro-theme-logo" />
           <p className="intro-tagline">
             <span>Full Service Management</span>
             <span>For World-Class Talent.</span>

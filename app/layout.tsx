@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   description: "Full service management for world-class talent.",
   icons: {
     icon: [
-      { url: "/favicon.ico?v=5", sizes: "any" },
-      { url: "/icon.png?v=5", type: "image/png", sizes: "512x512" },
+      { url: "/favicon-inverted.png?v=6", type: "image/png", sizes: "64x64" },
+      { url: "/icon-inverted.png?v=6", type: "image/png", sizes: "512x512" },
     ],
-    shortcut: "/favicon.ico?v=5",
+    shortcut: "/favicon-inverted.png?v=6",
     apple: [
       {
-        url: "/apple-touch-icon.png?v=5",
+        url: "/apple-touch-icon-inverted.png?v=6",
         type: "image/png",
         sizes: "180x180",
       },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-mgmt-gold.jpg?v=2",
+        url: "/og-mgmt-black.jpg?v=3",
         width: 1200,
         height: 630,
         alt: "MGMT NATION",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MGMT NATION",
     description: "Full service management for world-class talent.",
-    images: ["/og-mgmt-gold.jpg?v=2"],
+    images: ["/og-mgmt-black.jpg?v=3"],
   },
 };
 

@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { ArtistCard } from "./ArtistCard";
 import { ArtistProfile } from "./ArtistProfile";
+import { AnimatedThemeLogo } from "./AnimatedThemeLogo";
 import { artists, categories, sectionOrder, type ArtistCategory } from "../data/artists";
 
 type RosterExperienceProps = {
@@ -66,10 +67,7 @@ export function RosterExperience({ initialSlug }: RosterExperienceProps) {
     <main className="site-shell">
       <section className="intro" aria-labelledby="roster-title">
         <h1 id="roster-title" className="sr-only">MGMT NATION Artist Roster</h1>
-        <Link className="theme-logo intro-theme-logo" href="/" aria-label="Go to home page">
-          <img className="theme-logo-underlay" src="/mgmt-nation-logo-gold.svg" alt="" aria-hidden="true" />
-          <span className="theme-logo-front" aria-hidden="true" />
-        </Link>
+        <AnimatedThemeLogo className="intro-theme-logo" />
         <p className="intro-tagline">
           <span>Full Service Management</span>
           <span>For World-Class Talent.</span>

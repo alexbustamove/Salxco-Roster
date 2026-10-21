@@ -898,6 +898,46 @@ a {
   mask: url("/mgmt-nation-logo-white.svg") center / contain no-repeat;
 }
 
+.theme-logo-video,
+.theme-logo-static {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.theme-logo-video {
+  display: block;
+  object-fit: contain;
+}
+
+.animated-theme-logo > .theme-logo-static {
+  display: none;
+}
+
+.animated-theme-logo > .theme-logo-static.is-visible {
+  display: block;
+}
+
+.theme-logo-static img,
+.theme-logo-static > span {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-logo-video {
+    display: none;
+  }
+
+  .animated-theme-logo > .theme-logo-static {
+    display: block;
+  }
+}
+
 :root[data-preview-theme^="gold-"] .filter-list button {
   color: var(--muted);
   border-color: rgba(180, 147, 74, 0.46);
@@ -1561,4 +1601,608 @@ a {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* SALXCO editorial home — intentionally isolated from the roster system. */
+.home-shell {
+  --home-gold: #b4934a;
+  min-height: 100vh;
+  padding: 0 clamp(16px, 3.4vw, 56px);
+  background: #f4f1e9;
+  color: #0a0a09;
+}
+
+.home-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  min-height: 86px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(10, 10, 9, 0.22);
+}
+
+.home-brand {
+  font-size: clamp(25px, 2.6vw, 40px);
+  font-weight: 900;
+  letter-spacing: -0.075em;
+  line-height: 1;
+}
+
+.home-roster-link,
+.home-follow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid #0a0a09;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.home-roster-link {
+  min-height: 38px;
+  padding: 0 17px;
+}
+
+.home-roster-link:hover,
+.home-follow-link:hover {
+  border-color: var(--home-gold);
+  background: var(--home-gold);
+  color: #fff;
+}
+
+.home-hero {
+  display: grid;
+  min-height: min(680px, calc(100vh - 86px));
+  align-content: center;
+  padding: clamp(74px, 11vw, 164px) 0 clamp(62px, 8vw, 112px);
+}
+
+.home-kicker {
+  margin: 0 0 clamp(22px, 3vw, 42px);
+  color: var(--home-gold);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+}
+
+.home-hero h1 {
+  max-width: 1200px;
+  margin: 0;
+  font-size: clamp(44px, 8.7vw, 136px);
+  font-weight: 800;
+  letter-spacing: -0.078em;
+  line-height: 0.86;
+}
+
+.home-follow-link {
+  width: max-content;
+  min-height: 46px;
+  margin-top: clamp(36px, 5vw, 70px);
+  padding: 0 20px;
+}
+
+.home-feed {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(8px, 1.1vw, 18px);
+  padding: clamp(16px, 2vw, 30px) 0 clamp(90px, 12vw, 170px);
+  border-top: 1px solid rgba(10, 10, 9, 0.22);
+}
+
+.home-story {
+  position: relative;
+  grid-column: span 4;
+  min-height: 360px;
+  overflow: hidden;
+  border-radius: clamp(8px, 1.1vw, 16px);
+  background: #c9c4b8;
+  color: #fff;
+}
+
+.home-story-wide {
+  grid-column: span 8;
+  min-height: 470px;
+}
+
+.home-story-tall {
+  min-height: 590px;
+}
+
+.home-story img,
+.home-story-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.home-story img {
+  object-fit: cover;
+  transition: transform 700ms var(--ease), filter 300ms ease;
+}
+
+.home-story-overlay {
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.78) 100%);
+}
+
+.home-story-copy {
+  position: absolute;
+  right: 22px;
+  bottom: 21px;
+  left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.home-story-copy span {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.home-story-copy strong {
+  padding-right: 32px;
+  font-size: clamp(18px, 2vw, 31px);
+  font-weight: 750;
+  letter-spacing: -0.045em;
+  line-height: 0.96;
+}
+
+.home-story-arrow {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 50%;
+  font-size: 14px;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.home-story:hover img {
+  filter: saturate(1.06);
+  transform: scale(1.025);
+}
+
+.home-story:hover .home-story-arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-instagram-callout {
+  display: flex;
+  min-height: clamp(280px, 35vw, 520px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(10, 10, 9, 0.22);
+  text-align: center;
+}
+
+.home-instagram-callout p {
+  margin: 0 0 20px;
+  color: var(--home-gold);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+}
+
+.home-instagram-callout a {
+  font-size: clamp(48px, 10vw, 150px);
+  font-weight: 850;
+  letter-spacing: -0.08em;
+  line-height: 0.85;
+}
+
+.home-footer {
+  display: flex;
+  min-height: 92px;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(10, 10, 9, 0.22);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 760px) {
+  .home-shell {
+    padding: 0 12px;
+  }
+
+  .home-header {
+    min-height: 68px;
+  }
+
+  .home-brand {
+    font-size: 25px;
+  }
+
+  .home-roster-link {
+    min-height: 34px;
+    padding: 0 13px;
+    font-size: 9px;
+  }
+
+  .home-hero {
+    min-height: 510px;
+    padding: 90px 4px 70px;
+  }
+
+  .home-kicker {
+    margin-bottom: 23px;
+    font-size: 7px;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(43px, 15vw, 76px);
+    line-height: 0.88;
+  }
+
+  .home-follow-link {
+    min-height: 40px;
+    margin-top: 36px;
+    padding: 0 16px;
+    font-size: 9px;
+  }
+
+  .home-feed {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    padding-top: 12px;
+    padding-bottom: 80px;
+  }
+
+  .home-story,
+  .home-story-tall,
+  .home-story-wide {
+    grid-column: span 1;
+    min-height: 0;
+    aspect-ratio: 0.78;
+    border-radius: 7px;
+  }
+
+  .home-story-wide {
+    grid-column: span 2;
+    aspect-ratio: 1.55;
+  }
+
+  .home-story-copy {
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    gap: 4px;
+  }
+
+  .home-story-copy span {
+    font-size: 6px;
+  }
+
+  .home-story-copy strong {
+    padding-right: 0;
+    font-size: 11px;
+    letter-spacing: -0.025em;
+  }
+
+  .home-story-arrow {
+    display: none;
+  }
+
+  .home-instagram-callout {
+    min-height: 280px;
+  }
+
+  .home-instagram-callout a {
+    font-size: 19vw;
+  }
+
+  .home-footer {
+    min-height: 80px;
+    font-size: 7px;
+  }
+}
+
+/* Instagram-grid homepage test. Uses the production roster brand system. */
+.instagram-home-shell {
+  min-height: 100vh;
+  padding: 0 clamp(14px, 3vw, 48px);
+  background: #fff;
+  color: #17130c;
+}
+
+.instagram-home-header {
+  position: relative;
+}
+
+.instagram-home-intro {
+  min-height: clamp(340px, 48vw, 570px);
+  padding-top: clamp(64px, 8vw, 110px);
+}
+
+.instagram-home-roster {
+  position: absolute;
+  z-index: 2;
+  top: clamp(18px, 2.4vw, 34px);
+  right: 0;
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 15px;
+  border: 1px solid #b4934a;
+  border-radius: 999px;
+  color: #5d4b27;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.instagram-home-roster:hover {
+  color: #16110a;
+  background: linear-gradient(118deg, #9c7934, #b4934a 34%, #e9cf8e 52%, #b4934a 72%, #896929);
+  box-shadow: 0 5px 16px rgba(111, 80, 22, 0.2);
+}
+
+.instagram-feed-section {
+  padding: 0 0 80px;
+  border-top: 1px solid #b4934a;
+}
+
+.instagram-feed-heading {
+  display: flex;
+  min-height: 70px;
+  align-items: center;
+  justify-content: space-between;
+  color: #7f6835;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.18em;
+}
+
+.instagram-feed-heading a {
+  letter-spacing: 0.08em;
+}
+
+.instagram-feed-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(5px, 0.75vw, 12px);
+}
+
+.instagram-feed-post {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid rgba(180, 147, 74, 0.75);
+  border-radius: clamp(7px, 0.8vw, 12px);
+  background: #f3efe5;
+  box-shadow: 0 4px 12px rgba(91, 68, 24, 0.06);
+}
+
+.instagram-feed-post img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 450ms var(--ease), filter 250ms ease;
+}
+
+.instagram-feed-post > span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 50%;
+  background: rgba(20, 17, 11, 0.4);
+  color: #fff;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.instagram-feed-post:hover img {
+  filter: saturate(1.05);
+  transform: scale(1.025);
+}
+
+.instagram-feed-post:hover > span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.instagram-feed-loader {
+  display: grid;
+  height: 120px;
+  place-items: center;
+}
+
+.instagram-feed-loader span {
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(180, 147, 74, 0.22);
+  border-top-color: #b4934a;
+  border-radius: 50%;
+  animation: instagram-feed-spin 800ms linear infinite;
+}
+
+@keyframes instagram-feed-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 640px) {
+  .instagram-home-shell {
+    padding: 0 8px;
+  }
+
+  .instagram-home-intro {
+    min-height: 300px;
+    padding-top: 52px;
+  }
+
+  .instagram-home-roster {
+    top: 12px;
+    min-height: 30px;
+    padding: 0 11px;
+    font-size: 8px;
+  }
+
+  .instagram-feed-heading {
+    min-height: 52px;
+    padding: 0 2px;
+    font-size: 8px;
+  }
+
+  .instagram-feed-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .instagram-feed-post {
+    border-radius: 5px;
+  }
+
+  .instagram-feed-post > span {
+    display: none;
+  }
+}
+
+/* Current white-and-black identity. */
+:root[data-preview-theme="gold-white-premium"] {
+  --gold: #000;
+  --ink: #111;
+  --muted: rgba(17, 17, 17, 0.62);
+  --line: #000;
+  --panel: #f5f5f5;
+}
+
+:root[data-preview-theme="gold-white-premium"] .theme-logo-underlay,
+:root[data-preview-theme="gold-white-premium"] .theme-logo-static img {
+  filter: invert(1);
+}
+
+:root[data-preview-theme="gold-white-premium"] .theme-logo-front {
+  background: #000;
+}
+
+:root[data-preview-theme="gold-white-premium"] .intro-tagline,
+:root[data-preview-theme="gold-white-premium"] .roster-status,
+:root[data-preview-theme="gold-white-premium"] .footer-copyright {
+  color: #111;
+}
+
+:root[data-preview-theme="gold-white-premium"] .filter-list button {
+  color: #111;
+  border-color: #000;
+  background: rgba(255, 255, 255, 0.56);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 5px 16px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(14px) saturate(115%);
+  -webkit-backdrop-filter: blur(14px) saturate(115%);
+}
+
+:root[data-preview-theme="gold-white-premium"] .filter-list button:hover {
+  color: #000;
+  border-color: #000;
+}
+
+:root[data-preview-theme="gold-white-premium"] .filter-list button.is-active {
+  color: #fff;
+  background: linear-gradient(145deg, rgba(24, 24, 24, 0.92), rgba(0, 0, 0, 0.76));
+  border-color: #000;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 7px 20px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-preview-theme="gold-white-premium"] .artist-card-button,
+:root[data-preview-theme="gold-white-premium"] .lifestyle-media-card {
+  border-color: rgba(0, 0, 0, 0.68);
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.14),
+    0 4px 10px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.28);
+}
+
+:root[data-preview-theme="gold-white-premium"] .artist-card-button::after {
+  padding: 1.5px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(132, 132, 132, 0.5) 18%,
+    rgba(0, 0, 0, 0.9) 48%,
+    rgba(255, 255, 255, 0.42) 75%,
+    rgba(0, 0, 0, 0.94) 100%
+  );
+}
+
+:root[data-preview-theme="gold-white-premium"] .artist-card-button::before {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 22%,
+    transparent 68%,
+    rgba(0, 0, 0, 0.22) 100%
+  );
+  content: "";
+  pointer-events: none;
+}
+
+:root[data-preview-theme="gold-white-premium"] .artist-card-button:hover,
+:root[data-preview-theme="gold-white-premium"] .artist-card-button:focus-visible,
+:root[data-preview-theme="gold-white-premium"] .artist-card.is-selected .artist-card-button {
+  transform: translateY(-4px);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.2),
+    0 6px 14px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+:root[data-preview-theme="gold-white-premium"] .card-glass {
+  background: linear-gradient(135deg, rgba(28, 28, 28, 0.78), rgba(0, 0, 0, 0.6));
+  border-color: rgba(255, 255, 255, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+    0 6px 18px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+}
+
+:root[data-preview-theme="gold-white-premium"] .card-name strong {
+  color: #fff;
+}
+
+:root[data-preview-theme="gold-white-premium"] .site-footer,
+:root[data-preview-theme="gold-white-premium"] .roster-controls {
+  border-color: #000;
+}
+
+:root[data-preview-theme="gold-white-premium"] .back-to-top {
+  color: #000;
+  border-color: #000;
 }

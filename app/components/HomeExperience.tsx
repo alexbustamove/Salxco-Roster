@@ -5,6 +5,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { instagramPosts } from "../data/instagramPosts";
+import { AnimatedThemeLogo } from "./AnimatedThemeLogo";
 
 const instagramUrl = "https://www.instagram.com/salxco";
 const initialPostCount = 12;
@@ -45,10 +46,7 @@ export function HomeExperience() {
 
         <section className="intro instagram-home-intro" aria-labelledby="instagram-home-title">
           <h1 id="instagram-home-title" className="sr-only">MGMT NATION and SALXCO</h1>
-          <Link className="theme-logo intro-theme-logo" href="/" aria-label="Go to home page">
-            <img className="theme-logo-underlay" src="/mgmt-nation-logo-gold.svg" alt="" aria-hidden="true" />
-            <span className="theme-logo-front" aria-hidden="true" />
-          </Link>
+          <AnimatedThemeLogo className="intro-theme-logo" />
           <p className="intro-tagline">
             <span>Full Service Management</span>
             <span>For World-Class Talent.</span>

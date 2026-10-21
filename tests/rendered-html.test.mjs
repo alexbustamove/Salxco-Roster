@@ -60,10 +60,13 @@ test("server-renders the MGMT NATION roster sections", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>MGMT NATION Artist Roster<\/title>/i);
-  assert.match(html, /property="og:title" content="MGMT NATION Artist Roster"/);
+  assert.match(html, /<title>MGMT NATION<\/title>/i);
+  assert.match(html, /property="og:title" content="MGMT NATION"/);
   assert.match(html, /<h1[^>]*>MGMT NATION Artist Roster<\/h1>/);
-  assert.match(html, /class="intro-logo"[^>]*src="\/mgmt-nation-logo-white\.svg"/);
+  assert.match(html, /class="theme-logo animated-theme-logo intro-theme-logo"/);
+  assert.match(html, /src="\/mgmt-nation-flag-animation\.webm"/);
+  assert.match(html, /property="og:image" content="https:\/\/roster\.salxco\.com\/og-mgmt-black\.jpg\?v=3"/);
+  assert.match(html, /rel="shortcut icon" href="\/favicon-inverted\.png\?v=6"/);
   assert.match(
     html,
     /<p class="intro-tagline"><span>Full Service Management<\/span><span>For World-Class Talent\.<\/span><\/p>/,
@@ -83,20 +86,20 @@ test("server-renders the MGMT NATION roster sections", async () => {
   assert.match(html, /aria-label="Artists"/);
   assert.match(html, /aria-label="Producers &amp; Songwriters"/);
   assert.match(html, /aria-label="------"/);
-  assert.match(html, /aria-label="Lifestyle"/);
-  assert.match(html, /aria-label="Partnerships"/);
+  assert.doesNotMatch(html, /aria-label="Lifestyle"/);
+  assert.doesNotMatch(html, /aria-label="Partnerships"/);
   assert.match(html, /https:\/\/www\.instagram\.com\/theweeknd\//);
   assert.match(html, /Open The Weeknd on Instagram/);
   assert.match(html, /https:\/\/www\.instagram\.com\/unotopicmusica\?igsh=NTc4MTIwNjQ2YQ==/);
-  assert.match(html, /class="card-name"><strong>Unotopic<\/strong><\/span>/);
+  assert.match(html, /class="card-name"><strong>UNOTOPIC<\/strong><\/span>/);
   assert.doesNotMatch(html, /class="card-category"/);
   assert.doesNotMatch(html, /class="footer-brand-logo"/);
   assert.match(html, /class="back-to-top"[^>]*aria-label="Back to top"/);
-  assert.match(html, /property="og:image" content="https:\/\/roster\.salxco\.com\/og-mgmt\.png\?v=4"/);
+  assert.match(html, /property="og:image" content="https:\/\/roster\.salxco\.com\/og-mgmt-black\.jpg\?v=3"/);
   assert.match(html, /property="og:image:width" content="1200"/);
   assert.match(html, /property="og:image:height" content="630"/);
-  assert.match(html, /rel="icon" href="\/favicon\.ico\?v=5"/);
-  assert.match(html, /rel="apple-touch-icon" href="\/apple-touch-icon\.png\?v=5"/);
+  assert.match(html, /rel="icon" href="\/favicon-inverted\.png\?v=6"/);
+  assert.match(html, /rel="apple-touch-icon" href="\/apple-touch-icon-inverted\.png\?v=6"/);
   assert.match(
     html,
     /<span>Copyright © 2026 MGMT NATION\.<\/span><span>All rights reserved\.<\/span>/,
