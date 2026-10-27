@@ -70,13 +70,6 @@ export function AnimatedThemeLogo({ className = "" }: AnimatedThemeLogoProps) {
       href="/"
       aria-label="Go to home page"
     >
-      <svg className="theme-logo-filter-defs" aria-hidden="true">
-        <filter id="mgmt-gold-flat" colorInterpolationFilters="sRGB">
-          <feFlood floodColor="#b6944a" result="brandGold" />
-          <feComposite in="brandGold" in2="SourceAlpha" operator="in" />
-        </filter>
-      </svg>
-
       <video
         ref={videoRef}
         className="theme-logo-video"

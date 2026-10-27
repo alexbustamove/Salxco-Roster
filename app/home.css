@@ -214,13 +214,6 @@
   z-index: 1;
 }
 
-.theme-logo-filter-defs {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
 .showcase-swap-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -382,6 +375,7 @@
 }
 
 .horizontal-feature-banner {
+  position: relative;
   padding: 0 0 clamp(36px, 6vw, 82px);
 }
 
@@ -404,7 +398,8 @@
 
 .horizontal-feature-viewport {
   position: relative;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   margin-right: calc(clamp(14px, 3vw, 48px) * -1);
   margin-left: calc(clamp(14px, 3vw, 48px) * -1);
   padding: 0 clamp(14px, 3vw, 48px) clamp(26px, 4vw, 54px);
@@ -412,6 +407,14 @@
   box-shadow:
     0 30px 70px rgba(0, 0, 0, 0.17),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+.horizontal-feature-viewport::-webkit-scrollbar {
+  display: none;
 }
 
 .horizontal-feature-viewport::before,
@@ -441,14 +444,6 @@
   align-items: flex-start;
   gap: 10px;
   padding-top: clamp(14px, 2vw, 28px);
-  animation: horizontal-feature-reel 46s linear infinite;
-  will-change: transform;
-}
-
-.horizontal-feature-viewport.is-paused .horizontal-feature-track,
-.horizontal-feature-viewport:hover .horizontal-feature-track,
-.horizontal-feature-viewport:focus-within .horizontal-feature-track {
-  animation-play-state: paused;
 }
 
 .horizontal-feature-group {
@@ -597,6 +592,8 @@
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
+  cursor: pointer;
+  font-family: inherit;
   font-size: 8px;
   font-weight: 760;
   letter-spacing: 0.1em;
@@ -613,6 +610,109 @@
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.horizontal-feature-scroll-control {
+  position: absolute;
+  z-index: 8;
+  top: 50%;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.58);
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  transform: translateY(-50%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.horizontal-feature-scroll-control.is-previous {
+  left: 8px;
+}
+
+.horizontal-feature-scroll-control.is-next {
+  right: 8px;
+}
+
+.campaign-lightbox {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  padding: clamp(16px, 4vw, 48px);
+  place-items: center;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.campaign-lightbox-panel {
+  position: relative;
+  width: min(100%, 1080px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: clamp(14px, 2vw, 24px);
+  background: #080808;
+  color: #fff;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.65);
+}
+
+.campaign-lightbox-panel video {
+  display: block;
+  width: 100%;
+  max-height: 72vh;
+  background: #000;
+  object-fit: contain;
+}
+
+.campaign-lightbox-heading {
+  padding: 18px 62px 16px 20px;
+  text-transform: uppercase;
+}
+
+.campaign-lightbox-heading span {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  opacity: 0.65;
+}
+
+.campaign-lightbox-heading h2 {
+  margin: 0;
+  font-size: clamp(24px, 4vw, 48px);
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+}
+
+.campaign-lightbox-close {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.58);
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1;
 }
 
 @keyframes horizontal-feature-reel {
@@ -1026,7 +1126,7 @@
 }
 
 .colorway-gold .highlight-video-nav-logo .theme-logo-video {
-  filter: url("#mgmt-gold-flat");
+  filter: brightness(0) saturate(100%) invert(64%) sepia(4%) saturate(4296%) hue-rotate(3deg) brightness(92%) contrast(101%);
 }
 
 .colorway-gold .highlight-video-nav-logo .theme-logo-static img {
@@ -1045,5 +1145,19 @@
   .colorway-gold .highlight-video-nav-logo {
     left: 8px;
     width: 92px;
+  }
+
+  .horizontal-feature-scroll-control {
+    width: 38px;
+    height: 38px;
+    font-size: 17px;
+  }
+
+  .campaign-lightbox {
+    padding: 10px;
+  }
+
+  .campaign-lightbox-panel video {
+    max-height: 68vh;
   }
 }

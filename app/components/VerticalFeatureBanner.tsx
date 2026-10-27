@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element */
 
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const features = [
   {
@@ -38,21 +38,107 @@ const features = [
 ] as const;
 
 export function VerticalFeatureBanner() {
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const interactionTimerRef = useRef<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [pinnedIndex, setPinnedIndex] = useState<number | null>(null);
+  const [isInteracting, setIsInteracting] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const activeIndex = hoveredIndex ?? pinnedIndex;
+  const selectedFeature = selectedIndex === null ? null : features[selectedIndex];
+
+  const beginInteraction = () => {
+    setIsInteracting(true);
+    if (interactionTimerRef.current !== null) window.clearTimeout(interactionTimerRef.current);
+  };
+
+  const endInteraction = () => {
+    setIsInteracting(true);
+    if (interactionTimerRef.current !== null) window.clearTimeout(interactionTimerRef.current);
+    interactionTimerRef.current = window.setTimeout(() => setIsInteracting(false), 2400);
+  };
+
+  const scrollCampaigns = (direction: -1 | 1) => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const groupWidth = viewport.scrollWidth / 3;
+    if (direction < 0 && viewport.scrollLeft < groupWidth * 0.25) viewport.scrollLeft += groupWidth;
+    if (direction > 0 && viewport.scrollLeft > groupWidth * 1.75) viewport.scrollLeft -= groupWidth;
+
+    viewport.scrollBy({
+      left: direction * Math.min(viewport.clientWidth * 0.78, 420),
+      behavior: "smooth",
+    });
+    endInteraction();
+  };
+
+  useLayoutEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    viewport.scrollLeft = viewport.scrollWidth / 3;
+  }, []);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    let frame = 0;
+    let previousTime = performance.now();
+
+    const move = (time: number) => {
+      const elapsed = Math.min(time - previousTime, 40);
+      previousTime = time;
+
+      if (!isInteracting && activeIndex === null && selectedIndex === null) {
+        viewport.scrollLeft += elapsed * 0.035;
+        const groupWidth = viewport.scrollWidth / 3;
+        if (viewport.scrollLeft >= groupWidth * 2) viewport.scrollLeft -= groupWidth;
+      }
+
+      frame = window.requestAnimationFrame(move);
+    };
+
+    frame = window.requestAnimationFrame(move);
+    return () => window.cancelAnimationFrame(frame);
+  }, [activeIndex, isInteracting, selectedIndex]);
+
+  useEffect(() => {
+    if (selectedIndex === null) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelectedIndex(null);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [selectedIndex]);
+
+  useEffect(() => () => {
+    if (interactionTimerRef.current !== null) window.clearTimeout(interactionTimerRef.current);
+  }, []);
 
   return (
     <section className="horizontal-feature-banner" aria-label="Featured SALXCO work">
       <div
+        ref={viewportRef}
         className={`horizontal-feature-viewport${activeIndex !== null ? " is-paused" : ""}`}
         onMouseLeave={() => setHoveredIndex(null)}
+        onPointerDown={beginInteraction}
+        onPointerUp={endInteraction}
+        onPointerCancel={endInteraction}
+        onWheel={endInteraction}
       >
         <div className="horizontal-feature-track">
-          {[0, 1].map((groupIndex) => (
+          {[0, 1, 2].map((groupIndex) => (
             <div
               className="horizontal-feature-group"
-              aria-hidden={groupIndex === 1 ? "true" : undefined}
+              aria-hidden={groupIndex === 1 ? undefined : "true"}
               key={groupIndex}
             >
               {features.map((feature, index) => {
@@ -71,7 +157,7 @@ export function VerticalFeatureBanner() {
                     <button
                       className="horizontal-feature-trigger"
                       type="button"
-                      tabIndex={groupIndex === 1 ? -1 : 0}
+                      tabIndex={groupIndex === 1 ? 0 : -1}
                       aria-expanded={isActive}
                       aria-label={`${isActive ? "Collapse" : "Expand"} ${feature.artist} — ${feature.campaign}`}
                       onClick={() => {
@@ -100,15 +186,14 @@ export function VerticalFeatureBanner() {
                       </span>
                     </button>
 
-                    <a
+                    <button
                       className="horizontal-feature-link"
-                      href={feature.video}
-                      target="_blank"
-                      rel="noreferrer"
-                      tabIndex={isActive && groupIndex === 0 ? 0 : -1}
+                      type="button"
+                      tabIndex={isActive && groupIndex === 1 ? 0 : -1}
+                      onClick={() => setSelectedIndex(index)}
                     >
-                      View More <span aria-hidden="true">↗</span>
-                    </a>
+                      View More <span aria-hidden="true">▶</span>
+                    </button>
                   </article>
                 );
               })}
@@ -116,6 +201,58 @@ export function VerticalFeatureBanner() {
           ))}
         </div>
       </div>
+
+      <button
+        className="horizontal-feature-scroll-control is-previous"
+        type="button"
+        aria-label="View previous campaign"
+        onClick={() => scrollCampaigns(-1)}
+      >
+        ←
+      </button>
+      <button
+        className="horizontal-feature-scroll-control is-next"
+        type="button"
+        aria-label="View next campaign"
+        onClick={() => scrollCampaigns(1)}
+      >
+        →
+      </button>
+
+      {selectedFeature && (
+        <div
+          className="campaign-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="campaign-lightbox-title"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setSelectedIndex(null);
+          }}
+        >
+          <div className="campaign-lightbox-panel">
+            <button
+              className="campaign-lightbox-close"
+              type="button"
+              aria-label="Close campaign video"
+              onClick={() => setSelectedIndex(null)}
+            >
+              ×
+            </button>
+            <div className="campaign-lightbox-heading">
+              <span>{selectedFeature.artist}</span>
+              <h2 id="campaign-lightbox-title">{selectedFeature.campaign}</h2>
+            </div>
+            <video
+              src={selectedFeature.video}
+              poster={selectedFeature.image}
+              autoPlay
+              controls
+              playsInline
+              preload="metadata"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
