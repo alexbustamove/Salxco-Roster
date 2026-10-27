@@ -8,34 +8,34 @@ const instagramUrl = "https://www.instagram.com/salxco";
 
 const features = [
   {
-    campaign: "GQ Hong Kong",
+    campaign: "Mercedes",
     artist: "The Weeknd",
-    image: "https://salxco.com/wp-content/uploads/2026/09/812612082_18649240456015243_6613627780163443853_n-scaled-600x750.jpg",
+    image: "https://salxco.com/wp-content/uploads/2025/04/2019-MERCEDES-1-650x650.jpg",
+    video: "/campaign-clips/the-weeknd-mercedes.m4v",
   },
   {
-    campaign: "New York Knicks",
+    campaign: "Taco Bell Commercial",
+    artist: "Doja Cat",
+    image: "https://salxco.com/wp-content/uploads/2025/04/2022-TACO-BELL-1-650x650.jpg",
+    video: "/campaign-clips/doja-cat-taco-bell.m4v",
+  },
+  {
+    campaign: "Monster Energy",
     artist: "French Montana",
-    image: "https://salxco.com/wp-content/uploads/2026/07/FM_KNICKS-650x650.jpg",
+    image: "https://salxco.com/wp-content/uploads/2025/04/2024-MONSTER-1-650x650.jpg",
+    video: "/campaign-clips/french-montana-monster-energy.m4v",
   },
   {
-    campaign: "Rolling Stone",
-    artist: "French Montana",
-    image: "https://salxco.com/wp-content/uploads/2026/09/Presenting-Rolling-Stone-Canadas-latest-cover-star-@frenchmontana-💎-More-than-two-decades-int-600x780.jpg",
-  },
-  {
-    campaign: "WWE x XO",
-    artist: "The Weeknd",
-    image: "https://salxco.com/wp-content/uploads/2026/07/XO_WWE-650x650.jpg",
-  },
-  {
-    campaign: "Toronto Blue Jays x XO",
-    artist: "The Weeknd",
-    image: "https://salxco.com/wp-content/uploads/2025/10/BJ_XO-650x650.jpg",
+    campaign: "Into the Spider-Verse",
+    artist: "Metro Boomin",
+    image: "/campaign-clips/metro-boomin-spiderverse.png",
+    video: "/campaign-clips/metro-boomin-spiderverse.m4v",
   },
   {
     campaign: "Fortnite Festival",
     artist: "The Weeknd",
     image: "https://salxco.com/wp-content/uploads/2025/04/2024-FORTNITE-TW-1-650x650.jpg",
+    video: "/campaign-clips/the-weeknd-fortnite.m4v",
   },
 ] as const;
 
@@ -82,6 +82,16 @@ export function VerticalFeatureBanner() {
                       }}
                     >
                       <img src={feature.image} alt="" />
+                      <video
+                        autoPlay={isActive}
+                        key={`${feature.video}-${isActive ? "playing" : "still"}`}
+                        loop
+                        muted
+                        playsInline
+                        poster={feature.image}
+                        preload="metadata"
+                        src={feature.video}
+                      />
                       <span className="horizontal-feature-scrim" aria-hidden="true" />
                       <span className="horizontal-feature-copy">
                         <span>{feature.artist}</span>
