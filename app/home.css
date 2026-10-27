@@ -203,8 +203,8 @@
 .highlight-video-nav-logo::before {
   position: absolute;
   z-index: 0;
-  inset: -30.5% -11%;
-  background: url("/mgmt-nation-logo-words-white.png?v=2") center / 100% 100% no-repeat;
+  inset: 23% 15% 18%;
+  background: #fff;
   content: "";
   pointer-events: none;
 }
