@@ -51,39 +51,18 @@ type ShowcaseHomeExperienceProps = {
   withFeatureBanner?: boolean;
 };
 
-function shuffledShowcaseArchive() {
-  const items = [...showcaseArchive];
-
-  for (let index = items.length - 1; index > 0; index -= 1) {
-    const randomIndex = Math.floor(Math.random() * (index + 1));
-    [items[index], items[randomIndex]] = [items[randomIndex], items[index]];
-  }
-
-  return items;
-}
+const showcaseLoopArchive = showcaseArchive.slice(0, 48);
+const showcaseColumns = Array.from({ length: 4 }, (_, columnIndex) =>
+  showcaseLoopArchive.filter((_, itemIndex) => itemIndex % 4 === columnIndex),
+);
 
 export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHomeExperienceProps) {
   const [visibleCount, setVisibleCount] = useState(initialItemCount);
-  const [showcaseItems, setShowcaseItems] = useState(showcaseArchive);
-  const [shufflePulse, setShufflePulse] = useState(0);
   const loadMoreRef = useRef<HTMLDivElement>(null);
   const visibleItems = useMemo(
-    () => showcaseItems.slice(0, visibleCount),
-    [showcaseItems, visibleCount],
+    () => showcaseArchive.slice(0, visibleCount),
+    [visibleCount],
   );
-
-  useEffect(() => {
-    if (!withFeatureBanner) return;
-
-    const shuffle = () => {
-      setShowcaseItems(shuffledShowcaseArchive());
-      setShufflePulse((current) => current + 1);
-    };
-
-    shuffle();
-    const interval = window.setInterval(shuffle, 1000);
-    return () => window.clearInterval(interval);
-  }, [withFeatureBanner]);
 
   useEffect(() => {
     const target = loadMoreRef.current;
@@ -92,7 +71,7 @@ export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHo
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisibleCount((current) => Math.min(current + loadMoreCount, showcaseItems.length));
+          setVisibleCount((current) => Math.min(current + loadMoreCount, showcaseArchive.length));
         }
       },
       { rootMargin: "800px 0px" },
@@ -100,7 +79,7 @@ export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHo
 
     observer.observe(target);
     return () => observer.disconnect();
-  }, [showcaseItems.length]);
+  }, []);
 
   return (
     <main className="instagram-home-shell showcase-home-shell">
@@ -134,23 +113,56 @@ export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHo
       )}
 
       <section className="instagram-feed-section" aria-label="SALXCO magazine and partnership showcase">
-        <div className={`instagram-feed-grid showcase-feed-grid showcase-grid-shift-${shufflePulse % 2}`}>
-          {visibleItems.map((item) => (
-            <a
-              className={`instagram-feed-post showcase-feed-post showcase-feed-post-${item.type}`}
-              href={instagramUrl}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`View ${item.title} on SALXCO Instagram`}
-              key={item.id}
-            >
-              <img src={item.image} alt={item.title} loading="lazy" />
-              <span aria-hidden="true">↗</span>
-            </a>
-          ))}
-        </div>
+        {withFeatureBanner ? (
+          <div className="showcase-loop-grid">
+            {showcaseColumns.map((columnItems, columnIndex) => (
+              <div className="showcase-loop-column" key={columnIndex}>
+                <div className="showcase-loop-track">
+                  {[0, 1].map((groupIndex) => (
+                    <div
+                      className="showcase-loop-group"
+                      aria-hidden={groupIndex === 1 ? "true" : undefined}
+                      key={groupIndex}
+                    >
+                      {columnItems.map((item) => (
+                        <a
+                          className={`instagram-feed-post showcase-feed-post showcase-feed-post-${item.type}`}
+                          href={instagramUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`View ${item.title} on SALXCO Instagram`}
+                          tabIndex={groupIndex === 1 ? -1 : 0}
+                          key={`${groupIndex}-${item.id}`}
+                        >
+                          <img src={item.image} alt={groupIndex === 0 ? item.title : ""} loading="lazy" />
+                          <span aria-hidden="true">↗</span>
+                        </a>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="instagram-feed-grid showcase-feed-grid">
+            {visibleItems.map((item) => (
+              <a
+                className={`instagram-feed-post showcase-feed-post showcase-feed-post-${item.type}`}
+                href={instagramUrl}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`View ${item.title} on SALXCO Instagram`}
+                key={item.id}
+              >
+                <img src={item.image} alt={item.title} loading="lazy" />
+                <span aria-hidden="true">↗</span>
+              </a>
+            ))}
+          </div>
+        )}
 
-        {visibleCount < showcaseItems.length && (
+        {!withFeatureBanner && visibleCount < showcaseArchive.length && (
           <div className="instagram-feed-loader" ref={loadMoreRef} aria-hidden="true">
             <span />
           </div>

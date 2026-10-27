@@ -8,33 +8,33 @@ const instagramUrl = "https://www.instagram.com/salxco";
 
 const features = [
   {
-    eyebrow: "Cover Story",
-    title: "The Weeknd — GQ Hong Kong",
+    campaign: "GQ Hong Kong",
+    artist: "The Weeknd",
     image: "https://salxco.com/wp-content/uploads/2026/09/812612082_18649240456015243_6613627780163443853_n-scaled-600x750.jpg",
   },
   {
-    eyebrow: "Culture",
-    title: "French Montana x New York Knicks",
+    campaign: "New York Knicks",
+    artist: "French Montana",
     image: "https://salxco.com/wp-content/uploads/2026/07/FM_KNICKS-650x650.jpg",
   },
   {
-    eyebrow: "Cover Story",
-    title: "French Montana — Rolling Stone",
+    campaign: "Rolling Stone",
+    artist: "French Montana",
     image: "https://salxco.com/wp-content/uploads/2026/09/Presenting-Rolling-Stone-Canadas-latest-cover-star-@frenchmontana-💎-More-than-two-decades-int-600x780.jpg",
   },
   {
-    eyebrow: "Collaboration",
-    title: "WWE x XO",
+    campaign: "WWE x XO",
+    artist: "The Weeknd",
     image: "https://salxco.com/wp-content/uploads/2026/07/XO_WWE-650x650.jpg",
   },
   {
-    eyebrow: "Collaboration",
-    title: "Toronto Blue Jays x XO",
+    campaign: "Toronto Blue Jays x XO",
+    artist: "The Weeknd",
     image: "https://salxco.com/wp-content/uploads/2025/10/BJ_XO-650x650.jpg",
   },
   {
-    eyebrow: "Entertainment",
-    title: "The Weeknd x Fortnite Festival",
+    campaign: "Fortnite Festival",
+    artist: "The Weeknd",
     image: "https://salxco.com/wp-content/uploads/2025/04/2024-FORTNITE-TW-1-650x650.jpg",
   },
 ] as const;
@@ -68,7 +68,7 @@ export function VerticalFeatureBanner() {
                 return (
                   <article
                     className={`horizontal-feature-card${isActive ? " is-active" : ""}`}
-                    key={`${groupIndex}-${feature.title}`}
+                    key={`${groupIndex}-${feature.artist}-${feature.campaign}`}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onFocusCapture={() => setHoveredIndex(index)}
                     onBlurCapture={(event) => {
@@ -80,7 +80,7 @@ export function VerticalFeatureBanner() {
                       type="button"
                       tabIndex={groupIndex === 1 ? -1 : 0}
                       aria-expanded={isActive}
-                      aria-label={`${isActive ? "Collapse" : "Expand"} ${feature.title}`}
+                      aria-label={`${isActive ? "Collapse" : "Expand"} ${feature.artist} — ${feature.campaign}`}
                       onClick={() => {
                         setPinnedIndex((current) => current === index ? null : index);
                         setHoveredIndex(null);
@@ -89,8 +89,8 @@ export function VerticalFeatureBanner() {
                       <img src={feature.image} alt="" />
                       <span className="horizontal-feature-scrim" aria-hidden="true" />
                       <span className="horizontal-feature-copy">
-                        <span>{feature.eyebrow}</span>
-                        <strong>{feature.title}</strong>
+                        <span>{feature.campaign}</span>
+                        <strong>{feature.artist}</strong>
                       </span>
                       <span className="horizontal-feature-symbol" aria-hidden="true">
                         {isActive ? "—" : "+"}

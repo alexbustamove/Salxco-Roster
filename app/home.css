@@ -214,39 +214,49 @@
   z-index: 1;
 }
 
-.showcase-feed-grid {
-  will-change: transform, opacity;
+.showcase-loop-grid {
+  --showcase-loop-gap: clamp(5px, 0.75vw, 12px);
+  display: grid;
+  height: clamp(760px, 88vw, 1180px);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--showcase-loop-gap);
+  overflow: hidden;
 }
 
-.showcase-grid-shift-0 {
-  animation: showcase-grid-shift-a 420ms cubic-bezier(0.22, 1, 0.36, 1);
+.showcase-loop-column {
+  min-width: 0;
+  overflow: hidden;
 }
 
-.showcase-grid-shift-1 {
-  animation: showcase-grid-shift-b 420ms cubic-bezier(0.22, 1, 0.36, 1);
+.showcase-loop-track {
+  display: flex;
+  flex-direction: column;
+  gap: var(--showcase-loop-gap);
+  animation: showcase-column-loop 58s linear infinite;
+  will-change: transform;
 }
 
-@keyframes showcase-grid-shift-a {
-  from {
-    opacity: 0.72;
-    transform: translateX(-14px);
-  }
+.showcase-loop-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--showcase-loop-gap);
+}
 
+.showcase-loop-column:nth-child(2) .showcase-loop-track {
+  animation-delay: -5s;
+}
+
+.showcase-loop-column:nth-child(3) .showcase-loop-track {
+  animation-delay: -10s;
+}
+
+.showcase-loop-column:nth-child(4) .showcase-loop-track {
+  animation-delay: -15s;
+}
+
+@keyframes showcase-column-loop {
   to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes showcase-grid-shift-b {
-  from {
-    opacity: 0.72;
-    transform: translateX(-14px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
+    transform: translateY(calc(-50% - (var(--showcase-loop-gap) / 2)));
   }
 }
 
@@ -517,16 +527,16 @@
 }
 
 .horizontal-feature-copy > span {
-  font-size: 8px;
-  font-weight: 760;
+  font-size: 9px;
+  font-weight: 520;
   letter-spacing: 0.14em;
-  opacity: 0.72;
+  opacity: 0.7;
 }
 
 .horizontal-feature-copy strong {
   max-width: 13ch;
   font-size: clamp(19px, 2.2vw, 32px);
-  font-weight: 720;
+  font-weight: 760;
   letter-spacing: -0.045em;
   line-height: 0.96;
 }
@@ -735,8 +745,7 @@
     animation: none;
   }
 
-  .showcase-grid-shift-0,
-  .showcase-grid-shift-1 {
+  .showcase-loop-track {
     animation: none;
   }
 }
