@@ -916,3 +916,7 @@
   color: #fff;
   border-color: rgba(255, 255, 255, 0.62);
 }
+
+.showcase-home-shell .footer-theme-logo {
+  filter: invert(1);
+}
