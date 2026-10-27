@@ -46,6 +46,7 @@ export function VerticalFeatureBanner() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const activeIndex = hoveredIndex ?? pinnedIndex;
   const selectedFeature = selectedIndex === null ? null : features[selectedIndex];
+  const canHover = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   const beginInteraction = () => {
     setIsInteracting(true);
@@ -148,8 +149,12 @@ export function VerticalFeatureBanner() {
                   <article
                     className={`horizontal-feature-card${isActive ? " is-active" : ""}`}
                     key={`${groupIndex}-${feature.artist}-${feature.campaign}`}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onFocusCapture={() => setHoveredIndex(index)}
+                    onMouseEnter={() => {
+                      if (canHover()) setHoveredIndex(index);
+                    }}
+                    onFocusCapture={() => {
+                      if (canHover()) setHoveredIndex(index);
+                    }}
                     onBlurCapture={(event) => {
                       if (!event.currentTarget.contains(event.relatedTarget)) setHoveredIndex(null);
                     }}
