@@ -1051,7 +1051,7 @@
 }
 
 .colorway-gold .horizontal-feature-track {
-  padding-top: 0;
+  padding-top: 18px;
 }
 
 .colorway-gold .horizontal-feature-viewport::before {
@@ -1145,6 +1145,10 @@
   .colorway-gold .highlight-video-nav-logo {
     left: 8px;
     width: 92px;
+  }
+
+  .colorway-gold .horizontal-feature-track {
+    padding-top: 12px;
   }
 
   .horizontal-feature-scroll-control {
