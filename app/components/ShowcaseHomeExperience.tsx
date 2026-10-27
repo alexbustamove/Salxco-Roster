@@ -51,13 +51,29 @@ type ShowcaseHomeExperienceProps = {
   withFeatureBanner?: boolean;
 };
 
+function shuffledShowcaseArchive() {
+  const items = [...showcaseArchive];
+
+  for (let index = items.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [items[index], items[randomIndex]] = [items[randomIndex], items[index]];
+  }
+
+  return items;
+}
+
 export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHomeExperienceProps) {
   const [visibleCount, setVisibleCount] = useState(initialItemCount);
+  const [showcaseItems, setShowcaseItems] = useState(showcaseArchive);
   const loadMoreRef = useRef<HTMLDivElement>(null);
   const visibleItems = useMemo(
-    () => showcaseArchive.slice(0, visibleCount),
-    [visibleCount],
+    () => showcaseItems.slice(0, visibleCount),
+    [showcaseItems, visibleCount],
   );
+
+  useEffect(() => {
+    if (withFeatureBanner) setShowcaseItems(shuffledShowcaseArchive());
+  }, [withFeatureBanner]);
 
   useEffect(() => {
     const target = loadMoreRef.current;
@@ -66,7 +82,7 @@ export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHo
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisibleCount((current) => Math.min(current + loadMoreCount, showcaseArchive.length));
+          setVisibleCount((current) => Math.min(current + loadMoreCount, showcaseItems.length));
         }
       },
       { rootMargin: "800px 0px" },
@@ -74,7 +90,7 @@ export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHo
 
     observer.observe(target);
     return () => observer.disconnect();
-  }, []);
+  }, [showcaseItems.length]);
 
   return (
     <main className="instagram-home-shell showcase-home-shell">
@@ -124,7 +140,7 @@ export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHo
           ))}
         </div>
 
-        {visibleCount < showcaseArchive.length && (
+        {visibleCount < showcaseItems.length && (
           <div className="instagram-feed-loader" ref={loadMoreRef} aria-hidden="true">
             <span />
           </div>
