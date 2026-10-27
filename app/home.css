@@ -214,6 +214,13 @@
   z-index: 1;
 }
 
+.theme-logo-filter-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 .showcase-swap-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -943,6 +950,10 @@
   box-shadow: none;
 }
 
+.colorway-gold .horizontal-feature-track {
+  padding-top: 0;
+}
+
 .colorway-gold .horizontal-feature-viewport::before {
   display: none;
 }
@@ -1015,7 +1026,7 @@
 }
 
 .colorway-gold .highlight-video-nav-logo .theme-logo-video {
-  filter: brightness(0) saturate(100%) invert(84.16%) sepia(21.35%) saturate(1152.84%) hue-rotate(342.94deg) brightness(73.15%) contrast(92.1%);
+  filter: url("#mgmt-gold-flat");
 }
 
 .colorway-gold .highlight-video-nav-logo .theme-logo-static img {
@@ -1027,6 +1038,10 @@
 }
 
 @media (max-width: 640px) {
+  .colorway-gold .highlight-video-banner {
+    padding-bottom: 0;
+  }
+
   .colorway-gold .highlight-video-nav-logo {
     left: 8px;
     width: 92px;
