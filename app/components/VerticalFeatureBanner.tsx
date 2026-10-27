@@ -46,11 +46,6 @@ export function VerticalFeatureBanner() {
 
   return (
     <section className="horizontal-feature-banner" aria-label="Featured SALXCO work">
-      <div className="horizontal-feature-heading">
-        <span>Selected Work</span>
-        <span>Hover or tap to expand</span>
-      </div>
-
       <div
         className={`horizontal-feature-viewport${activeIndex !== null ? " is-paused" : ""}`}
         onMouseLeave={() => setHoveredIndex(null)}
