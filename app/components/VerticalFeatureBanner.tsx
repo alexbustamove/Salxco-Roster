@@ -107,7 +107,7 @@ export function VerticalFeatureBanner() {
                       rel="noreferrer"
                       tabIndex={isActive && groupIndex === 0 ? 0 : -1}
                     >
-                      Watch Campaign Film <span aria-hidden="true">↗</span>
+                      View More <span aria-hidden="true">↗</span>
                     </a>
                   </article>
                 );
