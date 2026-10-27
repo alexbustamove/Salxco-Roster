@@ -204,7 +204,6 @@
   position: absolute;
   z-index: 0;
   inset: 17% 17% 23%;
-  border-radius: 50%;
   background: #fff;
   content: "";
   pointer-events: none;
