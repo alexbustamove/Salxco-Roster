@@ -27,52 +27,86 @@ const features = [
     title: "WWE x XO",
     image: "https://salxco.com/wp-content/uploads/2026/07/XO_WWE-650x650.jpg",
   },
+  {
+    eyebrow: "Collaboration",
+    title: "Toronto Blue Jays x XO",
+    image: "https://salxco.com/wp-content/uploads/2025/10/BJ_XO-650x650.jpg",
+  },
+  {
+    eyebrow: "Entertainment",
+    title: "The Weeknd x Fortnite Festival",
+    image: "https://salxco.com/wp-content/uploads/2025/04/2024-FORTNITE-TW-1-650x650.jpg",
+  },
 ] as const;
 
 export function VerticalFeatureBanner() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section className="vertical-feature-banner" aria-label="Featured SALXCO work">
-      <div className="vertical-feature-heading">
+    <section className="horizontal-feature-banner" aria-label="Featured SALXCO work">
+      <div className="horizontal-feature-heading">
         <span>Selected Work</span>
-        <span>Hover or tap to explore</span>
+        <span>Hover or tap to expand</span>
       </div>
 
-      <div className="vertical-feature-list">
-        {features.map((feature, index) => {
-          const isActive = activeIndex === index;
-
-          return (
-            <article
-              className={`vertical-feature-item${isActive ? " is-active" : ""}`}
-              key={feature.title}
-              onMouseEnter={() => setActiveIndex(index)}
-              onFocusCapture={() => setActiveIndex(index)}
+      <div
+        className={`horizontal-feature-viewport${activeIndex !== null ? " is-paused" : ""}`}
+        onMouseLeave={() => setActiveIndex(null)}
+      >
+        <div className="horizontal-feature-track">
+          {[0, 1].map((groupIndex) => (
+            <div
+              className="horizontal-feature-group"
+              aria-hidden={groupIndex === 1 ? "true" : undefined}
+              key={groupIndex}
             >
-              <button
-                className="vertical-feature-trigger"
-                type="button"
-                aria-expanded={isActive}
-                onClick={() => setActiveIndex(index)}
-              >
-                <span className="vertical-feature-number">{String(index + 1).padStart(2, "0")}</span>
-                <span className="vertical-feature-title">{feature.title}</span>
-                <span className="vertical-feature-action" aria-hidden="true">{isActive ? "—" : "+"}</span>
-              </button>
+              {features.map((feature, index) => {
+                const isActive = activeIndex === index;
 
-              <div className="vertical-feature-panel" aria-hidden={!isActive}>
-                <img src={feature.image} alt="" />
-                <div className="vertical-feature-overlay">
-                  <p>{feature.eyebrow}</p>
-                  <a href={instagramUrl} target="_blank" rel="noreferrer">
-                    View on @SALXCO <span aria-hidden="true">↗</span>
-                  </a>
-                </div>
-              </div>
-            </article>
-          );
-        })}
+                return (
+                  <article
+                    className={`horizontal-feature-card${isActive ? " is-active" : ""}`}
+                    key={`${groupIndex}-${feature.title}`}
+                    onMouseEnter={() => setActiveIndex(index)}
+                    onFocusCapture={() => setActiveIndex(index)}
+                    onBlurCapture={(event) => {
+                      if (!event.currentTarget.contains(event.relatedTarget)) setActiveIndex(null);
+                    }}
+                  >
+                    <button
+                      className="horizontal-feature-trigger"
+                      type="button"
+                      tabIndex={groupIndex === 1 ? -1 : 0}
+                      aria-expanded={isActive}
+                      aria-label={`${isActive ? "Collapse" : "Expand"} ${feature.title}`}
+                      onClick={() => setActiveIndex(isActive ? null : index)}
+                    >
+                      <img src={feature.image} alt="" />
+                      <span className="horizontal-feature-scrim" aria-hidden="true" />
+                      <span className="horizontal-feature-copy">
+                        <span>{feature.eyebrow}</span>
+                        <strong>{feature.title}</strong>
+                      </span>
+                      <span className="horizontal-feature-symbol" aria-hidden="true">
+                        {isActive ? "—" : "+"}
+                      </span>
+                    </button>
+
+                    <a
+                      className="horizontal-feature-link"
+                      href={instagramUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      tabIndex={isActive && groupIndex === 0 ? 0 : -1}
+                    >
+                      View on @SALXCO <span aria-hidden="true">↗</span>
+                    </a>
+                  </article>
+                );
+              })}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
