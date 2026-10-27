@@ -6,13 +6,13 @@ import { useState } from "react";
 
 const features = [
   {
-    campaign: "Mercedes",
+    campaign: "Mercedes-Benz",
     artist: "The Weeknd",
     image: "https://salxco.com/wp-content/uploads/2025/04/2019-MERCEDES-1-650x650.jpg",
     video: "/campaign-clips/the-weeknd-mercedes.m4v",
   },
   {
-    campaign: "Taco Bell Commercial",
+    campaign: "Taco Bell",
     artist: "Doja Cat",
     image: "https://salxco.com/wp-content/uploads/2025/04/2022-TACO-BELL-1-650x650.jpg",
     video: "/campaign-clips/doja-cat-taco-bell.m4v",
