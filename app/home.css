@@ -674,26 +674,6 @@
   object-fit: contain;
 }
 
-.campaign-lightbox-heading {
-  padding: 18px 62px 16px 20px;
-  text-transform: uppercase;
-}
-
-.campaign-lightbox-heading span {
-  display: block;
-  margin-bottom: 3px;
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  opacity: 0.65;
-}
-
-.campaign-lightbox-heading h2 {
-  margin: 0;
-  font-size: clamp(24px, 4vw, 48px);
-  letter-spacing: -0.045em;
-  line-height: 0.95;
-}
-
 .campaign-lightbox-close {
   position: absolute;
   z-index: 2;

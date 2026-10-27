@@ -229,7 +229,7 @@ export function VerticalFeatureBanner() {
           className="campaign-lightbox"
           role="dialog"
           aria-modal="true"
-          aria-labelledby="campaign-lightbox-title"
+          aria-label={`${selectedFeature.artist} — ${selectedFeature.campaign} video`}
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) setSelectedIndex(null);
           }}
@@ -243,10 +243,6 @@ export function VerticalFeatureBanner() {
             >
               ×
             </button>
-            <div className="campaign-lightbox-heading">
-              <span>{selectedFeature.artist}</span>
-              <h2 id="campaign-lightbox-title">{selectedFeature.campaign}</h2>
-            </div>
             <video
               src={selectedFeature.video}
               poster={selectedFeature.image}
