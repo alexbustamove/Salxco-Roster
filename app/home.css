@@ -196,7 +196,7 @@
   isolation: isolate;
   top: 0;
   left: 0;
-  width: clamp(142px, 15vw, 200px);
+  width: clamp(96px, 10vw, 128px);
   pointer-events: auto;
 }
 
@@ -218,6 +218,11 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(5px, 0.75vw, 12px);
+}
+
+.horizontal-feature-banner + .instagram-feed-section {
+  margin-right: calc(clamp(14px, 3vw, 48px) * -1);
+  margin-left: calc(clamp(14px, 3vw, 48px) * -1);
 }
 
 .showcase-swap-tile > .showcase-swap-image {
@@ -664,6 +669,16 @@
   line-height: 1;
 }
 
+@media (min-width: 641px) {
+  .highlight-video-card {
+    height: clamp(210px, 28vh, 270px);
+  }
+
+  .horizontal-feature-card {
+    height: clamp(240px, 24vw, 340px);
+  }
+}
+
 @keyframes instagram-feed-spin {
   to { transform: rotate(360deg); }
 }
@@ -671,6 +686,11 @@
 @media (max-width: 640px) {
   .instagram-home-shell {
     padding: 0 8px;
+  }
+
+  .horizontal-feature-banner + .instagram-feed-section {
+    margin-right: -8px;
+    margin-left: -8px;
   }
 
   .instagram-home-intro {
@@ -1089,7 +1109,7 @@
 
   .colorway-gold .highlight-video-nav-logo {
     left: 8px;
-    width: 92px;
+    width: 72px;
   }
 
   .colorway-gold .horizontal-feature-track {
@@ -1103,4 +1123,18 @@
   .campaign-lightbox-panel video {
     max-height: 68vh;
   }
+}
+
+/* Keep the showcase page's visual language sharp and architectural. */
+.showcase-home-shell .instagram-home-roster,
+.showcase-home-shell .highlight-video-expand,
+.showcase-home-shell .highlight-video-cta,
+.showcase-home-shell .horizontal-feature-card,
+.showcase-home-shell .horizontal-feature-symbol,
+.showcase-home-shell .horizontal-feature-link,
+.showcase-home-shell .instagram-feed-post,
+.showcase-home-shell .campaign-lightbox-panel,
+.showcase-home-shell .campaign-lightbox-close,
+.showcase-home-shell .back-to-top {
+  border-radius: 0;
 }

@@ -5,13 +5,19 @@ import { useEffect, useRef, useState } from "react";
 
 type AnimatedThemeLogoProps = {
   className?: string;
+  animated?: boolean;
 };
 
-export function AnimatedThemeLogo({ className = "" }: AnimatedThemeLogoProps) {
+export function AnimatedThemeLogo({
+  className = "",
+  animated = true,
+}: AnimatedThemeLogoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   useEffect(() => {
+    if (!animated) return;
+
     const video = videoRef.current;
     if (!video) return;
 
@@ -62,7 +68,7 @@ export function AnimatedThemeLogo({ className = "" }: AnimatedThemeLogoProps) {
       window.removeEventListener("pageshow", syncPlayback);
       document.removeEventListener("visibilitychange", syncPlayback);
     };
-  }, []);
+  }, [animated]);
 
   return (
     <Link
@@ -70,30 +76,32 @@ export function AnimatedThemeLogo({ className = "" }: AnimatedThemeLogoProps) {
       href="/"
       aria-label="Go to home page"
     >
-      <video
-        ref={videoRef}
-        className="theme-logo-video"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        onPlaying={() => setIsVideoPlaying(true)}
-        onError={() => setIsVideoPlaying(false)}
-        aria-hidden="true"
-      >
-        <source
-          src="/mgmt-nation-flag-animation-alpha.mov"
-          type='video/quicktime; codecs="hvc1"'
-        />
-        <source
-          src="/mgmt-nation-flag-animation.webm"
-          type='video/webm; codecs="vp9"'
-        />
-      </video>
+      {animated ? (
+        <video
+          ref={videoRef}
+          className="theme-logo-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          onPlaying={() => setIsVideoPlaying(true)}
+          onError={() => setIsVideoPlaying(false)}
+          aria-hidden="true"
+        >
+          <source
+            src="/mgmt-nation-flag-animation-alpha.mov"
+            type='video/quicktime; codecs="hvc1"'
+          />
+          <source
+            src="/mgmt-nation-flag-animation.webm"
+            type='video/webm; codecs="vp9"'
+          />
+        </video>
+      ) : null}
 
       <span
-        className={`theme-logo-static${isVideoPlaying ? "" : " is-visible"}`}
+        className={`theme-logo-static${!animated || !isVideoPlaying ? " is-visible" : ""}`}
         aria-hidden="true"
       >
         <img src="/mgmt-nation-logo-gold.svg" alt="" />

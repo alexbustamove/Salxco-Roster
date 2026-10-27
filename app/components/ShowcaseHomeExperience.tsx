@@ -169,7 +169,7 @@ export function ShowcaseHomeExperience({
         <>
           <header className="instagram-home-header highlight-video-nav">
             <h1 id="showcase-home-title" className="sr-only">MGMT NATION and SALXCO</h1>
-            <AnimatedThemeLogo className="highlight-video-nav-logo" />
+            <AnimatedThemeLogo className="highlight-video-nav-logo" animated={false} />
             <Link className="instagram-home-roster" href="/roster">
               Roster <span aria-hidden="true">↗</span>
             </Link>
