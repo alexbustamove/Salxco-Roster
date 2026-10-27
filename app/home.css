@@ -999,6 +999,7 @@
 .showcase-home-shell.colorway-gold .footer-theme-logo-white {
   display: block;
   object-fit: contain;
+  filter: brightness(0);
 }
 
 .colorway-gold .highlight-video-nav-logo::before {
