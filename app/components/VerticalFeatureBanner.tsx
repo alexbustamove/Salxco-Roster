@@ -89,8 +89,8 @@ export function VerticalFeatureBanner() {
                       <img src={feature.image} alt="" />
                       <span className="horizontal-feature-scrim" aria-hidden="true" />
                       <span className="horizontal-feature-copy">
-                        <span>{feature.campaign}</span>
-                        <strong>{feature.artist}</strong>
+                        <span>{feature.artist}</span>
+                        <strong>{feature.campaign}</strong>
                       </span>
                       <span className="horizontal-feature-symbol" aria-hidden="true">
                         {isActive ? "—" : "+"}
