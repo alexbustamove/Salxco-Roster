@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-mgmt-black.jpg?v=3",
+        url: "/og-mgmt-black-gold.jpg?v=1",
         width: 1200,
         height: 630,
         alt: "MGMT NATION",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MGMT NATION",
     description: "Full service management for world-class talent.",
-    images: ["/og-mgmt-black.jpg?v=3"],
+    images: ["/og-mgmt-black-gold.jpg?v=1"],
   },
 };
 
