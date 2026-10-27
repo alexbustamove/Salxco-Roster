@@ -193,19 +193,25 @@
 
 .highlight-video-nav-logo {
   position: absolute;
+  isolation: isolate;
   top: 0;
   left: 0;
   width: clamp(142px, 15vw, 200px);
   pointer-events: auto;
 }
 
-.highlight-video-nav-logo::after {
+.highlight-video-nav-logo::before {
   position: absolute;
-  z-index: 3;
+  z-index: 0;
   inset: -30.5% -11%;
   background: url("/mgmt-nation-logo-words-white.png?v=2") center / 100% 100% no-repeat;
   content: "";
   pointer-events: none;
+}
+
+.highlight-video-nav-logo .theme-logo-video,
+.highlight-video-nav-logo .theme-logo-static {
+  z-index: 1;
 }
 
 .showcase-feed-grid {
