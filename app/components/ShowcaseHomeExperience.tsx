@@ -8,6 +8,7 @@ import { lifestyleMediaItems } from "../data/lifestyleMedia";
 import { partnershipItems } from "../data/partnerships";
 import { AnimatedThemeLogo } from "./AnimatedThemeLogo";
 import { HighlightVideoBanner } from "./HighlightVideoBanner";
+import { VerticalFeatureBanner } from "./VerticalFeatureBanner";
 
 const instagramUrl = "https://www.instagram.com/salxco";
 const initialItemCount = 24;
@@ -87,6 +88,7 @@ export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHo
             </Link>
           </header>
           <HighlightVideoBanner />
+          <VerticalFeatureBanner />
         </>
       ) : (
         <header className="instagram-home-header">
