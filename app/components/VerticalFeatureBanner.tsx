@@ -4,8 +4,6 @@
 
 import { useState } from "react";
 
-const instagramUrl = "https://www.instagram.com/salxco";
-
 const features = [
   {
     campaign: "Mercedes",
@@ -26,10 +24,10 @@ const features = [
     video: "/campaign-clips/french-montana-monster-energy.m4v",
   },
   {
-    campaign: "Into the Spider-Verse",
+    campaign: "Red Bull Symphonic",
     artist: "Metro Boomin",
-    image: "/campaign-clips/metro-boomin-spiderverse.png",
-    video: "/campaign-clips/metro-boomin-spiderverse.m4v",
+    image: "https://salxco.com/wp-content/uploads/2025/04/2023-REDBULL-SYMPHONIC-1-650x650.jpg",
+    video: "/campaign-clips/metro-boomin-redbull-symphonic.m4v",
   },
   {
     campaign: "Fortnite Festival",
@@ -104,12 +102,12 @@ export function VerticalFeatureBanner() {
 
                     <a
                       className="horizontal-feature-link"
-                      href={instagramUrl}
+                      href={feature.video}
                       target="_blank"
                       rel="noreferrer"
                       tabIndex={isActive && groupIndex === 0 ? 0 : -1}
                     >
-                      View on @SALXCO <span aria-hidden="true">↗</span>
+                      Watch Campaign Film <span aria-hidden="true">↗</span>
                     </a>
                   </article>
                 );
