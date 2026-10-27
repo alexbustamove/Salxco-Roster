@@ -40,6 +40,7 @@ const features = [
 export function VerticalFeatureBanner() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const interactionTimerRef = useRef<number | null>(null);
+  const loopMetricsRef = useRef({ cycleWidth: 0, middleStart: 0 });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [pinnedIndex, setPinnedIndex] = useState<number | null>(null);
   const [isInteracting, setIsInteracting] = useState(false);
@@ -59,25 +60,54 @@ export function VerticalFeatureBanner() {
     interactionTimerRef.current = window.setTimeout(() => setIsInteracting(false), 2400);
   };
 
-  const scrollCampaigns = (direction: -1 | 1) => {
+  const measureLoop = () => {
+    const viewport = viewportRef.current;
+    if (!viewport) return null;
+
+    const groups = viewport.querySelectorAll<HTMLElement>(".horizontal-feature-group");
+    if (groups.length < 3) return null;
+
+    const cycleWidth = groups[1].offsetLeft - groups[0].offsetLeft;
+    const middleStart = groups[1].offsetLeft;
+    loopMetricsRef.current = { cycleWidth, middleStart };
+    return loopMetricsRef.current;
+  };
+
+  const normalizeLoop = () => {
     const viewport = viewportRef.current;
     if (!viewport) return;
 
-    const groupWidth = viewport.scrollWidth / 3;
-    if (direction < 0 && viewport.scrollLeft < groupWidth * 0.25) viewport.scrollLeft += groupWidth;
-    if (direction > 0 && viewport.scrollLeft > groupWidth * 1.75) viewport.scrollLeft -= groupWidth;
+    const metrics = loopMetricsRef.current.cycleWidth > 0
+      ? loopMetricsRef.current
+      : measureLoop();
+    if (!metrics) return;
 
-    viewport.scrollBy({
-      left: direction * Math.min(viewport.clientWidth * 0.78, 420),
-      behavior: "smooth",
-    });
-    endInteraction();
+    const lowerBoundary = metrics.middleStart - metrics.cycleWidth * 0.5;
+    const upperBoundary = metrics.middleStart + metrics.cycleWidth * 0.5;
+
+    if (viewport.scrollLeft < lowerBoundary) viewport.scrollLeft += metrics.cycleWidth;
+    if (viewport.scrollLeft > upperBoundary) viewport.scrollLeft -= metrics.cycleWidth;
   };
 
   useLayoutEffect(() => {
     const viewport = viewportRef.current;
     if (!viewport) return;
-    viewport.scrollLeft = viewport.scrollWidth / 3;
+
+    const centerLoop = () => {
+      const metrics = measureLoop();
+      if (metrics) viewport.scrollLeft = metrics.middleStart;
+    };
+
+    centerLoop();
+    let previousWidth = viewport.clientWidth;
+    const recenterAfterWidthChange = () => {
+      if (viewport.clientWidth === previousWidth) return;
+      previousWidth = viewport.clientWidth;
+      centerLoop();
+    };
+
+    window.addEventListener("resize", recenterAfterWidthChange);
+    return () => window.removeEventListener("resize", recenterAfterWidthChange);
   }, []);
 
   useEffect(() => {
@@ -93,8 +123,7 @@ export function VerticalFeatureBanner() {
 
       if (!isInteracting && activeIndex === null && selectedIndex === null) {
         viewport.scrollLeft += elapsed * 0.035;
-        const groupWidth = viewport.scrollWidth / 3;
-        if (viewport.scrollLeft >= groupWidth * 2) viewport.scrollLeft -= groupWidth;
+        normalizeLoop();
       }
 
       frame = window.requestAnimationFrame(move);
@@ -134,6 +163,7 @@ export function VerticalFeatureBanner() {
         onPointerUp={endInteraction}
         onPointerCancel={endInteraction}
         onWheel={endInteraction}
+        onScroll={normalizeLoop}
       >
         <div className="horizontal-feature-track">
           {[0, 1, 2].map((groupIndex) => (
@@ -206,23 +236,6 @@ export function VerticalFeatureBanner() {
           ))}
         </div>
       </div>
-
-      <button
-        className="horizontal-feature-scroll-control is-previous"
-        type="button"
-        aria-label="View previous campaign"
-        onClick={() => scrollCampaigns(-1)}
-      >
-        ←
-      </button>
-      <button
-        className="horizontal-feature-scroll-control is-next"
-        type="button"
-        aria-label="View next campaign"
-        onClick={() => scrollCampaigns(1)}
-      >
-        →
-      </button>
 
       {selectedFeature && (
         <div
