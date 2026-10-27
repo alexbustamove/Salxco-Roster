@@ -196,8 +196,52 @@
   top: 0;
   left: 0;
   width: clamp(142px, 15vw, 200px);
-  background: #fff;
   pointer-events: auto;
+}
+
+.highlight-video-nav-logo::after {
+  position: absolute;
+  z-index: 3;
+  inset: -30.5% -11%;
+  background: url("/mgmt-nation-logo-words-white.png?v=2") center / 100% 100% no-repeat;
+  content: "";
+  pointer-events: none;
+}
+
+.showcase-feed-grid {
+  will-change: transform, opacity;
+}
+
+.showcase-grid-shift-0 {
+  animation: showcase-grid-shift-a 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.showcase-grid-shift-1 {
+  animation: showcase-grid-shift-b 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes showcase-grid-shift-a {
+  from {
+    opacity: 0.72;
+    transform: translateX(-14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes showcase-grid-shift-b {
+  from {
+    opacity: 0.72;
+    transform: translateX(-14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .highlight-video-card.is-expanded {
@@ -682,6 +726,11 @@
   }
 
   .horizontal-feature-track {
+    animation: none;
+  }
+
+  .showcase-grid-shift-0,
+  .showcase-grid-shift-1 {
     animation: none;
   }
 }

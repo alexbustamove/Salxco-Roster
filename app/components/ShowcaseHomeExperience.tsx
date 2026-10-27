@@ -65,6 +65,7 @@ function shuffledShowcaseArchive() {
 export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHomeExperienceProps) {
   const [visibleCount, setVisibleCount] = useState(initialItemCount);
   const [showcaseItems, setShowcaseItems] = useState(showcaseArchive);
+  const [shufflePulse, setShufflePulse] = useState(0);
   const loadMoreRef = useRef<HTMLDivElement>(null);
   const visibleItems = useMemo(
     () => showcaseItems.slice(0, visibleCount),
@@ -72,7 +73,16 @@ export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHo
   );
 
   useEffect(() => {
-    if (withFeatureBanner) setShowcaseItems(shuffledShowcaseArchive());
+    if (!withFeatureBanner) return;
+
+    const shuffle = () => {
+      setShowcaseItems(shuffledShowcaseArchive());
+      setShufflePulse((current) => current + 1);
+    };
+
+    shuffle();
+    const interval = window.setInterval(shuffle, 1000);
+    return () => window.clearInterval(interval);
   }, [withFeatureBanner]);
 
   useEffect(() => {
@@ -124,7 +134,7 @@ export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHo
       )}
 
       <section className="instagram-feed-section" aria-label="SALXCO magazine and partnership showcase">
-        <div className="instagram-feed-grid showcase-feed-grid">
+        <div className={`instagram-feed-grid showcase-feed-grid showcase-grid-shift-${shufflePulse % 2}`}>
           {visibleItems.map((item) => (
             <a
               className={`instagram-feed-post showcase-feed-post showcase-feed-post-${item.type}`}
