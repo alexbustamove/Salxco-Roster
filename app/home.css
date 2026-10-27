@@ -203,7 +203,7 @@
 .highlight-video-nav-logo::before {
   position: absolute;
   z-index: 0;
-  inset: 17% 17% 23%;
+  inset: 22% 17% 23%;
   background: #fff;
   content: "";
   pointer-events: none;
