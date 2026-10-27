@@ -8,6 +8,17 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function BannerPreviewPage() {
-  return <ShowcaseHomeExperience withFeatureBanner />;
+type BannerPreviewPageProps = {
+  searchParams: Promise<{ colorway?: string }>;
+};
+
+export default async function BannerPreviewPage({ searchParams }: BannerPreviewPageProps) {
+  const { colorway } = await searchParams;
+
+  return (
+    <ShowcaseHomeExperience
+      colorway={colorway === "gold" ? "gold" : "black"}
+      withFeatureBanner
+    />
+  );
 }

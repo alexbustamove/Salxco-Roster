@@ -48,6 +48,7 @@ for (let index = 0; index < archiveLength; index += 1) {
 }
 
 type ShowcaseHomeExperienceProps = {
+  colorway?: "black" | "gold";
   withFeatureBanner?: boolean;
 };
 
@@ -104,7 +105,10 @@ function ShowcaseSwapTile({ item }: { item: ShowcaseItem }) {
   );
 }
 
-export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHomeExperienceProps) {
+export function ShowcaseHomeExperience({
+  colorway = "black",
+  withFeatureBanner = false,
+}: ShowcaseHomeExperienceProps) {
   const [visibleCount, setVisibleCount] = useState(initialItemCount);
   const [swapItems, setSwapItems] = useState(() => showcaseSwapArchive.slice(0, showcaseSwapItemCount));
   const loadMoreRef = useRef<HTMLDivElement>(null);
@@ -160,7 +164,7 @@ export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHo
   }, []);
 
   return (
-    <main className="instagram-home-shell showcase-home-shell">
+    <main className={`instagram-home-shell showcase-home-shell colorway-${colorway}`}>
       {withFeatureBanner ? (
         <>
           <header className="instagram-home-header highlight-video-nav">
