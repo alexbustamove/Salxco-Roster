@@ -865,3 +865,38 @@
     padding: 1px;
   }
 }
+
+/* Banner preview uses a continuous black canvas from hero through footer. */
+.showcase-home-shell {
+  background: #000;
+  color: #fff;
+}
+
+.showcase-home-shell .instagram-feed-section {
+  border-top-color: rgba(255, 255, 255, 0.32);
+}
+
+.showcase-home-shell .instagram-feed-post,
+.showcase-home-shell .showcase-feed-post-magazine,
+.showcase-home-shell .showcase-feed-post-partnership {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: #080808;
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.52),
+    0 5px 12px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.showcase-home-shell .instagram-home-footer {
+  color: rgba(255, 255, 255, 0.64);
+  border-top-color: rgba(255, 255, 255, 0.34);
+}
+
+:root[data-preview-theme="gold-white-premium"] .showcase-home-shell .footer-copyright {
+  color: rgba(255, 255, 255, 0.64);
+}
+
+:root[data-preview-theme="gold-white-premium"] .showcase-home-shell .back-to-top {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.62);
+}
