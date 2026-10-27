@@ -77,22 +77,33 @@ export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHo
 
   return (
     <main className="instagram-home-shell showcase-home-shell">
-      <header className="instagram-home-header">
-        <Link className="instagram-home-roster" href="/roster">
-          Roster <span aria-hidden="true">↗</span>
-        </Link>
+      {withFeatureBanner ? (
+        <>
+          <header className="instagram-home-header highlight-video-nav">
+            <h1 id="showcase-home-title" className="sr-only">MGMT NATION and SALXCO</h1>
+            <AnimatedThemeLogo className="highlight-video-nav-logo" />
+            <Link className="instagram-home-roster" href="/roster">
+              Roster <span aria-hidden="true">↗</span>
+            </Link>
+          </header>
+          <HighlightVideoBanner />
+        </>
+      ) : (
+        <header className="instagram-home-header">
+          <Link className="instagram-home-roster" href="/roster">
+            Roster <span aria-hidden="true">↗</span>
+          </Link>
 
-        <section className="intro instagram-home-intro" aria-labelledby="showcase-home-title">
-          <h1 id="showcase-home-title" className="sr-only">MGMT NATION and SALXCO</h1>
-          <AnimatedThemeLogo className="intro-theme-logo" />
-          <p className="intro-tagline">
-            <span>Full Service Management</span>
-            <span>For World-Class Talent.</span>
-          </p>
-        </section>
-      </header>
-
-      {withFeatureBanner && <HighlightVideoBanner />}
+          <section className="intro instagram-home-intro" aria-labelledby="showcase-home-title">
+            <h1 id="showcase-home-title" className="sr-only">MGMT NATION and SALXCO</h1>
+            <AnimatedThemeLogo className="intro-theme-logo" />
+            <p className="intro-tagline">
+              <span>Full Service Management</span>
+              <span>For World-Class Talent.</span>
+            </p>
+          </section>
+        </header>
+      )}
 
       <section className="instagram-feed-section" aria-label="SALXCO magazine and partnership showcase">
         <div className="instagram-feed-grid showcase-feed-grid">

@@ -17,11 +17,6 @@ export function HighlightVideoBanner() {
 
   return (
     <section className="highlight-video-banner" aria-labelledby="highlight-video-title">
-      <div className="highlight-video-heading">
-        <span>Featured</span>
-        <span>Hover or tap to expand</span>
-      </div>
-
       <div
         className={`highlight-video-card${isExpanded ? " is-expanded" : ""}`}
         onMouseEnter={openBanner}
