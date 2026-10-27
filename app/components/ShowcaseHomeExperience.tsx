@@ -231,6 +231,12 @@ export function ShowcaseHomeExperience({
           <Link className="theme-logo footer-theme-logo" href="/" aria-label="Go to home page">
             <img className="theme-logo-underlay" src="/mgmt-nation-logo-gold.svg" alt="" aria-hidden="true" />
             <span className="theme-logo-front" aria-hidden="true" />
+            <img
+              className="footer-theme-logo-white"
+              src="/mgmt-nation-logo-white-footer.png"
+              alt=""
+              aria-hidden="true"
+            />
           </Link>
           <p className="footer-copyright">
             <span>Copyright © 2026 MGMT NATION.</span>

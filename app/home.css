@@ -922,6 +922,10 @@
   filter: invert(1);
 }
 
+.footer-theme-logo-white {
+  display: none;
+}
+
 /* Gold-primary preview: #b6944a with black and white supporting colors. */
 .showcase-home-shell.colorway-gold {
   background: #b6944a;
@@ -969,13 +973,9 @@
 }
 
 .showcase-home-shell.colorway-gold .instagram-home-footer {
-  margin-right: calc(clamp(14px, 3vw, 48px) * -1);
-  margin-left: calc(clamp(14px, 3vw, 48px) * -1);
-  padding-right: clamp(14px, 3vw, 48px);
-  padding-left: clamp(14px, 3vw, 48px);
   color: rgba(0, 0, 0, 0.72);
-  border-top-color: rgba(0, 0, 0, 0.18);
-  background: #fff;
+  border-top-color: rgba(0, 0, 0, 0.78);
+  background: #b6944a;
 }
 
 :root[data-preview-theme="gold-white-premium"] .colorway-gold .footer-copyright {
@@ -991,12 +991,14 @@
   filter: none;
 }
 
-.showcase-home-shell.colorway-gold .footer-theme-logo .theme-logo-underlay {
-  filter: brightness(0) saturate(100%) invert(62%) sepia(31%) saturate(956%) hue-rotate(3deg) brightness(89%) contrast(85%);
+.showcase-home-shell.colorway-gold .footer-theme-logo .theme-logo-underlay,
+.showcase-home-shell.colorway-gold .footer-theme-logo .theme-logo-front {
+  display: none;
 }
 
-.showcase-home-shell.colorway-gold .footer-theme-logo .theme-logo-front {
-  background: #000;
+.showcase-home-shell.colorway-gold .footer-theme-logo-white {
+  display: block;
+  object-fit: contain;
 }
 
 .colorway-gold .highlight-video-nav-logo::before {
@@ -1004,7 +1006,7 @@
 }
 
 .colorway-gold .highlight-video-nav-logo .theme-logo-video {
-  filter: sepia(1) saturate(1.85) hue-rotate(358deg) brightness(0.82) contrast(1.04);
+  filter: brightness(0) saturate(100%) invert(62%) sepia(31%) saturate(956%) hue-rotate(3deg) brightness(89%) contrast(85%);
 }
 
 .colorway-gold .highlight-video-nav-logo .theme-logo-static img {
