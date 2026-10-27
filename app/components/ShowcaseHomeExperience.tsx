@@ -7,6 +7,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { lifestyleMediaItems } from "../data/lifestyleMedia";
 import { partnershipItems } from "../data/partnerships";
 import { AnimatedThemeLogo } from "./AnimatedThemeLogo";
+import { VerticalFeatureBanner } from "./VerticalFeatureBanner";
 
 const instagramUrl = "https://www.instagram.com/salxco";
 const initialItemCount = 24;
@@ -45,7 +46,11 @@ for (let index = 0; index < archiveLength; index += 1) {
   }
 }
 
-export function ShowcaseHomeExperience() {
+type ShowcaseHomeExperienceProps = {
+  withFeatureBanner?: boolean;
+};
+
+export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHomeExperienceProps) {
   const [visibleCount, setVisibleCount] = useState(initialItemCount);
   const loadMoreRef = useRef<HTMLDivElement>(null);
   const visibleItems = useMemo(
@@ -86,6 +91,8 @@ export function ShowcaseHomeExperience() {
           </p>
         </section>
       </header>
+
+      {withFeatureBanner && <VerticalFeatureBanner />}
 
       <section className="instagram-feed-section" aria-label="SALXCO magazine and partnership showcase">
         <div className="instagram-feed-grid showcase-feed-grid">
