@@ -313,11 +313,13 @@
 }
 
 .highlight-video-copy p {
-  margin-bottom: 8px;
+  margin-top: 8px;
+  margin-bottom: 0;
   font-size: 9px;
   font-weight: 760;
   letter-spacing: 0.14em;
   opacity: 0.76;
+  text-transform: none;
 }
 
 .highlight-video-copy h2 {
@@ -757,7 +759,7 @@
   }
 
   .highlight-video-copy p {
-    margin-bottom: 5px;
+    margin-top: 5px;
     font-size: 7px;
   }
 

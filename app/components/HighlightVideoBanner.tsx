@@ -56,8 +56,8 @@ export function HighlightVideoBanner() {
         </button>
 
         <div className="highlight-video-copy" id="highlight-video-details">
-          <p>Nespresso x Samra Origins</p>
           <h2 id="highlight-video-title">The Weeknd</h2>
+          <p>NESPRESSO x SAMRA ORIGINS</p>
         </div>
 
         <a className="highlight-video-cta" href={campaignUrl} target="_blank" rel="noreferrer">
