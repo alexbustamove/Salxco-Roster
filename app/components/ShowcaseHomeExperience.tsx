@@ -7,7 +7,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { lifestyleMediaItems } from "../data/lifestyleMedia";
 import { partnershipItems } from "../data/partnerships";
 import { AnimatedThemeLogo } from "./AnimatedThemeLogo";
-import { VerticalFeatureBanner } from "./VerticalFeatureBanner";
+import { HighlightVideoBanner } from "./HighlightVideoBanner";
 
 const instagramUrl = "https://www.instagram.com/salxco";
 const initialItemCount = 24;
@@ -92,7 +92,7 @@ export function ShowcaseHomeExperience({ withFeatureBanner = false }: ShowcaseHo
         </section>
       </header>
 
-      {withFeatureBanner && <VerticalFeatureBanner />}
+      {withFeatureBanner && <HighlightVideoBanner />}
 
       <section className="instagram-feed-section" aria-label="SALXCO magazine and partnership showcase">
         <div className="instagram-feed-grid showcase-feed-grid">
