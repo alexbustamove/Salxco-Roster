@@ -156,23 +156,6 @@ export function HighlightVideoBanner() {
           </div>
         </div>
 
-        <button
-          className="highlight-video-slider-control is-previous"
-          type="button"
-          aria-label="Previous campaign"
-          onClick={() => goToSlide(activeIndex - 1)}
-        >
-          <span aria-hidden="true">‹</span>
-        </button>
-        <button
-          className="highlight-video-slider-control is-next"
-          type="button"
-          aria-label="Next campaign"
-          onClick={() => goToSlide(activeIndex + 1)}
-        >
-          <span aria-hidden="true">›</span>
-        </button>
-
         <div className="highlight-video-pagination" aria-label="Choose a campaign">
           {highlights.map((highlight, index) => (
             <button

@@ -449,33 +449,6 @@
   line-height: 0.9;
 }
 
-.highlight-video-slider-control {
-  position: absolute;
-  z-index: 4;
-  top: 50%;
-  display: grid;
-  width: 42px;
-  height: 54px;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  background: rgba(0, 0, 0, 0.24);
-  color: #fff;
-  cursor: pointer;
-  font: inherit;
-  font-size: 30px;
-  transform: translateY(-50%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.highlight-video-slider-control.is-previous {
-  left: 10px;
-}
-
-.highlight-video-slider-control.is-next {
-  right: 10px;
-}
-
 .highlight-video-pagination {
   position: absolute;
   z-index: 4;
@@ -906,20 +879,6 @@
     font-size: 34px;
   }
 
-  .highlight-video-slider-control {
-    width: 32px;
-    height: 44px;
-    font-size: 24px;
-  }
-
-  .highlight-video-slider-control.is-previous {
-    left: 6px;
-  }
-
-  .highlight-video-slider-control.is-next {
-    right: 6px;
-  }
-
   .highlight-video-pagination {
     bottom: 8px;
   }
@@ -1320,7 +1279,6 @@
 
 /* Keep the showcase page's visual language sharp and architectural. */
 .showcase-home-shell .instagram-home-roster,
-.showcase-home-shell .highlight-video-slider-control,
 .showcase-home-shell .highlight-video-cta,
 .showcase-home-shell .horizontal-feature-card,
 .showcase-home-shell .horizontal-feature-link,
