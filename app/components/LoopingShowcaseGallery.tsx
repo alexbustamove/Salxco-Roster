@@ -15,6 +15,7 @@ type LoopItem = {
 };
 
 type LoopingShowcaseRowProps = {
+  category: "brand" | "magazine" | "accolade";
   direction: 1 | -1;
   items: LoopItem[];
   label: string;
@@ -32,15 +33,15 @@ const accoladeRows = splitIntoRows(
 );
 
 const rows = [
-  { label: "Brand Partnerships", items: brandRows[0] },
-  { label: "Brand Partnerships", items: brandRows[1] },
-  { label: "Magazine Covers", items: magazineRows[0] },
-  { label: "Magazine Covers", items: magazineRows[1] },
-  { label: "Accolades", items: accoladeRows[0] },
-  { label: "Accolades", items: accoladeRows[1] },
+  { category: "brand", label: "Brand Partnerships", items: brandRows[0] },
+  { category: "brand", label: "Brand Partnerships", items: brandRows[1] },
+  { category: "magazine", label: "Magazine Covers", items: magazineRows[0] },
+  { category: "magazine", label: "Magazine Covers", items: magazineRows[1] },
+  { category: "accolade", label: "Accolades", items: accoladeRows[0] },
+  { category: "accolade", label: "Accolades", items: accoladeRows[1] },
 ] as const;
 
-function LoopingShowcaseRow({ direction, items, label }: LoopingShowcaseRowProps) {
+function LoopingShowcaseRow({ category, direction, items, label }: LoopingShowcaseRowProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const loopMetricsRef = useRef({ cycleWidth: 0, middleStart: 0 });
   const interactionTimerRef = useRef<number | null>(null);
@@ -130,7 +131,7 @@ function LoopingShowcaseRow({ direction, items, label }: LoopingShowcaseRowProps
   }, []);
 
   return (
-    <section className="showcase-loop-row" aria-label={label}>
+    <section className={`showcase-loop-row showcase-loop-row-${category}`} aria-label={label}>
       <div
         ref={viewportRef}
         className={`showcase-loop-viewport${isDragging ? " is-dragging" : ""}`}
@@ -206,6 +207,7 @@ export function LoopingShowcaseGallery() {
     <div className="showcase-loop-gallery">
       {rows.map((row, index) => (
         <LoopingShowcaseRow
+          category={row.category}
           direction={index % 2 === 0 ? 1 : -1}
           items={[...row.items]}
           label={row.label}

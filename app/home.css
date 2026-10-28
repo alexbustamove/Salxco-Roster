@@ -401,13 +401,13 @@
   --showcase-loop-border: rgba(255, 255, 255, 0.34);
 
   overflow: hidden;
-  padding: 0 0 clamp(60px, 7vw, 96px);
+  padding: 12px 0 clamp(60px, 7vw, 96px);
   background: inherit;
 }
 
 .showcase-loop-gallery {
   display: grid;
-  gap: clamp(18px, 2.2vw, 32px);
+  gap: 8px;
 }
 
 .showcase-loop-row {
@@ -471,6 +471,11 @@
   height: 100%;
   object-fit: cover;
   transition: filter 260ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.showcase-loop-row-magazine .showcase-loop-card img {
+  object-position: center top;
+  transform-origin: center top;
 }
 
 .showcase-loop-card-title {
@@ -539,10 +544,6 @@
   .horizontal-feature-banner + .showcase-loop-section {
     margin-right: calc(10px - var(--showcase-shell-gutter));
     margin-left: calc(10px - var(--showcase-shell-gutter));
-  }
-
-  .showcase-loop-gallery {
-    gap: 20px;
   }
 
   .showcase-loop-card {
