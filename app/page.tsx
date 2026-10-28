@@ -7,6 +7,17 @@ export const metadata: Metadata = {
   description: "Full service management for world-class talent.",
 };
 
-export default function Home() {
-  return <ShowcaseHomeExperience colorway="gold" withFeatureBanner />;
+type HomeProps = {
+  searchParams: Promise<{ colorway?: string }>;
+};
+
+export default async function Home({ searchParams }: HomeProps) {
+  const { colorway } = await searchParams;
+
+  return (
+    <ShowcaseHomeExperience
+      colorway={colorway === "black" ? "black" : "gold"}
+      withFeatureBanner
+    />
+  );
 }

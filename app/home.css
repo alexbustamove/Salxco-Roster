@@ -1005,6 +1005,26 @@
   display: none;
 }
 
+/* Black-primary option: monochrome surfaces with the same compact showcase fold. */
+.colorway-black .horizontal-feature-banner {
+  padding-bottom: 0;
+  background: #000;
+}
+
+.colorway-black .horizontal-feature-viewport {
+  padding-bottom: 0;
+  background: #070707;
+}
+
+.colorway-black .horizontal-feature-track {
+  padding-top: 18px;
+}
+
+.colorway-black .instagram-feed-section {
+  border-top-color: rgba(255, 255, 255, 0.32);
+  background: #000;
+}
+
 /* Gold-primary preview: #b6944a with black and white supporting colors. */
 .showcase-home-shell.colorway-gold {
   background: #b6944a;
@@ -1120,6 +1140,7 @@
     width: 54px;
   }
 
+  .colorway-black .horizontal-feature-track,
   .colorway-gold .horizontal-feature-track {
     padding-top: 12px;
   }
