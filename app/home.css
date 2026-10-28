@@ -1303,6 +1303,11 @@
   padding-top: 18px;
 }
 
+.colorway-black .horizontal-feature-card,
+.colorway-black .horizontal-feature-card.is-active {
+  box-shadow: none;
+}
+
 .colorway-black .instagram-feed-section {
   border-top-color: rgba(255, 255, 255, 0.32);
   background: #000;

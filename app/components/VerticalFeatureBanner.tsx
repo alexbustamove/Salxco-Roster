@@ -49,7 +49,13 @@ export function VerticalFeatureBanner() {
   const selectedFeature = selectedIndex === null ? null : features[selectedIndex];
   const canHover = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
+  const clearActiveCard = () => {
+    setHoveredCard(null);
+    setPinnedCard(null);
+  };
+
   const beginInteraction = () => {
+    clearActiveCard();
     setIsInteracting(true);
     if (interactionTimerRef.current !== null) window.clearTimeout(interactionTimerRef.current);
   };
@@ -162,7 +168,10 @@ export function VerticalFeatureBanner() {
         onPointerDown={beginInteraction}
         onPointerUp={endInteraction}
         onPointerCancel={endInteraction}
-        onWheel={endInteraction}
+        onWheel={() => {
+          clearActiveCard();
+          endInteraction();
+        }}
         onScroll={normalizeLoop}
       >
         <div className="horizontal-feature-track">
