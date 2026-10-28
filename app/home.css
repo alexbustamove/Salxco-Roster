@@ -1025,6 +1025,25 @@
   background: #000;
 }
 
+.colorway-black .highlight-video-nav-logo::before {
+  display: none;
+}
+
+.showcase-home-shell.colorway-black .footer-theme-logo {
+  filter: none;
+}
+
+.showcase-home-shell.colorway-black .footer-theme-logo .theme-logo-underlay,
+.showcase-home-shell.colorway-black .footer-theme-logo .theme-logo-front {
+  display: none;
+}
+
+.showcase-home-shell.colorway-black .footer-theme-logo-white {
+  display: block;
+  object-fit: contain;
+  filter: none;
+}
+
 /* Gold-primary preview: #b6944a with black and white supporting colors. */
 .showcase-home-shell.colorway-gold {
   background: #b6944a;
