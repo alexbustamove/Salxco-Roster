@@ -47,7 +47,6 @@ const highlights: readonly Highlight[] = [
 
 export function HighlightVideoBanner() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPinned, setIsPinned] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const viewportRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
@@ -58,7 +57,7 @@ export function HighlightVideoBanner() {
     moved: false,
   });
   const suppressClickRef = useRef(false);
-  const isExpanded = isPinned;
+  const isExpanded = true;
   const activeHighlight = highlights[activeIndex];
 
   const goToSlide = (index: number) => {
@@ -68,10 +67,6 @@ export function HighlightVideoBanner() {
     const nextIndex = (index + highlights.length) % highlights.length;
     viewport.scrollTo({ left: viewport.clientWidth * nextIndex, behavior: "auto" });
     setActiveIndex(nextIndex);
-  };
-
-  const playActiveVideo = () => {
-    void videoRefs.current[activeIndex]?.play().catch(() => undefined);
   };
 
   useEffect(() => {
@@ -89,25 +84,11 @@ export function HighlightVideoBanner() {
     <section className="highlight-video-banner" aria-label="Featured campaign highlights">
       <div
         className={`highlight-video-card${isExpanded ? " is-expanded" : ""}`}
-        role="button"
-        tabIndex={0}
-        aria-expanded={isExpanded}
-        aria-label={`${isExpanded ? "Collapse" : "Expand"} ${activeHighlight.artist} — ${activeHighlight.campaign}`}
+        aria-label={`${activeHighlight.artist} — ${activeHighlight.campaign}`}
         onClickCapture={(event) => {
           if (!suppressClickRef.current) return;
           event.preventDefault();
           event.stopPropagation();
-        }}
-        onClick={(event) => {
-          if ((event.target as HTMLElement).closest("a, button")) return;
-          setIsPinned((current) => !current);
-          playActiveVideo();
-        }}
-        onKeyDown={(event) => {
-          if (event.key !== "Enter" && event.key !== " ") return;
-          event.preventDefault();
-          setIsPinned((current) => !current);
-          playActiveVideo();
         }}
       >
         <div

@@ -407,6 +407,27 @@
 
 .showcase-loop-gallery {
   display: grid;
+  gap: clamp(28px, 3.2vw, 46px);
+}
+
+.showcase-loop-category {
+  min-width: 0;
+}
+
+.showcase-loop-category-title {
+  margin: 0 0 10px;
+  padding: 0 0 9px;
+  border-bottom: 1px solid var(--showcase-loop-border);
+  color: #fff;
+  font-size: clamp(14px, 1.45vw, 22px);
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.showcase-loop-category-rows {
+  display: grid;
   gap: 8px;
 }
 
@@ -500,6 +521,10 @@
   --showcase-loop-border: rgba(0, 0, 0, 0.76);
 
   background: #b6944a;
+}
+
+.colorway-gold .showcase-loop-category-title {
+  color: #000;
 }
 
 .colorway-black .showcase-loop-section {

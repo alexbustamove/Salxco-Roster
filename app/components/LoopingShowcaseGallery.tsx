@@ -32,13 +32,10 @@ const accoladeRows = splitIntoRows(
   accoladeItems.map((item) => ({ ...item, href: item.image })),
 );
 
-const rows = [
-  { category: "brand", label: "Brand Partnerships", items: brandRows[0] },
-  { category: "brand", label: "Brand Partnerships", items: brandRows[1] },
-  { category: "magazine", label: "Magazine Covers", items: magazineRows[0] },
-  { category: "magazine", label: "Magazine Covers", items: magazineRows[1] },
-  { category: "accolade", label: "Accolades", items: accoladeRows[0] },
-  { category: "accolade", label: "Accolades", items: accoladeRows[1] },
+const sections = [
+  { category: "brand", title: "Brand Partnerships", rows: brandRows },
+  { category: "magazine", title: "Media", rows: magazineRows },
+  { category: "accolade", title: "Achievements", rows: accoladeRows },
 ] as const;
 
 function LoopingShowcaseRow({ category, direction, items, label }: LoopingShowcaseRowProps) {
@@ -204,14 +201,34 @@ function LoopingShowcaseRow({ category, direction, items, label }: LoopingShowca
 export function LoopingShowcaseGallery() {
   return (
     <div className="showcase-loop-gallery">
-      {rows.map((row, index) => (
-        <LoopingShowcaseRow
-          category={row.category}
-          direction={index % 2 === 0 ? 1 : -1}
-          items={[...row.items]}
-          label={row.label}
-          key={`${row.label}-${index}`}
-        />
+      {sections.map((section, sectionIndex) => (
+        <section
+          className={`showcase-loop-category showcase-loop-category-${section.category}`}
+          aria-labelledby={`showcase-loop-category-${section.category}`}
+          key={section.category}
+        >
+          <h2
+            className="showcase-loop-category-title"
+            id={`showcase-loop-category-${section.category}`}
+          >
+            {section.title}
+          </h2>
+          <div className="showcase-loop-category-rows">
+            {section.rows.map((items, rowIndex) => {
+              const absoluteIndex = sectionIndex * 2 + rowIndex;
+
+              return (
+                <LoopingShowcaseRow
+                  category={section.category}
+                  direction={absoluteIndex % 2 === 0 ? 1 : -1}
+                  items={[...items]}
+                  label={`${section.title} row ${rowIndex + 1}`}
+                  key={`${section.category}-${rowIndex}`}
+                />
+              );
+            })}
+          </div>
+        </section>
       ))}
     </div>
   );
