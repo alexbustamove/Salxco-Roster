@@ -16,7 +16,6 @@ type LoopItem = {
 
 type LoopingShowcaseRowProps = {
   direction: 1 | -1;
-  index: number;
   items: LoopItem[];
   label: string;
 };
@@ -41,7 +40,7 @@ const rows = [
   { label: "Accolades", items: accoladeRows[1] },
 ] as const;
 
-function LoopingShowcaseRow({ direction, index, items, label }: LoopingShowcaseRowProps) {
+function LoopingShowcaseRow({ direction, items, label }: LoopingShowcaseRowProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const loopMetricsRef = useRef({ cycleWidth: 0, middleStart: 0 });
   const interactionTimerRef = useRef<number | null>(null);
@@ -131,11 +130,7 @@ function LoopingShowcaseRow({ direction, index, items, label }: LoopingShowcaseR
   }, []);
 
   return (
-    <section className="showcase-loop-row" aria-labelledby={`showcase-loop-label-${index}`}>
-      <div className="showcase-loop-row-heading">
-        <h2 id={`showcase-loop-label-${index}`}>{label}</h2>
-        <span>{String(index + 1).padStart(2, "0")} / 06</span>
-      </div>
+    <section className="showcase-loop-row" aria-label={label}>
       <div
         ref={viewportRef}
         className={`showcase-loop-viewport${isDragging ? " is-dragging" : ""}`}
@@ -212,7 +207,6 @@ export function LoopingShowcaseGallery() {
       {rows.map((row, index) => (
         <LoopingShowcaseRow
           direction={index % 2 === 0 ? 1 : -1}
-          index={index}
           items={[...row.items]}
           label={row.label}
           key={`${row.label}-${index}`}
