@@ -1,73 +1,190 @@
 "use client";
 
-import { useRef, useState } from "react";
+/* eslint-disable @next/next/no-img-element */
 
-const campaignUrl = "https://www.nespresso.com/us/en/samra-origins";
+import { useEffect, useRef, useState } from "react";
+
+type Highlight = {
+  artist: string;
+  campaign: string;
+  image: string;
+  imagePosition?: string;
+  video?: string;
+  href: string;
+};
+
+const highlights: readonly Highlight[] = [
+  {
+    artist: "The Weeknd",
+    campaign: "Nespresso",
+    image: "https://salxco.com/wp-content/uploads/2025/06/NESPRESSO-650x650.jpg",
+    video: "/the-weeknd-nespresso.mp4",
+    href: "https://www.nespresso.com/us/en/samra-origins",
+  },
+  {
+    artist: "French Montana",
+    campaign: "Ballon D'Or",
+    image: "/artists/9_French_Montana.jpg",
+    imagePosition: "center 24%",
+    video: "/campaign-clips/french-montana-ballon-dor.mp4",
+    href: "https://www.instagram.com/frenchmontana/",
+  },
+  {
+    artist: "Swedish House Mafia",
+    campaign: "IKEA",
+    image: "https://salxco.com/wp-content/uploads/2025/04/2021-IKEA-1-650x650.jpg",
+    video: "/campaign-clips/swedish-house-mafia-ikea.mp4",
+    href: "https://www.bloomberg.com/news/articles/2022-09-09/ikea-s-swedish-house-mafia-furniture-collection-is-monotone-but-not-boring",
+  },
+  {
+    artist: "Doja Cat",
+    campaign: "Taco Bell",
+    image: "https://salxco.com/wp-content/uploads/2025/04/2022-TACO-BELL-1-650x650.jpg",
+    video: "/campaign-clips/doja-cat-taco-bell.m4v",
+    href: "https://pitchfork.com/news/doja-cat-covers-hole-celebrity-skin-for-taco-bell-super-bowl-2022-ad-watch/",
+  },
+];
 
 export function HighlightVideoBanner() {
-  const [isHovered, setIsHovered] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isPinned, setIsPinned] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const isExpanded = isHovered || isPinned;
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
+  const isExpanded = isPinned;
+  const activeHighlight = highlights[activeIndex];
 
-  const openBanner = () => {
-    setIsHovered(true);
-    void videoRef.current?.play().catch(() => undefined);
+  const goToSlide = (index: number) => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const nextIndex = (index + highlights.length) % highlights.length;
+    viewport.scrollTo({ left: viewport.clientWidth * nextIndex, behavior: "auto" });
+    setActiveIndex(nextIndex);
   };
 
+  const playActiveVideo = () => {
+    void videoRefs.current[activeIndex]?.play().catch(() => undefined);
+  };
+
+  useEffect(() => {
+    videoRefs.current.forEach((video, index) => {
+      if (!video) return;
+      if (index === activeIndex) {
+        void video.play().catch(() => undefined);
+      } else {
+        video.pause();
+      }
+    });
+  }, [activeIndex]);
+
   return (
-    <section className="highlight-video-banner" aria-labelledby="highlight-video-title">
+    <section className="highlight-video-banner" aria-label="Featured campaign highlights">
       <div
         className={`highlight-video-card${isExpanded ? " is-expanded" : ""}`}
-        onMouseEnter={openBanner}
-        onMouseLeave={() => setIsHovered(false)}
-        onBlurCapture={(event) => {
-          if (!event.currentTarget.contains(event.relatedTarget)) setIsHovered(false);
+        role="button"
+        tabIndex={0}
+        aria-expanded={isExpanded}
+        aria-label={`${isExpanded ? "Collapse" : "Expand"} ${activeHighlight.artist} — ${activeHighlight.campaign}`}
+        onClick={(event) => {
+          if ((event.target as HTMLElement).closest("a, button")) return;
+          setIsPinned((current) => !current);
+          playActiveVideo();
+        }}
+        onKeyDown={(event) => {
+          if (event.key !== "Enter" && event.key !== " ") return;
+          event.preventDefault();
+          setIsPinned((current) => !current);
+          playActiveVideo();
         }}
       >
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="https://salxco.com/wp-content/uploads/2025/06/NESPRESSO-650x650.jpg"
-          aria-label="The Weeknd x Nespresso campaign video"
-        >
-          <source src="/the-weeknd-nespresso.mp4" type="video/mp4" />
-        </video>
-
-        <span className="highlight-video-scrim" aria-hidden="true" />
-
-        <button
-          className="highlight-video-expand"
-          type="button"
-          aria-expanded={isExpanded}
-          aria-controls="highlight-video-details"
-          aria-label={`${isExpanded ? "Collapse" : "Expand"} The Weeknd x Nespresso highlight`}
-          onClick={() => {
-            if (isExpanded) {
-              setIsHovered(false);
-              setIsPinned(false);
-              return;
-            }
-
-            setIsPinned(true);
-            void videoRef.current?.play().catch(() => undefined);
+        <div
+          ref={viewportRef}
+          className="highlight-video-viewport"
+          onScroll={(event) => {
+            const viewport = event.currentTarget;
+            const nextIndex = Math.round(viewport.scrollLeft / Math.max(viewport.clientWidth, 1));
+            if (nextIndex !== activeIndex) setActiveIndex(nextIndex);
           }}
         >
-          <span aria-hidden="true">{isExpanded ? "—" : "+"}</span>
-        </button>
+          <div className="highlight-video-track">
+            {highlights.map((highlight, index) => (
+              <article
+                className="highlight-video-slide"
+                aria-hidden={index === activeIndex ? undefined : "true"}
+                key={`${highlight.artist}-${highlight.campaign}`}
+              >
+                {highlight.video ? (
+                  <video
+                    ref={(node) => { videoRefs.current[index] = node; }}
+                    autoPlay={index === 0}
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    poster={highlight.image}
+                    style={{ objectPosition: highlight.imagePosition }}
+                    aria-label={`${highlight.artist} — ${highlight.campaign} campaign video`}
+                  >
+                    <source src={highlight.video} />
+                  </video>
+                ) : (
+                  <img
+                    src={highlight.image}
+                    alt=""
+                    style={{ objectPosition: highlight.imagePosition }}
+                  />
+                )}
 
-        <div className="highlight-video-copy" id="highlight-video-details">
-          <p>The Weeknd</p>
-          <h2 id="highlight-video-title">Nespresso</h2>
+                <span className="highlight-video-scrim" aria-hidden="true" />
+
+                <div className="highlight-video-copy">
+                  <p>{highlight.artist}</p>
+                  <h2>{highlight.campaign}</h2>
+                </div>
+
+                <a
+                  className="highlight-video-cta"
+                  href={highlight.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  tabIndex={index === activeIndex && isExpanded ? 0 : -1}
+                >
+                  View campaign <span aria-hidden="true">↗</span>
+                </a>
+              </article>
+            ))}
+          </div>
         </div>
 
-        <a className="highlight-video-cta" href={campaignUrl} target="_blank" rel="noreferrer">
-          Explore the campaign <span aria-hidden="true">↗</span>
-        </a>
+        <button
+          className="highlight-video-slider-control is-previous"
+          type="button"
+          aria-label="Previous campaign"
+          onClick={() => goToSlide(activeIndex - 1)}
+        >
+          <span aria-hidden="true">‹</span>
+        </button>
+        <button
+          className="highlight-video-slider-control is-next"
+          type="button"
+          aria-label="Next campaign"
+          onClick={() => goToSlide(activeIndex + 1)}
+        >
+          <span aria-hidden="true">›</span>
+        </button>
+
+        <div className="highlight-video-pagination" aria-label="Choose a campaign">
+          {highlights.map((highlight, index) => (
+            <button
+              className={index === activeIndex ? "is-active" : ""}
+              type="button"
+              aria-label={`Show ${highlight.artist} — ${highlight.campaign}`}
+              aria-current={index === activeIndex ? "true" : undefined}
+              onClick={() => goToSlide(index)}
+              key={`${highlight.campaign}-pagination`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

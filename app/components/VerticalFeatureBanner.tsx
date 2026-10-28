@@ -216,9 +216,6 @@ export function VerticalFeatureBanner() {
                         <span>{feature.artist}</span>
                         <strong>{feature.campaign}</strong>
                       </span>
-                      <span className="horizontal-feature-symbol" aria-hidden="true">
-                        {isActive ? "—" : "+"}
-                      </span>
                     </button>
 
                     <button
