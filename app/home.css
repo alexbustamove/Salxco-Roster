@@ -456,15 +456,6 @@
   background: #090909;
 }
 
-.showcase-loop-card::after {
-  position: absolute;
-  inset: 50% 0 0;
-  content: "";
-  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.72));
-  opacity: 0;
-  transition: opacity 220ms ease;
-}
-
 .showcase-loop-card img {
   display: block;
   width: 100%;
@@ -476,22 +467,6 @@
 .showcase-loop-row-magazine .showcase-loop-card img {
   object-position: center top;
   transform-origin: center top;
-}
-
-.showcase-loop-card-title {
-  position: absolute;
-  z-index: 2;
-  right: 14px;
-  bottom: 12px;
-  left: 14px;
-  color: #fff;
-  font-size: clamp(8px, 0.75vw, 11px);
-  font-weight: 720;
-  letter-spacing: 0.08em;
-  opacity: 0;
-  text-transform: uppercase;
-  transform: translateY(8px);
-  transition: opacity 220ms ease, transform 220ms ease;
 }
 
 .showcase-loop-card-arrow {
@@ -510,18 +485,9 @@
   transition: opacity 220ms ease;
 }
 
-.showcase-loop-card:hover::after,
-.showcase-loop-card:focus-visible::after,
-.showcase-loop-card:hover .showcase-loop-card-title,
-.showcase-loop-card:focus-visible .showcase-loop-card-title,
 .showcase-loop-card:hover .showcase-loop-card-arrow,
 .showcase-loop-card:focus-visible .showcase-loop-card-arrow {
   opacity: 1;
-}
-
-.showcase-loop-card:hover .showcase-loop-card-title,
-.showcase-loop-card:focus-visible .showcase-loop-card-title {
-  transform: translateY(0);
 }
 
 .showcase-loop-card:hover img,
@@ -550,7 +516,6 @@
     flex-basis: 42vw;
   }
 
-  .showcase-loop-card-title,
   .showcase-loop-card-arrow {
     display: none;
   }
@@ -558,7 +523,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .showcase-loop-card img,
-  .showcase-loop-card-title,
   .showcase-loop-card-arrow {
     transition: none;
   }
