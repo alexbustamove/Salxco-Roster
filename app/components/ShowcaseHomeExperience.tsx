@@ -209,12 +209,6 @@ export function ShowcaseHomeExperience({
               <Link href="/?colorway=black" tabIndex={isMenuOpen ? 0 : -1} onClick={() => setIsMenuOpen(false)}>
                 Black colorway
               </Link>
-              <Link href="/artists" tabIndex={isMenuOpen ? 0 : -1} onClick={() => setIsMenuOpen(false)}>
-                Artists
-              </Link>
-              <Link href="/roster" tabIndex={isMenuOpen ? 0 : -1} onClick={() => setIsMenuOpen(false)}>
-                Roster
-              </Link>
             </nav>
           </header>
           <HighlightVideoBanner />
@@ -222,10 +216,6 @@ export function ShowcaseHomeExperience({
         </>
       ) : (
         <header className="instagram-home-header">
-          <Link className="instagram-home-roster" href="/roster">
-            Roster <span aria-hidden="true">↗</span>
-          </Link>
-
           <section className="intro instagram-home-intro" aria-labelledby="showcase-home-title">
             <h1 id="showcase-home-title" className="sr-only">MGMT NATION and SALXCO</h1>
             <AnimatedThemeLogo className="intro-theme-logo" />

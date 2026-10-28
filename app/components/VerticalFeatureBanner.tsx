@@ -41,11 +41,11 @@ export function VerticalFeatureBanner() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const interactionTimerRef = useRef<number | null>(null);
   const loopMetricsRef = useRef({ cycleWidth: 0, middleStart: 0 });
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [pinnedIndex, setPinnedIndex] = useState<number | null>(null);
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const [pinnedCard, setPinnedCard] = useState<string | null>(null);
   const [isInteracting, setIsInteracting] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const activeIndex = hoveredIndex ?? pinnedIndex;
+  const activeCard = hoveredCard ?? pinnedCard;
   const selectedFeature = selectedIndex === null ? null : features[selectedIndex];
   const canHover = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
@@ -121,7 +121,7 @@ export function VerticalFeatureBanner() {
       const elapsed = Math.min(time - previousTime, 40);
       previousTime = time;
 
-      if (!isInteracting && activeIndex === null && selectedIndex === null) {
+      if (!isInteracting && activeCard === null && selectedIndex === null) {
         viewport.scrollLeft += elapsed * 0.035;
         normalizeLoop();
       }
@@ -131,7 +131,7 @@ export function VerticalFeatureBanner() {
 
     frame = window.requestAnimationFrame(move);
     return () => window.cancelAnimationFrame(frame);
-  }, [activeIndex, isInteracting, selectedIndex]);
+  }, [activeCard, isInteracting, selectedIndex]);
 
   useEffect(() => {
     if (selectedIndex === null) return;
@@ -157,8 +157,8 @@ export function VerticalFeatureBanner() {
     <section className="horizontal-feature-banner" aria-label="Featured SALXCO work">
       <div
         ref={viewportRef}
-        className={`horizontal-feature-viewport${activeIndex !== null ? " is-paused" : ""}`}
-        onMouseLeave={() => setHoveredIndex(null)}
+        className={`horizontal-feature-viewport${activeCard !== null ? " is-paused" : ""}`}
+        onMouseLeave={() => setHoveredCard(null)}
         onPointerDown={beginInteraction}
         onPointerUp={endInteraction}
         onPointerCancel={endInteraction}
@@ -173,20 +173,21 @@ export function VerticalFeatureBanner() {
               key={groupIndex}
             >
               {features.map((feature, index) => {
-                const isActive = activeIndex === index;
+                const cardKey = `${groupIndex}-${index}`;
+                const isActive = activeCard === cardKey;
 
                 return (
                   <article
                     className={`horizontal-feature-card${isActive ? " is-active" : ""}`}
                     key={`${groupIndex}-${feature.artist}-${feature.campaign}`}
                     onMouseEnter={() => {
-                      if (canHover()) setHoveredIndex(index);
+                      if (canHover()) setHoveredCard(cardKey);
                     }}
                     onFocusCapture={() => {
-                      if (canHover()) setHoveredIndex(index);
+                      if (canHover()) setHoveredCard(cardKey);
                     }}
                     onBlurCapture={(event) => {
-                      if (!event.currentTarget.contains(event.relatedTarget)) setHoveredIndex(null);
+                      if (!event.currentTarget.contains(event.relatedTarget)) setHoveredCard(null);
                     }}
                   >
                     <button
@@ -196,8 +197,8 @@ export function VerticalFeatureBanner() {
                       aria-expanded={isActive}
                       aria-label={`${isActive ? "Collapse" : "Expand"} ${feature.artist} — ${feature.campaign}`}
                       onClick={() => {
-                        setPinnedIndex((current) => current === index ? null : index);
-                        setHoveredIndex(null);
+                        setPinnedCard((current) => current === cardKey ? null : cardKey);
+                        setHoveredCard(null);
                       }}
                     >
                       <img src={feature.image} alt="" />

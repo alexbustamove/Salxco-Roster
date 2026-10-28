@@ -40,10 +40,6 @@ export function HomeExperience() {
   return (
     <main className="instagram-home-shell">
       <header className="instagram-home-header">
-        <Link className="instagram-home-roster" href="/roster">
-          Roster <span aria-hidden="true">↗</span>
-        </Link>
-
         <section className="intro instagram-home-intro" aria-labelledby="instagram-home-title">
           <h1 id="instagram-home-title" className="sr-only">MGMT NATION and SALXCO</h1>
           <AnimatedThemeLogo className="intro-theme-logo" />
