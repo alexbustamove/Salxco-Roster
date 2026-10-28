@@ -21,7 +21,6 @@ export function HighlightVideoBanner() {
         className={`highlight-video-card${isExpanded ? " is-expanded" : ""}`}
         onMouseEnter={openBanner}
         onMouseLeave={() => setIsHovered(false)}
-        onFocusCapture={openBanner}
         onBlurCapture={(event) => {
           if (!event.currentTarget.contains(event.relatedTarget)) setIsHovered(false);
         }}
@@ -48,7 +47,13 @@ export function HighlightVideoBanner() {
           aria-controls="highlight-video-details"
           aria-label={`${isExpanded ? "Collapse" : "Expand"} The Weeknd x Nespresso highlight`}
           onClick={() => {
-            setIsPinned((current) => !current);
+            if (isExpanded) {
+              setIsHovered(false);
+              setIsPinned(false);
+              return;
+            }
+
+            setIsPinned(true);
             void videoRef.current?.play().catch(() => undefined);
           }}
         >
