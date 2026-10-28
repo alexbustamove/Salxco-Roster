@@ -8,6 +8,7 @@ import { lifestyleMediaItems } from "../data/lifestyleMedia";
 import { partnershipItems } from "../data/partnerships";
 import { AnimatedThemeLogo } from "./AnimatedThemeLogo";
 import { HighlightVideoBanner } from "./HighlightVideoBanner";
+import { LoopingShowcaseGallery } from "./LoopingShowcaseGallery";
 import { VerticalFeatureBanner } from "./VerticalFeatureBanner";
 
 const instagramUrl = "https://www.instagram.com/salxco";
@@ -52,100 +53,17 @@ type ShowcaseHomeExperienceProps = {
   withFeatureBanner?: boolean;
 };
 
-const showcaseSwapArchive = showcaseArchive.slice(0, 48);
-const showcaseSwapColumnCount = 4;
-const showcaseSwapRowCount = 6;
-const showcaseSwapItemCount = showcaseSwapColumnCount * showcaseSwapRowCount;
-const showcaseSwapOrder = Array.from({ length: showcaseSwapItemCount }, (_, step) => {
-  const rowFromBottom = Math.floor(step / showcaseSwapColumnCount);
-  const columnIndex = step % showcaseSwapColumnCount;
-  const rowIndex = showcaseSwapRowCount - rowFromBottom - 1;
-  return (rowIndex * showcaseSwapColumnCount) + columnIndex;
-});
-
-function ShowcaseSwapTile({ item }: { item: ShowcaseItem }) {
-  const [displayedItem, setDisplayedItem] = useState(item);
-  const [outgoingItem, setOutgoingItem] = useState<ShowcaseItem | null>(null);
-  const displayedItemRef = useRef(item);
-
-  useEffect(() => {
-    if (displayedItemRef.current.id === item.id) return;
-
-    setOutgoingItem(displayedItemRef.current);
-    setDisplayedItem(item);
-    displayedItemRef.current = item;
-
-    const timeout = window.setTimeout(() => setOutgoingItem(null), 640);
-    return () => window.clearTimeout(timeout);
-  }, [item]);
-
-  return (
-    <a
-      className={`instagram-feed-post showcase-feed-post showcase-swap-tile showcase-feed-post-${displayedItem.type}`}
-      href={instagramUrl}
-      target="_blank"
-      rel="noreferrer"
-      aria-label={`View ${displayedItem.title} on SALXCO Instagram`}
-    >
-      {outgoingItem ? (
-        <img
-          className="showcase-swap-image showcase-swap-image-outgoing"
-          src={outgoingItem.image}
-          alt=""
-          aria-hidden="true"
-        />
-      ) : null}
-      <img
-        className={`showcase-swap-image${outgoingItem ? " showcase-swap-image-incoming" : ""}`}
-        src={displayedItem.image}
-        alt={displayedItem.title}
-      />
-      <span aria-hidden="true">↗</span>
-    </a>
-  );
-}
-
 export function ShowcaseHomeExperience({
   colorway = "black",
   withFeatureBanner = false,
 }: ShowcaseHomeExperienceProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(initialItemCount);
-  const [swapItems, setSwapItems] = useState(() => showcaseSwapArchive.slice(0, showcaseSwapItemCount));
   const loadMoreRef = useRef<HTMLDivElement>(null);
-  const swapStepRef = useRef(0);
-  const nextSwapItemRef = useRef(showcaseSwapItemCount);
   const visibleItems = useMemo(
     () => showcaseArchive.slice(0, visibleCount),
     [visibleCount],
   );
-
-  useEffect(() => {
-    if (!withFeatureBanner) return;
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    showcaseSwapArchive.forEach((item) => {
-      const image = new Image();
-      image.src = item.image;
-    });
-
-    const interval = window.setInterval(() => {
-      const slotIndex = showcaseSwapOrder[swapStepRef.current % showcaseSwapOrder.length];
-      const nextItem = showcaseSwapArchive[nextSwapItemRef.current % showcaseSwapArchive.length];
-
-      setSwapItems((current) => {
-        const next = [...current];
-        next[slotIndex] = nextItem;
-        return next;
-      });
-
-      swapStepRef.current += 1;
-      nextSwapItemRef.current += 1;
-    }, 850);
-
-    return () => window.clearInterval(interval);
-  }, [withFeatureBanner]);
 
   useEffect(() => {
     const target = loadMoreRef.current;
@@ -227,13 +145,12 @@ export function ShowcaseHomeExperience({
         </header>
       )}
 
-      <section className="instagram-feed-section" aria-label="SALXCO magazine and partnership showcase">
+      <section
+        className={withFeatureBanner ? "showcase-loop-section" : "instagram-feed-section"}
+        aria-label="SALXCO magazine, partnership, and accolades showcase"
+      >
         {withFeatureBanner ? (
-          <div className="showcase-swap-grid" id="showcase-swap-grid">
-            {swapItems.map((item, slotIndex) => (
-              <ShowcaseSwapTile item={item} key={slotIndex} />
-            ))}
-          </div>
+          <LoopingShowcaseGallery />
         ) : (
           <div className="instagram-feed-grid showcase-feed-grid">
             {visibleItems.map((item) => (
