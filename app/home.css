@@ -393,8 +393,8 @@
 }
 
 .horizontal-feature-banner + .showcase-loop-section {
-  margin-right: calc(10px - var(--showcase-shell-gutter));
-  margin-left: calc(10px - var(--showcase-shell-gutter));
+  margin-right: calc(-1 * var(--showcase-shell-gutter));
+  margin-left: calc(-1 * var(--showcase-shell-gutter));
 }
 
 .showcase-loop-section {
@@ -416,13 +416,13 @@
 
 .showcase-loop-category-title {
   margin: 0 0 10px;
-  padding: 0 calc(clamp(18px, 3vw, 48px) - 10px) 9px;
+  padding: 0 clamp(18px, 3vw, 48px) 9px;
   border-bottom: 1px solid var(--showcase-loop-border);
   color: #fff;
-  font-size: clamp(14px, 1.45vw, 22px);
-  font-weight: 760;
-  letter-spacing: 0.08em;
-  line-height: 1;
+  font-size: clamp(30px, 6vw, 88px);
+  font-weight: 720;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
   text-transform: uppercase;
 }
 
@@ -533,8 +533,8 @@
 
 @media (max-width: 640px) {
   .horizontal-feature-banner + .showcase-loop-section {
-    margin-right: calc(10px - var(--showcase-shell-gutter));
-    margin-left: calc(10px - var(--showcase-shell-gutter));
+    margin-right: calc(-1 * var(--showcase-shell-gutter));
+    margin-left: calc(-1 * var(--showcase-shell-gutter));
   }
 
   .showcase-loop-card {
@@ -1028,8 +1028,9 @@
   }
 
   .showcase-loop-category-title {
-    padding-right: 4px;
-    padding-left: 4px;
+    padding-right: 14px;
+    padding-left: 14px;
+    font-size: 34px;
   }
 
   .highlight-video-copy {
