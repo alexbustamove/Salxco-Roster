@@ -675,7 +675,13 @@
 
 @media (min-width: 641px) {
   .highlight-video-card {
-    height: clamp(210px, 28vh, 270px);
+    height: 100vh;
+    height: 100svh;
+  }
+
+  .highlight-video-card.is-expanded {
+    height: min(120vh, 960px);
+    height: min(120svh, 960px);
   }
 
   .horizontal-feature-card {
