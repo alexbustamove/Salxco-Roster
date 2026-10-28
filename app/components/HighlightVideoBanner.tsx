@@ -48,8 +48,16 @@ const highlights: readonly Highlight[] = [
 export function HighlightVideoBanner() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPinned, setIsPinned] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const viewportRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
+  const dragStateRef = useRef({
+    pointerId: -1,
+    startX: 0,
+    startScrollLeft: 0,
+    moved: false,
+  });
+  const suppressClickRef = useRef(false);
   const isExpanded = isPinned;
   const activeHighlight = highlights[activeIndex];
 
@@ -85,6 +93,11 @@ export function HighlightVideoBanner() {
         tabIndex={0}
         aria-expanded={isExpanded}
         aria-label={`${isExpanded ? "Collapse" : "Expand"} ${activeHighlight.artist} — ${activeHighlight.campaign}`}
+        onClickCapture={(event) => {
+          if (!suppressClickRef.current) return;
+          event.preventDefault();
+          event.stopPropagation();
+        }}
         onClick={(event) => {
           if ((event.target as HTMLElement).closest("a, button")) return;
           setIsPinned((current) => !current);
@@ -99,7 +112,57 @@ export function HighlightVideoBanner() {
       >
         <div
           ref={viewportRef}
-          className="highlight-video-viewport"
+          className={`highlight-video-viewport${isDragging ? " is-dragging" : ""}`}
+          onPointerDown={(event) => {
+            if (event.pointerType !== "mouse" || event.button !== 0) return;
+
+            dragStateRef.current = {
+              pointerId: event.pointerId,
+              startX: event.clientX,
+              startScrollLeft: event.currentTarget.scrollLeft,
+              moved: false,
+            };
+            suppressClickRef.current = false;
+            setIsDragging(true);
+            event.currentTarget.setPointerCapture(event.pointerId);
+          }}
+          onPointerMove={(event) => {
+            const drag = dragStateRef.current;
+            if (drag.pointerId !== event.pointerId) return;
+
+            const distance = event.clientX - drag.startX;
+            if (Math.abs(distance) > 5) {
+              drag.moved = true;
+              suppressClickRef.current = true;
+            }
+            event.currentTarget.scrollLeft = drag.startScrollLeft - distance;
+          }}
+          onPointerUp={(event) => {
+            const drag = dragStateRef.current;
+            if (drag.pointerId !== event.pointerId) return;
+
+            if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+              event.currentTarget.releasePointerCapture(event.pointerId);
+            }
+            setIsDragging(false);
+            dragStateRef.current.pointerId = -1;
+
+            if (drag.moved) {
+              const nextIndex = Math.round(
+                event.currentTarget.scrollLeft / Math.max(event.currentTarget.clientWidth, 1),
+              );
+              goToSlide(nextIndex);
+              window.setTimeout(() => {
+                suppressClickRef.current = false;
+              }, 0);
+            }
+          }}
+          onPointerCancel={(event) => {
+            if (dragStateRef.current.pointerId !== event.pointerId) return;
+            setIsDragging(false);
+            dragStateRef.current.pointerId = -1;
+            suppressClickRef.current = false;
+          }}
           onScroll={(event) => {
             const viewport = event.currentTarget;
             const nextIndex = Math.round(viewport.scrollLeft / Math.max(viewport.clientWidth, 1));
