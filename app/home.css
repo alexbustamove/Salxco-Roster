@@ -558,6 +558,10 @@
   color: #b6944a;
 }
 
+.colorway-black-gold .showcase-loop-section {
+  --showcase-loop-border: #b6944a;
+}
+
 @media (max-width: 640px) {
   .horizontal-feature-banner + .showcase-loop-section {
     margin-right: calc(-1 * var(--showcase-shell-gutter));
@@ -1533,6 +1537,12 @@
 .colorway-black-gold .horizontal-feature-card,
 .colorway-black-gold .horizontal-feature-card.is-active {
   border-color: rgba(182, 148, 74, 0.84);
+}
+
+.colorway-black-gold .instagram-feed-post,
+.colorway-black-gold .showcase-feed-post-magazine,
+.colorway-black-gold .showcase-feed-post-partnership {
+  border-color: #b6944a;
 }
 
 .showcase-home-shell.colorway-black-gold .footer-theme-logo-white {
