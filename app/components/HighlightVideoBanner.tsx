@@ -48,7 +48,8 @@ const highlights: readonly Highlight[] = [
 export function HighlightVideoBanner() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isPinnedOpen, setIsPinnedOpen] = useState(false);
   const viewportRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
   const dragStateRef = useRef({
@@ -59,6 +60,7 @@ export function HighlightVideoBanner() {
   });
   const suppressClickRef = useRef(false);
   const activeHighlight = highlights[activeIndex];
+  const isExpanded = isHovered || isPinnedOpen;
   const canHover = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   const goToSlide = (index: number, behavior: ScrollBehavior = "auto") => {
@@ -87,24 +89,27 @@ export function HighlightVideoBanner() {
         className={`highlight-video-card${isExpanded ? " is-expanded" : ""}`}
         aria-label={`${activeHighlight.artist} — ${activeHighlight.campaign}`}
         onMouseEnter={() => {
-          if (canHover()) setIsExpanded(true);
+          if (canHover()) setIsHovered(true);
         }}
         onMouseLeave={() => {
-          if (canHover()) setIsExpanded(false);
+          if (canHover()) setIsHovered(false);
         }}
-        onFocusCapture={() => setIsExpanded(true)}
+        onFocusCapture={() => setIsHovered(true)}
         onBlurCapture={(event) => {
-          if (!event.currentTarget.contains(event.relatedTarget)) setIsExpanded(false);
+          if (!event.currentTarget.contains(event.relatedTarget)) setIsHovered(false);
         }}
         onClickCapture={(event) => {
           if (!suppressClickRef.current) return;
           event.preventDefault();
           event.stopPropagation();
         }}
-        onClick={(event) => {
-          if (canHover()) return;
+        onPointerUp={(event) => {
+          if (suppressClickRef.current) return;
           if ((event.target as HTMLElement).closest("a, button")) return;
-          setIsExpanded((current) => !current);
+          setIsPinnedOpen((current) => {
+            if (current) setIsHovered(false);
+            return !current;
+          });
         }}
       >
         <div

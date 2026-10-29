@@ -2002,6 +2002,26 @@
   isolation: isolate;
 }
 
+.colorway-black-antique-motion .horizontal-feature-viewport::before,
+.colorway-black-antique-motion .horizontal-feature-viewport::after {
+  display: none;
+}
+
+.colorway-black-antique-motion
+  .horizontal-feature-card.is-active
+  .horizontal-feature-trigger
+  img {
+  opacity: 0;
+}
+
+.colorway-black-antique-motion
+  .horizontal-feature-card.is-active
+  .horizontal-feature-trigger
+  video {
+  opacity: 1;
+  transform: none;
+}
+
 .colorway-black-antique-motion .horizontal-feature-link {
   background: rgba(3, 2, 1, 0.78);
   backdrop-filter: none;

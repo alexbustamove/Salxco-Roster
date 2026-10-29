@@ -172,7 +172,9 @@ export function VerticalFeatureBanner() {
           clearActiveCard();
           endInteraction();
         }}
-        onScroll={normalizeLoop}
+        onScroll={() => {
+          if (activeCard === null) normalizeLoop();
+        }}
       >
         <div className="horizontal-feature-track">
           {[0, 1, 2].map((groupIndex) => (
