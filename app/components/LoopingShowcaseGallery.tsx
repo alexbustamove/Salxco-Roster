@@ -187,7 +187,6 @@ function LoopingShowcaseRow({ category, direction, items, label }: LoopingShowca
                   key={`${groupIndex}-${item.id}`}
                 >
                   <img src={item.image} alt={item.title} loading="lazy" />
-                  <span className="showcase-loop-card-arrow" aria-hidden="true">↗</span>
                 </a>
               ))}
             </div>

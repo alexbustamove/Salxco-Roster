@@ -513,27 +513,6 @@
   transform-origin: center top;
 }
 
-.showcase-loop-card-arrow {
-  position: absolute;
-  z-index: 3;
-  top: 10px;
-  right: 10px;
-  display: grid;
-  width: 30px;
-  height: 30px;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.76);
-  color: #fff;
-  font-size: 12px;
-  opacity: 0;
-  transition: opacity 220ms ease;
-}
-
-.showcase-loop-card:hover .showcase-loop-card-arrow,
-.showcase-loop-card:focus-visible .showcase-loop-card-arrow {
-  opacity: 1;
-}
-
 .showcase-loop-card:hover img,
 .showcase-loop-card:focus-visible img {
   filter: saturate(1.04) contrast(1.02);
@@ -571,15 +550,10 @@
   .showcase-loop-card {
     flex-basis: 42vw;
   }
-
-  .showcase-loop-card-arrow {
-    display: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .showcase-loop-card img,
-  .showcase-loop-card-arrow {
+  .showcase-loop-card img {
     transition: none;
   }
 }
