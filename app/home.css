@@ -1796,6 +1796,73 @@
   }
 }
 
+/* Antique-gold aurora: broad blurred light bands inspired by the teal motion reference. */
+.showcase-home-shell.colorway-black-antique-motion {
+  position: relative;
+  isolation: isolate;
+  background: #030201;
+}
+
+.showcase-home-shell.colorway-black-antique-motion::before,
+.showcase-home-shell.colorway-black-antique-motion::after {
+  position: fixed;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+}
+
+.showcase-home-shell.colorway-black-antique-motion::before {
+  inset: -28vh -20vw;
+  background:
+    radial-gradient(ellipse 21% 68% at 17% 18%, rgba(158, 112, 43, 0.5), transparent 72%),
+    radial-gradient(ellipse 26% 78% at 52% 72%, rgba(91, 61, 24, 0.36), transparent 74%),
+    radial-gradient(ellipse 20% 64% at 84% 28%, rgba(130, 90, 34, 0.42), transparent 72%),
+    linear-gradient(108deg, #020100 4%, #25190a 20%, #030201 36%, #3d2a11 54%, #040201 72%, #271a0a 88%, #020100 100%);
+  filter: blur(64px) saturate(0.76);
+  opacity: 0.72;
+  transform: translate3d(-4%, -2%, 0) scale(1.08);
+  animation: showcase-antique-aurora 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.showcase-home-shell.colorway-black-antique-motion::after {
+  inset: 0;
+  background: url("/textures/antique-gold-embossed.webp") center / 520px 520px repeat;
+  mix-blend-mode: soft-light;
+  opacity: 0.11;
+}
+
+.colorway-black-antique-motion .horizontal-feature-banner,
+.colorway-black-antique-motion .horizontal-feature-viewport,
+.colorway-black-antique-motion .showcase-loop-section,
+.showcase-home-shell.colorway-black-antique-motion .instagram-home-footer {
+  background: transparent;
+}
+
+@keyframes showcase-antique-aurora {
+  0% {
+    transform: translate3d(-5%, -3%, 0) scale(1.08) rotate(-0.4deg);
+  }
+
+  34% {
+    transform: translate3d(2%, 1%, 0) scale(1.14) rotate(0.25deg);
+  }
+
+  68% {
+    transform: translate3d(-1%, 5%, 0) scale(1.1) rotate(-0.15deg);
+  }
+
+  100% {
+    transform: translate3d(5%, -1%, 0) scale(1.16) rotate(0.45deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-home-shell.colorway-black-antique-motion::before {
+    animation: none;
+  }
+}
+
 /* Antique-gold option with white typography, rules, borders, and logo accents. */
 .showcase-home-shell.colorway-antique-white {
   color: #fff;

@@ -56,7 +56,8 @@ type ShowcaseHomeExperienceProps = {
     | "antique-white"
     | "black-gold"
     | "black-antique-texture"
-    | "black-gold-motion";
+    | "black-gold-motion"
+    | "black-antique-motion";
   withFeatureBanner?: boolean;
 };
 
@@ -81,7 +82,9 @@ export function ShowcaseHomeExperience({
           ? "colorway-black colorway-black-gold colorway-black-antique-texture"
           : colorway === "black-gold-motion"
             ? "colorway-black colorway-black-gold colorway-black-gold-motion"
-        : `colorway-${colorway}`;
+            : colorway === "black-antique-motion"
+              ? "colorway-black colorway-black-gold colorway-black-antique-texture colorway-black-antique-motion"
+              : `colorway-${colorway}`;
 
   useEffect(() => {
     const target = loadMoreRef.current;
@@ -193,6 +196,14 @@ export function ShowcaseHomeExperience({
                 onClick={() => setIsMenuOpen(false)}
               >
                 Black + Gold Ambient Motion
+              </Link>
+              <Link
+                href="/?colorway=black-antique-motion"
+                aria-current={colorway === "black-antique-motion" ? "page" : undefined}
+                tabIndex={isMenuOpen ? 0 : -1}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Black + Antique Gold Motion
               </Link>
             </nav>
           </header>
