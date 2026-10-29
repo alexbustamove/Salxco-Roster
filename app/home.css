@@ -1616,15 +1616,12 @@
 .showcase-home-shell.colorway-black-antique-texture {
   --antique-gold: #70552a;
   --antique-gold-bright: #987542;
-  --antique-gold-texture: linear-gradient(
-    118deg,
-    #3f2e18 0%,
-    #8e6d3b 20%,
-    #5b4324 38%,
-    #a17c45 55%,
-    #624923 73%,
-    #806033 100%
-  );
+  --antique-gold-texture:
+    radial-gradient(circle at 20% 30%, rgba(255, 224, 160, 0.24) 0 0.7px, transparent 1.2px) 0 0 / 7px 7px,
+    radial-gradient(circle at 74% 64%, rgba(30, 18, 6, 0.34) 0 0.8px, transparent 1.4px) 0 0 / 9px 9px,
+    repeating-linear-gradient(104deg, rgba(255, 235, 190, 0.08) 0 1px, transparent 1px 5px),
+    linear-gradient(118deg, #3f2e18 0%, #8e6d3b 20%, #5b4324 38%, #a17c45 55%, #624923 73%, #806033 100%);
+  --antique-gold-border: linear-gradient(118deg, #3f2e18, #9b7743 28%, #564020 48%, #a17c45 68%, #624923);
 }
 
 .colorway-black-antique-texture .showcase-loop-section {
@@ -1632,8 +1629,25 @@
 }
 
 .colorway-black-antique-texture .showcase-loop-category-title {
-  color: var(--antique-gold-bright);
   text-shadow: 0 1px 0 rgba(255, 225, 160, 0.08), 0 0 22px rgba(112, 85, 42, 0.18);
+}
+
+.colorway-black-antique-texture .showcase-loop-category-title,
+.colorway-black-antique-texture .highlight-video-copy p,
+.colorway-black-antique-texture .highlight-video-copy h2,
+.colorway-black-antique-texture .highlight-video-cta,
+.colorway-black-antique-texture .horizontal-feature-copy > span,
+.colorway-black-antique-texture .horizontal-feature-copy strong,
+.colorway-black-antique-texture .horizontal-feature-link,
+.colorway-black-antique-texture .showcase-menu a:not([aria-current="page"]),
+.colorway-black-antique-texture .media-lightbox-control,
+.colorway-black-antique-texture .footer-copyright,
+.colorway-black-antique-texture .back-to-top {
+  background: var(--antique-gold-texture);
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .colorway-black-antique-texture .showcase-loop-category-title::before,
@@ -1670,13 +1684,43 @@
 }
 
 .colorway-black-antique-texture .highlight-video-pagination button {
-  background: rgba(112, 85, 42, 0.46);
+  background: var(--antique-gold-texture);
+  opacity: 0.48;
 }
 
 .colorway-black-antique-texture .highlight-video-pagination button.is-active,
 .colorway-black-antique-texture .showcase-menu a[aria-current="page"] {
   background: var(--antique-gold-texture);
   color: #050505;
+  opacity: 1;
+}
+
+.colorway-black-antique-texture .horizontal-feature-card::after,
+.colorway-black-antique-texture .showcase-loop-card::after {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--antique-gold-texture);
+  content: "";
+  pointer-events: none;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.colorway-black-antique-texture .showcase-loop-card {
+  border-color: transparent;
+}
+
+.colorway-black-antique-texture .instagram-feed-post::before {
+  background: var(--antique-gold-texture);
+}
+
+.colorway-black-antique-texture .showcase-menu,
+.colorway-black-antique-texture .media-lightbox-panel {
+  border-image: var(--antique-gold-border) 1;
 }
 
 .showcase-home-shell.colorway-black-antique-texture .instagram-home-footer {
