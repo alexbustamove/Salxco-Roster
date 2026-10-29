@@ -48,6 +48,7 @@ const highlights: readonly Highlight[] = [
 export function HighlightVideoBanner() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const viewportRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
   const dragStateRef = useRef({
@@ -57,8 +58,8 @@ export function HighlightVideoBanner() {
     moved: false,
   });
   const suppressClickRef = useRef(false);
-  const isExpanded = true;
   const activeHighlight = highlights[activeIndex];
+  const canHover = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   const goToSlide = (index: number) => {
     const viewport = viewportRef.current;
@@ -85,10 +86,25 @@ export function HighlightVideoBanner() {
       <div
         className={`highlight-video-card${isExpanded ? " is-expanded" : ""}`}
         aria-label={`${activeHighlight.artist} — ${activeHighlight.campaign}`}
+        onMouseEnter={() => {
+          if (canHover()) setIsExpanded(true);
+        }}
+        onMouseLeave={() => {
+          if (canHover()) setIsExpanded(false);
+        }}
+        onFocusCapture={() => setIsExpanded(true)}
+        onBlurCapture={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) setIsExpanded(false);
+        }}
         onClickCapture={(event) => {
           if (!suppressClickRef.current) return;
           event.preventDefault();
           event.stopPropagation();
+        }}
+        onClick={(event) => {
+          if (canHover()) return;
+          if ((event.target as HTMLElement).closest("a, button")) return;
+          setIsExpanded((current) => !current);
         }}
       >
         <div

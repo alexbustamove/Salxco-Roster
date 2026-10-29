@@ -412,7 +412,7 @@
 
 .showcase-loop-gallery {
   display: grid;
-  gap: clamp(30px, 4.2vw, 58px);
+  gap: 0;
 }
 
 .showcase-loop-category {
@@ -423,8 +423,8 @@
   display: flex;
   align-items: center;
   gap: clamp(14px, 2.4vw, 30px);
-  margin: 0 0 10px;
-  padding: 0 clamp(18px, 3vw, 48px) 12px;
+  margin: 0;
+  padding: clamp(20px, 2.8vw, 38px) 0;
   color: #fff;
   font-size: clamp(24px, 3.1vw, 46px);
   font-weight: 720;
@@ -445,8 +445,7 @@
 }
 
 .showcase-loop-category-title-leading {
-  margin: 0 calc(-1 * var(--showcase-shell-gutter)) 10px;
-  padding-top: clamp(14px, 1.8vw, 22px);
+  margin: 0 calc(-1 * var(--showcase-shell-gutter));
 }
 
 .showcase-loop-category-rows {
@@ -776,7 +775,7 @@
 }
 
 .horizontal-feature-card.is-active {
-  height: min(64vw, 620px);
+  height: clamp(360px, 42vw, 470px);
   border-color: rgba(255, 255, 255, 0.72);
   box-shadow:
     0 34px 70px rgba(0, 0, 0, 0.54),
@@ -1116,8 +1115,7 @@
 
   .showcase-loop-category-title {
     gap: 12px;
-    padding-right: 14px;
-    padding-left: 14px;
+    padding: 18px 0;
     font-size: clamp(20px, 6vw, 28px);
   }
 
@@ -1188,7 +1186,7 @@
   }
 
   .horizontal-feature-card.is-active {
-    height: min(128vw, 500px);
+    height: min(92vw, 360px);
   }
 
   .horizontal-feature-copy strong {
@@ -1569,6 +1567,15 @@
 }
 
 .colorway-black-gold .highlight-video-nav-logo .theme-logo-front {
+  background: #b6944a;
+}
+
+.colorway-black-gold .showcase-menu-toggle {
+  border-color: rgba(182, 148, 74, 0.88);
+  background: rgba(0, 0, 0, 0.62);
+}
+
+.colorway-black-gold .showcase-menu-toggle span {
   background: #b6944a;
 }
 
