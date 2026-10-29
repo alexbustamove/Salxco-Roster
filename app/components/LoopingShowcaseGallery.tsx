@@ -39,6 +39,9 @@ const sections = [
   { category: "accolade", title: "Achievements", rows: accoladeRows },
 ] as const;
 
+const loopCopies = [0, 1, 2, 3, 4] as const;
+const activeLoopCopy = 2;
+
 function getArtistKey(item: LoopItem) {
   const searchable = `${item.title} ${item.href} ${item.image}`.toLowerCase();
   const knownArtists = [
@@ -136,10 +139,11 @@ function LoopingShowcaseRow({
     if (!viewport) return null;
 
     const groups = viewport.querySelectorAll<HTMLElement>(".showcase-loop-group");
-    if (groups.length < 3) return null;
+    if (groups.length < loopCopies.length) return null;
 
-    const cycleWidth = groups[1].offsetLeft - groups[0].offsetLeft;
-    const middleStart = groups[1].offsetLeft;
+    const cycleWidth = groups[activeLoopCopy].offsetLeft
+      - groups[activeLoopCopy - 1].offsetLeft;
+    const middleStart = groups[activeLoopCopy].offsetLeft;
     loopMetricsRef.current = { cycleWidth, middleStart };
     return loopMetricsRef.current;
   };
@@ -156,8 +160,17 @@ function LoopingShowcaseRow({
     const lowerBoundary = metrics.middleStart;
     const upperBoundary = metrics.middleStart + metrics.cycleWidth;
 
-    if (viewport.scrollLeft < lowerBoundary) viewport.scrollLeft += metrics.cycleWidth;
-    if (viewport.scrollLeft >= upperBoundary) viewport.scrollLeft -= metrics.cycleWidth;
+    if (viewport.scrollLeft < lowerBoundary) {
+      const missingCycles = Math.ceil(
+        (lowerBoundary - viewport.scrollLeft) / metrics.cycleWidth,
+      );
+      viewport.scrollLeft += metrics.cycleWidth * missingCycles;
+    } else if (viewport.scrollLeft >= upperBoundary) {
+      const extraCycles = Math.floor(
+        (viewport.scrollLeft - lowerBoundary) / metrics.cycleWidth,
+      );
+      viewport.scrollLeft -= metrics.cycleWidth * extraCycles;
+    }
   };
 
   const beginInteraction = () => {
@@ -276,23 +289,24 @@ function LoopingShowcaseRow({
         onScroll={normalizeLoop}
       >
         <div className="showcase-loop-track">
-          {[0, 1, 2].map((groupIndex) => (
+          {loopCopies.map((groupIndex) => (
             <div
               className="showcase-loop-group"
-              aria-hidden={groupIndex === 1 ? undefined : "true"}
+              aria-hidden={groupIndex === activeLoopCopy ? undefined : "true"}
               key={groupIndex}
             >
               {displayItems.map((item, itemIndex) => {
                 const bufferSize = 5;
                 const isWrapBuffer = (
-                  groupIndex === 0 && itemIndex >= displayItems.length - bufferSize
+                  groupIndex === activeLoopCopy - 1
+                  && itemIndex >= displayItems.length - bufferSize
                 ) || (
-                  groupIndex === 1 && (
+                  groupIndex === activeLoopCopy && (
                     itemIndex < bufferSize
                     || itemIndex >= displayItems.length - bufferSize
                   )
                 ) || (
-                  groupIndex === 2 && itemIndex < bufferSize
+                  groupIndex === activeLoopCopy + 1 && itemIndex < bufferSize
                 );
 
                 return (
@@ -303,7 +317,7 @@ function LoopingShowcaseRow({
                     rel={category === "magazine" ? undefined : "noreferrer"}
                     aria-label={item.title}
                     aria-haspopup={category === "magazine" ? "dialog" : undefined}
-                    tabIndex={groupIndex === 1 ? 0 : -1}
+                    tabIndex={groupIndex === activeLoopCopy ? 0 : -1}
                     key={`${groupIndex}-${item.id}`}
                     onClick={category === "magazine" ? (event) => {
                       event.preventDefault();
