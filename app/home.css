@@ -1554,8 +1554,19 @@
   filter: none;
 }
 
-.colorway-antique-white .highlight-video-nav-logo .theme-logo-front {
-  background: #70552a;
+:root[data-preview-theme="gold-white-premium"]
+  .showcase-home-shell.colorway-antique-white
+  .highlight-video-nav-logo
+  .theme-logo-static
+  img {
+  filter: none !important;
+}
+
+:root[data-preview-theme="gold-white-premium"]
+  .showcase-home-shell.colorway-antique-white
+  .highlight-video-nav-logo
+  .theme-logo-front {
+  background: #70552a !important;
 }
 
 .colorway-antique-white .showcase-menu a[aria-current="page"] {
