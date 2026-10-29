@@ -119,6 +119,7 @@ function LoopingShowcaseRow({
   const viewportRef = useRef<HTMLDivElement>(null);
   const loopMetricsRef = useRef({ cycleWidth: 0, middleStart: 0 });
   const interactionTimerRef = useRef<number | null>(null);
+  const scrollEndTimerRef = useRef<number | null>(null);
   const dragRef = useRef({
     pointerId: -1,
     startX: 0,
@@ -184,6 +185,22 @@ function LoopingShowcaseRow({
     interactionTimerRef.current = window.setTimeout(() => setIsInteracting(false), 1800);
   };
 
+  const handleScroll = () => {
+    const usesNativeTouchScroll = window.matchMedia(
+      "(hover: none), (pointer: coarse)",
+    ).matches;
+
+    if (!usesNativeTouchScroll) {
+      normalizeLoop();
+      return;
+    }
+
+    if (scrollEndTimerRef.current !== null) {
+      window.clearTimeout(scrollEndTimerRef.current);
+    }
+    scrollEndTimerRef.current = window.setTimeout(normalizeLoop, 180);
+  };
+
   useLayoutEffect(() => {
     const viewport = viewportRef.current;
     if (!viewport) return;
@@ -205,6 +222,11 @@ function LoopingShowcaseRow({
     const viewport = viewportRef.current;
     if (!viewport) return;
 
+    const usesNativeTouchScroll = window.matchMedia(
+      "(hover: none), (pointer: coarse)",
+    ).matches;
+    if (usesNativeTouchScroll) return;
+
     let frame = 0;
     let previousTime = performance.now();
     const move = (time: number) => {
@@ -225,6 +247,7 @@ function LoopingShowcaseRow({
 
   useEffect(() => () => {
     if (interactionTimerRef.current !== null) window.clearTimeout(interactionTimerRef.current);
+    if (scrollEndTimerRef.current !== null) window.clearTimeout(scrollEndTimerRef.current);
   }, []);
 
   return (
@@ -286,7 +309,7 @@ function LoopingShowcaseRow({
           event.stopPropagation();
         }}
         onWheel={endInteraction}
-        onScroll={normalizeLoop}
+        onScroll={handleScroll}
       >
         <div className="showcase-loop-track">
           {loopCopies.map((groupIndex) => (
