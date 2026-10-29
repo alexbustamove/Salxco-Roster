@@ -49,7 +49,7 @@ for (let index = 0; index < archiveLength; index += 1) {
 }
 
 type ShowcaseHomeExperienceProps = {
-  colorway?: "black" | "gold" | "antique-gold" | "black-gold";
+  colorway?: "black" | "gold" | "antique-gold" | "antique-white" | "black-gold";
   withFeatureBanner?: boolean;
 };
 
@@ -64,11 +64,13 @@ export function ShowcaseHomeExperience({
     () => showcaseArchive.slice(0, visibleCount),
     [visibleCount],
   );
-  const baseColorway = colorway === "antique-gold"
-    ? "gold"
-    : colorway === "black-gold"
-      ? "black"
-      : colorway;
+  const colorwayClasses = colorway === "antique-white"
+    ? "colorway-gold colorway-antique-gold colorway-antique-white"
+    : colorway === "antique-gold"
+      ? "colorway-gold colorway-antique-gold"
+      : colorway === "black-gold"
+        ? "colorway-black colorway-black-gold"
+        : `colorway-${colorway}`;
 
   useEffect(() => {
     const target = loadMoreRef.current;
@@ -100,7 +102,7 @@ export function ShowcaseHomeExperience({
 
   return (
     <main
-      className={`instagram-home-shell showcase-home-shell colorway-${baseColorway}${baseColorway === colorway ? "" : ` colorway-${colorway}`}`}
+      className={`instagram-home-shell showcase-home-shell ${colorwayClasses}`}
     >
       {withFeatureBanner ? (
         <>
@@ -140,6 +142,14 @@ export function ShowcaseHomeExperience({
                 onClick={() => setIsMenuOpen(false)}
               >
                 Antique Gold
+              </Link>
+              <Link
+                href="/?colorway=antique-white"
+                aria-current={colorway === "antique-white" ? "page" : undefined}
+                tabIndex={isMenuOpen ? 0 : -1}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Antique Gold + White
               </Link>
               <Link
                 href="/?colorway=black"

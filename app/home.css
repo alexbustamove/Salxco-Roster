@@ -1474,6 +1474,86 @@
   background: #70552a;
 }
 
+.colorway-antique-gold .showcase-menu a[aria-current="page"] {
+  background: #70552a;
+  color: #fff;
+}
+
+/* Black-primary option with primary-gold typography and footer branding. */
+.showcase-home-shell.colorway-black-gold .instagram-home-footer {
+  color: #b6944a;
+  border-top-color: rgba(182, 148, 74, 0.72);
+}
+
+:root[data-preview-theme="gold-white-premium"] .colorway-black-gold .footer-copyright {
+  color: #b6944a;
+}
+
+:root[data-preview-theme="gold-white-premium"] .colorway-black-gold .back-to-top {
+  color: #b6944a;
+  border-color: rgba(182, 148, 74, 0.78);
+}
+
+.showcase-home-shell.colorway-black-gold .footer-theme-logo .theme-logo-underlay,
+.showcase-home-shell.colorway-black-gold .footer-theme-logo .theme-logo-front {
+  display: block;
+}
+
+.showcase-home-shell.colorway-black-gold .footer-theme-logo .theme-logo-front {
+  background: #b6944a;
+}
+
+.showcase-home-shell.colorway-black-gold .footer-theme-logo-white {
+  display: none;
+}
+
+/* Antique-gold option with white typography, rules, borders, and logo accents. */
+.showcase-home-shell.colorway-antique-white {
+  color: #fff;
+}
+
+.colorway-antique-white .showcase-loop-section {
+  --showcase-loop-border: rgba(255, 255, 255, 0.72);
+}
+
+.colorway-antique-white .showcase-loop-category-title {
+  color: #fff;
+}
+
+.colorway-antique-white .horizontal-feature-card,
+.colorway-antique-white .instagram-feed-post,
+.colorway-antique-white .showcase-feed-post-magazine,
+.colorway-antique-white .showcase-feed-post-partnership {
+  border-color: rgba(255, 255, 255, 0.72);
+}
+
+.showcase-home-shell.colorway-antique-white .instagram-home-footer {
+  color: rgba(255, 255, 255, 0.78);
+  border-top-color: rgba(255, 255, 255, 0.72);
+}
+
+:root[data-preview-theme="gold-white-premium"] .colorway-antique-white .footer-copyright {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+:root[data-preview-theme="gold-white-premium"] .colorway-antique-white .back-to-top {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.78);
+}
+
+.showcase-home-shell.colorway-antique-white .footer-theme-logo-white {
+  filter: none;
+}
+
+.colorway-antique-white .highlight-video-nav-logo .theme-logo-front {
+  background: #fff;
+}
+
+.colorway-antique-white .showcase-menu a[aria-current="page"] {
+  background: #fff;
+  color: #000;
+}
+
 @media (max-width: 640px) {
   .colorway-gold .highlight-video-banner {
     padding-bottom: 0;

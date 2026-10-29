@@ -16,6 +16,7 @@ export default async function BannerPreviewPage({ searchParams }: BannerPreviewP
   const { colorway } = await searchParams;
   const selectedColorway = colorway === "gold"
     || colorway === "antique-gold"
+    || colorway === "antique-white"
     || colorway === "black-gold"
     ? colorway
     : "black";
