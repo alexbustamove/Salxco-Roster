@@ -220,7 +220,12 @@ export function HighlightVideoBanner() {
           className="highlight-video-edge-nav is-previous"
           type="button"
           aria-label="Show previous campaign"
-          onClick={() => goToSlide(activeIndex - 1, "smooth")}
+          onPointerDown={(event) => event.stopPropagation()}
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            goToSlide(activeIndex - 1, "smooth");
+          }}
         >
           <span aria-hidden="true">‹</span>
         </button>
@@ -228,7 +233,12 @@ export function HighlightVideoBanner() {
           className="highlight-video-edge-nav is-next"
           type="button"
           aria-label="Show next campaign"
-          onClick={() => goToSlide(activeIndex + 1, "smooth")}
+          onPointerDown={(event) => event.stopPropagation()}
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            goToSlide(activeIndex + 1, "smooth");
+          }}
         >
           <span aria-hidden="true">›</span>
         </button>

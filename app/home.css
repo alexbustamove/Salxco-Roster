@@ -1831,11 +1831,11 @@
   filter: blur(82px) saturate(0.86);
   opacity: 0.84;
   transform-origin: 50% 50%;
-  animation: antique-fluid-drift 29s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+  animation: antique-fluid-drift 16s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
   will-change: transform;
 }
 
-.antique-motion-background span:last-child {
+.antique-motion-background span:nth-child(2) {
   inset: -34%;
   background:
     radial-gradient(ellipse 52% 24% at 50% 24%, rgba(183, 147, 73, 0.5) 0%, rgba(103, 68, 20, 0.34) 36%, transparent 76%),
@@ -1845,7 +1845,18 @@
   mix-blend-mode: screen;
   opacity: 0.64;
   animation-name: antique-fluid-drift-secondary;
-  animation-duration: 37s;
+  animation-duration: 23s;
+}
+
+.antique-motion-background span:nth-child(3) {
+  inset: -38%;
+  background:
+    radial-gradient(ellipse 34% 18% at 26% 46%, rgba(183, 147, 73, 0.52) 0%, rgba(125, 83, 25, 0.3) 38%, transparent 78%),
+    radial-gradient(ellipse 46% 20% at 72% 58%, rgba(158, 116, 45, 0.46) 0%, rgba(79, 48, 13, 0.24) 44%, transparent 82%);
+  filter: blur(96px) saturate(0.8);
+  mix-blend-mode: screen;
+  opacity: 0.52;
+  animation: antique-fluid-swell 12s ease-in-out infinite alternate;
 }
 
 @keyframes antique-fluid-drift {
@@ -1877,6 +1888,20 @@
 
   100% {
     transform: translate3d(3%, -7%, 0) scale(1.1) rotate(0.65deg);
+  }
+}
+
+@keyframes antique-fluid-swell {
+  0% {
+    transform: translate3d(-9%, 8%, 0) scale(0.96) rotate(-2deg);
+  }
+
+  48% {
+    transform: translate3d(7%, -5%, 0) scale(1.2) rotate(1.5deg);
+  }
+
+  100% {
+    transform: translate3d(-2%, -10%, 0) scale(1.08) rotate(-0.5deg);
   }
 }
 
@@ -1971,6 +1996,16 @@
 .colorway-black-antique-motion .horizontal-feature-card,
 .colorway-black-antique-motion .horizontal-feature-card.is-active {
   box-shadow: none;
+}
+
+.colorway-black-antique-motion .horizontal-feature-card {
+  isolation: isolate;
+}
+
+.colorway-black-antique-motion .horizontal-feature-link {
+  background: rgba(3, 2, 1, 0.78);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .showcase-home-shell.colorway-black-antique-motion .instagram-home-footer {

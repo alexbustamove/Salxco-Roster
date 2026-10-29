@@ -122,6 +122,7 @@ export function ShowcaseHomeExperience({
         <div className="antique-motion-background" aria-hidden="true">
           <span />
           <span />
+          <span />
         </div>
       ) : null}
       {withFeatureBanner ? (
