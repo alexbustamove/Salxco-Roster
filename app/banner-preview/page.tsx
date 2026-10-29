@@ -18,6 +18,8 @@ export default async function BannerPreviewPage({ searchParams }: BannerPreviewP
     || colorway === "antique-gold"
     || colorway === "antique-white"
     || colorway === "black-gold"
+    || colorway === "black-antique-texture"
+    || colorway === "black-gold-motion"
     ? colorway
     : "black";
 

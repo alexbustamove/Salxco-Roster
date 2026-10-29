@@ -49,7 +49,14 @@ for (let index = 0; index < archiveLength; index += 1) {
 }
 
 type ShowcaseHomeExperienceProps = {
-  colorway?: "black" | "gold" | "antique-gold" | "antique-white" | "black-gold";
+  colorway?:
+    | "black"
+    | "gold"
+    | "antique-gold"
+    | "antique-white"
+    | "black-gold"
+    | "black-antique-texture"
+    | "black-gold-motion";
   withFeatureBanner?: boolean;
 };
 
@@ -70,6 +77,10 @@ export function ShowcaseHomeExperience({
       ? "colorway-gold colorway-antique-gold"
       : colorway === "black-gold"
         ? "colorway-black colorway-black-gold"
+        : colorway === "black-antique-texture"
+          ? "colorway-black colorway-black-gold colorway-black-antique-texture"
+          : colorway === "black-gold-motion"
+            ? "colorway-black colorway-black-gold colorway-black-gold-motion"
         : `colorway-${colorway}`;
 
   useEffect(() => {
@@ -166,6 +177,22 @@ export function ShowcaseHomeExperience({
                 onClick={() => setIsMenuOpen(false)}
               >
                 Black + Gold Dividers
+              </Link>
+              <Link
+                href="/?colorway=black-antique-texture"
+                aria-current={colorway === "black-antique-texture" ? "page" : undefined}
+                tabIndex={isMenuOpen ? 0 : -1}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Black + Textured Antique Gold
+              </Link>
+              <Link
+                href="/?colorway=black-gold-motion"
+                aria-current={colorway === "black-gold-motion" ? "page" : undefined}
+                tabIndex={isMenuOpen ? 0 : -1}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Black + Gold Ambient Motion
               </Link>
             </nav>
           </header>

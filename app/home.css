@@ -1612,6 +1612,121 @@
   display: none;
 }
 
+/* Black canvas with weathered antique-gold accents. */
+.showcase-home-shell.colorway-black-antique-texture {
+  --antique-gold: #70552a;
+  --antique-gold-bright: #987542;
+  --antique-gold-texture: linear-gradient(
+    118deg,
+    #3f2e18 0%,
+    #8e6d3b 20%,
+    #5b4324 38%,
+    #a17c45 55%,
+    #624923 73%,
+    #806033 100%
+  );
+}
+
+.colorway-black-antique-texture .showcase-loop-section {
+  --showcase-loop-border: var(--antique-gold);
+}
+
+.colorway-black-antique-texture .showcase-loop-category-title {
+  color: var(--antique-gold-bright);
+  text-shadow: 0 1px 0 rgba(255, 225, 160, 0.08), 0 0 22px rgba(112, 85, 42, 0.18);
+}
+
+.colorway-black-antique-texture .showcase-loop-category-title::before,
+.colorway-black-antique-texture .showcase-loop-category-title::after {
+  background: var(--antique-gold-texture);
+  opacity: 0.82;
+}
+
+.colorway-black-antique-texture .highlight-video-nav-logo .theme-logo-front,
+.showcase-home-shell.colorway-black-antique-texture .footer-theme-logo .theme-logo-front,
+.colorway-black-antique-texture .showcase-menu-toggle span {
+  background: var(--antique-gold-texture);
+}
+
+.colorway-black-antique-texture .highlight-video-copy,
+.showcase-home-shell.colorway-black-antique-texture .instagram-home-footer,
+:root[data-preview-theme="gold-white-premium"] .colorway-black-antique-texture .footer-copyright {
+  color: var(--antique-gold-bright);
+}
+
+.colorway-black-antique-texture .highlight-video-cta,
+.colorway-black-antique-texture .showcase-menu-toggle,
+.colorway-black-antique-texture .horizontal-feature-card,
+.colorway-black-antique-texture .horizontal-feature-card.is-active,
+.colorway-black-antique-texture .media-lightbox-panel,
+.colorway-black-antique-texture .media-lightbox-control,
+:root[data-preview-theme="gold-white-premium"] .colorway-black-antique-texture .back-to-top {
+  border-color: var(--antique-gold);
+}
+
+.colorway-black-antique-texture .highlight-video-cta {
+  background: rgba(112, 85, 42, 0.14);
+  color: var(--antique-gold-bright);
+}
+
+.colorway-black-antique-texture .highlight-video-pagination button {
+  background: rgba(112, 85, 42, 0.46);
+}
+
+.colorway-black-antique-texture .highlight-video-pagination button.is-active,
+.colorway-black-antique-texture .showcase-menu a[aria-current="page"] {
+  background: var(--antique-gold-texture);
+  color: #050505;
+}
+
+.showcase-home-shell.colorway-black-antique-texture .instagram-home-footer {
+  border-top-color: rgba(112, 85, 42, 0.78);
+}
+
+:root[data-preview-theme="gold-white-premium"] .colorway-black-antique-texture .back-to-top {
+  color: var(--antique-gold-bright);
+}
+
+/* Black-and-gold option with low-contrast ambient movement after Brand Partnerships. */
+.colorway-black-gold-motion .showcase-loop-section,
+.showcase-home-shell.colorway-black-gold-motion .instagram-home-footer {
+  background-color: #020202;
+  background-image:
+    radial-gradient(ellipse at 18% 28%, rgba(82, 82, 86, 0.2), transparent 42%),
+    radial-gradient(ellipse at 78% 68%, rgba(112, 91, 55, 0.1), transparent 46%),
+    radial-gradient(ellipse at 52% 46%, rgba(34, 35, 39, 0.25), transparent 54%),
+    linear-gradient(132deg, #000 8%, #0a0a0b 42%, #020202 68%, #11100e 100%);
+  background-position: 0% 30%, 100% 70%, 50% 50%, 0% 50%;
+  background-size: 180% 180%, 190% 190%, 160% 160%, 220% 220%;
+  animation: showcase-ambient-gradient 34s ease-in-out infinite alternate;
+}
+
+.colorway-black-gold-motion .showcase-loop-category-brand {
+  background: #000;
+  box-shadow: 0 -40px 0 #000;
+}
+
+@keyframes showcase-ambient-gradient {
+  0% {
+    background-position: 0% 28%, 100% 72%, 48% 44%, 0% 50%;
+  }
+
+  50% {
+    background-position: 36% 52%, 64% 42%, 58% 60%, 52% 46%;
+  }
+
+  100% {
+    background-position: 74% 66%, 22% 30%, 42% 54%, 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .colorway-black-gold-motion .showcase-loop-section,
+  .showcase-home-shell.colorway-black-gold-motion .instagram-home-footer {
+    animation: none;
+  }
+}
+
 /* Antique-gold option with white typography, rules, borders, and logo accents. */
 .showcase-home-shell.colorway-antique-white {
   color: #fff;

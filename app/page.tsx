@@ -17,6 +17,8 @@ export default async function Home({ searchParams }: HomeProps) {
     || colorway === "antique-gold"
     || colorway === "antique-white"
     || colorway === "black-gold"
+    || colorway === "black-antique-texture"
+    || colorway === "black-gold-motion"
     ? colorway
     : "gold";
 
