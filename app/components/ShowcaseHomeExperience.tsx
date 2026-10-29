@@ -128,7 +128,7 @@ export function ShowcaseHomeExperience({
           preload="auto"
           aria-hidden="true"
         >
-          <source src="/motion/abstract-gold-flow.m4v" type="video/mp4" />
+          <source src="/motion/abstract-gold-flow-1080p.mp4" type="video/mp4" />
         </video>
       ) : null}
       {withFeatureBanner ? (
