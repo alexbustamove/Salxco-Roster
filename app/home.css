@@ -953,6 +953,76 @@
   line-height: 1;
 }
 
+.media-lightbox {
+  position: fixed;
+  z-index: 1100;
+  inset: 0;
+  display: grid;
+  padding: clamp(12px, 3vw, 36px);
+  place-items: center;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.media-lightbox-panel {
+  position: relative;
+  display: grid;
+  width: min(92vw, 960px);
+  height: min(90vh, 1120px);
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: #050505;
+}
+
+.media-lightbox-panel:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  border: 0;
+  background: #000;
+}
+
+.media-lightbox-panel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.media-lightbox-control {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.media-lightbox-fullscreen {
+  right: 60px;
+}
+
+.media-lightbox-close {
+  right: 12px;
+  font-size: 28px;
+  font-weight: 300;
+}
+
+.colorway-black-gold .media-lightbox-panel,
+.colorway-black-gold .media-lightbox-control {
+  border-color: #b6944a;
+  color: #b6944a;
+}
+
 @media (min-width: 641px) {
   .highlight-video-card {
     height: clamp(240px, 38svh, 340px);

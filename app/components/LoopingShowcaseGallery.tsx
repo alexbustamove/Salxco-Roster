@@ -19,6 +19,7 @@ type LoopingShowcaseRowProps = {
   direction: 1 | -1;
   items: LoopItem[];
   label: string;
+  onOpenMedia: (item: LoopItem) => void;
 };
 
 const splitIntoRows = (items: LoopItem[]) => [
@@ -38,13 +39,91 @@ const sections = [
   { category: "accolade", title: "Achievements", rows: accoladeRows },
 ] as const;
 
-function LoopingShowcaseRow({ category, direction, items, label }: LoopingShowcaseRowProps) {
+function getArtistKey(item: LoopItem) {
+  const searchable = `${item.title} ${item.href} ${item.image}`.toLowerCase();
+  const knownArtists = [
+    ["the-weeknd", /the[\s-]weeknd|\bweeknd\b|\btw\b|\bxo\b|nespresso|samra|fortnite|\bhhn\b|bluejays|wwe|\bliv\b|apple.*\(tw\)/],
+    ["french-montana", /french[\s-]montana|\bfm_|monster[\s-]energy/],
+    ["doja-cat", /doja[\s-]cat|taco[\s-]bell|urban[\s-]decay/],
+    ["metro-boomin", /metro[\s-]boomin|redbull[\s-]symphonic|zero[\s-]comics/],
+    ["elyanna", /\belyanna\b|\bcoach\b/],
+    ["hope-tala", /hope[\s-]tala|freepeople|\bfps\b/],
+    ["austin-millz", /austin[\s-]millz|\bnutrl\b/],
+    ["bebe-rexha", /bebe[\s-]rexha|provocativo/],
+    ["brandy", /\bbrandy\b|stellarosa/],
+    ["ty-dolla-sign", /ty[\s-]dolla|smirnoff/],
+  ] as const;
+  const knownArtist = knownArtists.find(([, pattern]) => pattern.test(searchable));
+
+  if (knownArtist) return knownArtist[0];
+  return item.title.split(/\s+(?:-|—)\s+/)[0].trim().toLowerCase();
+}
+
+function shuffleWithoutAdjacentArtists(items: LoopItem[]) {
+  const artistGroups = new Map<string, LoopItem[]>();
+
+  for (const item of items) {
+    const artist = getArtistKey(item);
+    const group = artistGroups.get(artist) ?? [];
+    group.push(item);
+    artistGroups.set(artist, group);
+  }
+
+  let lastShuffle = [...items];
+
+  for (let attempt = 0; attempt < 24; attempt += 1) {
+    const remaining = [...artistGroups.entries()].map(([artist, groupItems]) => ({
+      artist,
+      items: [...groupItems].sort(() => Math.random() - 0.5),
+    }));
+    const shuffled: LoopItem[] = [];
+    let previousArtist: string | null = null;
+
+    while (remaining.length > 0) {
+      const candidates = remaining.filter(({ artist }) => artist !== previousArtist);
+      const candidatePool = candidates.length > 0 ? candidates : remaining;
+      candidatePool.sort((a, b) => (
+        b.items.length - a.items.length || Math.random() - 0.5
+      ));
+
+      const selectedGroup = candidatePool[0];
+      const selectedItem = selectedGroup.items.pop();
+      if (selectedItem) shuffled.push(selectedItem);
+      previousArtist = selectedGroup.artist;
+
+      if (selectedGroup.items.length === 0) {
+        remaining.splice(remaining.indexOf(selectedGroup), 1);
+      }
+    }
+    lastShuffle = shuffled;
+
+    if (
+      shuffled.length < 2
+      || getArtistKey(shuffled[0]) !== getArtistKey(shuffled[shuffled.length - 1])
+    ) return shuffled;
+  }
+
+  return lastShuffle;
+}
+
+function LoopingShowcaseRow({
+  category,
+  direction,
+  items,
+  label,
+  onOpenMedia,
+}: LoopingShowcaseRowProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const loopMetricsRef = useRef({ cycleWidth: 0, middleStart: 0 });
   const interactionTimerRef = useRef<number | null>(null);
   const dragRef = useRef({ pointerId: -1, startX: 0, startScrollLeft: 0 });
   const [isInteracting, setIsInteracting] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [displayItems, setDisplayItems] = useState(items);
+
+  useEffect(() => {
+    setDisplayItems(shuffleWithoutAdjacentArtists(items));
+  }, [items]);
 
   const measureLoop = () => {
     const viewport = viewportRef.current;
@@ -176,15 +255,20 @@ function LoopingShowcaseRow({ category, direction, items, label }: LoopingShowca
               aria-hidden={groupIndex === 1 ? undefined : "true"}
               key={groupIndex}
             >
-              {items.map((item) => (
+              {displayItems.map((item) => (
                 <a
                   className="showcase-loop-card"
                   href={item.href}
-                  target="_blank"
-                  rel="noreferrer"
+                  target={category === "magazine" ? undefined : "_blank"}
+                  rel={category === "magazine" ? undefined : "noreferrer"}
                   aria-label={item.title}
+                  aria-haspopup={category === "magazine" ? "dialog" : undefined}
                   tabIndex={groupIndex === 1 ? 0 : -1}
                   key={`${groupIndex}-${item.id}`}
+                  onClick={category === "magazine" ? (event) => {
+                    event.preventDefault();
+                    onOpenMedia(item);
+                  } : undefined}
                 >
                   <img src={item.image} alt={item.title} loading="lazy" />
                 </a>
@@ -198,39 +282,103 @@ function LoopingShowcaseRow({ category, direction, items, label }: LoopingShowca
 }
 
 export function LoopingShowcaseGallery() {
-  return (
-    <div className="showcase-loop-gallery">
-      {sections.map((section, sectionIndex) => (
-        <section
-          className={`showcase-loop-category showcase-loop-category-${section.category}`}
-          aria-labelledby={`showcase-loop-category-${section.category}`}
-          key={section.category}
-        >
-          {section.category !== "brand" && (
-            <h2
-              className="showcase-loop-category-title"
-              id={`showcase-loop-category-${section.category}`}
-            >
-              {section.title}
-            </h2>
-          )}
-          <div className="showcase-loop-category-rows">
-            {section.rows.map((items, rowIndex) => {
-              const absoluteIndex = sectionIndex * 2 + rowIndex;
+  const [selectedMedia, setSelectedMedia] = useState<LoopItem | null>(null);
+  const lightboxPanelRef = useRef<HTMLDivElement>(null);
 
-              return (
-                <LoopingShowcaseRow
-                  category={section.category}
-                  direction={absoluteIndex % 2 === 0 ? 1 : -1}
-                  items={[...items]}
-                  label={`${section.title} row ${rowIndex + 1}`}
-                  key={`${section.category}-${rowIndex}`}
-                />
-              );
-            })}
+  useEffect(() => {
+    if (!selectedMedia) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelectedMedia(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [selectedMedia]);
+
+  const toggleFullscreen = async () => {
+    if (document.fullscreenElement) {
+      await document.exitFullscreen();
+      return;
+    }
+
+    await lightboxPanelRef.current?.requestFullscreen();
+  };
+
+  return (
+    <>
+      <div className="showcase-loop-gallery">
+        {sections.map((section, sectionIndex) => (
+          <section
+            className={`showcase-loop-category showcase-loop-category-${section.category}`}
+            aria-labelledby={`showcase-loop-category-${section.category}`}
+            key={section.category}
+          >
+            {section.category !== "brand" && (
+              <h2
+                className="showcase-loop-category-title"
+                id={`showcase-loop-category-${section.category}`}
+              >
+                {section.title}
+              </h2>
+            )}
+            <div className="showcase-loop-category-rows">
+              {section.rows.map((items, rowIndex) => {
+                const absoluteIndex = sectionIndex * 2 + rowIndex;
+
+                return (
+                  <LoopingShowcaseRow
+                    category={section.category}
+                    direction={absoluteIndex % 2 === 0 ? 1 : -1}
+                    items={items}
+                    label={`${section.title} row ${rowIndex + 1}`}
+                    onOpenMedia={setSelectedMedia}
+                    key={`${section.category}-${rowIndex}`}
+                  />
+                );
+              })}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      {selectedMedia ? (
+        <div
+          className="media-lightbox"
+          role="dialog"
+          aria-label={`${selectedMedia.title} full cover`}
+          aria-modal="true"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setSelectedMedia(null);
+          }}
+        >
+          <div className="media-lightbox-panel" ref={lightboxPanelRef}>
+            <button
+              className="media-lightbox-control media-lightbox-fullscreen"
+              type="button"
+              aria-label="View cover fullscreen"
+              onClick={toggleFullscreen}
+            >
+              ⛶
+            </button>
+            <button
+              className="media-lightbox-control media-lightbox-close"
+              type="button"
+              aria-label="Close full cover"
+              autoFocus
+              onClick={() => setSelectedMedia(null)}
+            >
+              ×
+            </button>
+            <img src={selectedMedia.image} alt={selectedMedia.title} />
           </div>
-        </section>
-      ))}
-    </div>
+        </div>
+      ) : null}
+    </>
   );
 }
