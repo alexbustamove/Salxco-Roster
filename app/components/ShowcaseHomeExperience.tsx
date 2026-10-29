@@ -83,7 +83,7 @@ export function ShowcaseHomeExperience({
           : colorway === "black-gold-motion"
             ? "colorway-black colorway-black-gold colorway-black-gold-motion"
             : colorway === "black-antique-motion"
-              ? "colorway-black colorway-black-antique-motion"
+              ? "colorway-black colorway-black-gold colorway-black-antique-motion"
               : `colorway-${colorway}`;
 
   useEffect(() => {
@@ -118,6 +118,19 @@ export function ShowcaseHomeExperience({
     <main
       className={`instagram-home-shell showcase-home-shell ${colorwayClasses}`}
     >
+      {colorway === "black-antique-motion" ? (
+        <video
+          className="antique-motion-background"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        >
+          <source src="/motion/abstract-gold-flow.m4v" type="video/mp4" />
+        </video>
+      ) : null}
       {withFeatureBanner ? (
         <>
           <header className="instagram-home-header highlight-video-nav">

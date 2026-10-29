@@ -1796,14 +1796,15 @@
   }
 }
 
-/* Antique-gold aurora: broad blurred light bands inspired by the teal motion reference. */
+/* Antique-gold motion: fluid horizontal ribbons supplied for this colorway. */
 .showcase-home-shell.colorway-black-antique-motion {
+  --motion-gold: #b79349;
+
   position: relative;
   isolation: isolate;
-  background: #060402;
+  background: #050301;
 }
 
-.showcase-home-shell.colorway-black-antique-motion::before,
 .showcase-home-shell.colorway-black-antique-motion::after {
   position: fixed;
   z-index: -1;
@@ -1811,18 +1812,17 @@
   pointer-events: none;
 }
 
-.showcase-home-shell.colorway-black-antique-motion::before {
-  inset: -28vh -20vw;
-  background:
-    radial-gradient(ellipse 21% 68% at 17% 18%, rgba(174, 129, 55, 0.56), transparent 72%),
-    radial-gradient(ellipse 26% 78% at 52% 72%, rgba(112, 77, 31, 0.44), transparent 74%),
-    radial-gradient(ellipse 20% 64% at 84% 28%, rgba(151, 107, 42, 0.5), transparent 72%),
-    linear-gradient(108deg, #060402 4%, #38250f 20%, #070402 36%, #553919 54%, #080502 72%, #3a270f 88%, #050301 100%);
-  filter: blur(60px) saturate(0.82);
-  opacity: 0.76;
-  transform: translate3d(-4%, -2%, 0) scale(1.08);
-  animation: showcase-antique-aurora 22s ease-in-out infinite alternate;
-  will-change: transform;
+.antique-motion-background {
+  position: fixed;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  filter: brightness(1.08) contrast(1.08) saturate(0.78);
+  opacity: 0.88;
+  pointer-events: none;
+  transform: scale(1.08);
 }
 
 .showcase-home-shell.colorway-black-antique-motion::after {
@@ -1835,9 +1835,49 @@
   opacity: 0.2;
 }
 
+.colorway-black-antique-motion .showcase-menu a,
+.colorway-black-antique-motion .highlight-video-copy,
+.colorway-black-antique-motion .horizontal-feature-trigger,
+.colorway-black-antique-motion .horizontal-feature-link,
+.colorway-black-antique-motion .showcase-loop-category-title,
+.showcase-home-shell.colorway-black-antique-motion .instagram-home-footer,
+:root[data-preview-theme="gold-white-premium"] .colorway-black-antique-motion .footer-copyright,
+:root[data-preview-theme="gold-white-premium"] .colorway-black-antique-motion .back-to-top {
+  color: var(--motion-gold);
+}
+
+.colorway-black-antique-motion .highlight-video-nav-logo .theme-logo-front,
+.showcase-home-shell.colorway-black-antique-motion .footer-theme-logo .theme-logo-front,
+.colorway-black-antique-motion .showcase-menu-toggle span,
+.colorway-black-antique-motion .highlight-video-pagination button.is-active {
+  background: var(--motion-gold);
+}
+
+.colorway-black-antique-motion .showcase-menu-toggle,
+.colorway-black-antique-motion .highlight-video-cta,
+.colorway-black-antique-motion .horizontal-feature-card,
+.colorway-black-antique-motion .horizontal-feature-card.is-active,
+.colorway-black-antique-motion .horizontal-feature-link,
+:root[data-preview-theme="gold-white-premium"] .colorway-black-antique-motion .back-to-top {
+  border-color: var(--motion-gold);
+}
+
+.colorway-black-antique-motion .showcase-loop-section {
+  --showcase-loop-border: var(--motion-gold);
+}
+
+.colorway-black-antique-motion .highlight-video-cta {
+  color: var(--motion-gold);
+  background: rgba(183, 147, 73, 0.12);
+}
+
+.colorway-black-antique-motion .highlight-video-pagination button {
+  background: rgba(183, 147, 73, 0.42);
+}
+
 .colorway-black-antique-motion .showcase-menu a[aria-current="page"] {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.14);
+  color: var(--motion-gold);
+  background: rgba(183, 147, 73, 0.16);
 }
 
 .colorway-black-antique-motion .horizontal-feature-banner,
@@ -1847,27 +1887,9 @@
   background: transparent;
 }
 
-@keyframes showcase-antique-aurora {
-  0% {
-    transform: translate3d(-5%, -3%, 0) scale(1.08) rotate(-0.4deg);
-  }
-
-  34% {
-    transform: translate3d(2%, 1%, 0) scale(1.14) rotate(0.25deg);
-  }
-
-  68% {
-    transform: translate3d(-1%, 5%, 0) scale(1.1) rotate(-0.15deg);
-  }
-
-  100% {
-    transform: translate3d(5%, -1%, 0) scale(1.16) rotate(0.45deg);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .showcase-home-shell.colorway-black-antique-motion::before {
-    animation: none;
+  .antique-motion-background {
+    display: none;
   }
 }
 
