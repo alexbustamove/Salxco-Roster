@@ -1664,18 +1664,22 @@
 }
 
 @media (max-width: 640px) {
-  .colorway-gold .highlight-video-banner {
+  .showcase-home-shell .highlight-video-banner {
     padding-bottom: 0;
   }
 
-  .colorway-gold .highlight-video-nav-logo {
+  .showcase-home-shell .highlight-video-nav-logo {
     top: 10px;
     left: 10px;
     width: 54px;
   }
 
-  .colorway-black .horizontal-feature-track,
-  .colorway-gold .horizontal-feature-track {
+  .showcase-home-shell .horizontal-feature-banner,
+  .showcase-home-shell .horizontal-feature-viewport {
+    padding-bottom: 0;
+  }
+
+  .showcase-home-shell .horizontal-feature-track {
     padding-top: 12px;
   }
 
