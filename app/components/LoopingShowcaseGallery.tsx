@@ -27,7 +27,7 @@ const splitIntoRows = (items: LoopItem[]) => [
 ];
 
 const brandRows = splitIntoRows(partnershipItems.slice(0, 24));
-const magazineRows = splitIntoRows(lifestyleMediaItems.slice(0, 24));
+const magazineRows = splitIntoRows(lifestyleMediaItems);
 const accoladeRows = splitIntoRows(
   accoladeItems.map((item) => ({ ...item, href: item.image })),
 );

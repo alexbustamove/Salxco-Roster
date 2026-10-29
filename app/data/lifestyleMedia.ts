@@ -7,765 +7,741 @@ export type LifestyleMediaItem = {
 
 export const lifestyleMediaItems: LifestyleMediaItem[] = [
   {
-    "id": "1352",
-    "title": "812612082_18649240456015243_6613627780163443853_n.",
-    "href": "https://gqhongkong.com/en/style-en/gq-cover-the-weeknd-reloaded",
-    "image": "https://salxco.com/wp-content/uploads/2026/09/812612082_18649240456015243_6613627780163443853_n-scaled-600x750.jpg"
+    "id": "austin-millz-equate",
+    "title": "Austin Millz - Equate",
+    "href": "/media/austin-millz-equate.jpg",
+    "image": "/media/austin-millz-equate.jpg"
   },
   {
-    "id": "1351",
-    "title": "Presenting Rolling Stone Canada’s latest cover star- @frenchmontana 💎 More than two decades int",
-    "href": "https://ca.rollingstone.com/editorial/en-featured/french-montana-september-cover-2026/",
-    "image": "https://salxco.com/wp-content/uploads/2026/09/Presenting-Rolling-Stone-Canadas-latest-cover-star-@frenchmontana-💎-More-than-two-decades-int-600x780.jpg"
+    "id": "bebe-rexha-basic",
+    "title": "Bebe Rexha - Basic",
+    "href": "/media/bebe-rexha-basic.jpg",
+    "image": "/media/bebe-rexha-basic.jpg"
   },
   {
-    "id": "1344",
-    "title": "Hallways to the runway ❄️🌊After years of trendsetting, it’s been an honor to be one of the peop",
-    "href": "https://vogue.com.tr/muzik/french-montana-on-brotherhood-independence-and-perfect-timing",
-    "image": "https://salxco.com/wp-content/uploads/2026/08/Hallways-to-the-runway-❄️🌊After-years-of-trendsetting-its-been-an-honor-to-be-one-of-the-peop-600x750.jpg"
+    "id": "bebe-rexha-elle",
+    "title": "Bebe Rexha - ELLE",
+    "href": "/media/bebe-rexha-elle.jpg",
+    "image": "/media/bebe-rexha-elle.jpg"
   },
   {
-    "id": "1272",
-    "title": "@chxrry @_66greene",
-    "href": "https://byalexander.com/66greene/chxrry-on-top",
-    "image": "https://salxco.com/wp-content/uploads/2026/01/@chxrry-@_66greene-600x750.jpg"
+    "id": "bebe-rexha-galore",
+    "title": "Bebe Rexha - Galore",
+    "href": "/media/bebe-rexha-galore.jpg",
+    "image": "/media/bebe-rexha-galore.jpg"
   },
   {
-    "id": "1271",
-    "title": "8309_cover_BIA_new",
-    "href": "https://glamour.bg/moda/bia-bez-filtyr",
-    "image": "https://salxco.com/wp-content/uploads/2026/01/8309_cover_BIA_new-600x782.jpg"
+    "id": "bebe-rexha-kind",
+    "title": "Bebe Rexha - Kind",
+    "href": "/media/bebe-rexha-kind.jpg",
+    "image": "/media/bebe-rexha-kind.jpg"
   },
   {
-    "id": "1268",
-    "title": "navrs-scaled",
-    "href": "https://rollingstoneindia.com/nav-cover-story-november-december-2025/",
-    "image": "https://salxco.com/wp-content/uploads/2025/12/navrs-scaled-1-600x780.webp"
+    "id": "bebe-rexha-l-officiel-australia",
+    "title": "Bebe Rexha - L'Officiel Australia",
+    "href": "/media/bebe-rexha-l-officiel-australia.jpg",
+    "image": "/media/bebe-rexha-l-officiel-australia.jpg"
   },
   {
-    "id": "1251",
-    "title": "Two Women. Two Journeys. One Undeniable Legacy.They didn’t just arrive on the scene; they shifte",
-    "href": "https://www.instagram.com/p/DPOnP6bjc1_/?igsh=NTc4MTIwNjQ2YQ%3D%3D",
-    "image": "https://salxco.com/wp-content/uploads/2025/09/Two-Women.-Two-Journeys.-One-Undeniable-Legacy.They-didnt-just-arrive-on-the-scene-they-shifte-600x749.jpg"
+    "id": "bebe-rexha-l-officiel-india",
+    "title": "Bebe Rexha - L'Officiel India",
+    "href": "/media/bebe-rexha-l-officiel-india.jpg",
+    "image": "/media/bebe-rexha-l-officiel-india.jpg"
   },
   {
-    "id": "1232",
-    "title": "Media cover 8",
-    "href": "https://www.instagram.com/p/DMvXM96v-4H/?igsh=NTc4MTIwNjQ2YQ==",
-    "image": "https://salxco.com/wp-content/uploads/2025/07/SnapInsta.to_523477365_18067840091165618_3962727909587161301_n-600x786.jpg"
+    "id": "bebe-rexha-l-officiel-italia",
+    "title": "Bebe Rexha - L'Officiel Italia",
+    "href": "/media/bebe-rexha-l-officiel-italia.jpg",
+    "image": "/media/bebe-rexha-l-officiel-italia.jpg"
   },
   {
-    "id": "1108",
-    "title": "2024 – TW VARIETY",
-    "href": "https://salxco.com/2024-tw-variety-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-TW-VARIETY-600x775.webp"
+    "id": "bebe-rexha-marie-claire",
+    "title": "Bebe Rexha - Marie Claire",
+    "href": "/media/bebe-rexha-marie-claire.jpg",
+    "image": "/media/bebe-rexha-marie-claire.jpg"
   },
   {
-    "id": "1094",
-    "title": "2024 – FM FORBES",
-    "href": "https://salxco.com/2024-fm-forbes-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-FM-FORBES-600x746.jpeg"
+    "id": "bebe-rexha-notion",
+    "title": "Bebe Rexha - Notion",
+    "href": "/media/bebe-rexha-notion.jpg",
+    "image": "/media/bebe-rexha-notion.jpg"
   },
   {
-    "id": "1096",
-    "title": "2024 – HMK ROLLING STONE",
-    "href": "https://salxco.com/2024-hmk-rolling-stone-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-HMK-ROLLING-STONE-600x743.png"
+    "id": "bebe-rexha-self",
+    "title": "Bebe Rexha - SELF",
+    "href": "/media/bebe-rexha-self.jpg",
+    "image": "/media/bebe-rexha-self.jpg"
   },
   {
-    "id": "1109",
-    "title": "2024 – TY$ BILLBOARD",
-    "href": "https://salxco.com/2024-ty-billboard-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-TY-BILLBOARD-600x780.webp"
+    "id": "bia-glamour",
+    "title": "BIA - Glamour",
+    "href": "/media/bia-glamour.jpg",
+    "image": "/media/bia-glamour.jpg"
   },
   {
-    "id": "1100",
-    "title": "2024 – MB BILLBOARD",
-    "href": "https://salxco.com/2024-mb-billboard-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-MB-BILLBOARD-600x743.jpg"
+    "id": "brandy-essence",
+    "title": "Brandy - Essence",
+    "href": "/media/brandy-essence.jpg",
+    "image": "/media/brandy-essence.jpg"
   },
   {
-    "id": "1093",
-    "title": "2024 – ELYANNA VOGUE",
-    "href": "https://salxco.com/2024-elyanna-vogue-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-ELYANNA-VOGUE-600x748.jpg"
+    "id": "brandy-people",
+    "title": "Brandy - People",
+    "href": "/media/brandy-people.jpg",
+    "image": "/media/brandy-people.jpg"
   },
   {
-    "id": "1117",
-    "title": "2025 – TW COMPLEX",
-    "href": "https://salxco.com/2025-tw-complex-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2025-TW-COMPLEX-600x750.jpg"
+    "id": "brandy-rolling-out",
+    "title": "Brandy - Rolling Out",
+    "href": "/media/brandy-rolling-out.jpg",
+    "image": "/media/brandy-rolling-out.jpg"
   },
   {
-    "id": "1113",
-    "title": "2025 – FM MEN’S FITNESS",
-    "href": "https://salxco.com/2025-fm-mens-fitness-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2025-FM-MENS-FITNESS-600x750.jpg"
+    "id": "brandy-sheen",
+    "title": "Brandy - SHEEN",
+    "href": "/media/brandy-sheen.jpg",
+    "image": "/media/brandy-sheen.jpg"
   },
   {
-    "id": "1111",
-    "title": "2025 – ELYANNA HARPER’S BAZAAR",
-    "href": "https://salxco.com/2025-elyanna-harpers-bazaar-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2025-ELYANNA-HARPERS-BAZAAR-600x750.webp"
+    "id": "brandy-upscale",
+    "title": "Brandy - Upscale",
+    "href": "/media/brandy-upscale.jpg",
+    "image": "/media/brandy-upscale.jpg"
   },
   {
-    "id": "1112",
-    "title": "2025 – ELYANNA NUMERO",
-    "href": "https://salxco.com/2025-elyanna-numero-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2025-ELYANNA-NUMERO-scaled-600x750.jpg"
+    "id": "chxrry-66",
+    "title": "Chxrry - 66",
+    "href": "/media/chxrry-66.jpg",
+    "image": "/media/chxrry-66.jpg"
   },
   {
-    "id": "1106",
-    "title": "2024 – TW 032C",
-    "href": "https://salxco.com/2024-tw-032c-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-TW-032C.jpeg"
+    "id": "chxrry-notion",
+    "title": "Chxrry - Notion",
+    "href": "/media/chxrry-notion.jpg",
+    "image": "/media/chxrry-notion.jpg"
   },
   {
-    "id": "1105",
-    "title": "2024 – SHENSEEA GUAP",
-    "href": "https://salxco.com/2024-shenseea-guap-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-SHENSEEA-GUAP-600x750.jpg"
+    "id": "doe-boy-preme",
+    "title": "Doe Boy - Preme",
+    "href": "/media/doe-boy-preme.jpg",
+    "image": "/media/doe-boy-preme.jpg"
   },
   {
-    "id": "1115",
-    "title": "2025 – HMK PERFECT",
-    "href": "https://salxco.com/2025-hmk-perfect-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2025-HMK-PERFECT-600x750.jpg"
+    "id": "doja-cat-billboard",
+    "title": "Doja Cat - Billboard",
+    "href": "/media/doja-cat-billboard.jpg",
+    "image": "/media/doja-cat-billboard.jpg"
   },
   {
-    "id": "1107",
-    "title": "2024 – TW BILLBOARD BRAZIL",
-    "href": "https://salxco.com/2024-tw-billboard-brazil-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-TW-BILLBOARD-BRAZIL-600x749.jpg"
+    "id": "doja-cat-cosmopolitan-international",
+    "title": "Doja Cat - Cosmopolitan International",
+    "href": "/media/doja-cat-cosmopolitan-international.jpg",
+    "image": "/media/doja-cat-cosmopolitan-international.jpg"
   },
   {
-    "id": "1101",
-    "title": "2024 – MB GQ",
-    "href": "https://salxco.com/2024-mb-gq-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-MB-GQ-600x750.jpg"
+    "id": "doja-cat-cosmopolitan",
+    "title": "Doja Cat - Cosmopolitan",
+    "href": "/media/doja-cat-cosmopolitan.jpg",
+    "image": "/media/doja-cat-cosmopolitan.jpg"
   },
   {
-    "id": "1110",
-    "title": "2025 – ELYANNA ELLE ARABIA",
-    "href": "https://salxco.com/2025-elyanna-elle-arabia-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2025-ELYANNA-ELLE-ARABIA-600x750.jpg"
+    "id": "doja-cat-dazed",
+    "title": "Doja Cat - Dazed",
+    "href": "/media/doja-cat-dazed.jpg",
+    "image": "/media/doja-cat-dazed.jpg"
   },
   {
-    "id": "1053",
-    "title": "2021 – TW BILLBOARD",
-    "href": "https://salxco.com/2021-tw-billboard-3/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-TW-BILLBOARD-600x779.jpg"
+    "id": "doja-cat-elle",
+    "title": "Doja Cat - ELLE",
+    "href": "/media/doja-cat-elle.jpg",
+    "image": "/media/doja-cat-elle.jpg"
   },
   {
-    "id": "1119",
-    "title": "2022 – HT NOTION V2",
-    "href": "https://salxco.com/2022-ht-notion-v2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-HT-NOTION-V2-600x750.jpg"
+    "id": "doja-cat-interview",
+    "title": "Doja Cat - Interview",
+    "href": "/media/doja-cat-interview.jpg",
+    "image": "/media/doja-cat-interview.jpg"
   },
   {
-    "id": "1104",
-    "title": "2024 – SHENSEEA DEEDS",
-    "href": "https://salxco.com/2024-shenseea-deeds-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-SHENSEEA-DEEDS-600x749.jpeg"
+    "id": "doja-cat-l-officiel",
+    "title": "Doja Cat - L'Officiel",
+    "href": "/media/doja-cat-l-officiel.jpg",
+    "image": "/media/doja-cat-l-officiel.jpg"
   },
   {
-    "id": "1103",
-    "title": "2024 – MB WONDERLAND",
-    "href": "https://salxco.com/2024-mb-wonderland-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-MB-WONDERLAND-600x750.jpg"
+    "id": "doja-cat-ladygunn",
+    "title": "Doja Cat - Ladygunn",
+    "href": "/media/doja-cat-ladygunn.jpg",
+    "image": "/media/doja-cat-ladygunn.jpg"
   },
   {
-    "id": "1102",
-    "title": "2024 – MB ICON",
-    "href": "https://salxco.com/2024-mb-icon-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-MB-ICON.webp"
+    "id": "doja-cat-narcisse",
+    "title": "Doja Cat - Narcisse",
+    "href": "/media/doja-cat-narcisse.jpg",
+    "image": "/media/doja-cat-narcisse.jpg"
   },
   {
-    "id": "1114",
-    "title": "2025 – HMK FORBES INDIA",
-    "href": "https://salxco.com/2025-hmk-forbes-india-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2025-HMK-FORBES-INDIA-600x748.jpg"
+    "id": "doja-cat-rolling-stone-1",
+    "title": "Doja Cat - Rolling Stone 1",
+    "href": "/media/doja-cat-rolling-stone-1.jpg",
+    "image": "/media/doja-cat-rolling-stone-1.jpg"
   },
   {
-    "id": "1099",
-    "title": "2024 – MB BILLBOARD ARABIA",
-    "href": "https://salxco.com/2024-mb-billboard-arabia-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-MB-BILLBOARD-ARABIA-600x750.jpeg"
+    "id": "doja-cat-rolling-stone-2",
+    "title": "Doja Cat - Rolling Stone 2",
+    "href": "/media/doja-cat-rolling-stone-2.jpg",
+    "image": "/media/doja-cat-rolling-stone-2.jpg"
   },
   {
-    "id": "1116",
-    "title": "2025 – HT EQUATE",
-    "href": "https://salxco.com/2025-ht-equate-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2025-HT-EQUATE-600x750.jpg"
+    "id": "doja-cat-time",
+    "title": "Doja Cat - TIME",
+    "href": "/media/doja-cat-time.jpg",
+    "image": "/media/doja-cat-time.jpg"
   },
   {
-    "id": "1097",
-    "title": "2024 – HT DORK",
-    "href": "https://salxco.com/2024-ht-dork-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-HT-DORK-600x750.webp"
+    "id": "doja-cat-v",
+    "title": "Doja Cat - V",
+    "href": "/media/doja-cat-v.jpg",
+    "image": "/media/doja-cat-v.jpg"
   },
   {
-    "id": "1152",
-    "title": "METRO",
-    "href": "https://salxco.com/metro/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/METRO-600x948.jpeg"
+    "id": "doja-cat-variety",
+    "title": "Doja Cat - Variety",
+    "href": "/media/doja-cat-variety.jpg",
+    "image": "/media/doja-cat-variety.jpg"
   },
   {
-    "id": "1095",
-    "title": "2024 – FM GALORE",
-    "href": "https://salxco.com/2024-fm-galore-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-FM-GALORE-600x750.jpg"
+    "id": "doja-cat-vogue",
+    "title": "Doja Cat - Vogue",
+    "href": "/media/doja-cat-vogue.jpg",
+    "image": "/media/doja-cat-vogue.jpg"
   },
   {
-    "id": "1088",
-    "title": "2024 – CHXRRY NOTION",
-    "href": "https://salxco.com/2024-chxrry-notion-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-CHXRRY-NOTION-600x750.jpg"
+    "id": "elyanna-billboard-arabia",
+    "title": "Elyanna - Billboard Arabia",
+    "href": "/media/elyanna-billboard-arabia.jpg",
+    "image": "/media/elyanna-billboard-arabia.jpg"
   },
   {
-    "id": "1098",
-    "title": "2024 – HT FAULT",
-    "href": "https://salxco.com/2024-ht-fault-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-HT-FAULT-600x749.jpg"
+    "id": "elyanna-cosmopolitan",
+    "title": "Elyanna - Cosmopolitan",
+    "href": "/media/elyanna-cosmopolitan.jpg",
+    "image": "/media/elyanna-cosmopolitan.jpg"
   },
   {
-    "id": "1091",
-    "title": "2024 – ELYANNA HOMME GIRLS",
-    "href": "https://salxco.com/2024-elyanna-homme-girls-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-ELYANNA-HOMME-GIRLS-600x750.jpg"
+    "id": "elyanna-elle-arabia-1",
+    "title": "Elyanna - ELLE Arabia 1",
+    "href": "/media/elyanna-elle-arabia-1.jpg",
+    "image": "/media/elyanna-elle-arabia-1.jpg"
   },
   {
-    "id": "1090",
-    "title": "2024 – ELYANNA GALORE",
-    "href": "https://salxco.com/2024-elyanna-galore-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-ELYANNA-GALORE-600x750.jpeg"
+    "id": "elyanna-elle-arabia-2",
+    "title": "Elyanna - ELLE Arabia 2",
+    "href": "/media/elyanna-elle-arabia-2.jpg",
+    "image": "/media/elyanna-elle-arabia-2.jpg"
   },
   {
-    "id": "1089",
-    "title": "2024 – ELYANNA BILLBOARD ARABIA",
-    "href": "https://salxco.com/2024-elyanna-billboard-arabia-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-ELYANNA-BILLBOARD-ARABIA-600x737.jpeg"
+    "id": "elyanna-galore",
+    "title": "Elyanna - Galore",
+    "href": "/media/elyanna-galore.jpg",
+    "image": "/media/elyanna-galore.jpg"
   },
   {
-    "id": "1082",
-    "title": "2023 – TF ABOM",
-    "href": "https://salxco.com/2023-tf-abom-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-TF-ABOM-600x750.jpg"
+    "id": "elyanna-gq-2",
+    "title": "Elyanna - GQ 2",
+    "href": "/media/elyanna-gq-2.jpg",
+    "image": "/media/elyanna-gq-2.jpg"
   },
   {
-    "id": "1087",
-    "title": "2024 – BR GALORE",
-    "href": "https://salxco.com/2024-br-galore-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-BR-GALORE-600x750.jpg"
+    "id": "elyanna-gq",
+    "title": "Elyanna - GQ",
+    "href": "/media/elyanna-gq.jpg",
+    "image": "/media/elyanna-gq.jpg"
   },
   {
-    "id": "1092",
-    "title": "2024 – ELYANNA SAVOIR FLAIR",
-    "href": "https://salxco.com/2024-elyanna-savoir-flair-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-ELYANNA-SAVOIR-FLAIR-600x750.jpg"
+    "id": "elyanna-harpers-bazaar-1",
+    "title": "Elyanna - Harpers Bazaar 1",
+    "href": "/media/elyanna-harpers-bazaar-1.jpg",
+    "image": "/media/elyanna-harpers-bazaar-1.jpg"
   },
   {
-    "id": "1085",
-    "title": "2023 – TW W MAG",
-    "href": "https://salxco.com/2023-tw-w-mag-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-TW-W-MAG-600x750.jpg"
+    "id": "elyanna-harpers-bazaar-2",
+    "title": "Elyanna - Harpers Bazaar 2",
+    "href": "/media/elyanna-harpers-bazaar-2.jpg",
+    "image": "/media/elyanna-harpers-bazaar-2.jpg"
   },
   {
-    "id": "1084",
-    "title": "2023 – TW VANITY FAIR",
-    "href": "https://salxco.com/2023-tw-vanity-fair-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-TW-VANITY-FAIR-600x810.jpg"
+    "id": "elyanna-hommegirls",
+    "title": "Elyanna - HommeGirls",
+    "href": "/media/elyanna-hommegirls.jpg",
+    "image": "/media/elyanna-hommegirls.jpg"
   },
   {
-    "id": "1083",
-    "title": "2023 – TW INTERVIEW",
-    "href": "https://salxco.com/2023-tw-interview-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-TW-INTERVIEW-600x942.jpg"
+    "id": "elyanna-laisha",
+    "title": "Elyanna - LaiSha",
+    "href": "/media/elyanna-laisha.jpg",
+    "image": "/media/elyanna-laisha.jpg"
   },
   {
-    "id": "1076",
-    "title": "2023 – ELYANNA HARPER’S BAZAAR",
-    "href": "https://salxco.com/2023-elyanna-harpers-bazaar-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-ELYANNA-HARPERS-BAZAAR-600x750.jpg"
+    "id": "elyanna-numero",
+    "title": "Elyanna - Numéro",
+    "href": "/media/elyanna-numero.jpg",
+    "image": "/media/elyanna-numero.jpg"
   },
   {
-    "id": "1081",
-    "title": "2023 – SHENSEEA ROLLERCOASTER",
-    "href": "https://salxco.com/2023-shenseea-rollercoaster-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-SHENSEEA-ROLLERCOASTER-600x755.webp"
+    "id": "elyanna-savoir-flair",
+    "title": "Elyanna - Savoir Flair",
+    "href": "/media/elyanna-savoir-flair.jpg",
+    "image": "/media/elyanna-savoir-flair.jpg"
   },
   {
-    "id": "1086",
-    "title": "2024 – AM EQUATE",
-    "href": "https://salxco.com/2024-am-equate-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2024-AM-EQUATE-600x750.jpg"
+    "id": "elyanna-vogue-arabia-1",
+    "title": "Elyanna - Vogue Arabia 1",
+    "href": "/media/elyanna-vogue-arabia-1.jpg",
+    "image": "/media/elyanna-vogue-arabia-1.jpg"
   },
   {
-    "id": "1079",
-    "title": "2023 – MB HITS DD",
-    "href": "https://salxco.com/2023-mb-hits-dd-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-MB-HITS-DD-600x771.jpg"
+    "id": "elyanna-vogue-arabia-2",
+    "title": "Elyanna - Vogue Arabia 2",
+    "href": "/media/elyanna-vogue-arabia-2.jpg",
+    "image": "/media/elyanna-vogue-arabia-2.jpg"
   },
   {
-    "id": "1078",
-    "title": "2023 – MB FLAUNT",
-    "href": "https://salxco.com/2023-mb-flaunt-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-MB-FLAUNT-600x783.webp"
+    "id": "french-montana-1883",
+    "title": "French Montana - 1883",
+    "href": "/media/french-montana-1883.jpg",
+    "image": "/media/french-montana-1883.jpg"
   },
   {
-    "id": "1077",
-    "title": "2023 – FM PLAYBOY",
-    "href": "https://salxco.com/2023-fm-playboy-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-FM-PLAYBOY-600x746.jpeg"
+    "id": "french-montana-billboard",
+    "title": "French Montana - Billboard",
+    "href": "/media/french-montana-billboard.jpg",
+    "image": "/media/french-montana-billboard.jpg"
   },
   {
-    "id": "1070",
-    "title": "2023 – BR ELLE",
-    "href": "https://salxco.com/2023-br-elle-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-BR-ELLE-600x744.jpg"
+    "id": "french-montana-forbes",
+    "title": "French Montana - Forbes",
+    "href": "/media/french-montana-forbes.jpg",
+    "image": "/media/french-montana-forbes.jpg"
   },
   {
-    "id": "1075",
-    "title": "2023 – ELYANNA GQ",
-    "href": "https://salxco.com/2023-elyanna-gq-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-ELYANNA-GQ-600x750.jpg"
+    "id": "french-montana-galore",
+    "title": "French Montana - Galore",
+    "href": "/media/french-montana-galore.jpg",
+    "image": "/media/french-montana-galore.jpg"
   },
   {
-    "id": "1080",
-    "title": "2023 – SHENSEEA GALORE",
-    "href": "https://salxco.com/2023-shenseea-galore-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-SHENSEEA-GALORE-scaled-600x624.jpg"
+    "id": "french-montana-gq-middle-east",
+    "title": "French Montana - GQ Middle East",
+    "href": "/media/french-montana-gq-middle-east.jpg",
+    "image": "/media/french-montana-gq-middle-east.jpg"
   },
   {
-    "id": "1073",
-    "title": "2023 – DC TIME",
-    "href": "https://salxco.com/2023-dc-time-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-DC-TIME-scaled-600x800.webp"
+    "id": "french-montana-l-officiel",
+    "title": "French Montana - L'Officiel",
+    "href": "/media/french-montana-l-officiel.jpg",
+    "image": "/media/french-montana-l-officiel.jpg"
   },
   {
-    "id": "1072",
-    "title": "2023 – DC L’OFICIEL",
-    "href": "https://salxco.com/2023-dc-loficiel-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-DC-LOFICIEL-600x750.jpg"
+    "id": "french-montana-men-s-fitness",
+    "title": "French Montana - Men's Fitness",
+    "href": "/media/french-montana-men-s-fitness.jpg",
+    "image": "/media/french-montana-men-s-fitness.jpg"
   },
   {
-    "id": "1071",
-    "title": "2023 – DB PREME",
-    "href": "https://salxco.com/2023-db-preme-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-DB-PREME-600x754.jpg"
+    "id": "french-montana-paper",
+    "title": "French Montana - PAPER",
+    "href": "/media/french-montana-paper.jpg",
+    "image": "/media/french-montana-paper.jpg"
   },
   {
-    "id": "1064",
-    "title": "2022 – MB GQ HYPE",
-    "href": "https://salxco.com/2022-mb-gq-hype-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-MB-GQ-HYPE-600x750.jpg"
+    "id": "french-montana-playboy",
+    "title": "French Montana - Playboy",
+    "href": "/media/french-montana-playboy.jpg",
+    "image": "/media/french-montana-playboy.jpg"
   },
   {
-    "id": "1069",
-    "title": "2022 – TW FANGORIA",
-    "href": "https://salxco.com/2022-tw-fangoria-3/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-TW-FANGORIA-600x802.jpg"
+    "id": "french-montana-rolling-stone-canada",
+    "title": "French Montana - Rolling Stone Canada",
+    "href": "/media/french-montana-rolling-stone-canada.jpg",
+    "image": "/media/french-montana-rolling-stone-canada.jpg"
   },
   {
-    "id": "1074",
-    "title": "2023 – DC VARIETY",
-    "href": "https://salxco.com/2023-dc-variety-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2023-DC-VARIETY-600x776.webp"
+    "id": "french-montana-rolling-stone-korea",
+    "title": "French Montana - Rolling Stone Korea",
+    "href": "/media/french-montana-rolling-stone-korea.jpg",
+    "image": "/media/french-montana-rolling-stone-korea.jpg"
   },
   {
-    "id": "1067",
-    "title": "2022 – SHENSEEA EUPHORIA",
-    "href": "https://salxco.com/2022-shenseea-euphoria-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-SHENSEEA-EUPHORIA-scaled-600x750.jpeg"
+    "id": "french-montana-vogue",
+    "title": "French Montana - Vogue",
+    "href": "/media/french-montana-vogue.jpg",
+    "image": "/media/french-montana-vogue.jpg"
   },
   {
-    "id": "1066",
-    "title": "2022 – SC VULKAN",
-    "href": "https://salxco.com/2022-sc-vulkan-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-SC-VULKAN-600x750.jpg"
+    "id": "french-montana-xxl",
+    "title": "French Montana - XXL",
+    "href": "/media/french-montana-xxl.jpg",
+    "image": "/media/french-montana-xxl.jpg"
   },
   {
-    "id": "1065",
-    "title": "2022 – SC ABOM",
-    "href": "https://salxco.com/2022-sc-abom-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-SC-ABOM.jpg"
+    "id": "hanumankind-forbes-india",
+    "title": "Hanumankind - Forbes India",
+    "href": "/media/hanumankind-forbes-india.jpg",
+    "image": "/media/hanumankind-forbes-india.jpg"
   },
   {
-    "id": "1058",
-    "title": "2022 – DC ROLLING STONE",
-    "href": "https://salxco.com/2022-dc-rolling-stone-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-DC-ROLLING-STONE-600x723.jpg"
+    "id": "hanumankind-perfect",
+    "title": "Hanumankind - Perfect",
+    "href": "/media/hanumankind-perfect.jpg",
+    "image": "/media/hanumankind-perfect.jpg"
   },
   {
-    "id": "1151",
-    "title": "weekndstarboy2018001_dc21_page_1-2000-b67a82c8f679467ab8a9252fa4205c9d",
-    "href": "https://salxco.com/weekndstarboy2018001_dc21_page_1-2000-b67a82c8f679467ab8a9252fa4205c9d/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/weekndstarboy2018001_dc21_page_1-2000-b67a82c8f679467ab8a9252fa4205c9d-600x911.jpg"
+    "id": "hanumankind-rolling-stone-india",
+    "title": "Hanumankind - Rolling Stone India",
+    "href": "/media/hanumankind-rolling-stone-india.jpg",
+    "image": "/media/hanumankind-rolling-stone-india.jpg"
   },
   {
-    "id": "1063",
-    "title": "2022 – HT NOTION",
-    "href": "https://salxco.com/2022-ht-notion-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-HT-NOTION-600x900.jpg"
+    "id": "hope-tala-dork",
+    "title": "Hope Tala - Dork",
+    "href": "/media/hope-tala-dork.jpg",
+    "image": "/media/hope-tala-dork.jpg"
   },
   {
-    "id": "1068",
-    "title": "2022 – SHM SPIN",
-    "href": "https://salxco.com/2022-shm-spin-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-SHM-SPIN-600x725.jpeg"
+    "id": "hope-tala-equate",
+    "title": "Hope Tala - Equate",
+    "href": "/media/hope-tala-equate.jpg",
+    "image": "/media/hope-tala-equate.jpg"
   },
   {
-    "id": "1061",
-    "title": "2022 – ELYANNA ELLE ARABIA",
-    "href": "https://salxco.com/2022-elyanna-elle-arabia-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-ELYANNA-ELLE-ARABIA-600x750.jpg"
+    "id": "hope-tala-fault",
+    "title": "Hope Tala - FAULT",
+    "href": "/media/hope-tala-fault.jpg",
+    "image": "/media/hope-tala-fault.jpg"
   },
   {
-    "id": "1060",
-    "title": "2022 – ELYANNA COSMO",
-    "href": "https://salxco.com/2022-elyanna-cosmo-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-ELYANNA-COSMO-600x750.jpg"
+    "id": "hope-tala-notion-1",
+    "title": "Hope Tala - Notion 1",
+    "href": "/media/hope-tala-notion-1.jpg",
+    "image": "/media/hope-tala-notion-1.jpg"
   },
   {
-    "id": "1059",
-    "title": "2022 – DC VOGUE",
-    "href": "https://salxco.com/2022-dc-vogue-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-DC-VOGUE-600x750.jpeg"
+    "id": "hope-tala-notion-2",
+    "title": "Hope Tala - Notion 2",
+    "href": "/media/hope-tala-notion-2.jpg",
+    "image": "/media/hope-tala-notion-2.jpg"
   },
   {
-    "id": "1052",
-    "title": "2021 – SHM NME",
-    "href": "https://salxco.com/2021-shm-nme-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-SHM-NME-600x750.jpg"
+    "id": "metro-boomin-billboard-arabia",
+    "title": "Metro Boomin - Billboard Arabia",
+    "href": "/media/metro-boomin-billboard-arabia.jpg",
+    "image": "/media/metro-boomin-billboard-arabia.jpg"
   },
   {
-    "id": "1057",
-    "title": "2022 – DC ELLE",
-    "href": "https://salxco.com/2022-dc-elle-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-DC-ELLE-scaled-600x815.jpg"
+    "id": "metro-boomin-billboard",
+    "title": "Metro Boomin - Billboard",
+    "href": "/media/metro-boomin-billboard.jpg",
+    "image": "/media/metro-boomin-billboard.jpg"
   },
   {
-    "id": "1062",
-    "title": "2022 – FM L’OFFICIEL",
-    "href": "https://salxco.com/2022-fm-lofficiel-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-FM-LOFFICIEL-600x750.jpg"
+    "id": "metro-boomin-flaunt",
+    "title": "Metro Boomin - Flaunt",
+    "href": "/media/metro-boomin-flaunt.jpg",
+    "image": "/media/metro-boomin-flaunt.jpg"
   },
   {
-    "id": "1055",
-    "title": "2021 – TY GQ",
-    "href": "https://salxco.com/2021-ty-gq-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-TY-GQ-600x815.webp"
+    "id": "metro-boomin-gq-hype",
+    "title": "Metro Boomin - GQ Hype",
+    "href": "/media/metro-boomin-gq-hype.jpg",
+    "image": "/media/metro-boomin-gq-hype.jpg"
   },
   {
-    "id": "1054",
-    "title": "2021 – TW BILLBOARD",
-    "href": "https://salxco.com/2021-tw-billboard-4/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-TW-BILLBOARD-600x779.webp"
+    "id": "metro-boomin-gq",
+    "title": "Metro Boomin - GQ",
+    "href": "/media/metro-boomin-gq.jpg",
+    "image": "/media/metro-boomin-gq.jpg"
   },
   {
-    "id": "1046",
-    "title": "2021 – DC V MAG",
-    "href": "https://salxco.com/2021-dc-v-mag-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-DC-V-MAG-600x819.jpg"
+    "id": "metro-boomin-hits",
+    "title": "Metro Boomin - HITS",
+    "href": "/media/metro-boomin-hits.jpg",
+    "image": "/media/metro-boomin-hits.jpg"
   },
   {
-    "id": "1051",
-    "title": "2021 – SHM BILLBOARD",
-    "href": "https://salxco.com/2021-shm-billboard-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-SHM-BILLBOARD-600x780.webp"
+    "id": "metro-boomin-icon",
+    "title": "Metro Boomin - ICON",
+    "href": "/media/metro-boomin-icon.jpg",
+    "image": "/media/metro-boomin-icon.jpg"
   },
   {
-    "id": "1056",
-    "title": "2022 – DC DAZED",
-    "href": "https://salxco.com/2022-dc-dazed-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2022-DC-DAZED-600x750.jpg"
+    "id": "metro-boomin-metroverse",
+    "title": "Metro Boomin - MetroVerse",
+    "href": "/media/metro-boomin-metroverse.jpg",
+    "image": "/media/metro-boomin-metroverse.jpg"
   },
   {
-    "id": "1049",
-    "title": "2021 – FM ROLLING STONE KOREA",
-    "href": "https://salxco.com/2021-fm-rolling-stone-korea-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-FM-ROLLING-STONE-KOREA-600x600.webp"
+    "id": "metro-boomin-the-fader",
+    "title": "Metro Boomin - The FADER",
+    "href": "/media/metro-boomin-the-fader.jpg",
+    "image": "/media/metro-boomin-the-fader.jpg"
   },
   {
-    "id": "1047",
-    "title": "2021 – ELYANNA GQ",
-    "href": "https://salxco.com/2021-elyanna-gq-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-ELYANNA-GQ-600x743.jpg"
+    "id": "metro-boomin-wonderland",
+    "title": "Metro Boomin - Wonderland",
+    "href": "/media/metro-boomin-wonderland.jpg",
+    "image": "/media/metro-boomin-wonderland.jpg"
   },
   {
-    "id": "1040",
-    "title": "2021 – DC BILLBOARD",
-    "href": "https://salxco.com/2021-dc-billboard-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-DC-BILLBOARD-600x780.webp"
+    "id": "nav-preme",
+    "title": "NAV - Preme",
+    "href": "/media/nav-preme.jpg",
+    "image": "/media/nav-preme.jpg"
   },
   {
-    "id": "1045",
-    "title": "2021 – DC ROLLING STONE",
-    "href": "https://salxco.com/2021-dc-rolling-stone-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-DC-ROLLING-STONE-600x814.jpg"
+    "id": "nav-rolling-stone-india",
+    "title": "NAV - Rolling Stone India",
+    "href": "/media/nav-rolling-stone-india.jpg",
+    "image": "/media/nav-rolling-stone-india.jpg"
   },
   {
-    "id": "1050",
-    "title": "2021 – SHENSEEA EQUATE",
-    "href": "https://salxco.com/2021-shenseea-equate-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-SHENSEEA-EQUATE-scaled-600x800.jpg"
+    "id": "shenseea-deeds",
+    "title": "Shenseea - Deeds",
+    "href": "/media/shenseea-deeds.jpg",
+    "image": "/media/shenseea-deeds.jpg"
   },
   {
-    "id": "1043",
-    "title": "2021 – DC INTERVIEW",
-    "href": "https://salxco.com/2021-dc-interview-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-DC-INTERVIEW-600x944.jpg"
+    "id": "shenseea-equate",
+    "title": "Shenseea - Equate",
+    "href": "/media/shenseea-equate.jpg",
+    "image": "/media/shenseea-equate.jpg"
   },
   {
-    "id": "1042",
-    "title": "2021 – DC COSMO",
-    "href": "https://salxco.com/2021-dc-cosmo-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-DC-COSMO-600x810.jpg"
+    "id": "shenseea-euphoria",
+    "title": "Shenseea - Euphoria",
+    "href": "/media/shenseea-euphoria.jpg",
+    "image": "/media/shenseea-euphoria.jpg"
   },
   {
-    "id": "1041",
-    "title": "2021 – DC COSMO INTL",
-    "href": "https://salxco.com/2021-dc-cosmo-intl-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-DC-COSMO-INTL-600x800.jpg"
+    "id": "shenseea-galore",
+    "title": "Shenseea - Galore",
+    "href": "/media/shenseea-galore.jpg",
+    "image": "/media/shenseea-galore.jpg"
   },
   {
-    "id": "1034",
-    "title": "2021 – BR KIND",
-    "href": "https://salxco.com/2021-br-kind-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-BR-KIND-600x815.jpg"
+    "id": "shenseea-guap",
+    "title": "Shenseea - GUAP",
+    "href": "/media/shenseea-guap.jpg",
+    "image": "/media/shenseea-guap.jpg"
   },
   {
-    "id": "1039",
-    "title": "2021 – BRANDY UPDSCALE",
-    "href": "https://salxco.com/2021-brandy-updscale-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-BRANDY-UPDSCALE-600x805.webp"
+    "id": "shenseea-nylon",
+    "title": "Shenseea - NYLON",
+    "href": "/media/shenseea-nylon.jpg",
+    "image": "/media/shenseea-nylon.jpg"
   },
   {
-    "id": "1044",
-    "title": "2021 – DC NARCISSE",
-    "href": "https://salxco.com/2021-dc-narcisse-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-DC-NARCISSE-600x782.jpg"
+    "id": "shenseea-rollacoaster",
+    "title": "Shenseea - Rollacoaster",
+    "href": "/media/shenseea-rollacoaster.jpg",
+    "image": "/media/shenseea-rollacoaster.jpg"
   },
   {
-    "id": "1037",
-    "title": "2021 – BR MARIE CLAIRE",
-    "href": "https://salxco.com/2021-br-marie-claire-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-BR-MARIE-CLAIRE-600x750.jpeg"
+    "id": "swedish-house-mafia-billboard",
+    "title": "Swedish House Mafia - Billboard",
+    "href": "/media/swedish-house-mafia-billboard.jpg",
+    "image": "/media/swedish-house-mafia-billboard.jpg"
   },
   {
-    "id": "1036",
-    "title": "2021 – BR L’OFICIEL ITALIA",
-    "href": "https://salxco.com/2021-br-loficiel-italia-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-BR-LOFICIEL-ITALIA-600x749.jpg"
+    "id": "swedish-house-mafia-nme",
+    "title": "Swedish House Mafia - NME",
+    "href": "/media/swedish-house-mafia-nme.jpg",
+    "image": "/media/swedish-house-mafia-nme.jpg"
   },
   {
-    "id": "1035",
-    "title": "2021 – BR L’OFICIEL INDIA",
-    "href": "https://salxco.com/2021-br-loficiel-india-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-BR-LOFICIEL-INDIA-600x733.jpg"
+    "id": "swedish-house-mafia-spin",
+    "title": "Swedish House Mafia - Spin",
+    "href": "/media/swedish-house-mafia-spin.jpg",
+    "image": "/media/swedish-house-mafia-spin.jpg"
   },
   {
-    "id": "1028",
-    "title": "2020 – TW TIME",
-    "href": "https://salxco.com/2020-tw-time-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-TW-TIME-600x802.jpg"
+    "id": "the-weeknd-032c",
+    "title": "The Weeknd - 032c",
+    "href": "/media/the-weeknd-032c.jpg",
+    "image": "/media/the-weeknd-032c.jpg"
   },
   {
-    "id": "1033",
-    "title": "2021 – BR BASIC",
-    "href": "https://salxco.com/2021-br-basic-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-BR-BASIC-600x726.png"
+    "id": "the-weeknd-billboard-1",
+    "title": "The Weeknd - Billboard 1",
+    "href": "/media/the-weeknd-billboard-1.jpg",
+    "image": "/media/the-weeknd-billboard-1.jpg"
   },
   {
-    "id": "1038",
-    "title": "2021 – BR NOTION",
-    "href": "https://salxco.com/2021-br-notion-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-BR-NOTION-600x900.jpg"
+    "id": "the-weeknd-billboard-2",
+    "title": "The Weeknd - Billboard 2",
+    "href": "/media/the-weeknd-billboard-2.jpg",
+    "image": "/media/the-weeknd-billboard-2.jpg"
   },
   {
-    "id": "1031",
-    "title": "2020 – TY$ INKED",
-    "href": "https://salxco.com/2020-ty-inked-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-TY-INKED-600x828.jpg"
+    "id": "the-weeknd-complex",
+    "title": "The Weeknd - Complex",
+    "href": "/media/the-weeknd-complex.jpg",
+    "image": "/media/the-weeknd-complex.jpg"
   },
   {
-    "id": "1030",
-    "title": "2020 – TY$ CLASH",
-    "href": "https://salxco.com/2020-ty-clash-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-TY-CLASH-600x804.webp"
+    "id": "the-weeknd-cr-men",
+    "title": "The Weeknd - CR Men",
+    "href": "/media/the-weeknd-cr-men.jpg",
+    "image": "/media/the-weeknd-cr-men.jpg"
   },
   {
-    "id": "1029",
-    "title": "2020 – TW VARTIETY",
-    "href": "https://salxco.com/2020-tw-vartiety-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-TW-VARTIETY-600x750.jpg"
+    "id": "the-weeknd-esquire",
+    "title": "The Weeknd - Esquire",
+    "href": "/media/the-weeknd-esquire.jpg",
+    "image": "/media/the-weeknd-esquire.jpg"
   },
   {
-    "id": "1022",
-    "title": "Version 1.0.0",
-    "href": "https://salxco.com/version-1-0-0-18/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-NAV-PREME-600x750.jpg"
+    "id": "the-weeknd-fangoria",
+    "title": "The Weeknd - Fangoria",
+    "href": "/media/the-weeknd-fangoria.jpg",
+    "image": "/media/the-weeknd-fangoria.jpg"
   },
   {
-    "id": "1027",
-    "title": "2020 – TW ROLLING STONE",
-    "href": "https://salxco.com/2020-tw-rolling-stone-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-TW-ROLLING-STONE-600x727.webp"
+    "id": "the-weeknd-forbes",
+    "title": "The Weeknd - Forbes",
+    "href": "/media/the-weeknd-forbes.jpg",
+    "image": "/media/the-weeknd-forbes.jpg"
   },
   {
-    "id": "1032",
-    "title": "2021 – BELLY EQUATE",
-    "href": "https://salxco.com/2021-belly-equate-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2021-BELLY-EQUATE.jpeg"
+    "id": "the-weeknd-gq-1",
+    "title": "The Weeknd - GQ 1",
+    "href": "/media/the-weeknd-gq-1.jpg",
+    "image": "/media/the-weeknd-gq-1.jpg"
   },
   {
-    "id": "1025",
-    "title": "2020 – TW CR MEN",
-    "href": "https://salxco.com/2020-tw-cr-men-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-TW-CR-MEN-600x800.webp"
+    "id": "the-weeknd-gq-2",
+    "title": "The Weeknd - GQ 2",
+    "href": "/media/the-weeknd-gq-2.jpg",
+    "image": "/media/the-weeknd-gq-2.jpg"
   },
   {
-    "id": "1024",
-    "title": "2020 – SHENSEEA NYFE",
-    "href": "https://salxco.com/2020-shenseea-nyfe-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-SHENSEEA-NYFE.jpeg"
+    "id": "the-weeknd-gq-3",
+    "title": "The Weeknd - GQ 3",
+    "href": "/media/the-weeknd-gq-3.jpg",
+    "image": "/media/the-weeknd-gq-3.jpg"
   },
   {
-    "id": "1023",
-    "title": "2020 – SHEEN BRANDY",
-    "href": "https://salxco.com/2020-sheen-brandy/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-SHEEN-BRANDY.png"
+    "id": "the-weeknd-harper-s-bazaar",
+    "title": "The Weeknd - Harper's Bazaar",
+    "href": "/media/the-weeknd-harper-s-bazaar.jpg",
+    "image": "/media/the-weeknd-harper-s-bazaar.jpg"
   },
   {
-    "id": "1016",
-    "title": "2020 – BRANDY PEOPLE",
-    "href": "https://salxco.com/2020-brandy-people-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-BRANDY-PEOPLE-600x799.jpg"
+    "id": "the-weeknd-interview",
+    "title": "The Weeknd - Interview",
+    "href": "/media/the-weeknd-interview.jpg",
+    "image": "/media/the-weeknd-interview.jpg"
   },
   {
-    "id": "1021",
-    "title": "2020 – FM XXL",
-    "href": "https://salxco.com/2020-fm-xxl-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-FM-XXL-600x750.webp"
+    "id": "the-weeknd-marvel",
+    "title": "The Weeknd - Marvel",
+    "href": "/media/the-weeknd-marvel.jpg",
+    "image": "/media/the-weeknd-marvel.jpg"
   },
   {
-    "id": "1026",
-    "title": "2020 – TW ESQUIRE",
-    "href": "https://salxco.com/2020-tw-esquire-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-TW-ESQUIRE-600x790.jpg"
+    "id": "the-weeknd-rolling-stone-1",
+    "title": "The Weeknd - Rolling Stone 1",
+    "href": "/media/the-weeknd-rolling-stone-1.jpg",
+    "image": "/media/the-weeknd-rolling-stone-1.jpg"
   },
   {
-    "id": "1019",
-    "title": "2020 – DC LADYGUNN",
-    "href": "https://salxco.com/2020-dc-ladygunn-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-DC-LADYGUNN-600x828.jpg"
+    "id": "the-weeknd-rolling-stone-2",
+    "title": "The Weeknd - Rolling Stone 2",
+    "href": "/media/the-weeknd-rolling-stone-2.jpg",
+    "image": "/media/the-weeknd-rolling-stone-2.jpg"
   },
   {
-    "id": "1017",
-    "title": "2020 – BRANDY ROLLINGOUT",
-    "href": "https://salxco.com/2020-brandy-rollingout-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-BRANDY-ROLLINGOUT-600x765.jpg"
+    "id": "the-weeknd-time-1",
+    "title": "The Weeknd - TIME 1",
+    "href": "/media/the-weeknd-time-1.jpg",
+    "image": "/media/the-weeknd-time-1.jpg"
   },
   {
-    "id": "1010",
-    "title": "2018 – FM BILLBOARD",
-    "href": "https://salxco.com/2018-fm-billboard-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2018-FM-BILLBOARD-600x779.webp"
+    "id": "the-weeknd-time-2",
+    "title": "The Weeknd - TIME 2",
+    "href": "/media/the-weeknd-time-2.jpg",
+    "image": "/media/the-weeknd-time-2.jpg"
   },
   {
-    "id": "1015",
-    "title": "2020 – BR SELF",
-    "href": "https://salxco.com/2020-br-self-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-BR-SELF-600x750.jpg"
+    "id": "the-weeknd-vanity-fair",
+    "title": "The Weeknd - Vanity Fair",
+    "href": "/media/the-weeknd-vanity-fair.jpg",
+    "image": "/media/the-weeknd-vanity-fair.jpg"
   },
   {
-    "id": "1020",
-    "title": "2020 – ELYANNA COVER",
-    "href": "https://salxco.com/2020-elyanna-cover-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-ELYANNA-COVER-600x794.png"
+    "id": "the-weeknd-variety-1",
+    "title": "The Weeknd - Variety 1",
+    "href": "/media/the-weeknd-variety-1.jpg",
+    "image": "/media/the-weeknd-variety-1.jpg"
   },
   {
-    "id": "1013",
-    "title": "2019 – TY$ SPINMAG",
-    "href": "https://salxco.com/2019-ty-spinmag-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2019-TY-SPINMAG-600x717.webp"
+    "id": "the-weeknd-variety-2",
+    "title": "The Weeknd - Variety 2",
+    "href": "/media/the-weeknd-variety-2.jpg",
+    "image": "/media/the-weeknd-variety-2.jpg"
   },
   {
-    "id": "1012",
-    "title": "2018 – TW TIME",
-    "href": "https://salxco.com/2018-tw-time-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2018-TW-TIME-600x784.png"
+    "id": "the-weeknd-vman",
+    "title": "The Weeknd - VMAN",
+    "href": "/media/the-weeknd-vman.jpg",
+    "image": "/media/the-weeknd-vman.jpg"
   },
   {
-    "id": "1011",
-    "title": "2018 – FM GQ ME",
-    "href": "https://salxco.com/2018-fm-gq-me-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2018-FM-GQ-ME-600x805.webp"
+    "id": "the-weeknd-w",
+    "title": "The Weeknd - W",
+    "href": "/media/the-weeknd-w.jpg",
+    "image": "/media/the-weeknd-w.jpg"
   },
   {
-    "id": "1004",
-    "title": "2017 – FM PAPER",
-    "href": "https://salxco.com/2017-fm-paper-3/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2017-FM-PAPER-600x781.webp"
+    "id": "the-weeknd-and-sal-billboard",
+    "title": "The Weeknd & SAL - Billboard",
+    "href": "/media/the-weeknd-and-sal-billboard.jpg",
+    "image": "/media/the-weeknd-and-sal-billboard.jpg"
   },
   {
-    "id": "1009",
-    "title": "2018 – FM 1883",
-    "href": "https://salxco.com/2018-fm-1883-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2018-FM-1883-600x743.jpeg"
+    "id": "two-friends-a-book-of",
+    "title": "Two Friends - A Book Of",
+    "href": "/media/two-friends-a-book-of.jpg",
+    "image": "/media/two-friends-a-book-of.jpg"
   },
   {
-    "id": "1014",
-    "title": "2020 – BR L’OFICIEL AUSTRALIA",
-    "href": "https://salxco.com/2020-br-loficiel-australia-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2020-BR-LOFICIEL-AUSTRALIA-600x795.jpg"
+    "id": "ty-dolla-ign-1883",
+    "title": "Ty Dolla $ign - 1883",
+    "href": "/media/ty-dolla-ign-1883.jpg",
+    "image": "/media/ty-dolla-ign-1883.jpg"
   },
   {
-    "id": "1007",
-    "title": "2017 – TW HARPERS BAZAAR",
-    "href": "https://salxco.com/2017-tw-harpers-bazaar-3/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2017-TW-HARPERS-BAZAAR-600x751.webp"
+    "id": "ty-dolla-ign-billboard",
+    "title": "Ty Dolla $ign - Billboard",
+    "href": "/media/ty-dolla-ign-billboard.jpg",
+    "image": "/media/ty-dolla-ign-billboard.jpg"
   },
   {
-    "id": "1006",
-    "title": "2017 – TW GQ",
-    "href": "https://salxco.com/2017-tw-gq-3/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2017-TW-GQ-600x814.jpg"
+    "id": "ty-dolla-ign-clash",
+    "title": "Ty Dolla $ign - Clash",
+    "href": "/media/ty-dolla-ign-clash.jpg",
+    "image": "/media/ty-dolla-ign-clash.jpg"
   },
   {
-    "id": "1005",
-    "title": "2017 – TW FORBES",
-    "href": "https://salxco.com/2017-tw-forbes-3/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2017-TW-FORBES-600x770.jpg"
+    "id": "ty-dolla-ign-inked",
+    "title": "Ty Dolla $ign - Inked",
+    "href": "/media/ty-dolla-ign-inked.jpg",
+    "image": "/media/ty-dolla-ign-inked.jpg"
   },
   {
-    "id": "1003",
-    "title": "2016 – TW VMAN",
-    "href": "https://salxco.com/2016-tw-vman-3/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2016-TW-VMAN-600x796.jpg"
-  },
-  {
-    "id": "1008",
-    "title": "2017 – TY$ 1883",
-    "href": "https://salxco.com/2017-ty-1883-2/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2017-TY-1883-600x743.jpeg"
-  },
-  {
-    "id": "1000",
-    "title": "2015 – TW BILLBOARD",
-    "href": "https://salxco.com/2015-tw-billboard-3/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2015-TW-BILLBOARD-600x779.jpg"
-  },
-  {
-    "id": "1002",
-    "title": "2016 – MB FADER",
-    "href": "https://salxco.com/2016-mb-fader-3/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2016-MB-FADER-600x900.webp"
-  },
-  {
-    "id": "1001",
-    "title": "2015 – TW ROLLING STONE",
-    "href": "https://salxco.com/2015-tw-rolling-stone-3/",
-    "image": "https://salxco.com/wp-content/uploads/2025/05/2015-TW-ROLLING-STONE-600x815.jpg"
+    "id": "ty-dolla-ign-spin",
+    "title": "Ty Dolla $ign - SPIN",
+    "href": "/media/ty-dolla-ign-spin.jpg",
+    "image": "/media/ty-dolla-ign-spin.jpg"
   }
 ];
