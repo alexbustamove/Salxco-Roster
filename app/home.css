@@ -1503,6 +1503,15 @@
   background: #b6944a;
 }
 
+.showcase-home-shell.colorway-black-gold .footer-theme-logo .theme-logo-underlay,
+.colorway-black-gold .highlight-video-nav-logo .theme-logo-static img {
+  filter: none;
+}
+
+.colorway-black-gold .highlight-video-nav-logo .theme-logo-front {
+  background: #b6944a;
+}
+
 .showcase-home-shell.colorway-black-gold .footer-theme-logo-white {
   display: none;
 }
