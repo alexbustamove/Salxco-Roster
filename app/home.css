@@ -1687,23 +1687,25 @@
   color: var(--antique-gold-bright);
 }
 
-/* Black-and-gold option with low-contrast ambient movement after Brand Partnerships. */
-.colorway-black-gold-motion .showcase-loop-section,
-.showcase-home-shell.colorway-black-gold-motion .instagram-home-footer {
+/* Black-and-gold option with continuous ambient movement beneath the hero. */
+.showcase-home-shell.colorway-black-gold-motion {
   background-color: #020202;
   background-image:
-    radial-gradient(ellipse at 18% 28%, rgba(82, 82, 86, 0.2), transparent 42%),
-    radial-gradient(ellipse at 78% 68%, rgba(112, 91, 55, 0.1), transparent 46%),
-    radial-gradient(ellipse at 52% 46%, rgba(34, 35, 39, 0.25), transparent 54%),
-    linear-gradient(132deg, #000 8%, #0a0a0b 42%, #020202 68%, #11100e 100%);
+    radial-gradient(ellipse at 18% 28%, rgba(105, 105, 112, 0.28), transparent 42%),
+    radial-gradient(ellipse at 78% 68%, rgba(112, 91, 55, 0.14), transparent 46%),
+    radial-gradient(ellipse at 52% 46%, rgba(45, 47, 52, 0.3), transparent 54%),
+    linear-gradient(132deg, #000 8%, #0c0c0e 42%, #020202 68%, #15130f 100%);
   background-position: 0% 30%, 100% 70%, 50% 50%, 0% 50%;
-  background-size: 180% 180%, 190% 190%, 160% 160%, 220% 220%;
-  animation: showcase-ambient-gradient 34s ease-in-out infinite alternate;
+  background-size: 180vw 180vh, 190vw 190vh, 160vw 160vh, 220vw 220vh;
+  background-attachment: fixed;
+  animation: showcase-ambient-gradient 26s ease-in-out infinite alternate;
 }
 
-.colorway-black-gold-motion .showcase-loop-category-brand {
-  background: #000;
-  box-shadow: 0 -40px 0 #000;
+.colorway-black-gold-motion .horizontal-feature-banner,
+.colorway-black-gold-motion .horizontal-feature-viewport,
+.colorway-black-gold-motion .showcase-loop-section,
+.showcase-home-shell.colorway-black-gold-motion .instagram-home-footer {
+  background: transparent;
 }
 
 @keyframes showcase-ambient-gradient {
@@ -1721,8 +1723,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .colorway-black-gold-motion .showcase-loop-section,
-  .showcase-home-shell.colorway-black-gold-motion .instagram-home-footer {
+  .showcase-home-shell.colorway-black-gold-motion {
     animation: none;
   }
 }
