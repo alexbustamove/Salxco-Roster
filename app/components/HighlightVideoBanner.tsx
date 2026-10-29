@@ -61,12 +61,12 @@ export function HighlightVideoBanner() {
   const activeHighlight = highlights[activeIndex];
   const canHover = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-  const goToSlide = (index: number) => {
+  const goToSlide = (index: number, behavior: ScrollBehavior = "auto") => {
     const viewport = viewportRef.current;
     if (!viewport) return;
 
     const nextIndex = (index + highlights.length) % highlights.length;
-    viewport.scrollTo({ left: viewport.clientWidth * nextIndex, behavior: "auto" });
+    viewport.scrollTo({ left: viewport.clientWidth * nextIndex, behavior });
     setActiveIndex(nextIndex);
   };
 
@@ -215,6 +215,23 @@ export function HighlightVideoBanner() {
             ))}
           </div>
         </div>
+
+        <button
+          className="highlight-video-edge-nav is-previous"
+          type="button"
+          aria-label="Show previous campaign"
+          onClick={() => goToSlide(activeIndex - 1, "smooth")}
+        >
+          <span aria-hidden="true">‹</span>
+        </button>
+        <button
+          className="highlight-video-edge-nav is-next"
+          type="button"
+          aria-label="Show next campaign"
+          onClick={() => goToSlide(activeIndex + 1, "smooth")}
+        >
+          <span aria-hidden="true">›</span>
+        </button>
 
         <div className="highlight-video-pagination" aria-label="Choose a campaign">
           {highlights.map((highlight, index) => (
