@@ -256,8 +256,8 @@ function LoopingShowcaseRow({
         ref={viewportRef}
         className={`showcase-loop-viewport${isDragging ? " is-dragging" : ""}`}
         onPointerDown={(event) => {
-          beginInteraction();
           if (event.pointerType !== "mouse" || event.button !== 0) return;
+          beginInteraction();
 
           dragRef.current = {
             pointerId: event.pointerId,
@@ -281,6 +281,8 @@ function LoopingShowcaseRow({
           event.currentTarget.scrollLeft = drag.startScrollLeft - distance;
         }}
         onPointerUp={(event) => {
+          if (event.pointerType !== "mouse") return;
+
           if (dragRef.current.pointerId === event.pointerId) {
             if (dragRef.current.hasMoved) {
               suppressClickUntilRef.current = performance.now() + 250;
@@ -295,6 +297,8 @@ function LoopingShowcaseRow({
           endInteraction();
         }}
         onPointerCancel={(event) => {
+          if (event.pointerType !== "mouse") return;
+
           if (dragRef.current.pointerId === event.pointerId) {
             dragRef.current.pointerId = -1;
             dragRef.current.hasMoved = false;
