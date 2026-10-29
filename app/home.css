@@ -423,7 +423,14 @@
   font-weight: 720;
   letter-spacing: -0.06em;
   line-height: 0.92;
+  text-align: center;
   text-transform: uppercase;
+}
+
+.showcase-loop-category-title-leading {
+  margin: 0 calc(-1 * var(--showcase-shell-gutter)) 10px;
+  padding-top: clamp(14px, 1.8vw, 22px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.34);
 }
 
 .showcase-loop-category-rows {
@@ -525,6 +532,10 @@
 
 .colorway-gold .showcase-loop-category-title {
   color: #000;
+}
+
+.colorway-gold .showcase-loop-category-title-leading {
+  border-bottom-color: rgba(0, 0, 0, 0.76);
 }
 
 .colorway-black .showcase-loop-section {

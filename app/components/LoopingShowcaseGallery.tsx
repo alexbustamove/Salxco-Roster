@@ -207,12 +207,14 @@ export function LoopingShowcaseGallery() {
           aria-labelledby={`showcase-loop-category-${section.category}`}
           key={section.category}
         >
-          <h2
-            className="showcase-loop-category-title"
-            id={`showcase-loop-category-${section.category}`}
-          >
-            {section.title}
-          </h2>
+          {section.category !== "brand" && (
+            <h2
+              className="showcase-loop-category-title"
+              id={`showcase-loop-category-${section.category}`}
+            >
+              {section.title}
+            </h2>
+          )}
           <div className="showcase-loop-category-rows">
             {section.rows.map((items, rowIndex) => {
               const absoluteIndex = sectionIndex * 2 + rowIndex;

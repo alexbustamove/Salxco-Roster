@@ -130,6 +130,12 @@ export function ShowcaseHomeExperience({
             </nav>
           </header>
           <HighlightVideoBanner />
+          <h2
+            className="showcase-loop-category-title showcase-loop-category-title-leading"
+            id="showcase-loop-category-brand"
+          >
+            Brand Partnerships
+          </h2>
           <VerticalFeatureBanner />
         </>
       ) : (
