@@ -52,6 +52,9 @@ export function HighlightVideoBanner() {
   const [isPinnedOpen, setIsPinnedOpen] = useState(false);
   const viewportRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
+  const activeIndexRef = useRef(0);
+  const programmaticScrollRef = useRef(false);
+  const scrollSettleTimerRef = useRef<number | null>(null);
   const dragStateRef = useRef({
     pointerId: -1,
     startX: 0,
@@ -68,9 +71,37 @@ export function HighlightVideoBanner() {
     if (!viewport) return;
 
     const nextIndex = (index + highlights.length) % highlights.length;
-    viewport.scrollTo({ left: viewport.clientWidth * nextIndex, behavior });
+    activeIndexRef.current = nextIndex;
+    programmaticScrollRef.current = true;
+    if (scrollSettleTimerRef.current !== null) {
+      window.clearTimeout(scrollSettleTimerRef.current);
+    }
+
     setActiveIndex(nextIndex);
+    viewport.scrollTo({ left: viewport.clientWidth * nextIndex, behavior });
+
+    scrollSettleTimerRef.current = window.setTimeout(() => {
+      const currentViewport = viewportRef.current;
+      if (currentViewport) {
+        currentViewport.scrollTo({
+          left: currentViewport.clientWidth * activeIndexRef.current,
+          behavior: "auto",
+        });
+      }
+      programmaticScrollRef.current = false;
+      scrollSettleTimerRef.current = null;
+    }, behavior === "smooth" ? 650 : 0);
   };
+
+  const goBy = (direction: -1 | 1) => {
+    goToSlide(activeIndexRef.current + direction, "smooth");
+  };
+
+  useEffect(() => () => {
+    if (scrollSettleTimerRef.current !== null) {
+      window.clearTimeout(scrollSettleTimerRef.current);
+    }
+  }, []);
 
   useEffect(() => {
     videoRefs.current.forEach((video, index) => {
@@ -117,6 +148,12 @@ export function HighlightVideoBanner() {
           className={`highlight-video-viewport${isDragging ? " is-dragging" : ""}`}
           onPointerDown={(event) => {
             if (event.pointerType !== "mouse" || event.button !== 0) return;
+
+            programmaticScrollRef.current = false;
+            if (scrollSettleTimerRef.current !== null) {
+              window.clearTimeout(scrollSettleTimerRef.current);
+              scrollSettleTimerRef.current = null;
+            }
 
             dragStateRef.current = {
               pointerId: event.pointerId,
@@ -166,9 +203,13 @@ export function HighlightVideoBanner() {
             suppressClickRef.current = false;
           }}
           onScroll={(event) => {
+            if (programmaticScrollRef.current) return;
             const viewport = event.currentTarget;
             const nextIndex = Math.round(viewport.scrollLeft / Math.max(viewport.clientWidth, 1));
-            if (nextIndex !== activeIndex) setActiveIndex(nextIndex);
+            if (nextIndex !== activeIndexRef.current) {
+              activeIndexRef.current = nextIndex;
+              setActiveIndex(nextIndex);
+            }
           }}
         >
           <div className="highlight-video-track">
@@ -229,7 +270,7 @@ export function HighlightVideoBanner() {
           onClick={(event) => {
             event.preventDefault();
             event.stopPropagation();
-            goToSlide(activeIndex - 1, "smooth");
+            goBy(-1);
           }}
         >
           <span aria-hidden="true">‹</span>
@@ -242,7 +283,7 @@ export function HighlightVideoBanner() {
           onClick={(event) => {
             event.preventDefault();
             event.stopPropagation();
-            goToSlide(activeIndex + 1, "smooth");
+            goBy(1);
           }}
         >
           <span aria-hidden="true">›</span>
