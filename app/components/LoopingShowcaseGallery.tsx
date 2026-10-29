@@ -116,7 +116,13 @@ function LoopingShowcaseRow({
   const viewportRef = useRef<HTMLDivElement>(null);
   const loopMetricsRef = useRef({ cycleWidth: 0, middleStart: 0 });
   const interactionTimerRef = useRef<number | null>(null);
-  const dragRef = useRef({ pointerId: -1, startX: 0, startScrollLeft: 0 });
+  const dragRef = useRef({
+    pointerId: -1,
+    startX: 0,
+    startScrollLeft: 0,
+    hasMoved: false,
+  });
+  const suppressClickUntilRef = useRef(0);
   const [isInteracting, setIsInteracting] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [displayItems, setDisplayItems] = useState(items);
@@ -219,21 +225,33 @@ function LoopingShowcaseRow({
             pointerId: event.pointerId,
             startX: event.clientX,
             startScrollLeft: event.currentTarget.scrollLeft,
+            hasMoved: false,
           };
-          setIsDragging(true);
-          event.currentTarget.setPointerCapture(event.pointerId);
         }}
         onPointerMove={(event) => {
           const drag = dragRef.current;
           if (drag.pointerId !== event.pointerId) return;
-          event.currentTarget.scrollLeft = drag.startScrollLeft - (event.clientX - drag.startX);
+          const distance = event.clientX - drag.startX;
+
+          if (!drag.hasMoved && Math.abs(distance) < 6) return;
+          if (!drag.hasMoved) {
+            drag.hasMoved = true;
+            setIsDragging(true);
+            event.currentTarget.setPointerCapture(event.pointerId);
+          }
+
+          event.currentTarget.scrollLeft = drag.startScrollLeft - distance;
         }}
         onPointerUp={(event) => {
           if (dragRef.current.pointerId === event.pointerId) {
+            if (dragRef.current.hasMoved) {
+              suppressClickUntilRef.current = performance.now() + 250;
+            }
             if (event.currentTarget.hasPointerCapture(event.pointerId)) {
               event.currentTarget.releasePointerCapture(event.pointerId);
             }
             dragRef.current.pointerId = -1;
+            dragRef.current.hasMoved = false;
             setIsDragging(false);
           }
           endInteraction();
@@ -241,9 +259,16 @@ function LoopingShowcaseRow({
         onPointerCancel={(event) => {
           if (dragRef.current.pointerId === event.pointerId) {
             dragRef.current.pointerId = -1;
+            dragRef.current.hasMoved = false;
             setIsDragging(false);
           }
           endInteraction();
+        }}
+        onClickCapture={(event) => {
+          if (performance.now() >= suppressClickUntilRef.current) return;
+          suppressClickUntilRef.current = 0;
+          event.preventDefault();
+          event.stopPropagation();
         }}
         onWheel={endInteraction}
         onScroll={normalizeLoop}
