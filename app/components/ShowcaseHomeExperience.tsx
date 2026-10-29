@@ -83,7 +83,7 @@ export function ShowcaseHomeExperience({
           : colorway === "black-gold-motion"
             ? "colorway-black colorway-black-gold colorway-black-gold-motion"
             : colorway === "black-antique-motion"
-              ? "colorway-black colorway-black-gold colorway-black-antique-texture colorway-black-antique-motion"
+              ? "colorway-black colorway-black-antique-motion"
               : `colorway-${colorway}`;
 
   useEffect(() => {

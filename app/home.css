@@ -1800,7 +1800,7 @@
 .showcase-home-shell.colorway-black-antique-motion {
   position: relative;
   isolation: isolate;
-  background: #030201;
+  background: #060402;
 }
 
 .showcase-home-shell.colorway-black-antique-motion::before,
@@ -1814,12 +1814,12 @@
 .showcase-home-shell.colorway-black-antique-motion::before {
   inset: -28vh -20vw;
   background:
-    radial-gradient(ellipse 21% 68% at 17% 18%, rgba(158, 112, 43, 0.5), transparent 72%),
-    radial-gradient(ellipse 26% 78% at 52% 72%, rgba(91, 61, 24, 0.36), transparent 74%),
-    radial-gradient(ellipse 20% 64% at 84% 28%, rgba(130, 90, 34, 0.42), transparent 72%),
-    linear-gradient(108deg, #020100 4%, #25190a 20%, #030201 36%, #3d2a11 54%, #040201 72%, #271a0a 88%, #020100 100%);
-  filter: blur(64px) saturate(0.76);
-  opacity: 0.72;
+    radial-gradient(ellipse 21% 68% at 17% 18%, rgba(174, 129, 55, 0.56), transparent 72%),
+    radial-gradient(ellipse 26% 78% at 52% 72%, rgba(112, 77, 31, 0.44), transparent 74%),
+    radial-gradient(ellipse 20% 64% at 84% 28%, rgba(151, 107, 42, 0.5), transparent 72%),
+    linear-gradient(108deg, #060402 4%, #38250f 20%, #070402 36%, #553919 54%, #080502 72%, #3a270f 88%, #050301 100%);
+  filter: blur(60px) saturate(0.82);
+  opacity: 0.76;
   transform: translate3d(-4%, -2%, 0) scale(1.08);
   animation: showcase-antique-aurora 22s ease-in-out infinite alternate;
   will-change: transform;
@@ -1827,9 +1827,17 @@
 
 .showcase-home-shell.colorway-black-antique-motion::after {
   inset: 0;
-  background: url("/textures/antique-gold-embossed.webp") center / 520px 520px repeat;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.025), rgba(0, 0, 0, 0.06)),
+    url("/textures/antique-gold-embossed.webp") center / 420px 420px repeat;
   mix-blend-mode: soft-light;
-  opacity: 0.11;
+  filter: contrast(1.2) saturate(0.72);
+  opacity: 0.2;
+}
+
+.colorway-black-antique-motion .showcase-menu a[aria-current="page"] {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .colorway-black-antique-motion .horizontal-feature-banner,
