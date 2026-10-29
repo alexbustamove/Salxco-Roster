@@ -119,17 +119,10 @@ export function ShowcaseHomeExperience({
       className={`instagram-home-shell showcase-home-shell ${colorwayClasses}`}
     >
       {colorway === "black-antique-motion" ? (
-        <video
-          className="antique-motion-background"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-        >
-          <source src="/motion/abstract-gold-flow-1080p.mp4" type="video/mp4" />
-        </video>
+        <div className="antique-motion-background" aria-hidden="true">
+          <span />
+          <span />
+        </div>
       ) : null}
       {withFeatureBanner ? (
         <>
