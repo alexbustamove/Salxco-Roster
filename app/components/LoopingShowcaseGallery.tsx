@@ -153,11 +153,11 @@ function LoopingShowcaseRow({
       : measureLoop();
     if (!metrics) return;
 
-    const lowerBoundary = metrics.middleStart - metrics.cycleWidth * 0.5;
-    const upperBoundary = metrics.middleStart + metrics.cycleWidth * 0.5;
+    const lowerBoundary = metrics.middleStart;
+    const upperBoundary = metrics.middleStart + metrics.cycleWidth;
 
     if (viewport.scrollLeft < lowerBoundary) viewport.scrollLeft += metrics.cycleWidth;
-    if (viewport.scrollLeft > upperBoundary) viewport.scrollLeft -= metrics.cycleWidth;
+    if (viewport.scrollLeft >= upperBoundary) viewport.scrollLeft -= metrics.cycleWidth;
   };
 
   const beginInteraction = () => {
@@ -183,8 +183,10 @@ function LoopingShowcaseRow({
     centerLoop();
     const observer = new ResizeObserver(centerLoop);
     observer.observe(viewport);
+    const track = viewport.querySelector<HTMLElement>(".showcase-loop-track");
+    if (track) observer.observe(track);
     return () => observer.disconnect();
-  }, []);
+  }, [displayItems]);
 
   useEffect(() => {
     const viewport = viewportRef.current;
@@ -280,24 +282,44 @@ function LoopingShowcaseRow({
               aria-hidden={groupIndex === 1 ? undefined : "true"}
               key={groupIndex}
             >
-              {displayItems.map((item) => (
-                <a
-                  className="showcase-loop-card"
-                  href={item.href}
-                  target={category === "magazine" ? undefined : "_blank"}
-                  rel={category === "magazine" ? undefined : "noreferrer"}
-                  aria-label={item.title}
-                  aria-haspopup={category === "magazine" ? "dialog" : undefined}
-                  tabIndex={groupIndex === 1 ? 0 : -1}
-                  key={`${groupIndex}-${item.id}`}
-                  onClick={category === "magazine" ? (event) => {
-                    event.preventDefault();
-                    onOpenMedia(item);
-                  } : undefined}
-                >
-                  <img src={item.image} alt={item.title} loading="lazy" />
-                </a>
-              ))}
+              {displayItems.map((item, itemIndex) => {
+                const bufferSize = 5;
+                const isWrapBuffer = (
+                  groupIndex === 0 && itemIndex >= displayItems.length - bufferSize
+                ) || (
+                  groupIndex === 1 && (
+                    itemIndex < bufferSize
+                    || itemIndex >= displayItems.length - bufferSize
+                  )
+                ) || (
+                  groupIndex === 2 && itemIndex < bufferSize
+                );
+
+                return (
+                  <a
+                    className="showcase-loop-card"
+                    href={item.href}
+                    target={category === "magazine" ? undefined : "_blank"}
+                    rel={category === "magazine" ? undefined : "noreferrer"}
+                    aria-label={item.title}
+                    aria-haspopup={category === "magazine" ? "dialog" : undefined}
+                    tabIndex={groupIndex === 1 ? 0 : -1}
+                    key={`${groupIndex}-${item.id}`}
+                    onClick={category === "magazine" ? (event) => {
+                      event.preventDefault();
+                      onOpenMedia(item);
+                    } : undefined}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      loading={isWrapBuffer ? "eager" : "lazy"}
+                      fetchPriority={isWrapBuffer ? "high" : "low"}
+                      decoding="async"
+                    />
+                  </a>
+                );
+              })}
             </div>
           ))}
         </div>
