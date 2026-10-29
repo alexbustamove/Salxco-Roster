@@ -1512,6 +1512,29 @@
   background: #b6944a;
 }
 
+.colorway-black-gold .highlight-video-copy {
+  color: #b6944a;
+}
+
+.colorway-black-gold .highlight-video-cta {
+  border-color: rgba(182, 148, 74, 0.84);
+  background: rgba(182, 148, 74, 0.12);
+  color: #b6944a;
+}
+
+.colorway-black-gold .highlight-video-pagination button {
+  background: rgba(182, 148, 74, 0.42);
+}
+
+.colorway-black-gold .highlight-video-pagination button.is-active {
+  background: #b6944a;
+}
+
+.colorway-black-gold .horizontal-feature-card,
+.colorway-black-gold .horizontal-feature-card.is-active {
+  border-color: rgba(182, 148, 74, 0.84);
+}
+
 .showcase-home-shell.colorway-black-gold .footer-theme-logo-white {
   display: none;
 }
