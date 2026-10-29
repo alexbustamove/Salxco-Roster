@@ -338,6 +338,11 @@
   color: #000;
 }
 
+.showcase-menu a[aria-current="page"] {
+  background: #b6944a;
+  color: #000;
+}
+
 .showcase-swap-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -547,6 +552,10 @@
 
 .colorway-black .showcase-loop-section {
   background: #000;
+}
+
+.colorway-black-gold .showcase-loop-category-title {
+  color: #b6944a;
 }
 
 @media (max-width: 640px) {
@@ -1448,6 +1457,21 @@
 
 .colorway-gold .highlight-video-nav-logo .theme-logo-front {
   background: #b6944a;
+}
+
+/* Antique-gold option: the gold-primary system rendered in #70552a. */
+.showcase-home-shell.colorway-antique-gold,
+.colorway-antique-gold .horizontal-feature-banner,
+.colorway-antique-gold .horizontal-feature-viewport,
+.colorway-antique-gold .highlight-video-banner,
+.colorway-antique-gold .instagram-feed-section,
+.colorway-antique-gold .showcase-loop-section,
+.showcase-home-shell.colorway-antique-gold .instagram-home-footer {
+  background: #70552a;
+}
+
+.colorway-antique-gold .highlight-video-nav-logo .theme-logo-front {
+  background: #70552a;
 }
 
 @media (max-width: 640px) {

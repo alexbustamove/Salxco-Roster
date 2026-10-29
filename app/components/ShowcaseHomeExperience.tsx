@@ -49,7 +49,7 @@ for (let index = 0; index < archiveLength; index += 1) {
 }
 
 type ShowcaseHomeExperienceProps = {
-  colorway?: "black" | "gold";
+  colorway?: "black" | "gold" | "antique-gold" | "black-gold";
   withFeatureBanner?: boolean;
 };
 
@@ -64,6 +64,11 @@ export function ShowcaseHomeExperience({
     () => showcaseArchive.slice(0, visibleCount),
     [visibleCount],
   );
+  const baseColorway = colorway === "antique-gold"
+    ? "gold"
+    : colorway === "black-gold"
+      ? "black"
+      : colorway;
 
   useEffect(() => {
     const target = loadMoreRef.current;
@@ -94,7 +99,9 @@ export function ShowcaseHomeExperience({
   }, [isMenuOpen]);
 
   return (
-    <main className={`instagram-home-shell showcase-home-shell colorway-${colorway}`}>
+    <main
+      className={`instagram-home-shell showcase-home-shell colorway-${baseColorway}${baseColorway === colorway ? "" : ` colorway-${colorway}`}`}
+    >
       {withFeatureBanner ? (
         <>
           <header className="instagram-home-header highlight-video-nav">
@@ -118,14 +125,37 @@ export function ShowcaseHomeExperience({
               aria-label="Main navigation"
               aria-hidden={!isMenuOpen}
             >
-              <Link href={colorway === "black" ? "/?colorway=black" : "/"} tabIndex={isMenuOpen ? 0 : -1} onClick={() => setIsMenuOpen(false)}>
-                Home
+              <Link
+                href="/"
+                aria-current={colorway === "gold" ? "page" : undefined}
+                tabIndex={isMenuOpen ? 0 : -1}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Primary Gold
               </Link>
-              <Link href="/" tabIndex={isMenuOpen ? 0 : -1} onClick={() => setIsMenuOpen(false)}>
-                Gold colorway
+              <Link
+                href="/?colorway=antique-gold"
+                aria-current={colorway === "antique-gold" ? "page" : undefined}
+                tabIndex={isMenuOpen ? 0 : -1}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Antique Gold
               </Link>
-              <Link href="/?colorway=black" tabIndex={isMenuOpen ? 0 : -1} onClick={() => setIsMenuOpen(false)}>
-                Black colorway
+              <Link
+                href="/?colorway=black"
+                aria-current={colorway === "black" ? "page" : undefined}
+                tabIndex={isMenuOpen ? 0 : -1}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Black
+              </Link>
+              <Link
+                href="/?colorway=black-gold"
+                aria-current={colorway === "black-gold" ? "page" : undefined}
+                tabIndex={isMenuOpen ? 0 : -1}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Black + Gold Dividers
               </Link>
             </nav>
           </header>

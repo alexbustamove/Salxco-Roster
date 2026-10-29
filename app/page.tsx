@@ -13,10 +13,15 @@ type HomeProps = {
 
 export default async function Home({ searchParams }: HomeProps) {
   const { colorway } = await searchParams;
+  const selectedColorway = colorway === "black"
+    || colorway === "antique-gold"
+    || colorway === "black-gold"
+    ? colorway
+    : "gold";
 
   return (
     <ShowcaseHomeExperience
-      colorway={colorway === "black" ? "black" : "gold"}
+      colorway={selectedColorway}
       withFeatureBanner
     />
   );

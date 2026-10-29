@@ -14,10 +14,15 @@ type BannerPreviewPageProps = {
 
 export default async function BannerPreviewPage({ searchParams }: BannerPreviewPageProps) {
   const { colorway } = await searchParams;
+  const selectedColorway = colorway === "gold"
+    || colorway === "antique-gold"
+    || colorway === "black-gold"
+    ? colorway
+    : "black";
 
   return (
     <ShowcaseHomeExperience
-      colorway={colorway === "gold" ? "gold" : "black"}
+      colorway={selectedColorway}
       withFeatureBanner
     />
   );
