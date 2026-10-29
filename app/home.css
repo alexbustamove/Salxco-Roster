@@ -1582,7 +1582,7 @@
   .highlight-video-nav-logo
   .theme-logo-static
   img {
-  filter: none !important;
+  filter: invert(1) !important;
 }
 
 :root[data-preview-theme="gold-white-premium"]
