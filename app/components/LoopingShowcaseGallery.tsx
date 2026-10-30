@@ -337,6 +337,27 @@ function LoopingShowcaseRow({
                   groupIndex === activeLoopCopy + 1 && itemIndex < bufferSize
                 );
 
+                const image = (
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading={isWrapBuffer ? "eager" : "lazy"}
+                    fetchPriority={isWrapBuffer ? "high" : "low"}
+                    decoding="async"
+                  />
+                );
+
+                if (category === "accolade") {
+                  return (
+                    <div
+                      className="showcase-loop-card showcase-loop-card-static"
+                      key={`${groupIndex}-${item.id}`}
+                    >
+                      {image}
+                    </div>
+                  );
+                }
+
                 return (
                   <a
                     className="showcase-loop-card"
@@ -352,13 +373,7 @@ function LoopingShowcaseRow({
                       onOpenMedia(item);
                     } : undefined}
                   >
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      loading={isWrapBuffer ? "eager" : "lazy"}
-                      fetchPriority={isWrapBuffer ? "high" : "low"}
-                      decoding="async"
-                    />
+                    {image}
                   </a>
                 );
               })}

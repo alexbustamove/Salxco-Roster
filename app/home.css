@@ -422,50 +422,63 @@
 .showcase-loop-category-title {
   position: relative;
   display: grid;
-  height: clamp(86px, 9vw, 142px);
+  height: clamp(132px, 14vw, 214px);
   overflow: hidden;
   margin: 0;
   padding: 0;
   color: #fff;
-  font-size: clamp(32px, 3.6vw, 58px);
+  font-size: clamp(20px, 2.45vw, 40px);
   font-weight: 760;
   letter-spacing: -0.035em;
   line-height: 0.88;
   text-transform: uppercase;
   white-space: nowrap;
-  perspective: clamp(900px, 120vw, 1800px);
+  perspective: clamp(1200px, 150vw, 2300px);
   perspective-origin: 50% 50%;
   place-items: center;
 }
 
-.section-title-ticker-track,
+.section-title-ticker-ring,
 .section-title-ticker-item {
   position: absolute;
   transform-style: preserve-3d;
 }
 
-.section-title-ticker-track {
-  top: 50%;
+.section-title-ticker-ring {
   left: 50%;
   width: 1px;
   height: 1px;
-  animation: section-title-orbit 24s linear infinite;
+  animation: section-title-orbit 22s linear infinite;
   will-change: transform;
+}
+
+.section-title-ticker-ring:nth-child(1) {
+  top: 24%;
+}
+
+.section-title-ticker-ring:nth-child(2) {
+  top: 50%;
+  animation-delay: -7.333s;
+}
+
+.section-title-ticker-ring:nth-child(3) {
+  top: 76%;
+  animation-delay: -14.666s;
 }
 
 .section-title-ticker-item {
   top: 0;
   left: 0;
   display: flex;
-  width: clamp(340px, 48vw, 760px);
+  width: clamp(250px, 34vw, 520px);
   align-items: center;
   justify-content: center;
-  gap: clamp(28px, 4vw, 68px);
+  gap: clamp(18px, 2.4vw, 38px);
   backface-visibility: hidden;
   transform:
     translate(-50%, -50%)
-    rotateY(calc(var(--ticker-index) * 45deg))
-    translateZ(clamp(520px, 72vw, 1050px));
+    rotateY(calc(var(--ticker-index) * 30deg))
+    translateZ(clamp(440px, 52vw, 800px));
 }
 
 .section-title-ticker-item > span:first-child {
@@ -483,6 +496,10 @@
   -webkit-text-stroke: 0;
 }
 
+.section-title-ticker-ring:nth-child(2) .section-title-ticker-item > span:first-child {
+  color: rgba(183, 147, 73, 0.16);
+}
+
 @keyframes section-title-orbit {
   from {
     transform: rotateY(0deg);
@@ -495,6 +512,10 @@
 
 .showcase-loop-category-title-leading {
   margin: 0 calc(-1 * var(--showcase-shell-gutter));
+}
+
+#footer-vibes-message {
+  margin-bottom: clamp(60px, 7vw, 104px);
 }
 
 .showcase-loop-category-rows {
@@ -574,6 +595,15 @@
   transform: scale(1.025);
 }
 
+.showcase-loop-card-static {
+  cursor: default;
+}
+
+.showcase-loop-card-static:hover img {
+  filter: none;
+  transform: none;
+}
+
 .colorway-gold .showcase-loop-section {
   --showcase-loop-border: rgba(0, 0, 0, 0.76);
 
@@ -612,10 +642,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .section-title-ticker-track {
+  .section-title-ticker-ring {
     animation: none;
   }
 
+  .section-title-ticker-ring:not(:nth-child(2)),
   .section-title-ticker-item:not(:first-child) {
     display: none;
   }
@@ -901,8 +932,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.05) 24%, rgba(0, 0, 0, 0.84) 100%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.22), transparent 60%);
+    linear-gradient(180deg, rgba(0, 0, 0, 0.03) 24%, rgba(0, 0, 0, 0.44) 58%, rgba(0, 0, 0, 0.97) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.42), transparent 74%);
 }
 
 .horizontal-feature-copy {
@@ -915,6 +946,7 @@
   flex-direction: column;
   gap: clamp(3px, 0.35vw, 5px);
   text-transform: uppercase;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.92), 0 1px 3px #000;
   transition: bottom 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -1186,18 +1218,18 @@
   }
 
   .showcase-loop-category-title {
-    height: 78px;
-    font-size: clamp(28px, 8.2vw, 36px);
-    perspective: 680px;
+    height: 116px;
+    font-size: clamp(19px, 5.5vw, 27px);
+    perspective: 920px;
   }
 
   .section-title-ticker-item {
-    width: 86vw;
-    gap: 24px;
+    width: 64vw;
+    gap: 18px;
     transform:
       translate(-50%, -50%)
-      rotateY(calc(var(--ticker-index) * 45deg))
-      translateZ(80vw);
+      rotateY(calc(var(--ticker-index) * 30deg))
+      translateZ(66vw);
   }
 
   .highlight-video-copy {

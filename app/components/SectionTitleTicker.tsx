@@ -6,7 +6,8 @@ type SectionTitleTickerProps = {
   leading?: boolean;
 };
 
-const panels = Array.from({ length: 8 });
+const rings = Array.from({ length: 3 });
+const panels = Array.from({ length: 12 });
 
 export function SectionTitleTicker({ id, title, leading = false }: SectionTitleTickerProps) {
   return (
@@ -15,18 +16,24 @@ export function SectionTitleTicker({ id, title, leading = false }: SectionTitleT
       id={id}
       aria-label={title}
     >
-      <span className="section-title-ticker-track" aria-hidden="true">
-        {panels.map((_, index) => (
-          <span
-            className="section-title-ticker-item"
-            style={{ "--ticker-index": index } as CSSProperties}
-            key={index}
-          >
-            <span>{title}</span>
-            <span className="section-title-ticker-mark">•</span>
-          </span>
-        ))}
-      </span>
+      {rings.map((_, ringIndex) => (
+        <span
+          className="section-title-ticker-ring"
+          aria-hidden="true"
+          key={ringIndex}
+        >
+          {panels.map((__, index) => (
+            <span
+              className="section-title-ticker-item"
+              style={{ "--ticker-index": index } as CSSProperties}
+              key={index}
+            >
+              <span>{title}</span>
+              <span className="section-title-ticker-mark">•</span>
+            </span>
+          ))}
+        </span>
+      ))}
     </h2>
   );
 }
