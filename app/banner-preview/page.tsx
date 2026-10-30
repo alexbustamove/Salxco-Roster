@@ -8,25 +8,9 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-type BannerPreviewPageProps = {
-  searchParams: Promise<{ colorway?: string }>;
-};
-
-export default async function BannerPreviewPage({ searchParams }: BannerPreviewPageProps) {
-  const { colorway } = await searchParams;
-  const selectedColorway = colorway === "gold"
-    || colorway === "antique-gold"
-    || colorway === "antique-white"
-    || colorway === "black-gold"
-    || colorway === "black-antique-texture"
-    || colorway === "black-gold-motion"
-    || colorway === "black-antique-motion"
-    ? colorway
-    : "black";
-
+export default function BannerPreviewPage() {
   return (
     <ShowcaseHomeExperience
-      colorway={selectedColorway}
       withFeatureBanner
     />
   );

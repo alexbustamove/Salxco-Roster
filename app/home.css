@@ -420,9 +420,8 @@
 }
 
 .showcase-loop-category-title {
-  display: flex;
-  align-items: center;
-  gap: clamp(14px, 2.4vw, 30px);
+  display: block;
+  overflow: hidden;
   margin: 0;
   padding: clamp(20px, 2.8vw, 38px) 0;
   color: #fff;
@@ -430,18 +429,45 @@
   font-weight: 720;
   letter-spacing: -0.06em;
   line-height: 0.92;
-  text-align: center;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
-.showcase-loop-category-title::before,
-.showcase-loop-category-title::after {
-  height: 1px;
-  flex: 1 1 auto;
-  background: currentColor;
-  content: "";
-  opacity: 0.34;
+.section-title-ticker-track,
+.section-title-ticker-group,
+.section-title-ticker-item {
+  display: flex;
+  align-items: center;
+}
+
+.section-title-ticker-track {
+  width: max-content;
+  animation: section-title-ticker 26s linear infinite;
+  will-change: transform;
+}
+
+.section-title-ticker-group {
+  min-width: 100vw;
+  flex: none;
+  justify-content: space-around;
+  gap: clamp(32px, 5vw, 88px);
+  padding-right: clamp(32px, 5vw, 88px);
+}
+
+.section-title-ticker-item {
+  flex: none;
+  gap: clamp(32px, 5vw, 88px);
+}
+
+.section-title-ticker-mark {
+  font-size: 0.42em;
+  opacity: 0.72;
+}
+
+@keyframes section-title-ticker {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .showcase-loop-category-title-leading {
@@ -508,8 +534,15 @@
 }
 
 .showcase-loop-row-magazine .showcase-loop-card img {
+  object-fit: contain;
   object-position: center top;
   transform-origin: center top;
+}
+
+.showcase-loop-row-magazine .showcase-loop-card {
+  flex-basis: clamp(150px, 16vw, 250px);
+  aspect-ratio: 4 / 5;
+  background: #050301;
 }
 
 .showcase-loop-card:hover img,
@@ -549,9 +582,17 @@
   .showcase-loop-card {
     flex-basis: 42vw;
   }
+
+  .showcase-loop-row-magazine .showcase-loop-card {
+    flex-basis: 44vw;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .section-title-ticker-track {
+    animation: none;
+  }
+
   .showcase-loop-card img {
     transition: none;
   }

@@ -9,6 +9,7 @@ import { partnershipItems } from "../data/partnerships";
 import { AnimatedThemeLogo } from "./AnimatedThemeLogo";
 import { HighlightVideoBanner } from "./HighlightVideoBanner";
 import { LoopingShowcaseGallery } from "./LoopingShowcaseGallery";
+import { SectionTitleTicker } from "./SectionTitleTicker";
 import { VerticalFeatureBanner } from "./VerticalFeatureBanner";
 
 const instagramUrl = "https://www.instagram.com/salxco";
@@ -48,44 +49,17 @@ for (let index = 0; index < archiveLength; index += 1) {
   }
 }
 
-type ShowcaseHomeExperienceProps = {
-  colorway?:
-    | "black"
-    | "gold"
-    | "antique-gold"
-    | "antique-white"
-    | "black-gold"
-    | "black-antique-texture"
-    | "black-gold-motion"
-    | "black-antique-motion";
-  withFeatureBanner?: boolean;
-};
+type ShowcaseHomeExperienceProps = { withFeatureBanner?: boolean };
 
 export function ShowcaseHomeExperience({
-  colorway = "black",
   withFeatureBanner = false,
 }: ShowcaseHomeExperienceProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(initialItemCount);
   const loadMoreRef = useRef<HTMLDivElement>(null);
   const visibleItems = useMemo(
     () => showcaseArchive.slice(0, visibleCount),
     [visibleCount],
   );
-  const colorwayClasses = colorway === "antique-white"
-    ? "colorway-gold colorway-antique-gold colorway-antique-white"
-    : colorway === "antique-gold"
-      ? "colorway-gold colorway-antique-gold"
-      : colorway === "black-gold"
-        ? "colorway-black colorway-black-gold"
-        : colorway === "black-antique-texture"
-          ? "colorway-black colorway-black-gold colorway-black-antique-texture"
-          : colorway === "black-gold-motion"
-            ? "colorway-black colorway-black-gold colorway-black-gold-motion"
-            : colorway === "black-antique-motion"
-              ? "colorway-black colorway-black-gold colorway-black-antique-motion"
-              : `colorway-${colorway}`;
-
   useEffect(() => {
     const target = loadMoreRef.current;
     if (!target) return;
@@ -103,124 +77,27 @@ export function ShowcaseHomeExperience({
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (!isMenuOpen) return;
-
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsMenuOpen(false);
-    };
-
-    window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [isMenuOpen]);
-
   return (
     <main
-      className={`instagram-home-shell showcase-home-shell ${colorwayClasses}`}
+      className="instagram-home-shell showcase-home-shell colorway-black colorway-black-gold colorway-black-antique-motion"
     >
-      {colorway === "black-antique-motion" ? (
-        <div className="antique-motion-background" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
-      ) : null}
+      <div className="antique-motion-background" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
       {withFeatureBanner ? (
         <>
           <header className="instagram-home-header highlight-video-nav">
             <h1 id="showcase-home-title" className="sr-only">MGMT NATION and SALXCO</h1>
             <AnimatedThemeLogo className="highlight-video-nav-logo" animated={false} />
-            <button
-              className={`showcase-menu-toggle${isMenuOpen ? " is-open" : ""}`}
-              type="button"
-              aria-expanded={isMenuOpen}
-              aria-controls="showcase-menu"
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              onClick={() => setIsMenuOpen((current) => !current)}
-            >
-              <span />
-              <span />
-              <span />
-            </button>
-            <nav
-              className={`showcase-menu${isMenuOpen ? " is-open" : ""}`}
-              id="showcase-menu"
-              aria-label="Main navigation"
-              aria-hidden={!isMenuOpen}
-            >
-              <Link
-                href="/"
-                aria-current={colorway === "gold" ? "page" : undefined}
-                tabIndex={isMenuOpen ? 0 : -1}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Primary Gold
-              </Link>
-              <Link
-                href="/?colorway=antique-gold"
-                aria-current={colorway === "antique-gold" ? "page" : undefined}
-                tabIndex={isMenuOpen ? 0 : -1}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Antique Gold
-              </Link>
-              <Link
-                href="/?colorway=antique-white"
-                aria-current={colorway === "antique-white" ? "page" : undefined}
-                tabIndex={isMenuOpen ? 0 : -1}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Antique Gold + White
-              </Link>
-              <Link
-                href="/?colorway=black"
-                aria-current={colorway === "black" ? "page" : undefined}
-                tabIndex={isMenuOpen ? 0 : -1}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Black
-              </Link>
-              <Link
-                href="/?colorway=black-gold"
-                aria-current={colorway === "black-gold" ? "page" : undefined}
-                tabIndex={isMenuOpen ? 0 : -1}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Black + Gold Dividers
-              </Link>
-              <Link
-                href="/?colorway=black-antique-texture"
-                aria-current={colorway === "black-antique-texture" ? "page" : undefined}
-                tabIndex={isMenuOpen ? 0 : -1}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Black + Textured Antique Gold
-              </Link>
-              <Link
-                href="/?colorway=black-gold-motion"
-                aria-current={colorway === "black-gold-motion" ? "page" : undefined}
-                tabIndex={isMenuOpen ? 0 : -1}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Black + Gold Ambient Motion
-              </Link>
-              <Link
-                href="/?colorway=black-antique-motion"
-                aria-current={colorway === "black-antique-motion" ? "page" : undefined}
-                tabIndex={isMenuOpen ? 0 : -1}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Black + Antique Gold Motion
-              </Link>
-            </nav>
           </header>
           <HighlightVideoBanner />
-          <h2
-            className="showcase-loop-category-title showcase-loop-category-title-leading"
+          <SectionTitleTicker
             id="showcase-loop-category-brand"
-          >
-            Brand Partnerships
-          </h2>
+            title="Brand Partnerships"
+            leading
+          />
           <VerticalFeatureBanner />
         </>
       ) : (

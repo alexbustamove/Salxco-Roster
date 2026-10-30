@@ -6,6 +6,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { accoladeItems } from "../data/accolades";
 import { lifestyleMediaItems } from "../data/lifestyleMedia";
 import { partnershipItems } from "../data/partnerships";
+import { SectionTitleTicker } from "./SectionTitleTicker";
 
 type LoopItem = {
   id: string;
@@ -408,12 +409,10 @@ export function LoopingShowcaseGallery() {
             key={section.category}
           >
             {section.category !== "brand" && (
-              <h2
-                className="showcase-loop-category-title"
+              <SectionTitleTicker
                 id={`showcase-loop-category-${section.category}`}
-              >
-                {section.title}
-              </h2>
+                title={section.title}
+              />
             )}
             <div className="showcase-loop-category-rows">
               {section.rows.map((items, rowIndex) => {
