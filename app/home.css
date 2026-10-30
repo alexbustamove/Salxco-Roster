@@ -498,12 +498,27 @@
 }
 
 .section-title-ticker-mark {
-  color: #b79349;
-  font-size: 0.46em;
-  font-weight: 400;
-  letter-spacing: 0;
-  opacity: 0.9;
-  -webkit-text-stroke: 0;
+  position: relative;
+  display: block;
+  width: 0.82em;
+  height: 0.62em;
+  flex: 0 0 auto;
+  opacity: 0.92;
+}
+
+.section-title-ticker-mark > img,
+.section-title-ticker-mark > span {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.section-title-ticker-mark > span {
+  background: #b79349;
+  mask: url("/mgmt-nation-logo-white.svg") center / contain no-repeat;
+  -webkit-mask: url("/mgmt-nation-logo-white.svg") center / contain no-repeat;
 }
 
 @keyframes section-title-orbit {
