@@ -424,7 +424,7 @@
   display: grid;
   height: clamp(94px, 9vw, 142px);
   overflow: hidden;
-  margin: clamp(28px, 4vw, 64px) 0;
+  margin: clamp(18px, 2.5vw, 38px) 0;
   padding: 0;
   color: #fff;
   font-size: clamp(20px, 2.2vw, 36px);
@@ -475,7 +475,7 @@
   left: 50%;
   width: 1px;
   height: 1px;
-  animation: section-title-orbit 24s linear infinite;
+  animation: section-title-orbit 32s linear infinite;
   will-change: transform;
 }
 
@@ -490,7 +490,7 @@
   backface-visibility: hidden;
   transform:
     translate(-50%, -50%)
-    rotateY(calc(var(--ticker-index) * 25.7142857deg))
+    rotateY(var(--ticker-angle))
     translateZ(clamp(520px, 62vw, 940px));
 }
 
@@ -520,12 +520,12 @@
 }
 
 .showcase-loop-category-title-leading {
-  margin: clamp(28px, 4vw, 64px) calc(-1 * var(--showcase-shell-gutter));
+  margin: clamp(18px, 2.5vw, 38px) calc(-1 * var(--showcase-shell-gutter));
 }
 
 #footer-vibes-message {
-  margin-top: clamp(60px, 7vw, 104px);
-  margin-bottom: clamp(60px, 7vw, 104px);
+  margin-top: clamp(44px, 5vw, 72px);
+  margin-bottom: clamp(44px, 5vw, 72px);
 }
 
 .showcase-loop-category-rows {
@@ -1228,8 +1228,8 @@
 
   .showcase-loop-category-title {
     height: 82px;
-    margin-top: 24px;
-    margin-bottom: 24px;
+    margin-top: 16px;
+    margin-bottom: 16px;
     font-size: clamp(18px, 5.2vw, 25px);
     perspective: 920px;
   }
@@ -1246,7 +1246,7 @@
     gap: 14px;
     transform:
       translate(-50%, -50%)
-      rotateY(calc(var(--ticker-index) * 25.7142857deg))
+      rotateY(var(--ticker-angle))
       translateZ(78vw);
   }
 
