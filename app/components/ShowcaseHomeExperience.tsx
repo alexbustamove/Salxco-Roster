@@ -144,6 +144,14 @@ export function ShowcaseHomeExperience({
         )}
       </section>
 
+      {withFeatureBanner ? (
+        <SectionTitleTicker
+          id="footer-vibes-message"
+          title="F*CK YOUR BAD VIBES"
+          leading
+        />
+      ) : null}
+
       <footer className="site-footer instagram-home-footer">
         <div className="footer-center">
           <Link className="theme-logo footer-theme-logo" href="/" aria-label="Go to home page">

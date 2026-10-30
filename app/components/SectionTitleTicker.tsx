@@ -1,10 +1,12 @@
+import type { CSSProperties } from "react";
+
 type SectionTitleTickerProps = {
   id: string;
   title: string;
   leading?: boolean;
 };
 
-const repetitions = Array.from({ length: 6 });
+const panels = Array.from({ length: 8 });
 
 export function SectionTitleTicker({ id, title, leading = false }: SectionTitleTickerProps) {
   return (
@@ -14,14 +16,14 @@ export function SectionTitleTicker({ id, title, leading = false }: SectionTitleT
       aria-label={title}
     >
       <span className="section-title-ticker-track" aria-hidden="true">
-        {[0, 1].map((group) => (
-          <span className="section-title-ticker-group" key={group}>
-            {repetitions.map((_, index) => (
-              <span className="section-title-ticker-item" key={`${group}-${index}`}>
-                <span>{title}</span>
-                <span className="section-title-ticker-mark">✦</span>
-              </span>
-            ))}
+        {panels.map((_, index) => (
+          <span
+            className="section-title-ticker-item"
+            style={{ "--ticker-index": index } as CSSProperties}
+            key={index}
+          >
+            <span>{title}</span>
+            <span className="section-title-ticker-mark">•</span>
           </span>
         ))}
       </span>
