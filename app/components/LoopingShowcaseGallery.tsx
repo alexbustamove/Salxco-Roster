@@ -427,6 +427,7 @@ export function LoopingShowcaseGallery() {
               <SectionTitleTicker
                 id={`showcase-loop-category-${section.category}`}
                 title={section.title}
+                leading
               />
             )}
             <div className="showcase-loop-category-rows">
