@@ -19,7 +19,10 @@ export function SectionTitleTicker({ id, title, leading = false }: SectionTitleT
             key={index}
           >
             <span>{title}</span>
-            <span className="section-title-ticker-mark">•</span>
+            <span className="section-title-ticker-mark">
+              <img src="/mgmt-nation-logo-gold.svg" alt="" />
+              <span aria-hidden="true" />
+            </span>
           </span>
         ))}
       </span>
