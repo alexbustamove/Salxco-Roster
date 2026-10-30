@@ -9,14 +9,9 @@ type SectionTitleTickerProps = {
 export function SectionTitleTicker({ id, title, leading = false }: SectionTitleTickerProps) {
   const panelCount = title.length <= 6 ? 24 : title.length <= 12 ? 18 : 14;
   const panelAngle = 360 / panelCount;
-
-  return (
-    <h2
-      className={`showcase-loop-category-title section-title-ticker${leading ? " showcase-loop-category-title-leading" : ""}`}
-      id={id}
-      aria-label={title}
-    >
-      <span className="section-title-ticker-ring" aria-hidden="true">
+  const renderRing = (layerClassName: string) => (
+    <span className={`section-title-ticker-text-layer ${layerClassName}`} aria-hidden="true">
+      <span className="section-title-ticker-ring">
         {Array.from({ length: panelCount }, (_, index) => (
           <span
             className="section-title-ticker-item"
@@ -28,8 +23,17 @@ export function SectionTitleTicker({ id, title, leading = false }: SectionTitleT
           </span>
         ))}
       </span>
-      <span className="section-title-ticker-edge section-title-ticker-edge-left" aria-hidden="true" />
-      <span className="section-title-ticker-edge section-title-ticker-edge-right" aria-hidden="true" />
+    </span>
+  );
+
+  return (
+    <h2
+      className={`showcase-loop-category-title section-title-ticker${leading ? " showcase-loop-category-title-leading" : ""}`}
+      id={id}
+      aria-label={title}
+    >
+      {renderRing("section-title-ticker-text-layer-sharp")}
+      {renderRing("section-title-ticker-text-layer-blurred")}
     </h2>
   );
 }
