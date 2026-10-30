@@ -6,9 +6,10 @@ type SectionTitleTickerProps = {
   leading?: boolean;
 };
 
-const panels = Array.from({ length: 14 });
-
 export function SectionTitleTicker({ id, title, leading = false }: SectionTitleTickerProps) {
+  const panelCount = title.length <= 6 ? 24 : title.length <= 12 ? 18 : 14;
+  const panelAngle = 360 / panelCount;
+
   return (
     <h2
       className={`showcase-loop-category-title section-title-ticker${leading ? " showcase-loop-category-title-leading" : ""}`}
@@ -16,10 +17,10 @@ export function SectionTitleTicker({ id, title, leading = false }: SectionTitleT
       aria-label={title}
     >
       <span className="section-title-ticker-ring" aria-hidden="true">
-        {panels.map((_, index) => (
+        {Array.from({ length: panelCount }, (_, index) => (
           <span
             className="section-title-ticker-item"
-            style={{ "--ticker-index": index } as CSSProperties}
+            style={{ "--ticker-angle": `${index * panelAngle}deg` } as CSSProperties}
             key={index}
           >
             <span>{title}</span>
