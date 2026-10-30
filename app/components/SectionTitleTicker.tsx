@@ -28,6 +28,8 @@ export function SectionTitleTicker({ id, title, leading = false }: SectionTitleT
           </span>
         ))}
       </span>
+      <span className="section-title-ticker-edge section-title-ticker-edge-left" aria-hidden="true" />
+      <span className="section-title-ticker-edge section-title-ticker-edge-right" aria-hidden="true" />
     </h2>
   );
 }
