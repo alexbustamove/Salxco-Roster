@@ -147,7 +147,7 @@ export function ShowcaseHomeExperience({
       {withFeatureBanner ? (
         <SectionTitleTicker
           id="footer-vibes-message"
-          title="F*CK YOUR BAD VIBES"
+          title="F**K YOUR BAD VIBES"
           leading
         />
       ) : null}
