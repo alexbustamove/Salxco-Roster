@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { Fragment, type CSSProperties } from "react";
 
 type SectionTitleTickerProps = {
   id: string;
@@ -18,20 +18,29 @@ export function SectionTitleTicker({ id, title, leading = false }: SectionTitleT
     <span className={`section-title-ticker-text-layer ${layerClassName}`} aria-hidden="true">
       <span className="section-title-ticker-ring">
         {Array.from({ length: tickerConfig.desktopPanels }, (_, index) => (
-          <span
-            className={`section-title-ticker-item${index >= tickerConfig.mobilePanels ? " is-mobile-hidden" : ""}`}
-            style={{
-              "--ticker-angle-desktop": `${index * desktopAngle}deg`,
-              "--ticker-angle-mobile": `${index * mobileAngle}deg`,
-            } as CSSProperties}
-            key={index}
-          >
-            <span>{title}</span>
-            <span className="section-title-ticker-mark">
-              <img src="/mgmt-nation-logo-gold.svg" alt="" />
-              <span aria-hidden="true" />
+          <Fragment key={index}>
+            <span
+              className={`section-title-ticker-item section-title-ticker-word${index >= tickerConfig.mobilePanels ? " is-mobile-hidden" : ""}`}
+              style={{
+                "--ticker-angle-desktop": `${index * desktopAngle}deg`,
+                "--ticker-angle-mobile": `${index * mobileAngle}deg`,
+              } as CSSProperties}
+            >
+              <span>{title}</span>
             </span>
-          </span>
+            <span
+              className={`section-title-ticker-item section-title-ticker-logo${index >= tickerConfig.mobilePanels ? " is-mobile-hidden" : ""}`}
+              style={{
+                "--ticker-angle-desktop": `${(index + 0.5) * desktopAngle}deg`,
+                "--ticker-angle-mobile": `${(index + 0.5) * mobileAngle}deg`,
+              } as CSSProperties}
+            >
+              <span className="section-title-ticker-mark">
+                <img src="/mgmt-nation-logo-gold.svg" alt="" />
+                <span aria-hidden="true" />
+              </span>
+            </span>
+          </Fragment>
         ))}
       </span>
     </span>
