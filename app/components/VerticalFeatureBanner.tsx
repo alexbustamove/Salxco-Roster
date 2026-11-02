@@ -75,6 +75,7 @@ export function VerticalFeatureBanner() {
 
     const cycleWidth = groups[1].offsetLeft - groups[0].offsetLeft;
     const middleStart = groups[1].offsetLeft;
+    if (cycleWidth <= 0) return null;
     loopMetricsRef.current = { cycleWidth, middleStart };
     return loopMetricsRef.current;
   };

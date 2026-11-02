@@ -671,10 +671,27 @@
 
   .showcase-loop-card {
     flex-basis: 42vw;
+    scroll-snap-align: start;
   }
 
   .showcase-loop-row-magazine .showcase-loop-card {
     flex-basis: 44vw;
+  }
+
+  /* Mobile uses one native swipe track. Hide the desktop loop clones so iOS
+     cannot expose duplicate cards while momentum scrolling or repainting. */
+  .showcase-loop-group[aria-hidden="true"],
+  .horizontal-feature-group[aria-hidden="true"] {
+    display: none;
+  }
+
+  .showcase-loop-viewport,
+  .horizontal-feature-viewport {
+    scroll-snap-type: x proximity;
+  }
+
+  .horizontal-feature-card {
+    scroll-snap-align: start;
   }
 }
 

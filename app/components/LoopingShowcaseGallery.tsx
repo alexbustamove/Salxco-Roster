@@ -171,6 +171,7 @@ function LoopingShowcaseRow({
     const cycleWidth = groups[activeLoopCopy].offsetLeft
       - groups[activeLoopCopy - 1].offsetLeft;
     const middleStart = groups[activeLoopCopy].offsetLeft;
+    if (cycleWidth <= 0) return null;
     loopMetricsRef.current = { cycleWidth, middleStart };
     return loopMetricsRef.current;
   };
@@ -213,7 +214,7 @@ function LoopingShowcaseRow({
 
   const handleScroll = () => {
     const usesNativeTouchScroll = window.matchMedia(
-      "(hover: none), (pointer: coarse)",
+      "(max-width: 640px), (hover: none), (pointer: coarse)",
     ).matches;
 
     if (!usesNativeTouchScroll) {
@@ -249,7 +250,7 @@ function LoopingShowcaseRow({
     if (!viewport) return;
 
     const usesNativeTouchScroll = window.matchMedia(
-      "(hover: none), (pointer: coarse)",
+      "(max-width: 640px), (hover: none), (pointer: coarse)",
     ).matches;
     if (usesNativeTouchScroll) return;
 
