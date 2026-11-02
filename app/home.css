@@ -2337,7 +2337,19 @@
   .showcase-loop-viewport,
   .horizontal-feature-viewport {
     overscroll-behavior-x: contain;
-    scroll-snap-type: x proximity;
+    scroll-snap-type: none;
+  }
+
+  .showcase-home-shell .instagram-home-footer {
+    min-height: 145px;
+    padding-top: 20px;
+    padding-bottom: max(32px, calc(18px + env(safe-area-inset-bottom)));
+  }
+
+  .showcase-home-shell .footer-copyright {
+    max-width: none;
+    font-size: clamp(5.5px, 1.65vw, 7px);
+    white-space: nowrap;
   }
 
   .highlight-video-viewport {
