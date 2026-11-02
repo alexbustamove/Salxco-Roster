@@ -1992,7 +1992,11 @@
   position: fixed;
   z-index: -2;
   inset: 0;
-  overflow: hidden;
+  width: 100vw;
+  height: 100dvh;
+  overflow: clip;
+  contain: strict;
+  clip-path: inset(0);
   background:
     radial-gradient(circle at 50% 115%, rgba(88, 57, 16, 0.22), transparent 58%),
     #030201;
@@ -2002,6 +2006,7 @@
 .antique-motion-background span {
   position: absolute;
   inset: -26%;
+  contain: paint;
   background:
     radial-gradient(ellipse 42% 32% at 18% 32%, rgba(183, 147, 73, 0.8) 0%, rgba(137, 96, 34, 0.5) 27%, transparent 72%),
     radial-gradient(ellipse 34% 48% at 72% 18%, rgba(118, 79, 24, 0.64) 0%, rgba(183, 147, 73, 0.36) 35%, transparent 74%),
@@ -2279,6 +2284,22 @@
 }
 
 @media (max-width: 640px) {
+  :root:has(.showcase-home-shell),
+  :root:has(.showcase-home-shell) body {
+    overscroll-behavior-y: none;
+    background: #050301;
+  }
+
+  .showcase-home-shell {
+    min-height: 100dvh;
+    overflow-x: clip;
+  }
+
+  .antique-motion-background {
+    right: auto;
+    bottom: auto;
+  }
+
   .showcase-home-shell .highlight-video-banner {
     padding-bottom: 0;
   }
@@ -2296,6 +2317,19 @@
 
   .showcase-home-shell .horizontal-feature-track {
     padding-top: 12px;
+  }
+
+  .showcase-loop-viewport,
+  .horizontal-feature-viewport,
+  .highlight-video-viewport {
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+  }
+
+  .showcase-loop-card,
+  .horizontal-feature-card,
+  .highlight-video-slide {
+    scroll-snap-stop: always;
   }
 
   .campaign-lightbox {
