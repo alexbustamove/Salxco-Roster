@@ -368,7 +368,7 @@ function LoopingShowcaseRow({
                     fill
                     sizes={imageSizes}
                     quality={90}
-                    unoptimized={item.image.includes("Canadian & Broadcast Awards")}
+                    unoptimized={item.id === "the-weeknd-canadian-broadcast-awards"}
                     loading={isInitiallyVisible ? "eager" : "lazy"}
                     fetchPriority={isInitiallyVisible ? "high" : "low"}
                     decoding="async"

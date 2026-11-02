@@ -120,6 +120,10 @@ export function VerticalFeatureBanner() {
     const viewport = viewportRef.current;
     if (!viewport) return;
 
+    const shouldAutoScroll = !window.matchMedia(
+      "(max-width: 640px), (hover: none), (pointer: coarse)",
+    ).matches;
+
     let frame = 0;
     let previousTime = performance.now();
 
@@ -127,7 +131,12 @@ export function VerticalFeatureBanner() {
       const elapsed = Math.min(time - previousTime, 40);
       previousTime = time;
 
-      if (!isInteracting && activeCard === null && selectedIndex === null) {
+      if (
+        shouldAutoScroll
+        && !isInteracting
+        && activeCard === null
+        && selectedIndex === null
+      ) {
         viewport.scrollLeft += elapsed * 0.035;
         normalizeLoop();
       }

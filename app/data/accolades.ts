@@ -29,7 +29,7 @@ export const accoladeItems: AccoladeItem[] = [
   { id: "the-weeknd-bbma-2016", title: "The Weeknd — BBMA 2016", image: "/accolades/The Weeknd - BBMA 2016.jpg" },
   { id: "the-weeknd-bbma-2021", title: "The Weeknd — BBMA 2021", image: "/accolades/The Weeknd - BBMA 2021.jpg" },
   { id: "the-weeknd-bmac", title: "The Weeknd — BMAC", image: "/accolades/The Weeknd - BMAC.jpg" },
-  { id: "the-weeknd-canadian-broadcast-awards", title: "The Weeknd — Canadian & Broadcast Awards", image: "/accolades/The Weeknd - Canadian & Broadcast Awards.jpg" },
+  { id: "the-weeknd-canadian-broadcast-awards", title: "The Weeknd — Canadian & Broadcast Awards", image: "/accolades/the-weeknd-canadian-broadcast-awards-v2.jpg" },
   { id: "the-weeknd-grammy", title: "The Weeknd — Grammy", image: "/accolades/The Weeknd - Grammy.jpg" },
   { id: "the-weeknd-guinness-book", title: "The Weeknd — Guinness World Records", image: "/accolades/The Weeknd - Guinness Book.jpg" },
   { id: "the-weeknd-i-cant-feel-my-face", title: "The Weeknd — I Can't Feel My Face", image: "/accolades/The Weeknd - I Can't Feel My Face.jpg" },

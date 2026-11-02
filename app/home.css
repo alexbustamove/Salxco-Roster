@@ -589,10 +589,12 @@
 
 .showcase-loop-card {
   position: relative;
+  isolation: isolate;
   display: block;
   flex: 0 0 clamp(158px, 19vw, 292px);
   aspect-ratio: 1;
   overflow: hidden;
+  contain: paint;
   border: 1px solid var(--showcase-loop-border);
   background: #090909;
 }
