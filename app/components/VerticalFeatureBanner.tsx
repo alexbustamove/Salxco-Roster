@@ -121,9 +121,11 @@ export function VerticalFeatureBanner() {
     const viewport = viewportRef.current;
     if (!viewport) return;
 
-    const shouldAutoScroll = !window.matchMedia(
-      "(max-width: 640px), (hover: none), (pointer: coarse)",
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
     ).matches;
+    const usesSingleMobileTrack = window.matchMedia("(max-width: 640px)").matches;
+    let mobileDirection = 1;
 
     let frame = 0;
     let previousTime = performance.now();
@@ -133,13 +135,22 @@ export function VerticalFeatureBanner() {
       previousTime = time;
 
       if (
-        shouldAutoScroll
+        !prefersReducedMotion
         && !isInteracting
         && activeCard === null
         && selectedIndex === null
       ) {
-        viewport.scrollLeft += elapsed * 0.035;
-        normalizeLoop();
+        if (usesSingleMobileTrack) {
+          const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+          if (maxScroll > 0) {
+            if (viewport.scrollLeft >= maxScroll - 1) mobileDirection = -1;
+            if (viewport.scrollLeft <= 1) mobileDirection = 1;
+            viewport.scrollLeft += elapsed * 0.022 * mobileDirection;
+          }
+        } else {
+          viewport.scrollLeft += elapsed * 0.035;
+          normalizeLoop();
+        }
       }
 
       frame = window.requestAnimationFrame(move);

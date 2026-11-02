@@ -249,10 +249,10 @@ function LoopingShowcaseRow({
     const viewport = viewportRef.current;
     if (!viewport) return;
 
-    const usesNativeTouchScroll = window.matchMedia(
-      "(max-width: 640px), (hover: none), (pointer: coarse)",
-    ).matches;
-    if (usesNativeTouchScroll) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const usesSingleMobileTrack = window.matchMedia("(max-width: 640px)").matches;
+    let mobileDirection = direction;
 
     let frame = 0;
     let previousTime = performance.now();
@@ -261,8 +261,17 @@ function LoopingShowcaseRow({
       previousTime = time;
 
       if (!isInteracting) {
-        viewport.scrollLeft += elapsed * 0.026 * direction;
-        normalizeLoop();
+        if (usesSingleMobileTrack) {
+          const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+          if (maxScroll > 0) {
+            if (viewport.scrollLeft >= maxScroll - 1) mobileDirection = -1;
+            if (viewport.scrollLeft <= 1) mobileDirection = 1;
+            viewport.scrollLeft += elapsed * 0.018 * mobileDirection;
+          }
+        } else {
+          viewport.scrollLeft += elapsed * 0.026 * direction;
+          normalizeLoop();
+        }
       }
 
       frame = window.requestAnimationFrame(move);
