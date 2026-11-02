@@ -226,7 +226,7 @@ export function HighlightVideoBanner() {
                     muted
                     loop
                     playsInline
-                    preload="metadata"
+                    preload={index === activeIndex ? "auto" : "none"}
                     poster={highlight.image}
                     style={{ objectPosition: highlight.imagePosition }}
                     aria-label={`${highlight.artist} — ${highlight.campaign} campaign video`}

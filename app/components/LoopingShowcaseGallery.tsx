@@ -3,6 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { accoladeItems } from "../data/accolades";
 import { lifestyleMediaItems } from "../data/lifestyleMedia";
 import { partnershipItems } from "../data/partnerships";
@@ -40,8 +41,8 @@ const sections = [
   { category: "accolade", title: "Achievements", rows: accoladeRows },
 ] as const;
 
-const loopCopies = [0, 1, 2, 3, 4] as const;
-const activeLoopCopy = 2;
+const loopCopies = [0, 1, 2] as const;
+const activeLoopCopy = 1;
 
 function getArtistKey(item: LoopItem) {
   const searchable = `${item.title} ${item.href} ${item.image}`.toLowerCase();
@@ -117,6 +118,7 @@ function LoopingShowcaseRow({
   label,
   onOpenMedia,
 }: LoopingShowcaseRowProps) {
+  const rowRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const loopMetricsRef = useRef({ cycleWidth: 0, middleStart: 0 });
   const interactionTimerRef = useRef<number | null>(null);
@@ -130,11 +132,34 @@ function LoopingShowcaseRow({
   const suppressClickUntilRef = useRef(0);
   const [isInteracting, setIsInteracting] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [shouldLoadImages, setShouldLoadImages] = useState(false);
   const [displayItems, setDisplayItems] = useState(items);
 
   useEffect(() => {
     setDisplayItems(shuffleWithoutAdjacentArtists(items));
   }, [items]);
+
+  useEffect(() => {
+    const row = rowRef.current;
+    if (!row) return;
+
+    if (!("IntersectionObserver" in window)) {
+      setShouldLoadImages(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShouldLoadImages(true);
+        observer.disconnect();
+      },
+      { rootMargin: "900px 0px" },
+    );
+
+    observer.observe(row);
+    return () => observer.disconnect();
+  }, []);
 
   const measureLoop = () => {
     const viewport = viewportRef.current;
@@ -252,7 +277,11 @@ function LoopingShowcaseRow({
   }, []);
 
   return (
-    <section className={`showcase-loop-row showcase-loop-row-${category}`} aria-label={label}>
+    <section
+      ref={rowRef}
+      className={`showcase-loop-row showcase-loop-row-${category}`}
+      aria-label={label}
+    >
       <div
         ref={viewportRef}
         className={`showcase-loop-viewport${isDragging ? " is-dragging" : ""}`}
@@ -324,27 +353,32 @@ function LoopingShowcaseRow({
               key={groupIndex}
             >
               {displayItems.map((item, itemIndex) => {
-                const bufferSize = 5;
-                const isWrapBuffer = (
-                  groupIndex === activeLoopCopy - 1
-                  && itemIndex >= displayItems.length - bufferSize
-                ) || (
-                  groupIndex === activeLoopCopy && (
-                    itemIndex < bufferSize
-                    || itemIndex >= displayItems.length - bufferSize
-                  )
-                ) || (
-                  groupIndex === activeLoopCopy + 1 && itemIndex < bufferSize
+                const isInitiallyVisible = (
+                  groupIndex === activeLoopCopy
+                  && itemIndex < 6
                 );
+                const imageSizes = category === "magazine"
+                  ? "(max-width: 640px) 44vw, (max-width: 1536px) 16vw, 250px"
+                  : "(max-width: 640px) 42vw, (max-width: 1536px) 19vw, 292px";
 
-                const image = (
-                  <img
+                const image = shouldLoadImages ? (
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    loading={isWrapBuffer ? "eager" : "lazy"}
-                    fetchPriority={isWrapBuffer ? "high" : "low"}
+                    fill
+                    sizes={imageSizes}
+                    quality={90}
+                    loading={isInitiallyVisible ? "eager" : "lazy"}
+                    fetchPriority={isInitiallyVisible ? "high" : "low"}
                     decoding="async"
                   />
+                ) : (
+                  <>
+                    <span className="showcase-loop-image-placeholder" aria-hidden="true" />
+                    {category === "accolade" ? (
+                      <span className="sr-only">{item.title}</span>
+                    ) : null}
+                  </>
                 );
 
                 if (category === "accolade") {

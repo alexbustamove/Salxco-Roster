@@ -605,6 +605,13 @@
   transition: filter 260ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.showcase-loop-image-placeholder {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: #090909;
+}
+
 .showcase-loop-row-magazine .showcase-loop-card img {
   object-fit: cover;
   object-position: center top;

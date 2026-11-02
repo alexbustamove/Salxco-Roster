@@ -157,8 +157,7 @@ export function ShowcaseHomeExperience({
             />
           </Link>
           <p className="footer-copyright">
-            <span>Copyright © 2026 MGMT NATION.</span>
-            <span>All rights reserved.</span>
+            Copyright © 2026 MGMT NATION. All rights reserved.
           </p>
         </div>
         <a className="back-to-top" href="#showcase-home-title" aria-label="Back to top">

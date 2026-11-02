@@ -213,16 +213,18 @@ export function VerticalFeatureBanner() {
                       }}
                     >
                       <img src={feature.image} alt="" />
-                      <video
-                        autoPlay={isActive}
-                        key={`${feature.video}-${isActive ? "playing" : "still"}`}
-                        loop
-                        muted
-                        playsInline
-                        poster={feature.image}
-                        preload="metadata"
-                        src={feature.video}
-                      />
+                      {isActive ? (
+                        <video
+                          autoPlay
+                          key={`${feature.video}-playing`}
+                          loop
+                          muted
+                          playsInline
+                          poster={feature.image}
+                          preload="auto"
+                          src={feature.video}
+                        />
+                      ) : null}
                       <span className="horizontal-feature-scrim" aria-hidden="true" />
                       <span className="horizontal-feature-copy">
                         <span>{feature.artist}</span>
