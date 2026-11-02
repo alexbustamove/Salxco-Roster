@@ -2298,12 +2298,21 @@
   .antique-motion-background {
     right: auto;
     bottom: auto;
+    background:
+      radial-gradient(ellipse 72% 52% at 12% 28%, rgba(183, 147, 73, 0.62), transparent 68%),
+      radial-gradient(ellipse 64% 58% at 88% 20%, rgba(116, 76, 22, 0.54), transparent 72%),
+      radial-gradient(ellipse 78% 54% at 76% 86%, rgba(183, 147, 73, 0.46), transparent 72%),
+      radial-gradient(ellipse 68% 56% at 24% 78%, rgba(91, 55, 15, 0.5), transparent 74%),
+      #030201;
+    background-size: 150% 145%, 160% 150%, 155% 145%, 165% 155%, auto;
+    animation: antique-mobile-background-flow 18s ease-in-out infinite alternate;
+    will-change: background-position;
   }
 
   .antique-motion-background span,
   .antique-motion-background span:nth-child(2),
   .antique-motion-background span:nth-child(3) {
-    inset: 0;
+    display: none;
   }
 
   .showcase-home-shell .highlight-video-banner {
@@ -2348,6 +2357,20 @@
 
   .campaign-lightbox-panel video {
     max-height: 68vh;
+  }
+}
+
+@keyframes antique-mobile-background-flow {
+  0% {
+    background-position: 0% 8%, 100% 0%, 92% 100%, 4% 92%, 0 0;
+  }
+
+  50% {
+    background-position: 28% 18%, 72% 22%, 64% 78%, 26% 68%, 0 0;
+  }
+
+  100% {
+    background-position: 12% 34%, 92% 12%, 78% 62%, 18% 84%, 0 0;
   }
 }
 
