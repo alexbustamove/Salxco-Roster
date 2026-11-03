@@ -2287,7 +2287,7 @@
   :root:has(.showcase-home-shell),
   :root:has(.showcase-home-shell) body {
     overscroll-behavior-y: none;
-    background: #050301;
+    background: #2b210f;
   }
 
   .showcase-home-shell {

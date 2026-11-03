@@ -132,12 +132,23 @@ function LoopingShowcaseRow({
   const suppressClickUntilRef = useRef(0);
   const [isInteracting, setIsInteracting] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [isMobileLayout, setIsMobileLayout] = useState(false);
+  const [isMotionVisible, setIsMotionVisible] = useState(false);
   const [shouldLoadImages, setShouldLoadImages] = useState(false);
   const [displayItems, setDisplayItems] = useState(items);
 
   useEffect(() => {
     setDisplayItems(shuffleWithoutAdjacentArtists(items));
   }, [items]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 640px)");
+    const updateLayout = () => setIsMobileLayout(mediaQuery.matches);
+
+    updateLayout();
+    mediaQuery.addEventListener("change", updateLayout);
+    return () => mediaQuery.removeEventListener("change", updateLayout);
+  }, []);
 
   useEffect(() => {
     const row = rowRef.current;
@@ -154,7 +165,23 @@ function LoopingShowcaseRow({
         setShouldLoadImages(true);
         observer.disconnect();
       },
-      { rootMargin: "900px 0px" },
+      { rootMargin: isMobileLayout ? "320px 0px" : "900px 0px" },
+    );
+
+    observer.observe(row);
+    return () => observer.disconnect();
+  }, [isMobileLayout]);
+
+  useEffect(() => {
+    const row = rowRef.current;
+    if (!row || !("IntersectionObserver" in window)) {
+      setIsMotionVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsMotionVisible(entry.isIntersecting),
+      { rootMargin: "180px 0px" },
     );
 
     observer.observe(row);
@@ -163,7 +190,7 @@ function LoopingShowcaseRow({
 
   const measureLoop = () => {
     const viewport = viewportRef.current;
-    if (!viewport) return null;
+    if (!viewport || isMobileLayout) return null;
 
     const groups = viewport.querySelectorAll<HTMLElement>(".showcase-loop-group");
     if (groups.length < loopCopies.length) return null;
@@ -204,6 +231,7 @@ function LoopingShowcaseRow({
   const beginInteraction = () => {
     setIsInteracting(true);
     if (interactionTimerRef.current !== null) window.clearTimeout(interactionTimerRef.current);
+    interactionTimerRef.current = window.setTimeout(() => setIsInteracting(false), 3000);
   };
 
   const endInteraction = () => {
@@ -213,6 +241,8 @@ function LoopingShowcaseRow({
   };
 
   const handleScroll = () => {
+    if (isMobileLayout) return;
+
     const usesNativeTouchScroll = window.matchMedia(
       "(max-width: 640px), (hover: none), (pointer: coarse)",
     ).matches;
@@ -232,6 +262,12 @@ function LoopingShowcaseRow({
     const viewport = viewportRef.current;
     if (!viewport) return;
 
+    if (isMobileLayout) {
+      loopMetricsRef.current = { cycleWidth: 0, middleStart: 0 };
+      viewport.scrollLeft = 0;
+      return;
+    }
+
     const centerLoop = () => {
       const metrics = measureLoop();
       if (metrics) viewport.scrollLeft = metrics.middleStart;
@@ -243,7 +279,7 @@ function LoopingShowcaseRow({
     const track = viewport.querySelector<HTMLElement>(".showcase-loop-track");
     if (track) observer.observe(track);
     return () => observer.disconnect();
-  }, [displayItems]);
+  }, [displayItems, isMobileLayout]);
 
   useEffect(() => {
     const viewport = viewportRef.current;
@@ -251,14 +287,22 @@ function LoopingShowcaseRow({
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const usesSingleMobileTrack = window.matchMedia("(max-width: 640px)").matches;
+    const usesSingleMobileTrack = isMobileLayout;
+    if (usesSingleMobileTrack && !isMotionVisible) return;
     let mobileDirection = direction;
 
     let frame = 0;
     let previousTime = performance.now();
+    let previousMobileStep = previousTime;
     const move = (time: number) => {
+      if (usesSingleMobileTrack && time - previousMobileStep < 32) {
+        frame = window.requestAnimationFrame(move);
+        return;
+      }
+
       const elapsed = Math.min(time - previousTime, 40);
       previousTime = time;
+      previousMobileStep = time;
 
       if (!isInteracting) {
         if (usesSingleMobileTrack) {
@@ -279,7 +323,7 @@ function LoopingShowcaseRow({
 
     frame = window.requestAnimationFrame(move);
     return () => window.cancelAnimationFrame(frame);
-  }, [direction, isInteracting]);
+  }, [direction, isInteracting, isMobileLayout, isMotionVisible]);
 
   useEffect(() => () => {
     if (interactionTimerRef.current !== null) window.clearTimeout(interactionTimerRef.current);
@@ -296,7 +340,11 @@ function LoopingShowcaseRow({
         ref={viewportRef}
         className={`showcase-loop-viewport${isDragging ? " is-dragging" : ""}`}
         onPointerDown={(event) => {
-          if (event.pointerType !== "mouse" || event.button !== 0) return;
+          if (event.pointerType !== "mouse") {
+            beginInteraction();
+            return;
+          }
+          if (event.button !== 0) return;
           beginInteraction();
 
           dragRef.current = {
@@ -321,7 +369,10 @@ function LoopingShowcaseRow({
           event.currentTarget.scrollLeft = drag.startScrollLeft - distance;
         }}
         onPointerUp={(event) => {
-          if (event.pointerType !== "mouse") return;
+          if (event.pointerType !== "mouse") {
+            endInteraction();
+            return;
+          }
 
           if (dragRef.current.pointerId === event.pointerId) {
             if (dragRef.current.hasMoved) {
@@ -337,7 +388,10 @@ function LoopingShowcaseRow({
           endInteraction();
         }}
         onPointerCancel={(event) => {
-          if (event.pointerType !== "mouse") return;
+          if (event.pointerType !== "mouse") {
+            endInteraction();
+            return;
+          }
 
           if (dragRef.current.pointerId === event.pointerId) {
             dragRef.current.pointerId = -1;
@@ -356,7 +410,7 @@ function LoopingShowcaseRow({
         onScroll={handleScroll}
       >
         <div className="showcase-loop-track">
-          {loopCopies.map((groupIndex) => (
+          {(isMobileLayout ? [activeLoopCopy] : loopCopies).map((groupIndex) => (
             <div
               className="showcase-loop-group"
               aria-hidden={groupIndex === activeLoopCopy ? undefined : "true"}

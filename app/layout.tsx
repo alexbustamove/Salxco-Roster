@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 const siteOrigin =
@@ -51,6 +51,13 @@ export const metadata: Metadata = {
     description: "Full service management for world-class talent.",
     images: ["/og-mgmt-black-gold.jpg?v=1"],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#2b210f",
 };
 
 export default function RootLayout({

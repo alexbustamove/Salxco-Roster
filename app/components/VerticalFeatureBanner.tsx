@@ -44,6 +44,8 @@ export function VerticalFeatureBanner() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [pinnedCard, setPinnedCard] = useState<string | null>(null);
   const [isInteracting, setIsInteracting] = useState(false);
+  const [isMobileLayout, setIsMobileLayout] = useState(false);
+  const [isMotionVisible, setIsMotionVisible] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const activeCard = hoveredCard ?? pinnedCard;
   const selectedFeature = selectedIndex === null ? null : features[selectedIndex];
@@ -58,6 +60,7 @@ export function VerticalFeatureBanner() {
     clearActiveCard();
     setIsInteracting(true);
     if (interactionTimerRef.current !== null) window.clearTimeout(interactionTimerRef.current);
+    interactionTimerRef.current = window.setTimeout(() => setIsInteracting(false), 3200);
   };
 
   const endInteraction = () => {
@@ -68,7 +71,7 @@ export function VerticalFeatureBanner() {
 
   const measureLoop = () => {
     const viewport = viewportRef.current;
-    if (!viewport) return null;
+    if (!viewport || isMobileLayout) return null;
 
     const groups = viewport.querySelectorAll<HTMLElement>(".horizontal-feature-group");
     if (groups.length < 3) return null;
@@ -100,6 +103,12 @@ export function VerticalFeatureBanner() {
     const viewport = viewportRef.current;
     if (!viewport) return;
 
+    if (isMobileLayout) {
+      loopMetricsRef.current = { cycleWidth: 0, middleStart: 0 };
+      viewport.scrollLeft = 0;
+      return;
+    }
+
     const centerLoop = () => {
       const metrics = measureLoop();
       if (metrics) viewport.scrollLeft = metrics.middleStart;
@@ -115,6 +124,31 @@ export function VerticalFeatureBanner() {
 
     window.addEventListener("resize", recenterAfterWidthChange);
     return () => window.removeEventListener("resize", recenterAfterWidthChange);
+  }, [isMobileLayout]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 640px)");
+    const updateLayout = () => setIsMobileLayout(mediaQuery.matches);
+
+    updateLayout();
+    mediaQuery.addEventListener("change", updateLayout);
+    return () => mediaQuery.removeEventListener("change", updateLayout);
+  }, []);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport || !("IntersectionObserver" in window)) {
+      setIsMotionVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsMotionVisible(entry.isIntersecting),
+      { rootMargin: "180px 0px" },
+    );
+
+    observer.observe(viewport);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -124,15 +158,23 @@ export function VerticalFeatureBanner() {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    const usesSingleMobileTrack = window.matchMedia("(max-width: 640px)").matches;
+    const usesSingleMobileTrack = isMobileLayout;
+    if (usesSingleMobileTrack && !isMotionVisible) return;
     let mobileDirection = 1;
 
     let frame = 0;
     let previousTime = performance.now();
+    let previousMobileStep = previousTime;
 
     const move = (time: number) => {
+      if (usesSingleMobileTrack && time - previousMobileStep < 32) {
+        frame = window.requestAnimationFrame(move);
+        return;
+      }
+
       const elapsed = Math.min(time - previousTime, 40);
       previousTime = time;
+      previousMobileStep = time;
 
       if (
         !prefersReducedMotion
@@ -158,7 +200,7 @@ export function VerticalFeatureBanner() {
 
     frame = window.requestAnimationFrame(move);
     return () => window.cancelAnimationFrame(frame);
-  }, [activeCard, isInteracting, selectedIndex]);
+  }, [activeCard, isInteracting, isMobileLayout, isMotionVisible, selectedIndex]);
 
   useEffect(() => {
     if (selectedIndex === null) return;
@@ -194,11 +236,11 @@ export function VerticalFeatureBanner() {
           endInteraction();
         }}
         onScroll={() => {
-          if (activeCard === null) normalizeLoop();
+          if (!isMobileLayout && activeCard === null) normalizeLoop();
         }}
       >
         <div className="horizontal-feature-track">
-          {[0, 1, 2].map((groupIndex) => (
+          {(isMobileLayout ? [1] : [0, 1, 2]).map((groupIndex) => (
             <div
               className="horizontal-feature-group"
               aria-hidden={groupIndex === 1 ? undefined : "true"}
