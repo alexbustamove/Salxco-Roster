@@ -132,7 +132,7 @@ function LoopingShowcaseRow({
   const suppressClickUntilRef = useRef(0);
   const [isInteracting, setIsInteracting] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const [isMobileLayout, setIsMobileLayout] = useState(false);
+  const [isMobileLayout, setIsMobileLayout] = useState(true);
   const [isMotionVisible, setIsMotionVisible] = useState(false);
   const [shouldLoadImages, setShouldLoadImages] = useState(false);
   const [displayItems, setDisplayItems] = useState(items);
@@ -141,7 +141,7 @@ function LoopingShowcaseRow({
     setDisplayItems(shuffleWithoutAdjacentArtists(items));
   }, [items]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 640px)");
     const updateLayout = () => setIsMobileLayout(mediaQuery.matches);
 

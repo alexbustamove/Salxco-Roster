@@ -44,7 +44,7 @@ export function VerticalFeatureBanner() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [pinnedCard, setPinnedCard] = useState<string | null>(null);
   const [isInteracting, setIsInteracting] = useState(false);
-  const [isMobileLayout, setIsMobileLayout] = useState(false);
+  const [isMobileLayout, setIsMobileLayout] = useState(true);
   const [isMotionVisible, setIsMotionVisible] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const activeCard = hoveredCard ?? pinnedCard;
@@ -126,7 +126,7 @@ export function VerticalFeatureBanner() {
     return () => window.removeEventListener("resize", recenterAfterWidthChange);
   }, [isMobileLayout]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 640px)");
     const updateLayout = () => setIsMobileLayout(mediaQuery.matches);
 
